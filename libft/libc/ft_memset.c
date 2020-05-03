@@ -9,7 +9,7 @@
 /*   Updated: 2020/04/30 11:59:35 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <string.h>
 #include <stdio.h>
 
 void	*ft_memset(void *str, int c, size_t n)
@@ -33,7 +33,7 @@ int main()
 {
 	char *str = "Bonjour";
 	void *p = &str;
-	printf("%p\n", p);
-	printf("%p\n", ft_memset(p, 20, 4));
-	printf("%s\n", str);
+	puts(str);
+	printf("%p\n", memset(p, 20, 4));
+	puts(str);
 }
