@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 12:13:51 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/04/30 12:14:15 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/04/30 11:59:35 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr(char *s1, char *s2, int len)
+int	ft_memcmp(void *s1, void *s2, size_t n)
 {
-	int i;
-	int j;
-	int res;
+	size_t i;
+	char *str1 = (unsigned char *)s1;
+	char *str2 = (unsigned char *)s2;
 
 	i = 0;
-	j = 0;
-	res = 0;
-	while (s1[i])
+	while (i < n)
 	{
-		while (s1[i + j] && s1[i + j] == s2[j] && j < len)
-		{
-			if (j == 0)
-				res = i;
-			j++;
-		}
-		if (j == len)
-			return (&s1[res]);	// Merci Taqiyeddine c'est gentil...
-		j = 0;
+		if (str1[i] != str2[i])
+		       return(str1[i] - str2[i]);	
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
-

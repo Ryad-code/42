@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 12:13:51 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/04/30 12:14:15 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/04/30 11:59:35 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr(char *s1, char *s2, int len)
+void	*ft_memmove(void *dest, void *src, size_t n)
 {
-	int i;
-	int j;
-	int res;
+	size_t i;
+	char *str_d = (char *)dest;
+	char *str_s = (char *)src;
 
 	i = 0;
-	j = 0;
-	res = 0;
-	while (s1[i])
+	if ( str_d > str_s)
 	{
-		while (s1[i + j] && s1[i + j] == s2[j] && j < len)
+		i = 1;
+		while (i <= n)
 		{
-			if (j == 0)
-				res = i;
-			j++;
+			str_d[n - i] = str_s[n - i];
+			i++;
 		}
-		if (j == len)
-			return (&s1[res]);	// Merci Taqiyeddine c'est gentil...
-		j = 0;
-		i++;
 	}
-	return (NULL);
+	else
+		while (i <= n && str_d[i] && str_s[i]) 
+		{
+			str_d[i] = str_s[i];
+			i++;
+		}
+	return (dest);
 }
-
