@@ -6,14 +6,14 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/04/30 11:59:35 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/06 16:34:24 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	j = 0;
@@ -28,5 +28,5 @@ int	ft_strlcat(char *dest, char *src, unsigned int size)
 		i++;
 	}
 	dest[i] = '\0';
-	return (i);	
+	return (i);
 }

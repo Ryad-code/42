@@ -6,18 +6,20 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/04/30 11:59:35 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/06 16:28:52 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memmove(void *dest, void *src, size_t n)
+void	*ft_memmove(void *dst, void *src, size_t n)
 {
-	size_t i;
-	char *str_d = (char *)dest;
-	char *str_s = (char *)src;
+	size_t		i;
+	char		*str_d;
+	char		*str_s;
 
 	i = 0;
-	if ( str_d > str_s)
+	str_d = (char *)dst;
+	str_s = (char *)src;
+	if (str_d > str_s)
 	{
 		i = 1;
 		while (i <= n)
@@ -27,7 +29,7 @@ void	*ft_memmove(void *dest, void *src, size_t n)
 		}
 	}
 	else
-		while (i <= n && str_d[i] && str_s[i]) 
+		while (i <= n && str_d[i] && str_s[i])
 		{
 			str_d[i] = str_s[i];
 			i++;

@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:13:51 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/04/30 12:14:15 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/06 16:30:46 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ char	*ft_strnstr(char *s1, char *s2, int len)
 			j++;
 		}
 		if (j == len)
-			return (&s1[res]);	// Merci Taqiyeddine c'est gentil...
+			return (&s1[res]);
 		j = 0;
 		i++;
 	}
 	return (NULL);
 }
-
