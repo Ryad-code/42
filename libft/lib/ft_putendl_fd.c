@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 18:32:10 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/05/12 16:08:34 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/12 17:30:59 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, void *src, size_t n)
+void	ft_putendl_fd(char *s, int fd)
 {
-	size_t		i;
-	char		*str_d;
-	char		*str_s;
+	int i;
 
 	i = 0;
-	str_d = (char *)dst;
-	str_s = (char *)src;
-	if (str_d > str_s)
+	while (s[i])
 	{
-		i = 1;
-		while (i <= n)
-		{
-			str_d[n - i] = str_s[n - i];
-			i++;
-		}
+		write(fd, &s[i], 1);
+		i++;
 	}
-	else
-		while (i <= n && str_d[i] && str_s[i])
-		{
-			str_d[i] = str_s[i];
-			i++;
-		}
-	return (dst);
+	write(fd, '\0', 1);
 }

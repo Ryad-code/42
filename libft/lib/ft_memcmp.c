@@ -6,9 +6,11 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/06 16:21:46 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/12 18:28:26 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_memcmp(void *s1, void *s2, size_t n)
 {

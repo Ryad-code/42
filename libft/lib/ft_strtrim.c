@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 18:32:10 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/05/10 13:42:01 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/12 17:55:42 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, void *src, size_t n)
+char	*ft_strtrim(char *s1, char *set)
 {
-	size_t		i;
-	char		*str_d;
-	char		*str_s;
+	int		i;
+	int		j;
+	int		k;
+	char	*dst;
 
 	i = 0;
-	str_d = (char *)dst;
-	str_s = (char *)src;
-	if (str_d > str_s)
+	j = 0;
+	k = 0;
+	dst = NULL;
+	while (s1[i] && ft_strrchr(set, s1[i]))
+		i++;
+	k = i;
+	while (s1[i] && !ft_strrchr(set, s1[i]))
 	{
-		i = 1;
-		while (i <= n)
-		{
-			str_d[n - i] = str_s[n - i];
-			i++;
-		}
+		i++;
+		j++;
 	}
-	else
-		while (i <= n && str_d[i] && str_s[i])
-		{
-			str_d[i] = str_s[i];
-			i++;
-		}
+	if (!(dst = malloc(sizeof(char) * j + 1)))
+		return (dst);
+	i = 0;
+	while (i < j)
+	{
+		dst[i] = s1[i + k];
+		i++;
+	}
+	dst[i] = '\0';
 	return (dst);
 }

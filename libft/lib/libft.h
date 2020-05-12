@@ -1,8 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/12 18:09:55 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/12 18:26:32 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 #define LIBFT_H
 
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 int	ft_atoi(char *str);
 void 	*ft_bzero(void *s, size_t n);
@@ -27,5 +41,19 @@ char	*ft_strnstr(char *s1, char *s2, int len);
 char	*ft_strrchr(char *str, char c);
 char	ft_tolower(char c);
 char	ft_toupper(char c);
+
+// Partie II
+
+char	*ft_itoa(int n);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *s, int fd);
+char	**ft_split(char *s, char c);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_strtrim(char *s1, char *set);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
 
 #endif

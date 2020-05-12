@@ -6,9 +6,11 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:22:03 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/04/30 12:22:31 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/12 18:33:39 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strrchr(char *str, char c)
 {

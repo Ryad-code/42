@@ -1,40 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 18:32:10 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/05/11 18:40:46 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/12 17:48:18 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, void *src, size_t n)
+int		ft_getlen(int n)
 {
-	size_t		i;
-	char		*str_d;
-	char		*str_s;
+	int i;
 
 	i = 0;
-	str_d = (char *)dst;
-	str_s = (char *)src;
-	if (str_d > str_s)
+	if (n < 0)
 	{
-		i = 1;
-		while (i <= n)
-		{
-			str_d[n - i] = str_s[n - i];
-			i++;
-		}
+		i++;
+		n = -n;
 	}
-	else
-		while (i <= n && str_d[i] && str_s[i])
-		{
-			str_d[i] = str_s[i];
-			i++;
-		}
+	while (n > 9)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	int		i;
+	char	*dst;
+
+	i = ft_getlen(n);
+	dst = NULL;
+	if (!(dst = malloc(sizeof(char) * i + 1)))
+		return (dst);
+	dst[i + 1] = '\0';
+	if (n == 0)
+	{
+		dst[0] = 48;
+		return (dst);
+	}
+	if (n < 0)
+	{
+		n = -n;
+		dst[0] = '-';
+	}
+	while (n > 0)
+	{
+		dst[i] = (n % 10) + 48;
+		n = n / 10;
+		i--;
+	}
 	return (dst);
 }

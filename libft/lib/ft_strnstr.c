@@ -6,9 +6,11 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:13:51 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/06 16:30:46 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/12 18:29:57 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strnstr(char *s1, char *s2, int len)
 {
