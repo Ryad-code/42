@@ -6,13 +6,13 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 15:04:49 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 18:33:19 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/12 20:53:24 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlcpy(char *dst, char *src, size_t n)
+int	ft_strlcpy(char *dst, const char *src, size_t n)
 {
 	size_t		i;
 	int			count;

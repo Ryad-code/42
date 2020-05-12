@@ -6,13 +6,13 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 11:57:21 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/04/30 11:58:23 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/12 20:39:07 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(char c)
+int	ft_isprint(int c)
 {
 	if (c >= 33 && c <= 127)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }

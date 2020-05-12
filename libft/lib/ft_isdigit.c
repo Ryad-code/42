@@ -6,13 +6,13 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:06:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/08 19:53:21 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/12 20:35:26 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(char c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }

@@ -6,14 +6,14 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 11:52:50 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/04/30 11:54:54 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/12 20:35:56 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(char c)
+int	ft_isalnum(int c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
 	(c >= '0' && c <= '9'))
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }

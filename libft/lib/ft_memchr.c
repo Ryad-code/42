@@ -6,13 +6,13 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 18:31:01 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/12 21:08:19 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(void *str, int c, size_t n)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
 	size_t		i;
 	char		*dst;

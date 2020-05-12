@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/30 12:13:51 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 18:29:57 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/05/12 20:58:42 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/12 21:00:45 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(char *s1, char *s2, int len)
+char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
-	int i;
-	int j;
-	int res;
+	size_t i;
+	size_t j;
+	size_t res;
 
 	i = 0;
 	j = 0;

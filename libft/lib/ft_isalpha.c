@@ -6,13 +6,13 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:01:16 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/04/30 12:03:30 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/12 20:33:57 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isaplha(char c)
+int	ft_isaplha(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (0);
-	return (1);
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	return (0);
 }
