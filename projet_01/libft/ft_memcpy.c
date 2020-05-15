@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/15 13:30:42 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/15 19:54:54 by ryad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	str_d = (char *)dest;
 	str_s = (char *)src;
-	while (i < n && str_d[i] && str_s[i])
+	while (i < n)
 	{
 		str_d[i] = str_s[i];
 		i++;
