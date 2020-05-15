@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 15:04:49 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/13 16:35:27 by ryad             ###   ########.fr       */
+/*   Updated: 2020/05/15 23:34:46 by ryad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t		i;
 
 	i = 0;
-	while (dst[i] && src[i] && i < size)
+	if (size == 0)
+		return (ft_strlen(src));
+	while (i < size - 1 && src[i])
 	{
 		dst[i] = src[i];
 		i++;
