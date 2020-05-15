@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 11:58:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/15 13:23:57 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/15 18:45:50 by ryad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	dst = (char *)s;
 	while (i < n)
 	{
-		if (dst[i] == (unsigned char)c)
+		if (dst[i] == (char)c)
 			return (&dst[i]);
 		i++;
 	}

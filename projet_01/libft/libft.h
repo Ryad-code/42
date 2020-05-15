@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 18:09:55 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/15 13:24:08 by ryad             ###   ########.fr       */
+/*   Updated: 2020/05/15 18:35:07 by ryad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <string.h>
 
 int	ft_atoi(const char *str);
 void 	*ft_bzero(void *s, size_t n);

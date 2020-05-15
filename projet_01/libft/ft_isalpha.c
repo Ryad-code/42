@@ -6,11 +6,13 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 12:01:16 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 20:33:57 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/15 18:29:07 by ryad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isaplha(int c)
+#include "libft.h"
+
+int	ft_isalpha(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 		return (1);

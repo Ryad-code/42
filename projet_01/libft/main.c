@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ryad <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/08 19:59:13 by ryad              #+#    #+#             */
-/*   Updated: 2020/05/08 20:17:16 by ryad             ###   ########.fr       */
+/*   Created: 2020/05/15 17:40:59 by ryad              #+#    #+#             */
+/*   Updated: 2020/05/15 19:29:24 by ryad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/libft.h"
+#include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int main()
 {
-	unsigned int		i;
-	char				*dst;
-
-	i = 0;
-	dst = NULL;
-	if (!(dst = malloc(sizeof(char) * len + 1)))
-		return (dst);
-	while (i < len)
-	{
-		dst[i] = s[start + i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	char s[8] = "bonjour";
+	void *p = &s;
+	printf("%d\n", ft_memcmp("testss", "test", 5));
+	printf("%d\n", memcmp("testss", "test", 5));
 }
