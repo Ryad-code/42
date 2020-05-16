@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 16:31:18 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 17:51:49 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/16 14:43:57 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ int		ft_countwords(char *s, char c)
 	{
 		while (s[i] == c)
 			i++;
+		if (s[i] != c && s[i] != '\0')
+			nb_w++;
 		while (s[i] && s[i] != c)
-		{
 			i++;
-		}
-		nb_w++;
 	}
 	return (nb_w);
 }
@@ -74,9 +73,12 @@ char	**ft_split(char *s, char c)
 		}
 		while (s[i] && s[i] != c)
 			i++;
-		dst = ft_strndup(&s[j], i - j);
-		tab[k] = dst;
-		k++;
+		if ((ft_countwords(s, c) - k) > 0)
+		{
+			dst = ft_strndup(&s[j], i - j);
+			tab[k] = dst;
+			k++;
+		}
 	}
 	tab[k] = NULL;
 	return (tab);

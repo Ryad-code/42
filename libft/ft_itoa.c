@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 18:40:46 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 17:48:18 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/05/16 12:06:23 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/16 13:24:10 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		ft_getlen(int n)
 	int i;
 
 	i = 0;
+	if (n  == 0)
+		i = 1;
 	if (n < 0)
 	{
 		i++;
@@ -30,31 +32,62 @@ int		ft_getlen(int n)
 	return (i);
 }
 
+char	*ft_revtab(char *s)
+{
+	int i;
+	int j;
+	char dst[ft_strlen(s)];
+
+	i = 0;
+	j = ft_strlen(s) - 1;
+	while (i < (ft_strlen(s) / 2))
+	{
+		dst[i] = s[i];
+		s[i] = s[j - i];
+		s[j - i] = dst[i];
+		i++;
+
+	}
+	return (s);
+}
 char	*ft_itoa(int n)
 {
-	int		i;
-	char	*dst;
+	int i;
+	int sign;
+	char *dst;
 
-	i = ft_getlen(n);
+	i = 0;
+	sign = 1;
 	dst = NULL;
-	if (!(dst = malloc(sizeof(char) * i + 1)))
+	if (!(dst = malloc(sizeof(char) * ft_getlen(n) + 1)))
 		return (dst);
-	dst[i + 1] = '\0';
-	if (n == 0)
-	{
-		dst[0] = 48;
-		return (dst);
-	}
+//	if (n == 0)
+//	{
+//		dst = "0\0";
+//		return (dst);
+//	}
+//	if (n == -2147483648)
+//	{
+//		dst = "-2147483648\0";
+//		return(dst);
+//	}
 	if (n < 0)
 	{
 		n = -n;
-		dst[0] = '-';
+		sign = -1;
 	}
 	while (n > 0)
 	{
 		dst[i] = (n % 10) + 48;
 		n = n / 10;
-		i--;
+		i++;
 	}
-	return (dst);
+	if (sign == -1)
+	{
+		dst[i] = '-';
+		dst[i + 1] = '\0';
+	}
+	else
+		dst[i] = '\0';
+	return (ft_revtab(dst));
 }

@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 16:08:34 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 17:30:59 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/16 13:39:39 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	ft_putendl_fd(char *s, int fd)
 		write(fd, &s[i], 1);
 		i++;
 	}
-	write(fd, '\0', 1);
+	ft_putchar_fd('\n', fd);
 }
