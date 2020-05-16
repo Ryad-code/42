@@ -6,7 +6,7 @@
 /*   By: ryad <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 17:40:59 by ryad              #+#    #+#             */
-/*   Updated: 2020/05/15 23:32:06 by ryad             ###   ########.fr       */
+/*   Updated: 2020/05/16 17:04:21 by ryad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int main()
 {
-	char dst[15];
-	printf("%ld\n", ft_strlcpy(dst, "lorem", 15));
-//	printf("%s\n", strncpy(dst, "lorem ipsum dolor sit amet", 15));
-	printf("%s\n", dst);
+//	int i = 0;
+//	char set[] = "\t \n";
+//	char s[20] = "\t \naaaaaaaaaa\t \n";
+//	printf("%s\n", ft_strtrim(s, "set"));
+	printf("%s\n", ft_itoa(-2147483648LL));
 }
