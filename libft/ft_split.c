@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 16:31:18 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/16 14:43:57 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/19 17:42:04 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,35 +51,28 @@ char	*ft_strndup(char *str, int n)
 
 char	**ft_split(char *s, char c)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	*dst;
+	int		i[3];
 	char	**tab;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	dst = NULL;
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = 0;
 	tab = NULL;
 	if (!(tab = malloc(sizeof(char *) * (ft_countwords(s, c) + 1))))
 		return (tab);
-	while (s[i])
+	while (s[i[0]])
 	{
-		while (s[i] == c)
+		while (s[i[0]] == c)
+			i[0]++;
+		i[1] = i[0];
+		while (s[i[0]] && s[i[0]] != c)
+			i[0]++;
+		if ((ft_countwords(s, c) - i[2]) > 0)
 		{
-			i++;
-			j = i;
-		}
-		while (s[i] && s[i] != c)
-			i++;
-		if ((ft_countwords(s, c) - k) > 0)
-		{
-			dst = ft_strndup(&s[j], i - j);
-			tab[k] = dst;
-			k++;
+			tab[i[2]] = ft_strndup(&s[i[1]], i[0] - i[1]);
+			i[2]++;
 		}
 	}
-	tab[k] = NULL;
+	tab[i[2]] = NULL;
 	return (tab);
 }
