@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryad <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/15 17:40:59 by ryad              #+#    #+#             */
-/*   Updated: 2020/05/19 14:01:40 by ryad             ###   ########.fr       */
+/*   Created: 2020/05/19 14:06:03 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/19 16:53:18 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include  "libft.h"
 
-int main()
+void	ft_lstdelone(t_list **lst, void (*del)(void *))
 {
-	char s[8] = "bonjour";
-	void *p = &s;
-	t_list *new;
-	new = ft_lstnew(p);
-	void *p1 = &new;
-	ft_lstnew(p);
-	printf("%s\n", (char *)new->content);
+	del((*lst)->content);
+	free(*lst);
+	*lst = NULL;
 }

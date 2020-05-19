@@ -6,13 +6,13 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 13:42:01 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/16 16:46:34 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/05/17 17:28:44 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strndup(char *str, int n)
+static	char	*ft_strndup(char *str, int n)
 {
 	int		i;
 	char	*dest;
@@ -46,12 +46,9 @@ char	*ft_strtrim(char *s1, char *set)
 	k = i;
 	while (s1[i] && ft_strrchr(set, s1[i]) == NULL)
 	{
-//		printf("%d\n", j);
 		i++;
 		j++;
 	}
-//	printf("%d\n", j);
-//	printf("%d\n", i);
 	dst = ft_strndup(&s1[k], j);
 	return (dst);
 }

@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryad <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/15 17:40:59 by ryad              #+#    #+#             */
-/*   Updated: 2020/05/19 14:01:40 by ryad             ###   ########.fr       */
+/*   Created: 2020/05/19 11:27:52 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/19 14:03:44 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int main()
+void ft_lstadd_front(t_list **alst, t_list *new)
 {
-	char s[8] = "bonjour";
-	void *p = &s;
-	t_list *new;
-	new = ft_lstnew(p);
-	void *p1 = &new;
-	ft_lstnew(p);
-	printf("%s\n", (char *)new->content);
+	if (alst && new)
+	{
+		new->next = *alst;
+		*alst = new;
+	}		
 }

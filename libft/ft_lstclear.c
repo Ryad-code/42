@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryad <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/15 17:40:59 by ryad              #+#    #+#             */
-/*   Updated: 2020/05/19 14:01:40 by ryad             ###   ########.fr       */
+/*   Created: 2020/05/19 14:12:45 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/19 16:54:57 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int main()
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	char s[8] = "bonjour";
-	void *p = &s;
-	t_list *new;
-	new = ft_lstnew(p);
-	void *p1 = &new;
-	ft_lstnew(p);
-	printf("%s\n", (char *)new->content);
+	t_list *tmp;
+
+	if (lst)
+	{
+		while (*lst)
+		{
+			tmp = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			(*lst) = tmp;
+		}
+	}
 }
