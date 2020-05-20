@@ -53,8 +53,10 @@ char	*ft_revtab(char *s)
 	return (s);
 }
 
-char 	*ft_prepmem(char *dst, long *n, long *sign)
+char	*ft_prepmem(long *n, long *sign)
 {
+	char	*dst;
+
 	dst = NULL;
 	if (!(dst = malloc(sizeof(char) * ft_getlen(n, sign) + 1)))
 		return (dst);
@@ -69,8 +71,7 @@ char	*ft_itoa(int n)
 	i[0] = 0;
 	i[1] = 1;
 	i[2] = n;
-	dst = NULL;
-	dst = ft_prepmem(dst, &i[2], &i[1]);
+	dst = ft_prepmem(&i[2], &i[1]);
 	if (i[2] == 0)
 	{
 		dst[0] = '0';
