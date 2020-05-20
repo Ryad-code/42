@@ -5,50 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/10 13:42:01 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/17 17:28:44 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/05/19 17:13:08 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/19 17:26:40 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	char	*ft_strndup(char *str, int n)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	char	*dest;
+	size_t	size_s;
+	char	*newstring;
 
-	i = 0;
-	dest = NULL;
-	if (!(dest = malloc(sizeof(char) * (n + 1))))
-		return (dest);
-	while (str[i] && i < n)
-	{
-		dest[i] = str[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strtrim(char *s1, char *set)
-{
-	int		i;
-	int		j;
-	int		k;
-	char	*dst;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	dst = NULL;
-	while (s1[i] && ft_strrchr(set, s1[i]) != NULL)
-		i++;
-	k = i;
-	while (s1[i] && ft_strrchr(set, s1[i]) == NULL)
-	{
-		i++;
-		j++;
-	}
-	dst = ft_strndup(&s1[k], j);
-	return (dst);
+	if (!s1 || !set)
+		return (NULL);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	size_s = ft_strlen(s1);
+	while (size_s && ft_strchr(set, s1[size_s]))
+		size_s--;
+	newstring = ft_substr((char*)s1, 0, size_s + 1);
+	return (newstring);
 }

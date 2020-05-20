@@ -5,28 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/16 12:06:23 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/16 17:19:47 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/05/20 12:54:55 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/20 14:23:33 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_getlen(long n)
+int		ft_getlen(long *n, long *sign)
 {
-	int i;
+	int		i;
+	long	nb;
 
 	i = 0;
-	if (n == 0)
+	nb = *n;
+	if (*n == 0)
 		i = 1;
-	if (n < 0)
+	if (*n < 0)
 	{
 		i++;
-		n = -n;
+		*n = nb * -1;
+		*sign = -1;
 	}
-	while (n > 9)
+	while (nb > 9)
 	{
-		n = n / 10;
+		nb = nb / 10;
 		i++;
 	}
 	return (i);
@@ -50,41 +53,40 @@ char	*ft_revtab(char *s)
 	return (s);
 }
 
+char 	*ft_prepmem(char *dst, long *n, long *sign)
+{
+	dst = NULL;
+	if (!(dst = malloc(sizeof(char) * ft_getlen(n, sign) + 1)))
+		return (dst);
+	return (dst);
+}
+
 char	*ft_itoa(int n)
 {
-	int		i;
-	long	nb;
-	int		sign;
+	long	i[3];
 	char	*dst;
 
-	i = 0;
-	sign = 1;
+	i[0] = 0;
+	i[1] = 1;
+	i[2] = n;
 	dst = NULL;
-	nb = n;
-	if (!(dst = malloc(sizeof(char) * ft_getlen(nb) + 1)))
-		return (dst);
-	if (n == 0)
+	dst = ft_prepmem(dst, &i[2], &i[1]);
+	if (i[2] == 0)
 	{
 		dst[0] = '0';
 		return (dst);
 	}
-	if (n < 0)
+	while (i[2] > 0)
 	{
-		nb = -nb;
-		sign = -1;
+		dst[i[0]] = (i[2] % 10) + 48;
+		i[2] = i[2] / 10;
+		i[0]++;
 	}
-	while (nb > 0)
+	if (i[1] == -1)
 	{
-		dst[i] = (nb % 10) + 48;
-		nb = nb / 10;
-		i++;
+		dst[i[0]] = '-';
+		i[0]++;
 	}
-	if (sign == -1)
-	{
-		dst[i] = '-';
-		dst[i + 1] = '\0';
-	}
-	else
-		dst[i] = '\0';
+	dst[i[0]] = '\0';
 	return (ft_revtab(dst));
 }

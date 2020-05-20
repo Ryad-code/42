@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryad <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/15 17:40:59 by ryad              #+#    #+#             */
-/*   Updated: 2020/05/19 14:01:40 by ryad             ###   ########.fr       */
+/*   Created: 2020/05/19 18:38:28 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/05/20 13:00:29 by ryad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 int main()
 {
-	char s[8] = "bonjour";
-	void *p = &s;
-	t_list *new;
-	new = ft_lstnew(p);
-	void *p1 = &new;
-	ft_lstnew(p);
-	printf("%s\n", (char *)new->content);
+	int n = -24568;
+	printf("%s\n", ft_itoa(n));
 }
