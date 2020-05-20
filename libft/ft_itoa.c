@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_getlen(long *n, long *sign)
+static	int		ft_getlen(long *n, long *sign)
 {
 	int		i;
 	long	nb;
@@ -35,7 +35,7 @@ int		ft_getlen(long *n, long *sign)
 	return (i);
 }
 
-char	*ft_revtab(char *s)
+static	char	*ft_revtab(char *s)
 {
 	int		i;
 	int		j;
@@ -53,7 +53,7 @@ char	*ft_revtab(char *s)
 	return (s);
 }
 
-char	*ft_prepmem(long *n, long *sign)
+static	char	*ft_prepmem(long *n, long *sign)
 {
 	char	*dst;
 
@@ -63,7 +63,7 @@ char	*ft_prepmem(long *n, long *sign)
 	return (dst);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	long	i[3];
 	char	*dst;

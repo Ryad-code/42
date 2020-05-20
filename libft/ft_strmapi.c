@@ -12,16 +12,6 @@
 
 #include "libft.h"
 
-int		ft_maj(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*dst;
