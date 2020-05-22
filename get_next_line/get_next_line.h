@@ -21,5 +21,7 @@
 #include <stdlib.h>
 
 int	ft_strlen(char *s);
+int	ft_checkend(char *s);
+int	get_next_line(int fd, char **line);
 
 #endif

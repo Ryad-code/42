@@ -16,26 +16,23 @@ int	ft_strlen(char *s);
 
 int	get_next_line(int fd, char **line)
 {
-	int 	i;
 	int	BUFF_size;
 	void	*p;
 	char 	*p1;
-	char 	*p2;
 
-	i = 0;
-	BUFF_size = 10;
+	BUFF_size = 3;
 	p = (void *)*line;
 	p1 = *line;
-	while (i < 8)
+	while (ft_checkend(p1) == 1)
 	{
-		if (i > 1)
-			p = (p++);
-		p1 = (p1++);
 		line = malloc(sizeof(char) * BUFF_size);
 		read(fd, p, BUFF_size);
+		p = (p++);
+		p1 = (p1++);
 		printf("%s\n", p1);
-		i++;
+		printf("%d\n", ft_checkend(p1));
 	}
 
-	return (1);
+
+	return (25);
 }

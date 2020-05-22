@@ -17,7 +17,7 @@ int	get_next_line(int fd, char **line);
 int	main()
 {
 	int fd;
-	char line[10];
+	char line[3];
 	char *p_line;
 	char **p;
 

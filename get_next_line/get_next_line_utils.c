@@ -19,3 +19,17 @@ int	ft_strlen(char *s)
 		i++;
 	return (i);
 }
+
+int	ft_checkend(char *s, int size)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
