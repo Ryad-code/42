@@ -12,12 +12,23 @@
 
 #include "get_next_line.h"
 
+int	get_next_line(int fd, char **line);
+
 int	main()
 {
-	char buff[20];
-	int fd = open("test.txt", O_RDONLY);
-	void *p = buff;
-	read(fd, p, 20);
-	printf("%s\n", buff);
+	int fd;
+	char line[10];
+	char *p_line;
+	char **p;
+
+	fd = open("test.txt", O_RDONLY);
+	p_line = &line[0];
+	p = &p_line;
+
+//	printf("%s\n", p_line);
+	printf("%d\n", get_next_line(fd, p));
+//	printf("%s\n", p_line);
+//	printf("%d\n", ft_strlen(p_line)); 
+
 	return (0);
 }
