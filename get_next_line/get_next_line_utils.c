@@ -78,5 +78,6 @@ char	*ft_getend(char *src, int n)
 		dst[i] = src[i + n];
 		i++;
 	}
+	dst[i] = '\0';		// Uniquement pour l'affichage
 	return (dst);
 }

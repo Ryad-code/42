@@ -22,23 +22,34 @@ int	get_next_line(int fd, char **line)
 	cursor = 0;
 	buffer[0] = '\0';
 	dst = NULL;
-	dst = malloc(sizeof(char) * 40);
+	dst = malloc(sizeof(char) * 100);
 	tmp = NULL;
 	if (BUFF_SIZE == 0)					// Si BUFF_SIZE est nul
 		return (0);
-	read(fd, buffer, BUFF_SIZE);				// Premier read dans le buffer
-	ft_strncat(dst, buffer, BUFF_SIZE);
+	read(fd, buffer, BUFF_SIZE);				// Premiere lecture dans le buffer
+	cursor = ft_checkend_b(buffer, BUFF_SIZE);
+	if (cursor > 0)						// On concatène en fonction de la taille du buffer
+	{
+		ft_strncat(dst, buffer, cursor);
+		tmp = ft_getend(buffer, cursor);
+	}
+	else
+		ft_strncat(dst, buffer, BUFF_SIZE);
+	printf("%d\n", cursor);
 	while (ft_checkend_b(buffer, BUFF_SIZE) == 0)		// Boucle de read
 	{
 		read(fd, buffer, BUFF_SIZE);
 		cursor = ft_checkend_b(buffer, BUFF_SIZE);
+		printf("%d\n", cursor);
 		if (cursor == 0)
 			ft_strncat(dst, buffer, BUFF_SIZE);
 		else
+		{
 			ft_strncat(dst, buffer, cursor);
 			tmp = ft_getend(buffer, cursor);
+		}
 	}
-	printf("Dest = %s\n", dst);
+	printf("%s\n", dst);
 	printf("Tmp = %s\n", tmp);
 	return (1);
 }

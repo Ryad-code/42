@@ -19,7 +19,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
-#define BUFF_SIZE 7
+#define BUFF_SIZE 24
 
 int	ft_strlen(char *s);
 int	ft_checkend_b(char *s, int size);
