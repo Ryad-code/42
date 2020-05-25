@@ -17,26 +17,28 @@ int	get_next_line(int fd, char **line)
 	int cursor;
 	char buffer[BUFF_SIZE];
 	char *dst;
-	char *tmp = "bonjour";
+	static char *tmp;
 
 	cursor = 0;
 	buffer[0] = '\0';
 	dst = NULL;
 	dst = malloc(sizeof(char) * 40);
+	tmp = NULL;
 	if (BUFF_SIZE == 0)					// Si BUFF_SIZE est nul
 		return (0);
 	read(fd, buffer, BUFF_SIZE);				// Premier read dans le buffer
 	ft_strncat(dst, buffer, BUFF_SIZE);
-	while (ft_checkend_b(buffer, BUFF_SIZE) == 0)	// Boucle de read en cas de buffer trop petit
+	while (ft_checkend_b(buffer, BUFF_SIZE) == 0)		// Boucle de read
 	{
 		read(fd, buffer, BUFF_SIZE);
 		cursor = ft_checkend_b(buffer, BUFF_SIZE);
-		printf("%d\n", cursor);
 		if (cursor == 0)
-			printf("%s\n", ft_strncat(dst, buffer, BUFF_SIZE));
+			ft_strncat(dst, buffer, BUFF_SIZE);
 		else
-		printf("%s\n", ft_strncat(dst, buffer, cursor));		
+			ft_strncat(dst, buffer, cursor);
+			tmp = ft_getend(buffer, cursor);
 	}
-	printf("%s\n", dst);
+	printf("Dest = %s\n", dst);
+	printf("Tmp = %s\n", tmp);
 	return (1);
 }

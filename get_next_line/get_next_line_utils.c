@@ -66,3 +66,17 @@ char	*ft_strncat(char *dst, const char *src, int n)
 	
 }
 
+char	*ft_getend(char *src, int n)
+{
+	int i;
+	char *dst;
+
+	i = 0;
+	dst = malloc(sizeof(char) * (BUFF_SIZE - n));
+	while (i < (BUFF_SIZE - n))
+	{
+		dst[i] = src[i + n];
+		i++;
+	}
+	return (dst);
+}
