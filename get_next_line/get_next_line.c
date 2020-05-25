@@ -16,23 +16,26 @@ int	ft_strlen(char *s);
 
 int	get_next_line(int fd, char **line)
 {
-	int	BUFF_size;
-	void	*p;
-	char 	*p1;
+	int cursor;
+	int nb_buffer;
+	char buffer[BUFF_SIZE];
+	char *dst;
 
-	BUFF_size = 3;
-	p = (void *)*line;
-	p1 = *line;
-	while (ft_checkend(p1) == 1)
+	cursor = 0;
+	buffer[0] = '\0';
+	if (BUFF_SIZE == 0)					// Si BUFF_SIZE est nul
+		return (0);
+	nb_buffer = 1;
+	read(fd, buffer, BUFF_SIZE);				// Premier read dans le buffer
+	printf("%s\n", buffer);
+	while (ft_checkend_b(buffer, BUFF_SIZE) == BUFF_SIZE)	// Boucle de read en cas de buffer trop petit
 	{
-		line = malloc(sizeof(char) * BUFF_size);
-		read(fd, p, BUFF_size);
-		p = (p++);
-		p1 = (p1++);
-		printf("%s\n", p1);
-		printf("%d\n", ft_checkend(p1));
+		read(fd, buffer, BUFF_SIZE);
+		nb_buffer++;
+		printf("%s\n", buffer);
+		printf("%d\n", ft_checkend_b(buffer, BUFF_SIZE));
 	}
-
-
-	return (25);
+	cursor = ft_checkend_b(buffer, BUFF_SIZE);
+	printf("%d\n", cursor);
+	return (1);
 }

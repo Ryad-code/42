@@ -10,26 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *s)
+#include "get_next_line.h"
+
+int	ft_checkend_b(char *s, int size)
 {
 	int i;
 
 	i = 0;
-	while (s[i])
+	while (i < size)
+	{
+		if (s[i] == '\n')
+			return (i);
 		i++;
+	}
 	return (i);
 }
 
-int	ft_checkend(char *s, int size)
+int     ft_checkend_f(char *s, int size)
 {
 	int i;
-
 	i = 0;
-	while (s[i])
+	while (i < size)
 	{
-		if (s[i] == '\n')
-			return (0);
+		if (s[i] == EOF)
+			return (i);
 		i++;
 	}
-	return (1);
+	return (i);
 }

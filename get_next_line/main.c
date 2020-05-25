@@ -17,18 +17,13 @@ int	get_next_line(int fd, char **line);
 int	main()
 {
 	int fd;
-	char line[3];
-	char *p_line;
-	char **p;
+	char *line;
+	char **p_line;
 
 	fd = open("test.txt", O_RDONLY);
-	p_line = &line[0];
-	p = &p_line;
+	line = NULL;
+	p_line = &line;
 
-//	printf("%s\n", p_line);
-	printf("%d\n", get_next_line(fd, p));
-//	printf("%s\n", p_line);
-//	printf("%d\n", ft_strlen(p_line)); 
-
+	get_next_line(fd, p_line);
 	return (0);
 }
