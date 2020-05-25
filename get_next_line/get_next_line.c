@@ -12,30 +12,31 @@
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *s);
-
 int	get_next_line(int fd, char **line)
 {
 	int cursor;
-	int nb_buffer;
 	char buffer[BUFF_SIZE];
 	char *dst;
+	char *tmp = "bonjour";
 
 	cursor = 0;
 	buffer[0] = '\0';
+	dst = NULL;
+	dst = malloc(sizeof(char) * 40);
 	if (BUFF_SIZE == 0)					// Si BUFF_SIZE est nul
 		return (0);
-	nb_buffer = 1;
 	read(fd, buffer, BUFF_SIZE);				// Premier read dans le buffer
-	printf("%s\n", buffer);
-	while (ft_checkend_b(buffer, BUFF_SIZE) == BUFF_SIZE)	// Boucle de read en cas de buffer trop petit
+	ft_strncat(dst, buffer, BUFF_SIZE);
+	while (ft_checkend_b(buffer, BUFF_SIZE) == 0)	// Boucle de read en cas de buffer trop petit
 	{
 		read(fd, buffer, BUFF_SIZE);
-		nb_buffer++;
-		printf("%s\n", buffer);
-		printf("%d\n", ft_checkend_b(buffer, BUFF_SIZE));
+		cursor = ft_checkend_b(buffer, BUFF_SIZE);
+		printf("%d\n", cursor);
+		if (cursor == 0)
+			printf("%s\n", ft_strncat(dst, buffer, BUFF_SIZE));
+		else
+		printf("%s\n", ft_strncat(dst, buffer, cursor));		
 	}
-	cursor = ft_checkend_b(buffer, BUFF_SIZE);
-	printf("%d\n", cursor);
+	printf("%s\n", dst);
 	return (1);
 }

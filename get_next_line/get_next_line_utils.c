@@ -12,6 +12,16 @@
 
 #include "get_next_line.h"
 
+int	ft_strlen(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
 int	ft_checkend_b(char *s, int size)
 {
 	int i;
@@ -23,7 +33,7 @@ int	ft_checkend_b(char *s, int size)
 			return (i);
 		i++;
 	}
-	return (i);
+	return (0);
 }
 
 int     ft_checkend_f(char *s, int size)
@@ -38,3 +48,21 @@ int     ft_checkend_f(char *s, int size)
 	}
 	return (i);
 }
+
+char	*ft_strncat(char *dst, const char *src, int n)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = ft_strlen(dst);
+	while (i < n && src[i]) 
+	{
+		dst[j + i] = src[i];
+		i++;
+	}
+	dst[j + i] = '\0';
+	return (dst);
+	
+}
+

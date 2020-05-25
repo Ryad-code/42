@@ -24,6 +24,7 @@
 int	ft_strlen(char *s);
 int	ft_checkend_b(char *s, int size);
 int     ft_checkend_f(char *s, int size);
+char	*ft_strncat(char *dst, const char *src, int n);
 int	get_next_line(int fd, char **line);
 
 #endif
