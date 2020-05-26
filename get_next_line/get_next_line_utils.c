@@ -33,7 +33,7 @@ int	ft_checkend_b(char *s, int size)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
 int     ft_checkend_f(char *s, int size)
