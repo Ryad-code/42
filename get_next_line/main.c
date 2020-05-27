@@ -23,6 +23,7 @@ int	main()
 	fd = open("test1.txt", O_RDONLY);
 	get_next_line(fd, p_line);
 	get_next_line(fd, p_line);
-//	get_next_line(fd, p_line);
+	get_next_line(fd, p_line);
+	get_next_line(fd, p_line);
 	return (0);
 }

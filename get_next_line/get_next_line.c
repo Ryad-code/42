@@ -24,18 +24,32 @@ int	get_next_line(int fd, char **line)
 	dst = malloc(sizeof(char) * 100);
 	if (BUFF_SIZE == 0)					// Si BUFF_SIZE est nul
 		return (0);
-
+//	printf("temp = %s\n", tmp);
+	
+	if (tmp != NULL)
+	{
+		cursor = ft_checkend_b(tmp, ft_strlen(tmp));
+		if (cursor == ft_strlen(tmp))
+			ft_strncat(dst, tmp, cursor);
+		else	
+		{
+			ft_strncat(dst, tmp, cursor);
+			tmp = ft_getend(tmp, cursor);
+			printf("Dest = %s\n", dst);
+//			printf("cursor = %d\n", cursor);
+			return (1);
+		}
+	}
 	read(fd, buffer, BUFF_SIZE);				// Premiere lecture dans le buffer
 	cursor = ft_checkend_b(buffer, BUFF_SIZE);
-	if (cursor > 0)						// On concatène en fonction de la valeur de cursor
+	if (cursor != BUFF_SIZE)				// On concatène en fonction de cursor
 	{
 		ft_strncat(dst, buffer, cursor);
 		tmp = ft_getend(buffer, cursor);
 	}
 	else
 		ft_strncat(dst, buffer, BUFF_SIZE);
-//	printf("%d\n", cursor);
-	while (ft_checkend_b(buffer, BUFF_SIZE) == BUFF_SIZE)		// Boucle de read
+	while (cursor == BUFF_SIZE)				// Boucle de read
 	{
 		read(fd, buffer, BUFF_SIZE);
 		cursor = ft_checkend_b(buffer, BUFF_SIZE);
@@ -48,6 +62,5 @@ int	get_next_line(int fd, char **line)
 		}
 	}
 	printf("Dest = %s\n", dst);
-	printf("Tmp = %s\n", tmp);
 	return (1);
 }

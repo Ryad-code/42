@@ -72,12 +72,35 @@ char	*ft_getend(char *src, int n)
 	char *dst;
 
 	i = 0;
+	while (src[n] == '\n')
+		n++;
 	dst = malloc(sizeof(char) * (BUFF_SIZE - n));
 	while (i < (BUFF_SIZE - n))
 	{
 		dst[i] = src[i + n];
 		i++;
 	}
-	dst[i] = '\0';		// Uniquement pour l'affichage
+	dst[i] = '\0';
 	return (dst);
 }
+
+//char	*ft_cleantmp(char *s)
+//{
+//	int i;
+//	int j;
+//	char *dst;
+//
+//	i = 0;
+//	j = 0;
+//	while (s[i] == '\n')
+//		i++;
+//	dst = malloc(sizeof(char) * ((ft_strlen(s) - i) + 1));
+//      	while(s[i])
+//	{
+//		dst[j] = s[i];
+//		i++;
+//		j++;
+//	}	
+//	dst[j] = '\0';
+//	return (dst);
+//}
