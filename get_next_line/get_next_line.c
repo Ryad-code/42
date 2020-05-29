@@ -15,52 +15,49 @@
 int	get_next_line(int fd, char **line)
 {
 	int cursor;
-	char buffer[BUFF_SIZE];
-	char *dst;
-	static char *tmp;
+	char buffer[BUFFER_SIZE];
+	char *tmp;
+	static char *rest;
 
 	buffer[0] = '\0';
-	dst = NULL;
-	dst = malloc(sizeof(char) * 100);
-	if (BUFF_SIZE == 0)					// Si BUFF_SIZE est nul
-		return (0);
-//	printf("temp = %s\n", tmp);
-	
-	if (tmp != NULL)
+	tmp = NULL;
+	tmp = malloc(sizeof(char) * 100);
+	if (BUFFER_SIZE == 0)
+		return (-1);
+	if (rest != NULL)
 	{
-		cursor = ft_checkend_b(tmp, ft_strlen(tmp));
-		if (cursor == ft_strlen(tmp))
-			ft_strncat(dst, tmp, cursor);
-		else	
+		cursor = ft_checkend(rest, ft_strlen(rest));
+		ft_strncat(tmp, rest, cursor);
+		if (cursor != ft_strlen(rest))
 		{
-			ft_strncat(dst, tmp, cursor);
-			tmp = ft_getend(tmp, cursor);
-			printf("Dest = %s\n", dst);
-//			printf("cursor = %d\n", cursor);
+			rest = ft_getend(rest, cursor);
+			printf("tmp = %s\n", tmp);
+//			printf("rest = %s\n", rest);
 			return (1);
 		}
 	}
-	read(fd, buffer, BUFF_SIZE);				// Premiere lecture dans le buffer
-	cursor = ft_checkend_b(buffer, BUFF_SIZE);
-	if (cursor != BUFF_SIZE)				// On concatène en fonction de cursor
+	read(fd, buffer, BUFFER_SIZE);
+	cursor = ft_checkend(buffer, BUFFER_SIZE);
+	if (cursor != BUFFER_SIZE)
 	{
-		ft_strncat(dst, buffer, cursor);
-		tmp = ft_getend(buffer, cursor);
+		ft_strncat(tmp, buffer, cursor);
+		rest = ft_getend(buffer, cursor);
 	}
 	else
-		ft_strncat(dst, buffer, BUFF_SIZE);
-	while (cursor == BUFF_SIZE)				// Boucle de read
+		ft_strncat(tmp, buffer, BUFFER_SIZE);
+	while (cursor == BUFFER_SIZE)
 	{
-		read(fd, buffer, BUFF_SIZE);
-		cursor = ft_checkend_b(buffer, BUFF_SIZE);
-		if (cursor == BUFF_SIZE)
-			ft_strncat(dst, buffer, BUFF_SIZE);
+		read(fd, buffer, BUFFER_SIZE);
+		cursor = ft_checkend(buffer, BUFFER_SIZE);
+		if (cursor == BUFFER_SIZE)
+			ft_strncat(tmp, buffer, BUFFER_SIZE);
 		else
 		{
-			ft_strncat(dst, buffer, cursor);
-			tmp = ft_getend(buffer, cursor);
+			ft_strncat(tmp, buffer, cursor);
+			rest = ft_getend(buffer, cursor);
 		}
 	}
-	printf("Dest = %s\n", dst);
+	printf("tmp = %s\n", tmp);
+//	printf("rest = %s\n", rest);
 	return (1);
 }

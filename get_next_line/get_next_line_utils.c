@@ -22,27 +22,14 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-int	ft_checkend_b(char *s, int size)
+int	ft_checkend(char *s, int size)
 {
 	int i;
 
 	i = 0;
 	while (i < size)
 	{
-		if (s[i] == '\n')
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
-int     ft_checkend_f(char *s, int size)
-{
-	int i;
-	i = 0;
-	while (i < size)
-	{
-		if (s[i] == EOF)
+		if (s[i] == '\n' || s[i] == EOF)
 			return (i);
 		i++;
 	}
@@ -72,10 +59,12 @@ char	*ft_getend(char *src, int n)
 	char *dst;
 
 	i = 0;
+	dst = NULL;
+	if (!(dst = malloc(sizeof(char) * (BUFFER_SIZE - n))))
+		return (dst);
 	while (src[n] == '\n')
 		n++;
-	dst = malloc(sizeof(char) * (BUFF_SIZE - n));
-	while (i < (BUFF_SIZE - n))
+	while (i < (BUFFER_SIZE - n))
 	{
 		dst[i] = src[i + n];
 		i++;
@@ -83,24 +72,3 @@ char	*ft_getend(char *src, int n)
 	dst[i] = '\0';
 	return (dst);
 }
-
-//char	*ft_cleantmp(char *s)
-//{
-//	int i;
-//	int j;
-//	char *dst;
-//
-//	i = 0;
-//	j = 0;
-//	while (s[i] == '\n')
-//		i++;
-//	dst = malloc(sizeof(char) * ((ft_strlen(s) - i) + 1));
-//      	while(s[i])
-//	{
-//		dst[j] = s[i];
-//		i++;
-//		j++;
-//	}	
-//	dst[j] = '\0';
-//	return (dst);
-//}
