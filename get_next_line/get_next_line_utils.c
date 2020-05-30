@@ -17,7 +17,7 @@ int	ft_strlen(char *s)
 	int i;
 
 	i = 0;
-	while (s[i])
+	while (s[i] != '\0')
 		i++;
 	return (i);
 }
@@ -36,7 +36,7 @@ int	ft_checkend(char *s, int size)
 	return (i);
 }
 
-char	*ft_strncat(char *dst, const char *src, int n)
+int	ft_strncat(char *dst, const char *src, int n)
 {
 	int i;
 	int j;
@@ -49,7 +49,7 @@ char	*ft_strncat(char *dst, const char *src, int n)
 		i++;
 	}
 	dst[j + i] = '\0';
-	return (dst);
+	return (i);
 	
 }
 
@@ -72,3 +72,7 @@ char	*ft_getend(char *src, int n)
 	dst[i] = '\0';
 	return (dst);
 }
+
+//int	ft_set(char *dst, char *temp, int n)
+
+//int	ft_set_f(char *dst, char *temp, int n)
