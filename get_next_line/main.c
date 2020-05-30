@@ -21,9 +21,17 @@ int	main()
 	line = NULL;
         p_line = &line;
 	fd = open("test1.txt", O_RDONLY);
+
 	get_next_line(fd, p_line);
+//	printf("line_ = %d\n", *line);
+
 	get_next_line(fd, p_line);
+//	printf("line_ = %d\n", *line);
+
 	get_next_line(fd, p_line);
+//	printf("line_ = %d\n", *line);
+
 	get_next_line(fd, p_line);
+//	printf("line_ = %d\n", *line);
 	return (0);
 }
