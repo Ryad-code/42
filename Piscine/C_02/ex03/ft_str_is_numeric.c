@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 17:56:10 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/08 17:04:47 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/02/12 16:38:33 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/02/12 21:13:52 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_atoi(const char *str)
+int	ft_str_is_numeric(char *str)
 {
 	int i;
-	int sign;
-	long nb;
 
 	i = 0;
-	sign = 1;
-	nb = 0;
-	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' ||
-	str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
-		i++;
-	if (str[i] == '-')
+	while (str[i] != '\0')
 	{
-		sign = -1;
+		if (str[i] < 48 || str[i] > 57)
+			return (0);
 		i++;
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
-	}
-	return (nb * sign);
+	return (1);
 }

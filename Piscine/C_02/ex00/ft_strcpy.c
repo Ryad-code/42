@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 17:56:10 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/08 17:04:47 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/02/11 19:28:54 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/02/13 15:25:05 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_atoi(const char *str)
+char	*ft_strcpy(char *dest, char *src)
 {
 	int i;
-	int sign;
-	long nb;
 
 	i = 0;
-	sign = 1;
-	nb = 0;
-	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' ||
-	str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
-		i++;
-	if (str[i] == '-')
+	while (src[i] != '\0')
 	{
-		sign = -1;
+		dest[i] = src[i];
 		i++;
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
-	}
-	return (nb * sign);
+	dest[i] = '\0';
+	return (dest);
 }

@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 17:56:10 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/08 17:04:47 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/02/12 15:52:55 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/02/19 16:42:52 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-int	ft_atoi(const char *str)
+int		ft_str_is_alpha(char *str)
 {
 	int i;
-	int sign;
-	long nb;
 
 	i = 0;
-	sign = 1;
-	nb = 0;
-	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' ||
-	str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
-		i++;
-	if (str[i] == '-')
+	while (str[i] != '\0')
 	{
-		sign = -1;
+		if (str[i] < 'A' || (str[i] > 'Z' && str[i] < 'a') || str[i] > 'z')
+			return (0);
 		i++;
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
-	}
-	return (nb * sign);
+	return (1);
 }
