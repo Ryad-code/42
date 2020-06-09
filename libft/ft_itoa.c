@@ -6,89 +6,42 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 12:54:55 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/09 14:36:24 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/09 14:45:02 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		ft_getlen(long *n, long *sign)
+static size_t		ft_len(int n)
 {
-	int		i;
-	long	nb;
+	size_t		i;
 
-	i = 0;
-	nb = *n;
-	if (*n == 0)
-		i = 1;
-	if (*n < 0)
-	{
+	i = 1;
+	while (n /= 10)
 		i++;
-		*n = nb * -1;
-		*sign = -1;
-	}
-	while (nb > 9)
-	{
-		nb = nb / 10;
-		i++;
-	}
 	return (i);
 }
 
-static	char	*ft_revtab(char *s)
+char				*ft_itoa(int n)
 {
-	int		i;
-	int		j;
-	char	dst[ft_strlen(s)];
+	char				*ch;
+	unsigned int		un;
+	size_t				i;
 
-	i = 0;
-	j = ft_strlen(s) - 1;
-	while (i < (ft_strlen(s) / 2))
+	un = n;
+	i = ft_len(n);
+	if (n < 0)
 	{
-		dst[i] = s[i];
-		s[i] = s[j - i];
-		s[j - i] = dst[i];
+		un = -un;
 		i++;
 	}
-	return (s);
-}
-
-static	char	*ft_prepmem(long *n, long *sign)
-{
-	char	*dst;
-
-	dst = NULL;
-	if (!(dst = malloc(sizeof(char) * ft_getlen(n, sign) + 1)))
-		return (dst);
-	return (dst);
-}
-
-char			*ft_itoa(int n)
-{
-	long	i[3];
-	char	*dst;
-
-	i[0] = 0;
-	i[1] = 1;
-	i[2] = n;
-	if (!(dst = ft_prepmem(&i[2], &i[1])))
+	if (!(ch = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	if (i[2] == 0)
-	{
-		dst[0] = '0';
-		return (dst);
-	}
-	while (i[2] > 0)
-	{
-		dst[i[0]] = (i[2] % 10) + 48;
-		i[2] = i[2] / 10;
-		i[0]++;
-	}
-	if (i[1] == -1)
-	{
-		dst[i[0]] = '-';
-		i[0]++;
-	}
-	dst[i[0]] = '\0';
-	return (ft_revtab(dst));
+	ch[i] = '\0';
+	ch[--i] = (un % 10) + '0';
+	while (un /= 10)
+		ch[--i] = (un % 10) + '0';
+	if (n < 0)
+		ch[0] = '-';
+	return (ch);
 }
