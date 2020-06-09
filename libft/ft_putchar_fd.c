@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 15:16:56 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 17:31:26 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/09 14:06:09 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	if (fd)
+		write(fd, &c, 1);
 }

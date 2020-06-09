@@ -6,16 +6,28 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 16:10:32 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/12 17:49:12 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/09 14:20:32 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+static	void	put(int n, int fd)
 {
-	char *dst;
+	if (n / 10)
+	{
+		put(n / 10, fd);
+		put(n % 10, fd);
+	}
+	else if (n > 0)
+		ft_putchar_fd('0' + (char)n, fd);
+	else
+		ft_putchar_fd('0' + -(char)n, fd);
+}
 
-	dst = ft_itoa(n);
-	ft_putstr_fd(dst, fd);
+void			ft_putnbr_fd(int n, int fd)
+{
+	if (n < 0)
+		ft_putchar_fd('-', fd);
+	put(n, fd);
 }
