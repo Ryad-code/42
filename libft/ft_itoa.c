@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 12:54:55 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/20 14:23:33 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/09 13:03:01 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ char			*ft_itoa(int n)
 	i[0] = 0;
 	i[1] = 1;
 	i[2] = n;
-	dst = ft_prepmem(&i[2], &i[1]);
+	if (!(dst = ft_prepmem(&i[2], &i[1])))
+		return (NULL);
 	if (i[2] == 0)
 	{
 		dst[0] = '0';
