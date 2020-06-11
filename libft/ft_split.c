@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 16:31:18 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/05/19 17:42:04 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/11 16:32:47 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char			**ft_split(char *s, char c)
 	i[1] = 0;
 	i[2] = 0;
 	tab = NULL;
-	if (!(tab = malloc(sizeof(char *) * (ft_countwords(s, c) + 1))))
+	if ((!s) || (!(tab = malloc(sizeof(char *) * (ft_countwords(s, c) + 1)))))
 		return (tab);
 	while (s[i[0]])
 	{
