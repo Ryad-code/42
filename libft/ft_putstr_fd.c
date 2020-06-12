@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 15:37:45 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/11 20:29:07 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/12 19:15:42 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_putstr_fd(char *s, int fd)
 	if (s && fd)
 	{
 		while (s[i])
-		{	
+		{
 			write(fd, &s[i], 1);
 			i++;
 		}

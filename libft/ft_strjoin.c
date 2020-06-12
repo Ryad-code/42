@@ -6,13 +6,25 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 13:17:03 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/11 16:31:10 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/12 19:24:40 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+static	char	*ft_put(char *dst, char *s2, int i, int j)
+{
+	while (s2[j])
+	{
+		dst[i] = s2[j];
+		i++;
+		j++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
+
+char			*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
 	int		j;
@@ -32,12 +44,5 @@ char	*ft_strjoin(char *s1, char *s2)
 		dst[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
-	{
-		dst[i] = s2[j];
-		i++;
-		j++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	return (ft_put(dst, s2, i, j));
 }
