@@ -34,15 +34,15 @@ int	get_next_line(int fd, char **line)
 				tmp[0] = '\0';
 				ft_cat(tmp, *line, ft_strlen(*line));
 				free(*line);
-				printf("tmp = %s\n", tmp);
 				*line = malloc(sizeof(char) * (ft_strlen(tmp) + BUFFER_SIZE + 1));
 				ft_cat(*line, tmp, ft_strlen(tmp));
 				free(tmp);
-				ft_cat(*line, buff, BUFFER_SIZE);
-				printf("line = %s\n", *line);
+				ft_cat(*line, buff, fdcurs(buff, BUFFER_SIZE));
+				if (fdcurs(buff, BUFFER_SIZE) != BUFFER_SIZE)
+					rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE));
 			}
 	}
-//	printf("%s\n", *line);
+	printf("%s\n", *line);
 	printf("rest = %s\n", rest);	
 	return (0);
 }
