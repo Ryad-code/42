@@ -32,13 +32,17 @@ int	get_next_line(int fd, char **line)
 				read(fd, buff, BUFFER_SIZE);
 				tmp = malloc(sizeof(char) * (ft_strlen(*line) + 1));
 				tmp[0] = '\0';
-				ft_cat(tmp, *line, BUFFER_SIZE);
+				ft_cat(tmp, *line, ft_strlen(*line));
 				free(*line);
+				printf("tmp = %s\n", tmp);
 				*line = malloc(sizeof(char) * (ft_strlen(tmp) + BUFFER_SIZE + 1));
-				ft_cat(*line, tmp, BUFFER_SIZE);
+				ft_cat(*line, tmp, ft_strlen(tmp));
+				free(tmp);
+				ft_cat(*line, buff, BUFFER_SIZE);
+				printf("line = %s\n", *line);
 			}
 	}
-	printf("%s\n", *line);
-	printf("%s\n", rest);	
+//	printf("%s\n", *line);
+	printf("rest = %s\n", rest);	
 	return (0);
 }
