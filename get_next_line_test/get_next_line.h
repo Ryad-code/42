@@ -26,6 +26,8 @@ int		fdcurs(char *s, int n);
 int		ft_cat(char *dst, char *src , int n);
 char	*setline(char *dst, char *src, int n);
 char	*setrest(char *dst, char *src, int n);
+char	*ft_loop(int fd, char *buff, char *dst);
+char    *ft_swap(char *dst, char *src);
 
 
 #endif

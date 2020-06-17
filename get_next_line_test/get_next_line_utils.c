@@ -44,7 +44,8 @@ char	*setline(char *dst, char *src, int n)
 
 	i = 0;
 	dst = NULL;
-	dst = malloc(sizeof(char) * (n + 1));
+	if (!(dst = malloc(sizeof(char) * (n + 1))))
+		return (dst);
 	while (i  < n)
 	{
 		dst[i] = src[i];
@@ -60,7 +61,10 @@ char	*setrest(char *dst, char *src, int n)
 
 	i = 0;
 	dst = NULL;
-	dst = malloc(sizeof(char) * ((BUFFER_SIZE - n) + 1));
+	if (!(dst = malloc(sizeof(char) * ((BUFFER_SIZE - n) + 1))))
+		return (dst);
+	while (src[n] == '\n')
+		n++;
 	while ((n + i) != BUFFER_SIZE)
 	{
 		dst[i] = src[n + i];
@@ -84,4 +88,43 @@ int		ft_cat(char *dst, char *src , int n)
 	}
 	dst[j + i] = '\0';
 	return (i);
+}
+
+char	*ft_loop(int fd, char *buff, char *dst)
+{
+	char *tmp;
+	
+	tmp = NULL;
+	while (fdcurs(buff, BUFFER_SIZE) == BUFFER_SIZE)
+	{
+		read(fd, buff, BUFFER_SIZE);
+		if (!(tmp = malloc(sizeof(char) * (ft_strlen(dst) + 1))))
+			return (NULL);
+		tmp[0] = '\0';
+		ft_cat(tmp, dst, ft_strlen(dst));
+		free(dst);
+		if (!(dst = malloc(sizeof(char) * (ft_strlen(tmp) + BUFFER_SIZE + 1))))
+			return (NULL);
+		ft_cat(dst, tmp, ft_strlen(tmp));
+		free(tmp);
+		ft_cat(dst, buff, fdcurs(buff, BUFFER_SIZE));
+	}
+	return (dst);
+}
+
+char	*ft_swap(char *dst, char *src)
+{
+	int i;
+
+	i = 0;
+	dst = NULL;
+	if (!(dst = malloc(sizeof(char) * (ft_strlen(src) + 1))))
+		return (dst);
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }

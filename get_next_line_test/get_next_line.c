@@ -18,31 +18,44 @@ int	get_next_line(int fd, char **line)
 	char	*tmp;
 	static	char	*rest;
 
+	if (BUFFER_SIZE == 0)
+		return (-1);
+	if (rest)
+	{
+		if (fdcurs(rest, ft_strlen(rest)) < ft_strlen(rest))
+		{
+			if (!(*line = setline(*line, rest, fdcurs(rest, ft_strlen(rest)))))
+				return (-1);
+			if (!(tmp = setrest(tmp, rest, fdcurs(rest, ft_strlen(rest)))))
+				return (-1);
+			free(rest);
+			if (!(rest = ft_swap(rest, tmp)))
+				return (-1);
+			free(tmp);
+			printf("line = %s\n", *line);
+			printf("rest = %s\n=============\n", rest);
+			return (0);	
+		}
+	}
+//..............................................................................	
 	read(fd, buff, BUFFER_SIZE);
+	if (!(*line = setline(*line, buff, fdcurs(buff, BUFFER_SIZE))))
+		return (-1);
 	if (fdcurs(buff, BUFFER_SIZE) < BUFFER_SIZE)
 	{
-		*line = setline(*line, buff, fdcurs(buff, BUFFER_SIZE));
-		rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE));
+		if (!(rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE))))
+			return (-1);
 	}
 	else
 	{
-		*line = setline(*line, buff, BUFFER_SIZE);
-		while (fdcurs(buff, BUFFER_SIZE) == BUFFER_SIZE)
-			{
-				read(fd, buff, BUFFER_SIZE);
-				tmp = malloc(sizeof(char) * (ft_strlen(*line) + 1));
-				tmp[0] = '\0';
-				ft_cat(tmp, *line, ft_strlen(*line));
-				free(*line);
-				*line = malloc(sizeof(char) * (ft_strlen(tmp) + BUFFER_SIZE + 1));
-				ft_cat(*line, tmp, ft_strlen(tmp));
-				free(tmp);
-				ft_cat(*line, buff, fdcurs(buff, BUFFER_SIZE));
-				if (fdcurs(buff, BUFFER_SIZE) != BUFFER_SIZE)
-					rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE));
-			}
+		if (!(*line = ft_loop(fd, buff, *line)))
+			return (-1);
+			if (fdcurs(buff, BUFFER_SIZE) != BUFFER_SIZE)
+				rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE));
+
 	}
-	printf("%s\n", *line);
-	printf("rest = %s\n", rest);	
+	printf("curs = %d\n", fdcurs(buff, BUFFER_SIZE));
+	printf("line = %s\n", *line);
+	printf("rest = %s\n=============\n", rest);
 	return (0);
 }

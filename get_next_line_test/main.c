@@ -22,5 +22,6 @@ int main ()
 	line = NULL;
 	p_line = &line;
 
-	get_next_line(fd, p_line);
+	printf("return = %d\n\n", get_next_line(fd, p_line));
+	printf("return = %d\n", get_next_line(fd, p_line));
 }
