@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 15:09:43 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/18 14:00:29 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/18 14:05:23 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,20 @@ char	*setline(char *dst, char *src, int n)
 	return (dst);
 }
 
-char	*setrest(char *dst, char *src, int n)
+char	*setrest(char *dst, char *src, int n, int len)
 {
 	int i;
 
 	i = 0;
 	dst = NULL;
 	while (src[n] == '\n')
+	{
 		n++;
-	if (!(dst = malloc(sizeof(char) * ((BUFFER_SIZE - n) + 1))))
+		len--;
+	}
+	if (!(dst = malloc(sizeof(char) * (len + 1))))
 		return (dst);
-	while (i < (BUFFER_SIZE - n))
+	while (i < (len))
 	{
 		dst[i] = src[n + i];
 		i++;

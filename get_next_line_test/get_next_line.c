@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 15:09:36 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/18 13:57:21 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/18 14:11:07 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	get_next_line(int fd, char **line)
 		{
 			if (!(*line = setline(*line, rest, fdcurs(rest, ft_strlen(rest)))))
 				return (-1);
-			if (!(tmp = setrest(tmp, rest, fdcurs(rest, ft_strlen(rest)))))
+			if (!(tmp = setrest(tmp, rest, fdcurs(rest, ft_strlen(rest)), (ft_strlen(rest) - fdcurs(rest, ft_strlen(rest))))))
 				return (-1);
 			free(rest);
 			if (!(rest = ft_swap(rest, tmp)))
@@ -44,7 +44,6 @@ int	get_next_line(int fd, char **line)
 		}
 	}
 //..............................................................................	
-//	buff = malloc(sizeof(char) * BUFFER_SIZE);
 	read(fd, buff, BUFFER_SIZE);
 	if (rest)
 	{
@@ -64,7 +63,7 @@ int	get_next_line(int fd, char **line)
 //..............................................................................
 	if (fdcurs(buff, BUFFER_SIZE) < BUFFER_SIZE)
 	{
-		if (!(rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE))))
+		if (!(rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE), BUFFER_SIZE - fdcurs(buff, BUFFER_SIZE))))
 			return (-1);
 	}
 	else
@@ -72,9 +71,8 @@ int	get_next_line(int fd, char **line)
 		if (!(*line = ft_loop(fd, buff, *line)))
 			return (-1);
 			if (fdcurs(buff, BUFFER_SIZE) != BUFFER_SIZE)
-				rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE));
+				rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE), (BUFFER_SIZE - fdcurs(buff, BUFFER_SIZE)));
 
 	}
-//	free(buff);
 	return (0);
 }
