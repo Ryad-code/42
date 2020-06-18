@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 15:09:36 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/17 17:16:35 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/18 13:57:21 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	get_next_line(int fd, char **line)
 	char	*tmp;
 	static	char	*rest;
 
+	tmp = NULL;
 	if (BUFFER_SIZE == 0)
 		return (-1);
 	if (rest)
@@ -32,15 +33,35 @@ int	get_next_line(int fd, char **line)
 			if (!(rest = ft_swap(rest, tmp)))
 				return (-1);
 			free(tmp);
-			printf("line = %s\n", *line);
-			printf("rest = %s\n=============\n", rest);
 			return (0);	
+		}
+		else
+		{
+			*line = malloc(sizeof(char) * (ft_strlen(rest) + 1));
+			*line[0] = '\0';
+			ft_cat(*line, rest, ft_strlen(rest));
+			free(rest);
 		}
 	}
 //..............................................................................	
+//	buff = malloc(sizeof(char) * BUFFER_SIZE);
 	read(fd, buff, BUFFER_SIZE);
-	if (!(*line = setline(*line, buff, fdcurs(buff, BUFFER_SIZE))))
+	if (rest)
+	{
+		tmp = ft_swap(tmp, *line);
+		free(*line);
+		*line = malloc(sizeof(char) * (ft_strlen(tmp) + fdcurs(buff, BUFFER_SIZE) + 1));
+		*line[0] = '\0';
+		ft_cat(*line, tmp, ft_strlen(tmp));
+		free(tmp);
+		ft_cat(*line, buff, fdcurs(buff, BUFFER_SIZE));
+	}
+	else
+	{
+		if (!(*line = setline(*line, buff, fdcurs(buff, BUFFER_SIZE))))
 		return (-1);
+	}
+//..............................................................................
 	if (fdcurs(buff, BUFFER_SIZE) < BUFFER_SIZE)
 	{
 		if (!(rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE))))
@@ -54,8 +75,6 @@ int	get_next_line(int fd, char **line)
 				rest = setrest(rest, buff, fdcurs(buff, BUFFER_SIZE));
 
 	}
-	printf("curs = %d\n", fdcurs(buff, BUFFER_SIZE));
-	printf("line = %s\n", *line);
-	printf("rest = %s\n=============\n", rest);
+//	free(buff);
 	return (0);
 }

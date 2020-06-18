@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 15:09:43 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/17 17:15:18 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/18 14:00:29 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ char	*setrest(char *dst, char *src, int n)
 
 	i = 0;
 	dst = NULL;
-	if (!(dst = malloc(sizeof(char) * ((BUFFER_SIZE - n) + 1))))
-		return (dst);
 	while (src[n] == '\n')
 		n++;
-	while ((n + i) != BUFFER_SIZE)
+	if (!(dst = malloc(sizeof(char) * ((BUFFER_SIZE - n) + 1))))
+		return (dst);
+	while (i < (BUFFER_SIZE - n))
 	{
 		dst[i] = src[n + i];
 		i++;
@@ -97,6 +97,8 @@ char	*ft_loop(int fd, char *buff, char *dst)
 	tmp = NULL;
 	while (fdcurs(buff, BUFFER_SIZE) == BUFFER_SIZE)
 	{
+//		free(buff);
+//		buff = malloc(sizeof(char) * BUFFER_SIZE);
 		read(fd, buff, BUFFER_SIZE);
 		if (!(tmp = malloc(sizeof(char) * (ft_strlen(dst) + 1))))
 			return (NULL);
@@ -105,6 +107,7 @@ char	*ft_loop(int fd, char *buff, char *dst)
 		free(dst);
 		if (!(dst = malloc(sizeof(char) * (ft_strlen(tmp) + BUFFER_SIZE + 1))))
 			return (NULL);
+		dst[0] = '\0';
 		ft_cat(dst, tmp, ft_strlen(tmp));
 		free(tmp);
 		ft_cat(dst, buff, fdcurs(buff, BUFFER_SIZE));
@@ -128,3 +131,5 @@ char	*ft_swap(char *dst, char *src)
 	dst[i] = '\0';
 	return (dst);
 }
+
+
