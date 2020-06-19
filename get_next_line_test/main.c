@@ -12,6 +12,7 @@ int main()
 	p_line = &line;
 
 	get_next_line(fd, p_line);
+	get_next_line(fd, p_line);
 
 	return (0);
 }

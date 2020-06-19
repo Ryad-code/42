@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+int	ft_strlen(char *s);
 int	get_next_line(int fd, char **line);
 int	fdcurs(char *s, int n);
 int	ft_cat(char *dst, char *src, int len);
