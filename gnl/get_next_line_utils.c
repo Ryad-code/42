@@ -44,3 +44,20 @@ int		ft_cat(char *dst, char *src, int len)
 	dst[i + j] = '\0';
 	return (i);
 }
+
+char	*set_line(char *dst, char *src, int curs)
+{
+	char *tmp;
+
+	tmp = NULL;
+	tmp = malloc(sizeof(char) * (ft_strlen(dst) + 1));
+	tmp[0] = '\0';
+	ft_cat(tmp, dst, ft_strlen(dst));
+	free(dst);
+	dst = malloc(sizeof(char) * (ft_strlen(tmp) + curs + 1));
+	dst[0] = '\0';
+	ft_cat(dst, tmp, ft_strlen(tmp));
+	free(tmp);
+	ft_cat(dst, src, curs);
+	return (dst);
+}

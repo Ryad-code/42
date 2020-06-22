@@ -27,6 +27,7 @@ int	get_next_line(int fd, char **line)
 			free(tmp);
 			printf("line_ = %s\n", *line);
 			printf("rest_ = %s\n\n", rest);
+			free(*line);
 			return (1);
 		}
 		free(rest);
@@ -37,17 +38,7 @@ int	get_next_line(int fd, char **line)
 	curs = fdcurs(buff);
 //..........................................................................
 	if (rest)
-	{
-		tmp = malloc(sizeof(char) * (ft_strlen(*line) + 1));
-		tmp[0] = '\0';
-		ft_cat(tmp, *line, ft_strlen(*line));
-		free(*line);
-		*line = malloc(sizeof(char) * (ft_strlen(tmp) + curs + 1));
-		*line[0] = '\0';
-		ft_cat(*line, tmp, ft_strlen(tmp));
-		free(tmp);
-		ft_cat(*line, buff, curs);
-	}
+		*line = set_line(*line, buff, curs);
 	else
 	{
 		*line = malloc(sizeof(char) * (curs + 1));
@@ -60,15 +51,7 @@ int	get_next_line(int fd, char **line)
 		res = read(fd, buff, BUFFER_SIZE);
 		buff[res] = '\0';
 		curs = fdcurs(buff);
-		tmp = malloc(sizeof(char) * (ft_strlen(*line) + 1));
-		tmp[0] = '\0';
-		ft_cat(tmp, *line, ft_strlen(*line));
-		free(*line);
-		*line = malloc(sizeof(char) * (ft_strlen(tmp) + curs + 1));
-		*line[0] = '\0';
-		ft_cat(*line, tmp, ft_strlen(tmp));
-		free(tmp);
-		ft_cat(*line, buff, curs);
+		*line = set_line(*line, buff, curs);
 		if (res == 0)
 			return (0);
 	}
