@@ -68,6 +68,7 @@ char    *set_rest(char *rest)
 	char *tmp;
 
 	curs = fdcurs(rest);
+	tmp = NULL;
 	tmp = malloc(sizeof(char) * (ft_strlen(rest) - curs + 1));
 	tmp[0] = '\0';
 	ft_cat(tmp, &rest[curs], (ft_strlen(rest) - curs + 1));

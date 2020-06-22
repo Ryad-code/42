@@ -3,7 +3,6 @@
 
 int	get_next_line(int fd, char **line)
 {
-	int			curs;
 	int			res;
 	char		buff[BUFFER_SIZE + 1];
 	static	char	*rest;
@@ -11,11 +10,10 @@ int	get_next_line(int fd, char **line)
 		return (-1);
 	if (rest)
 	{
-		curs = fdcurs(rest);
-		*line = malloc(sizeof(char) * (curs + 1));
+		*line = malloc(sizeof(char) * (fdcurs(rest) + 1));
 		*line[0] = '\0';
-		ft_cat(*line, rest, curs);
-		if (curs != ft_strlen(rest))
+		ft_cat(*line, rest, fdcurs(rest));
+		if (fdcurs(rest) != ft_strlen(rest))
 		{
 			rest = set_rest(rest);
 			return (1);
@@ -25,31 +23,29 @@ int	get_next_line(int fd, char **line)
 //..........................................................................
 	res = read(fd, buff, BUFFER_SIZE);
 	buff[res] = '\0';
-	curs = fdcurs(buff);
 	if (rest)
-		*line = set_line(*line, buff, curs);
+		*line = set_line(*line, buff, fdcurs(buff));
 	else
 	{
-		*line = malloc(sizeof(char) * (curs + 1));
+		*line = malloc(sizeof(char) * (fdcurs(buff) + 1));
 		*line[0] = '\0';
-		ft_cat(*line, buff, curs);
+		ft_cat(*line, buff, fdcurs(buff));
 	}
 //..........................................................................
-	while (curs == res)
+	while (fdcurs(buff) == res)
 	{
 		res = read(fd, buff, BUFFER_SIZE);
 		buff[res] = '\0';
-		curs = fdcurs(buff);
-		*line = set_line(*line, buff, curs);
+		*line = set_line(*line, buff, fdcurs(buff));
 		if (res == 0)
 			return (0);
 	}
 //..........................................................................
-	if (curs != res)
+	if (fdcurs(buff) != res)
 	{
-		rest = malloc(sizeof(char) * (res - curs + 1));
+		rest = malloc(sizeof(char) * (res - fdcurs(buff) + 1));
 		rest[0] = '\0';
-		ft_cat(rest, &buff[curs], (res - curs));
+		ft_cat(rest, &buff[fdcurs(buff)], (res - fdcurs(buff)));
 	}
 	return (1);
 }
