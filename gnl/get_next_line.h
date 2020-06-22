@@ -14,5 +14,6 @@ int	get_next_line(int fd, char **line);
 int	fdcurs(char *s);
 int	ft_cat(char *dst, char *src, int len);
 char	*set_line(char *dst, char *src, int curs);
+char    *set_rest(char *rest);
 
 #endif

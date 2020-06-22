@@ -61,3 +61,19 @@ char	*set_line(char *dst, char *src, int curs)
 	ft_cat(dst, src, curs);
 	return (dst);
 }
+
+char    *set_rest(char *rest)
+{
+	int curs;
+	char *tmp;
+
+	curs = fdcurs(rest);
+	tmp = malloc(sizeof(char) * (ft_strlen(rest) - curs + 1));
+	tmp[0] = '\0';
+	ft_cat(tmp, &rest[curs], (ft_strlen(rest) - curs + 1));
+	rest = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
+	rest[0] = '\0';
+	ft_cat(rest, tmp, ft_strlen(tmp));
+	free(tmp);
+	return (rest);
+}

@@ -12,10 +12,19 @@ int main()
 	p_line = &line;
 
 	printf("%d\n", get_next_line(fd, p_line));
+	printf("%s\n", line);
+	
 	printf("%d\n", get_next_line(fd, p_line));
-	printf("%d\n", get_next_line(fd, p_line));
-	printf("%d\n", get_next_line(fd, p_line));
-	printf("%d\n", get_next_line(fd, p_line));
+	printf("%s\n", line);
 
+	printf("%d\n", get_next_line(fd, p_line));
+	printf("%s\n", line);
+
+	printf("%d\n", get_next_line(fd, p_line));
+	printf("%s\n", line);
+
+	printf("%d\n", get_next_line(fd, p_line));
+	printf("%s\n", line);
+	
 	return (0);
 }
