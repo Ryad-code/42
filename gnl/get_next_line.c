@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 15:12:58 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/23 15:13:01 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/23 16:28:58 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ char	*ft_start(char *buff, char *line, char *rest)
 	return (line);
 }
 
+char	*ft_set(char *dst, char *src, int n)
+{
+	dst = NULL;
+	if (!(dst = malloc(sizeof(char) * (n + 1))))
+		return (dst);
+	dst[0] = '\0';
+	ft_cat(dst, src, n);
+	return (dst);
+}
+
+
+
 int		get_next_line(int fd, char **line)
 {
 	int				res;
@@ -39,10 +51,8 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	if (rest)
 	{
-		if (!(*line = malloc(sizeof(char) * (fdcurs(rest) + 1))))
+		if (!(*line = ft_set(*line, rest, fdcurs(rest))))
 			return (-1);
-		*line[0] = '\0';
-		ft_cat(*line, rest, fdcurs(rest));
 		if (fdcurs(rest) != ft_strlen(rest))
 		{
 			if (!(rest = set_rest(rest)))
@@ -68,11 +78,7 @@ int		get_next_line(int fd, char **line)
 	}
 //..........................................................................
 	if (fdcurs(buff) != res)
-	{
-		if (!(rest = malloc(sizeof(char) * (res - fdcurs(buff) + 1))))
+		if (!(rest = ft_set(rest, &buff[fdcurs(buff)], (res - fdcurs(buff)))))
 			return (-1);
-		rest[0] = '\0';
-		ft_cat(rest, &buff[fdcurs(buff)], (res - fdcurs(buff)));
-	}
 	return (1);
 }

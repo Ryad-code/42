@@ -16,5 +16,6 @@ int		ft_cat(char *dst, char *src, int len);
 char	*ft_start(char *buff, char *ine, char *rest);
 char	*set_line(char *dst, char *src, int curs);
 char    *set_rest(char *rest);
+char	*ft_f(char *dst, char *src, int n);
 
 #endif
