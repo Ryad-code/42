@@ -9,11 +9,20 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+typedef	struct	t_line
+{
+	char	buff[BUFFER_SIZE + 1];
+	char	*dst;
+	char	*tmp;
+	int 	res;
+	int	curs;
+}			s_line;
+
 int	ft_strlen(char *s);
+int	fdcurs(char *s);
+char	*ft_cat(char *dst, char *src, int n);
+char	*ft_strdup(char *s);
+
 int	get_next_line(int fd, char **line);
-int	ft_checkend(char *s, int n);
-char	*ft_getrest(char *s, int n);
-char	*ft_setline(char *dst, char *src, int n);
-int	ft_strncat(char *dst, char *src, int n);
 
 #endif

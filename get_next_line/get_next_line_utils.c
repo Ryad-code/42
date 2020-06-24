@@ -22,72 +22,63 @@ int		ft_strlen(char *s)
 	return (i);
 }
 
-int		ft_checkend(char *s, int n)
+int		fdcurs(char *s)
 {
 	int i;
 
 	i = 0;
-	while (i < n)
+	while (s[i])
 	{
-		if (s[i] == '\n' || s[i] == EOF)
+		if (s[i] == '\n')
 			return (i);
 		i++;
 	}
 	return (i);
 }
 
-int		ft_strncat(char *dst, char *src, int n)
+char	*ft_cat(char *dst, char *src, int n)
 {
 	int i;
 	int j;
+	int k;
+	char *tmp;
 
 	i = 0;
 	j = ft_strlen(dst);
-	while (i < n)
+	k = 0;
+	tmp = ft_strdup(dst);
+	free(dst);
+	dst = malloc(sizeof(char) * (ft_strlen(tmp) + n + 1));
+	while (tmp[i])
 	{
-		dst[j + i] = src[i];
+		dst[i] = tmp[i];
 		i++;
+	}
+	free(tmp);
+	if (src[k] == '\n')
+		k++;
+	i = 0;
+	while ((i + k) < n)
+	{
+		dst[j + i] = src[k + i];
+		i++;	
 	}
 	dst[j + i] = '\0';
-	return (i);
-}
-
-char	*ft_getrest(char *s, int n)
-{
-	int		i;
-	char	*dst;
-
-	i = 0;
-	dst = NULL;
-	while (s[n] == '\n')
-		n++;
-	if (!(dst = malloc(sizeof(char) * ((BUFFER_SIZE - n) + 1))))
-		return (dst);
-	while (i < BUFFER_SIZE - n)
-	{
-		dst[i] = s[i + n];
-		i++;
-	}
-	dst[i] = '\0';
 	return (dst);
 }
 
-char	*ft_setline(char *dst, char *src, int n)
+char	*ft_strdup(char *s)
 {
-	char *temp;
+	int i;
+	char *dst;
 
-	temp = NULL;
-	if (!(temp = malloc(sizeof(char) * (ft_strlen(dst) + n + 1))))
-		return (temp);
-	temp[0] = '\0';
-	ft_strncat(temp, dst, ft_strlen(dst));
-	ft_strncat(temp, src, n);
-	free(dst);
-	dst = NULL;
-	if (!(dst = malloc(sizeof(char) * (ft_strlen(temp) + n + 1))))
-		return (dst);
-	dst[0] = '\0';
-	ft_strncat(dst, temp, ft_strlen(temp));
-	free(temp);
+	i = 0;
+	dst = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	while (s[i])
+	{
+		dst[i] = s[i];
+		i++;
+	}
+	dst[i] = '\0';
 	return (dst);
 }

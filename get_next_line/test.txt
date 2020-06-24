@@ -1,5 +1,4 @@
-On commence donc get_next_line.
-Voici le fichier texte qui servira à tester le projet.
-On peut l'éditer a volonté et changer de version.
-En effet, on doit tester notre programme avec un maximum d'options.
-Vos mères les putes?
+.........1
+.........1.........2
+.........1.........2.........3
+.........1.........2.........3.........4

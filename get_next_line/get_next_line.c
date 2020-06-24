@@ -14,59 +14,47 @@
 
 int	get_next_line(int fd, char **line)
 {
-	char		buffer[BUFFER_SIZE];
-	char		*temp;
+	char	buff[BUFFER_SIZE + 1];
 	static char	*rest;
+	s_line obj;
 
-	if (BUFFER_SIZE == 0)
-		return (-1);
+	obj.dst = ft_strdup("");
 	if (rest)
 	{
-		if (!(temp = malloc(sizeof(char) *
-		(ft_checkend(rest, ft_strlen(rest)) + 1))))
-			return (-1);
-		temp[0] = '\0';
-		ft_strncat(temp, rest, ft_checkend(rest, ft_strlen(rest)));
-		if (ft_checkend(rest, ft_strlen(rest)) < ft_strlen(rest))
+		obj.dst = ft_cat(obj.dst, rest, fdcurs(rest));
+		if (fdcurs(rest) != ft_strlen(rest))
 		{
-			if (!(*line = malloc(sizeof(char) * (ft_strlen(temp) + 1))))
-				return (-1);
-			*line[0] = '\0';
-			ft_strncat(*line, temp, ft_checkend(rest, ft_strlen(rest)));
-			rest = ft_getrest(rest, ft_checkend(rest, ft_strlen(rest)));
+			obj.tmp = ft_strdup(rest);
+			free(rest);
+			rest = ft_strdup("");
+			rest = ft_cat(rest, &obj.tmp[fdcurs(obj.tmp)], (ft_strlen(obj.tmp) - fdcurs(obj.tmp)));
+			free(obj.tmp);
+			printf("dst_ = %s\n", obj.dst);
+			printf("rest_ = %s\n\n", rest);
 			return (1);
 		}
+		free(rest);
 	}
-	read(fd, buffer, BUFFER_SIZE);
-	if (rest)
+		
+	obj.res = read(fd, buff, BUFFER_SIZE);
+	obj.curs = fdcurs(buff);
+	buff[obj.res] = '\0';
+	obj.dst = ft_cat(obj.dst, buff, obj.curs);
+	
+	while (obj.curs == obj.res)
 	{
-		if (!(*line = malloc(sizeof(char) *
-		(ft_strlen(temp) + ft_checkend(buffer, BUFFER_SIZE) + 1))))
-			return (-1);
-		*line[0] = '\0';
-		ft_strncat(*line, temp, ft_strlen(temp));
-		free(temp);
+		obj.res = read(fd, buff, BUFFER_SIZE);
+		obj.curs = fdcurs(buff);
+		obj.dst = ft_cat(obj.dst, buff, obj.curs);
 	}
-	else
+
+	if (obj.curs != obj.res)
 	{
-		*line = malloc(sizeof(char) * (ft_checkend(buffer, BUFFER_SIZE) + 1));
-		*line[0] = '\0';
+		rest = ft_strdup("");
+		rest = ft_cat(rest, &buff[obj.curs], (obj.res - obj.curs));
 	}
-	ft_strncat(*line, buffer, ft_checkend(buffer, BUFFER_SIZE));
-	if (ft_checkend(buffer, BUFFER_SIZE) < BUFFER_SIZE)
-		if (!(rest = ft_getrest(buffer, ft_checkend(buffer, BUFFER_SIZE))))
-			return (-1);
-	while (ft_checkend(buffer, BUFFER_SIZE) == BUFFER_SIZE)
-	{
-		read(fd, buffer, BUFFER_SIZE);
-		if (!(*line = ft_setline(*line, buffer,
-		ft_checkend(buffer, BUFFER_SIZE))))
-			return (-1);
-		if (ft_checkend(buffer, BUFFER_SIZE) < BUFFER_SIZE)
-			if (!(rest = ft_getrest(buffer, ft_checkend(buffer, BUFFER_SIZE))))
-				return (-1);
-	}
-	if (buffer[ft_checkend(buffer, BUFFER_SIZE)] == EOF)
-		return (0);
+	
+	printf("dst = %s\n", obj.dst);
+	printf("rest = %s\n\n", rest);
 	return (1);
 }
