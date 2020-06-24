@@ -11,9 +11,9 @@ int	main()
 	fd = open("test.txt", O_RDONLY);
 
 
-	get_next_line(fd, p_line);
-	get_next_line(fd, p_line);
-	get_next_line(fd, p_line);
-	get_next_line(fd, p_line);
-
+	printf("%d\n", get_next_line(fd, p_line));
+	printf("%d\n", get_next_line(fd, p_line));
+	printf("%d\n", get_next_line(fd, p_line));
+	printf("%d\n", get_next_line(fd, p_line));
+	printf("%d\n", get_next_line(fd, p_line));
 }
