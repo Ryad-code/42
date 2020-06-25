@@ -12,10 +12,8 @@
 typedef	struct	t_line
 {
 	char	buff[BUFFER_SIZE + 1];
-	char	*dst;
 	char	*tmp;
 	int 	res;
-	int	curs;
 }			s_line;
 
 int	ft_strlen(char *s);

@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/03 17:00:37 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/25 13:54:13 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,19 @@ char	*ft_cat(char *dst, char *src, int n)
 	i = 0;
 	j = ft_strlen(dst);
 	k = 0;
-	tmp = ft_strdup(dst);
+	if (!(tmp = ft_strdup(dst)))
+		return (NULL);
+	if (src[k] == '\n')
+		k++;
 	free(dst);
-	dst = malloc(sizeof(char) * (ft_strlen(tmp) + n + 1));
+	if (!(dst = malloc(sizeof(char) * (ft_strlen(tmp) + n + 1))))
+		return (NULL);
 	while (tmp[i])
 	{
 		dst[i] = tmp[i];
 		i++;
 	}
 	free(tmp);
-	if (src[k] == '\n')
-		k++;
 	i = 0;
 	while ((i + k) < n)
 	{
@@ -73,7 +75,8 @@ char	*ft_strdup(char *s)
 	char *dst;
 
 	i = 0;
-	dst = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!(dst = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
 	while (s[i])
 	{
 		dst[i] = s[i];
