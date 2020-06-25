@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/25 13:54:13 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/25 14:29:44 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		fdcurs(char *s)
 	return (i);
 }
 
-char	*ft_cat(char *dst, char *src, int n)
+char	*ft_cat(char *dst, const char *src, int n)
 {
 	int i;
 	int j;

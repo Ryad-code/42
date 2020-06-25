@@ -18,7 +18,7 @@ typedef	struct	t_line
 
 int	ft_strlen(char *s);
 int	fdcurs(char *s);
-char	*ft_cat(char *dst, char *src, int n);
+char	*ft_cat(char *dst, const char *src, int n);
 char	*ft_strdup(char *s);
 
 int	get_next_line(int fd, char **line);

@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:35:17 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/25 14:02:32 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/25 15:11:47 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,24 @@ int	get_next_line(int fd, char **line)
 			if (!(rest = ft_cat(rest, &obj.tmp[fdcurs(obj.tmp)], (ft_strlen(obj.tmp) - fdcurs(obj.tmp)))))
 				return (-1);
 			free(obj.tmp);
-			printf("rest_ = %s\n", rest);
 			return (1);
 		}
 		free(rest);
+		rest = NULL;
 	}	
-	obj.res = read(fd, buff, BUFFER_SIZE);
+	if ((obj.res = read(fd, buff, BUFFER_SIZE)) < 0)
+		return (-1);
 	buff[obj.res] = '\0';
 	if (!(*line = ft_cat(*line, buff, fdcurs(buff))))
 		return (-1);
 	while (fdcurs(buff) == obj.res)
 	{
 		obj.res = read(fd, buff, BUFFER_SIZE);
+		if (obj.res == 0)
+			return (0);
 		buff[obj.res] = '\0';
 		if (!(*line = ft_cat(*line, buff, fdcurs(buff))))
 			return (-1);
-		if (obj.res == 0)
-			return (0);
 	}
 	if (fdcurs(buff) != obj.res)
 	{
@@ -60,6 +61,5 @@ int	get_next_line(int fd, char **line)
 		if (!(rest = ft_cat(rest, &buff[fdcurs(buff)], (obj.res - fdcurs(buff)))))
 			return (-1);
 	}
-	printf("rest = %s\n", rest);
 	return (1);
 }
