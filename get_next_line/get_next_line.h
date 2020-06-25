@@ -16,10 +16,11 @@ typedef	struct	t_line
 	int 	res;
 }			s_line;
 
-int	ft_strlen(char *s);
-int	fdcurs(char *s);
+int		ft_strlen(char *s);
+int		fdcurs(char *s);
 char	*ft_cat(char *dst, const char *src, int n);
 char	*ft_strdup(char *s);
+int		ft_rest(char **rest, char **line, s_line obj);
 
 int	get_next_line(int fd, char **line);
 

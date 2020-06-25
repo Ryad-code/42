@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:35:17 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/25 15:11:47 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/25 16:19:12 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,13 @@ int	get_next_line(int fd, char **line)
 		return (-1);
 	if (rest)
 	{
-		if (!(*line = ft_cat(*line, rest, fdcurs(rest))))
+		obj.res = ft_rest(&rest, line, obj);
+		if (obj.res == -1)
 			return (-1);
-		if (fdcurs(rest) != ft_strlen(rest))
-		{
-			if (!(obj.tmp = ft_strdup(rest)))
-				return (-1);
-			free(rest);
-			if (!(rest = ft_strdup("")))
-				return (-1);
-			if (!(rest = ft_cat(rest, &obj.tmp[fdcurs(obj.tmp)], (ft_strlen(obj.tmp) - fdcurs(obj.tmp)))))
-				return (-1);
-			free(obj.tmp);
+		if (obj.res == 1)
 			return (1);
-		}
-		free(rest);
-		rest = NULL;
-	}	
+	}
+	
 	if ((obj.res = read(fd, buff, BUFFER_SIZE)) < 0)
 		return (-1);
 	buff[obj.res] = '\0';
@@ -48,7 +38,8 @@ int	get_next_line(int fd, char **line)
 		return (-1);
 	while (fdcurs(buff) == obj.res)
 	{
-		obj.res = read(fd, buff, BUFFER_SIZE);
+		if ((obj.res = read(fd, buff, BUFFER_SIZE)) < 0)
+			return (-1);
 		if (obj.res == 0)
 			return (0);
 		buff[obj.res] = '\0';
@@ -57,7 +48,8 @@ int	get_next_line(int fd, char **line)
 	}
 	if (fdcurs(buff) != obj.res)
 	{
-		rest = ft_strdup("");
+		if (!(rest = ft_strdup("")))
+			return (-1);
 		if (!(rest = ft_cat(rest, &buff[fdcurs(buff)], (obj.res - fdcurs(buff)))))
 			return (-1);
 	}

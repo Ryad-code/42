@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/25 14:29:44 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/25 16:24:46 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,25 @@ char	*ft_strdup(char *s)
 	}
 	dst[i] = '\0';
 	return (dst);
+}
+
+int		ft_rest(char **rest, char **line, s_line obj)
+{
+		if (!(*line = ft_cat(*line, *rest, fdcurs(*rest))))
+			return (-1);
+		if (fdcurs(*rest) != ft_strlen(*rest))
+		{
+			if (!(obj.tmp = ft_strdup(*rest)))
+				return (-1);
+			free(*rest);
+			if (!(*rest = ft_strdup("")))
+				return (-1);
+			if (!(*rest = ft_cat(*rest, &obj.tmp[fdcurs(obj.tmp)], (ft_strlen(obj.tmp) - fdcurs(obj.tmp)))))
+				return (-1);
+			free(obj.tmp);
+			return (1);
+		}
+		free(*rest);
+		*rest = NULL;
+	return (0);
 }
