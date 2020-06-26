@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:35:17 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/26 12:47:24 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/26 14:05:56 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,24 @@ int	get_line(int fd, s_line *obj, char **line)
 		if (!(*line = ft_cat(*line, obj->buff, fdcurs(obj->buff))))
 			return (-1);
 	}
-	return (0);
+	return (1);
+}
+
+int	ft_main(int fd, char **line, char **rest, s_line *obj)
+{
+	if ((obj->res1 = get_line(fd, obj, line)) == -1)
+		return (-1);
+	if (obj->res1 == 0)
+		return (0);
+	if (fdcurs(obj->buff) != obj->res)
+	{
+		if (!(*rest = ft_strdup("")))
+			return (-1);
+		if (!(*rest = ft_cat(*rest, &obj->buff[fdcurs(obj->buff)],
+		(obj->res - fdcurs(obj->buff)))))
+			return (-1);
+	}
+	return (1);
 }
 
 int	get_next_line(int fd, char **line)
@@ -50,15 +67,9 @@ int	get_next_line(int fd, char **line)
 		if (obj.res == 1)
 			return (1);
 	}
-	if (get_line(fd, &obj, line) == -1)
+	if ((obj.res1 = ft_main(fd, line, &rest, &obj)) == -1)
 		return (-1);
-	if (fdcurs(obj.buff) != obj.res)
-	{
-		if (!(rest = ft_strdup("")))
-			return (-1);
-		if (!(rest = ft_cat(rest, &obj.buff[fdcurs(obj.buff)],
-		(obj.res - fdcurs(obj.buff)))))
-			return (-1);
-	}
+	if (obj.res1 == 0)
+		return (0);
 	return (1);
 }
