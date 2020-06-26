@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:35:17 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/25 16:19:12 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/06/26 12:20:15 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	get_next_line(int fd, char **line)
 {
-	char	buff[BUFFER_SIZE + 1];
 	static char	*rest;
 	s_line obj;
 
@@ -31,26 +30,26 @@ int	get_next_line(int fd, char **line)
 			return (1);
 	}
 	
-	if ((obj.res = read(fd, buff, BUFFER_SIZE)) < 0)
+	if ((obj.res = read(fd, obj.buff, BUFFER_SIZE)) < 0)
 		return (-1);
-	buff[obj.res] = '\0';
-	if (!(*line = ft_cat(*line, buff, fdcurs(buff))))
+	obj.buff[obj.res] = '\0';
+	if (!(*line = ft_cat(*line, obj.buff, fdcurs(obj.buff))))
 		return (-1);
-	while (fdcurs(buff) == obj.res)
+	while (fdcurs(obj.buff) == obj.res)
 	{
-		if ((obj.res = read(fd, buff, BUFFER_SIZE)) < 0)
+		if ((obj.res = read(fd, obj.buff, BUFFER_SIZE)) < 0)
 			return (-1);
 		if (obj.res == 0)
 			return (0);
-		buff[obj.res] = '\0';
-		if (!(*line = ft_cat(*line, buff, fdcurs(buff))))
+		obj.buff[obj.res] = '\0';
+		if (!(*line = ft_cat(*line, obj.buff, fdcurs(obj.buff))))
 			return (-1);
 	}
-	if (fdcurs(buff) != obj.res)
+	if (fdcurs(obj.buff) != obj.res)
 	{
 		if (!(rest = ft_strdup("")))
 			return (-1);
-		if (!(rest = ft_cat(rest, &buff[fdcurs(buff)], (obj.res - fdcurs(buff)))))
+		if (!(rest = ft_cat(rest, &obj.buff[fdcurs(obj.buff)], (obj.res - fdcurs(obj.buff)))))
 			return (-1);
 	}
 	return (1);
