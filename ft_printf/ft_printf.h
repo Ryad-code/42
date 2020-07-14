@@ -7,21 +7,31 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-typedef struct	conv
+typedef struct	type
 {
-	int arg;
+	int arg_int;
+	char arg_char;
+	char *arg_pchar;
+}		s_type;
+
+typedef struct	parser
+{
 	int cursor;
 	int width;
 	int precision;
-	int type;
-}		sp_conv;
+	int lenght;
+}		s_parser;	
 
 int	ft_printf(const char *s, ...);
-void	ft_init(sp_conv);
+
 void	ft_putchar(char c);
 void	ft_putstr(const char *s, int n);
 void	ft_putnbr(int nb);
+
+int	ft_strlen(char *s);
+void    ft_init(s_parser parser);
+void    ft_init1(s_type type);
 int	fdcurs(const char *s);
-void	ft_type(char c, sp_conv *conv);
+void	ft_type(char c, s_type type);
 
 #endif

@@ -1,13 +1,19 @@
 
 #include "ft_printf.h"
 
-void	ft_init(sp_conv conv)
+void	ft_init(s_parser parser)
 {
-		conv.arg = 0;
-		conv.cursor = 0;
-		conv.width = 0;
-		conv.precision = 0;
-		conv.type = 0;
+	parser.cursor = 0;
+	parser.width = 0;
+	parser.precision = 0;
+	parser.lenght = 0;
+}
+
+void	ft_init1(s_type type)
+{
+	type.arg_int = 0;
+	type.arg_char = '\0';
+	type.arg_pchar = NULL;
 }
 
 void	ft_putchar(char c)
