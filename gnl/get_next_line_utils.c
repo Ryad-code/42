@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/23 15:12:44 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/23 15:12:52 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/06/03 16:34:54 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/06/26 14:47:39 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,63 +36,68 @@ int		fdcurs(char *s)
 	return (i);
 }
 
-int		ft_cat(char *dst, char *src, int len)
+char	*ft_cat(char *dst, const char *src, int n)
 {
-	int	i;
-	int	j;
-	int	k;
+	int		i;
+	int		j;
+	int		k;
+	char	*tmp;
 
-	i = 0;
+	i = -1;
 	j = ft_strlen(dst);
 	k = 0;
-	while (src[k] == '\n')
+	if (!(tmp = ft_strdup(dst)))
+		return (NULL);
+	if (src[0] == '\n')
 		k++;
-	while (i < len && src[k + i])
-	{
-		dst[i + j] = src[k + i];
-		i++;
-	}
-	dst[i + j] = '\0';
-	return (i);
-}
-
-char	*set_line(char *dst, char *src, int curs)
-{
-	char *tmp;
-
-	tmp = NULL;
-	if (!(tmp = malloc(sizeof(char) * (ft_strlen(dst) + 1))))
-		return (tmp);
-	tmp[0] = '\0';
-	ft_cat(tmp, dst, ft_strlen(dst));
 	free(dst);
-	dst = NULL;
-	if (!(dst = malloc(sizeof(char) * (ft_strlen(tmp) + curs + 1))))
-		return (dst);
-	dst[0] = '\0';
-	ft_cat(dst, tmp, ft_strlen(tmp));
+	if (!(dst = malloc(sizeof(char) * (ft_strlen(tmp) + n + 1))))
+		return (NULL);
+	while (tmp[++i])
+		dst[i] = tmp[i];
 	free(tmp);
-	ft_cat(dst, src, curs);
+	i = -1;
+	while (((++i) + k) < n)
+		dst[j + i] = src[k + i];
+	dst[j + i] = '\0';
 	return (dst);
 }
 
-char	*set_rest(char *rest)
+char	*ft_strdup(char *s)
 {
-	int		curs;
-	char	*tmp;
+	int		i;
+	char	*dst;
 
-	curs = fdcurs(rest);
-	tmp = NULL;
-	if (!(tmp = malloc(sizeof(char) * (ft_strlen(rest) - curs + 1))))
-		return (tmp);
-	tmp[0] = '\0';
-	ft_cat(tmp, &rest[curs], (ft_strlen(rest) - curs + 1));
-	free(rest);
-	rest = NULL;
-	if (!(rest = malloc(sizeof(char) * (ft_strlen(tmp) + 1))))
-		return (rest);
-	rest[0] = '\0';
-	ft_cat(rest, tmp, ft_strlen(tmp));
-	free(tmp);
-	return (rest);
+	i = 0;
+	if (!(dst = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
+	while (s[i])
+	{
+		dst[i] = s[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
+
+int		ft_rest(char **rest, char **line, t_line obj)
+{
+	if (!(*line = ft_cat(*line, *rest, fdcurs(*rest))))
+		return (-1);
+	if (fdcurs(*rest) != ft_strlen(*rest))
+	{
+		if (!(obj.tmp = ft_strdup(*rest)))
+			return (-1);
+		free(*rest);
+		if (!(*rest = ft_strdup("")))
+			return (-1);
+		if (!(*rest = ft_cat(*rest, &obj.tmp[fdcurs(obj.tmp)],
+		(ft_strlen(obj.tmp) - fdcurs(obj.tmp)))))
+			return (-1);
+		free(obj.tmp);
+		return (1);
+	}
+	free(*rest);
+	*rest = NULL;
+	return (0);
 }

@@ -5,80 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/23 15:12:58 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/23 16:28:58 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/06/03 16:35:17 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/06/26 14:50:21 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_start(char *buff, char *line, char *rest)
+int	get_line(int fd, t_line *obj, char **line)
 {
-	if (rest)
-	{
-		if (!(line = set_line(line, buff, fdcurs(buff))))
-			return (NULL);
-	}
-	else
-	{
-		if (!(line = malloc(sizeof(char) * (fdcurs(buff) + 1))))
-			return (NULL);
-		line[0] = '\0';
-		ft_cat(line, buff, fdcurs(buff));
-	}
-	return (line);
-}
-
-char	*ft_set(char *dst, char *src, int n)
-{
-	dst = NULL;
-	if (!(dst = malloc(sizeof(char) * (n + 1))))
-		return (dst);
-	dst[0] = '\0';
-	ft_cat(dst, src, n);
-	return (dst);
-}
-
-
-
-int		get_next_line(int fd, char **line)
-{
-	int				res;
-	char			buff[BUFFER_SIZE + 1];
-	static	char	*rest;
-
-	if (BUFFER_SIZE < 1)
+	if ((obj->res = read(fd, obj->buff, BUFFER_SIZE)) < 0)
 		return (-1);
-	if (rest)
-	{
-		if (!(*line = ft_set(*line, rest, fdcurs(rest))))
-			return (-1);
-		if (fdcurs(rest) != ft_strlen(rest))
-		{
-			if (!(rest = set_rest(rest)))
-				return (-1);
-			return (1);
-		}
-		free(rest);
-	}
-//..........................................................................
-	res = read(fd, buff, BUFFER_SIZE);
-	buff[res] = '\0';
-	if (!(*line = ft_start(buff, *line, rest)))
+	obj->buff[obj->res] = '\0';
+	if (!(*line = ft_cat(*line, obj->buff, fdcurs(obj->buff))))
 		return (-1);
-//..........................................................................
-	while (fdcurs(buff) == res)
+	while (fdcurs(obj->buff) == obj->res)
 	{
-		res = read(fd, buff, BUFFER_SIZE);
-		buff[res] = '\0';
-		if (!(*line = set_line(*line, buff, fdcurs(buff))))
+		if ((obj->res = read(fd, obj->buff, BUFFER_SIZE)) < 0)
 			return (-1);
-		if (res == 0)
+		if (obj->res == 0)
 			return (0);
-	}
-//..........................................................................
-	if (fdcurs(buff) != res)
-		if (!(rest = ft_set(rest, &buff[fdcurs(buff)], (res - fdcurs(buff)))))
+		obj->buff[obj->res] = '\0';
+		if (!(*line = ft_cat(*line, obj->buff, fdcurs(obj->buff))))
 			return (-1);
+	}
+	return (1);
+}
+
+int	ft_main(int fd, char **line, char **rest, t_line *obj)
+{
+	if ((obj->res1 = get_line(fd, obj, line)) == -1)
+		return (-1);
+	if (obj->res1 == 0)
+		return (0);
+	if (fdcurs(obj->buff) != obj->res)
+	{
+		if (!(*rest = ft_strdup("")))
+			return (-1);
+		if (!(*rest = ft_cat(*rest, &obj->buff[fdcurs(obj->buff)],
+		(obj->res - fdcurs(obj->buff)))))
+			return (-1);
+	}
+	return (1);
+}
+
+int	get_next_line(int fd, char **line)
+{
+	static char	*rest;
+	t_line		obj;
+
+	if (fd < 0 || BUFFER_SIZE == 0 || (!line))
+		return (-1);
+	if (!(*line = ft_strdup("")))
+		return (-1);
+	obj.tmp = NULL;
+	if (rest)
+	{
+		obj.res = ft_rest(&rest, line, obj);
+		if (obj.res == -1)
+			return (-1);
+		if (obj.res == 1)
+			return (1);
+	}
+	if ((obj.res1 = ft_main(fd, line, &rest, &obj)) == -1)
+		return (-1);
+	if (obj.res1 == 0)
+		return (0);
 	return (1);
 }
