@@ -43,3 +43,19 @@ void	ft_width(char *s, s_parser *parser)
 	parser->width = res;
 	parser->c_width = i;
 }
+
+void	ft_putflag2(s_parser parser)
+{
+	int i;
+
+	i = 0;
+	while (i < parser.width)
+	{
+		if (parser.flag2 != 0)
+			ft_putchar('0');
+		else
+			ft_putchar(' ');
+		i++;
+	}
+		
+}

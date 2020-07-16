@@ -24,8 +24,8 @@ int	ft_printf(const char *s, ...)
 
 		ft_flags(&tmp[fdcurs(tmp) + 1], &parser);
 		ft_width(&tmp[fdcurs(tmp) + 1 + parser.flag1 + parser.flag2], &parser);
-//		printf("%d\n", parser.width);
-//		printf("%d\n", parser.c_width);
+		
+		ft_putflag2(parser);
 
 		if (tmp[fdcurs(tmp) + 1 + parser.flag1 + parser.flag2 + parser.c_width] == 'c' || tmp[fdcurs(tmp) + 1] == 'i')
 		{

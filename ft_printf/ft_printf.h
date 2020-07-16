@@ -41,4 +41,5 @@ int	ctcurs(const char *s);
 
 void	ft_flags(char *s, s_parser *parser);
 void	ft_width(char *s, s_parser *parser);
+void	ft_putflag2(s_parser parser);
 #endif
