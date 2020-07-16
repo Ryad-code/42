@@ -21,6 +21,7 @@ void	ft_flags(char *s, s_parser *parser)
 		res++;
 	}
 	parser->flag2 = res;
+	parser->cursor = parser->cursor + i;
 }
 
 void	ft_width(char *s, s_parser *parser)
@@ -41,21 +42,25 @@ void	ft_width(char *s, s_parser *parser)
 		i++;
 	}
 	parser->width = res;
-	parser->c_width = i;
+	if (s[i] == '*')
+	{
+		i++;
+		parser->s_width = 1;
+	}
+	parser->cursor = parser->cursor + i;
 }
 
-void	ft_putflag2(s_parser parser)
+void	ft_putflags(s_parser parser)
 {
 	int i;
 
 	i = 0;
 	while (i < parser.width)
 	{
-		if (parser.flag2 != 0)
+		if (parser.flag2 != 0 && parser.flag1 == 0)
 			ft_putchar('0');
 		else
 			ft_putchar(' ');
 		i++;
-	}
-		
+	}	
 }

@@ -16,11 +16,13 @@ typedef struct	type
 
 typedef struct	parser
 {
+	int cursor;
 	int flag1;
 	int flag2;
 	int width;
-	int c_width;
+	int s_width;
 	int precision;
+	int s_precision;
 }		s_parser;	
 
 int	ft_printf(const char *s, ...);
@@ -41,5 +43,5 @@ int	ctcurs(const char *s);
 
 void	ft_flags(char *s, s_parser *parser);
 void	ft_width(char *s, s_parser *parser);
-void	ft_putflag2(s_parser parser);
+void	ft_putflags(s_parser parser);
 #endif

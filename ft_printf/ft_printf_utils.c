@@ -3,10 +3,13 @@
 
 void	ft_init(s_parser parser)
 {
+	parser.cursor = 0;
 	parser.flag1 = 0;
 	parser.flag2 = 0;
 	parser.width = 0;
+	parser.s_width = 0;
 	parser.precision = 0;
+	parser.s_precision = 0;
 }
 
 void	ft_init1(s_type type)
