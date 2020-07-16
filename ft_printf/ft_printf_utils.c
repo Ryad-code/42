@@ -3,10 +3,10 @@
 
 void	ft_init(s_parser parser)
 {
-	parser.cursor = 0;
+	parser.flag1 = 0;
+	parser.flag2 = 0;
 	parser.width = 0;
 	parser.precision = 0;
-	parser.lenght = 0;
 }
 
 void	ft_init1(s_type type)
@@ -16,38 +16,26 @@ void	ft_init1(s_type type)
 	type.arg_pchar = NULL;
 }
 
-void	ft_putchar(char c)
+void    ft_print(const char *s)
 {
-	if (c)
-		write(1, &c, 1);
+	        int i;
+
+		i = 0;
+		while (s[i] != '%' && s[i] != '\0')
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
 }
 
-void	ft_putstr(const char *s, int n)
+int	ft_strlen(const char *s)
 {
 	int i;
 
 	i = 0;
-	while (s[i] && i < n)
-	{
-		write(1, &s[i], 1);
+	while (s[i])
 		i++;
-	}
-}
-
-void	ft_putnbr(int nb)
-{
-	if (nb < 0)
-	{
-		nb = -nb;
-	}					
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);									
-		ft_putnbr(nb % 10);
-
-	}
-	else
-	ft_putchar(nb + '0');
+	return (i);
 }
 
 int	fdcurs(const char *s)
@@ -62,4 +50,37 @@ int	fdcurs(const char *s)
 		i++;
 	}
 	return (0);
+}
+
+int	ctcurs(const char *s)
+{
+	int i;
+	int res;
+
+	i = 0;
+	res = 0;
+	while (s[i])
+	{
+		if (s[i] == '%')
+			res++;
+		i++;
+	}
+	return (res);
+}
+
+
+char	*ft_strdup(const char *s)
+{
+	int i;
+	char *dst;
+
+	i = 0;
+	dst = malloc(sizeof(char) * ft_strlen(s) + 1);
+	while (s[i])
+	{
+		dst[i] = s[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }
