@@ -9,6 +9,7 @@
 
 typedef struct	type
 {
+	int len_arg;
 	int arg_int;
 	char arg_char;
 	char *arg_pchar;
@@ -43,8 +44,9 @@ int	ctcurs(const char *s);
 void	ft_flags(char *s, s_parser *parser);
 void	ft_width(char *s, s_parser *parser);
 void	ft_precision(char *s, s_parser *parser);
+void	ft_len_arg(s_type *type);
 
 void	ft_print(const char *s);
 void	ft_put_options(s_parser parser);
-void	ft_f_print(s_parser parser, s_type type);
+void	ft_f_print(s_parser *parser, s_type *type);
 #endif

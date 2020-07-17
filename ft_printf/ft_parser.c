@@ -57,8 +57,6 @@ void	ft_precision(char *s, s_parser *parser)
 
 	i = 0;
 	res = 0;
-	if (s[i] == '.')
-		i++;
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		i++;
@@ -70,6 +68,31 @@ void	ft_precision(char *s, s_parser *parser)
 		i++;
 		parser->s_precision = 1;
 	}
+	if (s[i] == '.')
+		i++;
 	parser->cursor = parser->cursor + i;
 }
 
+void	ft_len_arg(s_type *type)
+{
+	int i;
+	int nb;
+
+	i = 0;
+	nb = 0;
+	if (type->arg_int)
+	{
+		nb = type->arg_int;
+		while (nb > 10)
+		{
+			nb = nb / 10;
+			i++;
+		}
+		type->len_arg = i + 1;
+	}
+	i = 0;
+	if (type->arg_char)
+		type->len_arg = 1;
+	if (type->arg_pchar)
+		type->len_arg = ft_strlen(type->arg_pchar);
+}

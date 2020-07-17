@@ -13,32 +13,27 @@ void    ft_print(const char *s)
                 }
 }
 
-void    ft_put_options(s_parser parser)
+void	ft_f_print(s_parser *parser, s_type *type)
 {
 	int i;
 
 	i = 0;
-	if (parser.precision == 0)
-        {
-		while (i < parser.width)
-		{
+	ft_len_arg(type);
 
-			if (parser.flag2 != 0 && parser.flag1 == 0)
-				ft_putchar('0');
-			else
-				ft_putchar(' ');
-			i++;
-		}
+	if ((parser->flag1) || (parser->precision))
+		parser->flag2 = 0;
+	while (i < (parser->width - type->len_arg))
+	{
+		if (parser->flag2)
+			ft_putchar('0');
+		else
+			ft_putchar(' ');
+		i++;
 	}
-
-}
-
-void	ft_f_print(s_parser parser, s_type type)
-{
-	if (type.arg_int)
-		ft_putnbr(type.arg_int);
-	if (type.arg_char)
-		ft_putchar(type.arg_char);
-	if (type.arg_pchar)
-		ft_putstr(type.arg_pchar);
+	if (type->arg_int)
+		ft_putnbr(type->arg_int);
+	if (type->arg_char)
+		ft_putchar(type->arg_char);
+	if (type->arg_pchar)
+		ft_putstr(type->arg_pchar);
 }

@@ -29,35 +29,34 @@ int	ft_printf(const char *s, ...)
 		ft_precision(&tmp[parser.cursor], &parser);
 //........................................................................................		
 		if (parser.s_width == 1)
-		{
 			parser.width = va_arg(list, int);
-		}
 //.........................................................................................
 		if (parser.s_precision == 1)
-		{
 			parser.precision = va_arg(list, int);
-		}
 //.........................................................................................
 //		ft_put_options(parser);
 //.........................................................................................		
 		if (tmp[parser.cursor] == 'c')
 		{
 			type.arg_char = (char) va_arg(list, int);
-			ft_f_print(parser, type);	
+			ft_f_print(&parser, &type);	
 		}
 		if (tmp[parser.cursor] == 's')
 		{
 			type.arg_pchar = (char *) va_arg(list, char *);
-			ft_f_print(parser, type);
+			ft_f_print(&parser, &type);
 		}
 		if (tmp[parser.cursor] == 'd' || tmp[parser.cursor] == 'i')
 		{
 			type.arg_int = va_arg(list, int);
-			ft_f_print(parser, type);
+			ft_f_print(&parser, &type);
 		}
+		printf("\n%d\n", parser.cursor);
+		printf("%d\n", parser.precision);
+		printf("%d\n", parser.s_precision);
 //..........................................................................................
 		i++;
-		tmp = &tmp[parser.cursor + 2];
+		tmp = &tmp[parser.cursor + 1];
 	}
 	ft_print(tmp);
 	tmp = NULL;
