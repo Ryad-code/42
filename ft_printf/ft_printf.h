@@ -32,16 +32,19 @@ void	ft_putstr(const char *s);
 void	ft_putnbr(int nb);
 
 int	ft_strlen(const char *s);
-void    ft_print(const char *s);
 char    *ft_strdup(const char *s);
 
-void    ft_init(s_parser parser);
-void    ft_init1(s_type type);
+s_parser    ft_init_p(s_parser *parser);
+s_type    ft_init_t(s_type *type);
 
 int	fdcurs(const char *s);
 int	ctcurs(const char *s);
 
 void	ft_flags(char *s, s_parser *parser);
 void	ft_width(char *s, s_parser *parser);
-void	ft_putflags(s_parser parser);
+void	ft_precision(char *s, s_parser *parser);
+
+void	ft_print(const char *s);
+void	ft_put_options(s_parser parser);
+void	ft_f_print(s_parser parser, s_type type);
 #endif

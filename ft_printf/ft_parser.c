@@ -50,17 +50,26 @@ void	ft_width(char *s, s_parser *parser)
 	parser->cursor = parser->cursor + i;
 }
 
-void	ft_putflags(s_parser parser)
+void	ft_precision(char *s, s_parser *parser)
 {
 	int i;
+	int res;
 
 	i = 0;
-	while (i < parser.width)
-	{
-		if (parser.flag2 != 0 && parser.flag1 == 0)
-			ft_putchar('0');
-		else
-			ft_putchar(' ');
+	res = 0;
+	if (s[i] == '.')
 		i++;
-	}	
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		i++;
+		res++;
+	}
+	parser->precision = res;
+	if (s[i] == '*')
+	{
+		i++;
+		parser->s_precision = 1;
+	}
+	parser->cursor = parser->cursor + i;
 }
+
