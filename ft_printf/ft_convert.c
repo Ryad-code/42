@@ -31,3 +31,22 @@ void	ft_putnbr(int nb)
 	else
 		ft_putchar(nb + '0');
 }
+
+void	ft_conv(char *tmp, s_parser *parser, s_type *type, va_list list)
+{
+	if (tmp[parser->cursor] == 'c')
+	{
+		type->arg_char = (char) va_arg(list, int);
+		ft_f_print(parser, type);
+	}
+	if (tmp[parser->cursor] == 's')
+	{
+		type->arg_pchar = (char *) va_arg(list, char *);
+		ft_f_print(parser, type);
+	}
+	if (tmp[parser->cursor] == 'd' || tmp[parser->cursor] == 'i')
+	{
+		type->arg_int = va_arg(list, int);
+		ft_f_print(parser, type);
+	}
+}

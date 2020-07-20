@@ -20,38 +20,14 @@ int	ft_printf(const char *s, ...)
 	{
 		ft_init_p(&parser);
 		ft_init_t(&type);
-		
 		ft_print(tmp);
-
 		parser.cursor = fdcurs(tmp) + 1;
 		ft_flags(&tmp[parser.cursor], &parser);
-		ft_width(&tmp[parser.cursor], &parser);
-		ft_precision(&tmp[parser.cursor], &parser);
-//........................................................................................		
-		if (parser.s_width == 1)
-			parser.width = va_arg(list, int);
-//.........................................................................................
-		if (parser.s_precision == 1)
-			parser.precision = va_arg(list, int);
-//.........................................................................................
-		if (tmp[parser.cursor] == 'c')
-		{
-			type.arg_char = (char) va_arg(list, int);
-			ft_f_print(&parser, &type);	
-		}
-		if (tmp[parser.cursor] == 's')
-		{
-			type.arg_pchar = (char *) va_arg(list, char *);
-			ft_f_print(&parser, &type);
-		}
-		if (tmp[parser.cursor] == 'd' || tmp[parser.cursor] == 'i')
-		{
-			type.arg_int = va_arg(list, int);
-			ft_f_print(&parser, &type);
-		}
-//..........................................................................................
-		i++;
+		ft_width(&tmp[parser.cursor], &parser, list);
+		ft_precision(&tmp[parser.cursor], &parser, list);
+		ft_conv(tmp, &parser, &type, list);
 		tmp = &tmp[parser.cursor + 1];
+		i++;
 	}
 	ft_print(tmp);
 	tmp = NULL;

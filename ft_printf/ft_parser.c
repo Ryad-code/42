@@ -24,7 +24,7 @@ void	ft_flags(char *s, s_parser *parser)
 	parser->cursor = parser->cursor + i;
 }
 
-void	ft_width(char *s, s_parser *parser)
+void	ft_width(char *s, s_parser *parser, va_list list)
 {
 	int i;
 	int res;
@@ -45,31 +45,31 @@ void	ft_width(char *s, s_parser *parser)
 	if (s[i] == '*' && s[i + 1] != '.')
 	{
 		i++;
-		parser->s_width = 1;
+		parser->width = va_arg(list, int);
 	}
 	parser->cursor = parser->cursor + i;
 }
 
-void	ft_precision(char *s, s_parser *parser)
+void	ft_precision(char *s, s_parser *parser, va_list list)
 {
 	int i;
 	int res;
 
 	i = 0;
 	res = 0;
+	if (s[i] == '*')
+	{
+		i++;
+		parser->precision = va_arg(list, int);
+	}
+	if (s[i] == '.')
+		i++;
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		i++;
 		res++;
 	}
 	parser->precision = res;
-	if (s[i] == '*')
-	{
-		i++;
-		parser->s_precision = 1;
-	}
-	if (s[i] == '.')
-		i++;
 	parser->cursor = parser->cursor + i;
 }
 
