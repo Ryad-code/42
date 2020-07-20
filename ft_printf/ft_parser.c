@@ -66,8 +66,8 @@ void	ft_precision(char *s, s_parser *parser, va_list list)
 		i++;
 	while (s[i] >= '0' && s[i] <= '9')
 	{
+		res = res * 10 + (s[i] - '0');
 		i++;
-		res++;
 	}
 	parser->precision = res;
 	parser->cursor = parser->cursor + i;

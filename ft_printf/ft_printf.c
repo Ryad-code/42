@@ -28,6 +28,8 @@ int	ft_printf(const char *s, ...)
 		ft_conv(tmp, &parser, &type, list);
 		tmp = &tmp[parser.cursor + 1];
 		i++;
+//		printf("precision = %d\n", parser.precision);
+//		printf("width = %d\n", parser.width);
 	}
 	ft_print(tmp);
 	tmp = NULL;
