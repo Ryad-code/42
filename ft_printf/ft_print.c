@@ -22,7 +22,17 @@ void	ft_f_print(s_parser *parser, s_type *type)
 
 	if ((parser->flag1) || (parser->precision))
 		parser->flag2 = 0;
-	while (i < (parser->width - type->len_arg))
+	else if (parser->flag2)
+		while (i < (parser->width - type->len_arg))
+		{
+			if (parser->flag2)
+				ft_putchar('0');
+			else
+				ft_putchar(' ');
+			i++;
+		}
+	i = 0;
+	while (i < (parser->precision - type->len_arg))
 	{
 		if (parser->flag2)
 			ft_putchar('0');
@@ -36,4 +46,13 @@ void	ft_f_print(s_parser *parser, s_type *type)
 		ft_putchar(type->arg_char);
 	if (type->arg_pchar)
 		ft_putstr(type->arg_pchar);
+	i = 0;
+	if (parser->flag1)
+	{
+		while (i < (parser->width - type->len_arg))
+		{
+				ft_putchar(' ');
+				i++;
+		}
+	}
 }

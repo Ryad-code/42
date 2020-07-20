@@ -42,7 +42,7 @@ void	ft_width(char *s, s_parser *parser)
 		i++;
 	}
 	parser->width = res;
-	if (s[i] == '*')
+	if (s[i] == '*' && s[i + 1] != '.')
 	{
 		i++;
 		parser->s_width = 1;

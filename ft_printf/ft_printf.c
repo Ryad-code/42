@@ -34,8 +34,6 @@ int	ft_printf(const char *s, ...)
 		if (parser.s_precision == 1)
 			parser.precision = va_arg(list, int);
 //.........................................................................................
-//		ft_put_options(parser);
-//.........................................................................................		
 		if (tmp[parser.cursor] == 'c')
 		{
 			type.arg_char = (char) va_arg(list, int);
@@ -51,9 +49,6 @@ int	ft_printf(const char *s, ...)
 			type.arg_int = va_arg(list, int);
 			ft_f_print(&parser, &type);
 		}
-		printf("\n%d\n", parser.cursor);
-		printf("%d\n", parser.precision);
-		printf("%d\n", parser.s_precision);
 //..........................................................................................
 		i++;
 		tmp = &tmp[parser.cursor + 1];
@@ -61,6 +56,5 @@ int	ft_printf(const char *s, ...)
 	ft_print(tmp);
 	tmp = NULL;
 	free(tmp);
-	return (0);
-		
+	return (0);		
 }

@@ -8,9 +8,9 @@ int	main()
 	char *s = "bonjour";
 	char c = 'X';
 
-	printf("Nos int nb = %*.d, et nb1 = %03d\n", 4, nb, nb1);
+	printf("Nos int nb = %-04d, et nb1 = %-06.d\n", nb, nb1);
 
-	ft_printf("Nos int nb = %0*.d, et nb1 = %03d\n", 4, nb, nb1);
+	ft_printf("Nos int nb = %-04d, et nb1 = %-06.d\n", nb, nb1);
 //	ft_printf("c = %c\n", c);
 //	ft_printf("s = %s\n", s);
 	return (0);
