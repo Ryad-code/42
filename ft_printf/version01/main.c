@@ -8,8 +8,8 @@ int	main()
 	char *s = "bonjour";
 	char c = 'X';
 
-	printf("the printf = %0*.*d|\n", 5, 6, nb);
-	ft_printf("mon printf = %0*.*d|\n\n", 5, 6, nb);
+	printf("the printf = %10.6s|\n", s);
+	ft_printf("mon printf = %10.6s|\n\n", s);
 
 //	printf("Nos int nb = %006d, et nb1 = %-07.6d|\n", nb, nb1);
 //	ft_printf("Nos int nb = %006d, et nb1 = %-07.6d|\n", nb, nb1); 
