@@ -34,6 +34,8 @@ void	ft_putnbr(int nb)
 
 void	ft_conv(char *tmp, s_parser *parser, s_type *type, va_list list)
 {
+	int a = 20;
+	void *pt = &a;
 	if (tmp[parser->cursor] == 'd' || tmp[parser->cursor] == 'i')
 	{
 		type->arg_int = va_arg(list, int);
@@ -51,5 +53,11 @@ void	ft_conv(char *tmp, s_parser *parser, s_type *type, va_list list)
 		type->arg_str = (char *) va_arg(list, char *);
 		ft_len_arg(type);
 		ft_printstr(parser, type);
+	}
+	if (tmp[parser->cursor] == 'p')
+	{
+		type->arg_pt = (void *) va_arg(list, void *);
+		ft_printpt(parser, type);		
+//		printf("%p\n", pt);
 	}
 }

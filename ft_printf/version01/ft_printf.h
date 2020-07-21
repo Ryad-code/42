@@ -10,9 +10,10 @@
 typedef struct	type
 {
 	int len_arg;
-	int arg_int;
+	long arg_int;
 	char arg_char;
 	char *arg_str;
+	void *arg_pt;
 }		s_type;
 
 typedef struct	parser
@@ -51,4 +52,5 @@ void	ft_printsp(int nb);
 void	ft_printint(s_parser *parser, s_type *type);
 void    ft_printc(s_parser *parser, s_type *type);
 void    ft_printstr(s_parser *parser, s_type *type);
+void	ft_printpt(s_parser *parser, s_type *type);
 #endif

@@ -16,6 +16,7 @@ s_type	ft_init_t(s_type *type)
 	type->arg_int = 0;
 	type->arg_char = '\0';
 	type->arg_str = NULL;
+	type->arg_pt = NULL;
 }
 
 int	ft_strlen(const char *s)
