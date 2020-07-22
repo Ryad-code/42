@@ -19,7 +19,7 @@ void	ft_putstr(const char *s)
 	}
 }
 
-void	ft_putnbr(int nb)
+void	ft_putnbr(long nb)
 {
 	if (nb < 0)
 		nb = -nb;
@@ -30,6 +30,18 @@ void	ft_putnbr(int nb)
 	}
 	else
 		ft_putchar(nb + '0');
+}
+
+void	ft_puthexa(long nb)
+{
+	char tab_hexa[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+	if (nb >= 16)
+	{
+		ft_puthexa(nb / 16);
+		ft_puthexa(nb % 16);
+	}
+	else
+		ft_putchar(tab_hexa[nb]);
 }
 
 void	ft_conv(char *tmp, s_parser *parser, s_type *type, va_list list)
@@ -51,13 +63,14 @@ void	ft_conv(char *tmp, s_parser *parser, s_type *type, va_list list)
 	if (tmp[parser->cursor] == 's')
 	{
 		type->arg_str = (char *) va_arg(list, char *);
+		if (type->arg_str == NULL)
+			type->arg_str = "NULL";
 		ft_len_arg(type);
 		ft_printstr(parser, type);
 	}
 	if (tmp[parser->cursor] == 'p')
 	{
 		type->arg_pt = (void *) va_arg(list, void *);
-		ft_printpt(parser, type);		
-//		printf("%p\n", pt);
+		ft_printpt(parser, type);
 	}
 }

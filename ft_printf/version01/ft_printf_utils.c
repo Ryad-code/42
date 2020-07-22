@@ -1,7 +1,7 @@
 
 #include "ft_printf.h"
 
-s_parser	ft_init_p(s_parser *parser)
+void	ft_init_p(s_parser *parser)
 {
 	parser->cursor = 0;
 	parser->flag1 = 0;
@@ -10,7 +10,7 @@ s_parser	ft_init_p(s_parser *parser)
 	parser->precision = 0;
 }
 
-s_type	ft_init_t(s_type *type)
+void	ft_init_t(s_type *type)
 {
 	type->len_arg = 0;
 	type->arg_int = 0;

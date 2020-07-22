@@ -129,6 +129,7 @@ void    ft_printstr(s_parser *parser, s_type *type)
 
 void	ft_printpt(s_parser *parser, s_type *type)
 {
-	type->arg_int = (unsigned long long)type->arg_pt;
-	ft_putnbr(type->arg_int);
+	type->arg_int = (unsigned long)type->arg_pt;
+//	ft_putnbr(type->arg_int);
+	ft_puthexa(type->arg_int);
 }

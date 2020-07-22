@@ -29,17 +29,18 @@ int	ft_printf(const char *s, ...);
 
 void	ft_putchar(char c);
 void	ft_putstr(const char *s);
-void	ft_putnbr(int nb);
+void	ft_putnbr(long nb);
 void	ft_conv(char *tmp, s_parser *parser, s_type *type, va_list list);
+void	ft_puthexa(long nb);
 
-int	ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 char    *ft_strdup(const char *s);
 
-s_parser    ft_init_p(s_parser *parser);
-s_type    ft_init_t(s_type *type);
+void    ft_init_p(s_parser *parser);
+void    ft_init_t(s_type *type);
 
-int	fdcurs(const char *s);
-int	ctcurs(const char *s);
+int		fdcurs(const char *s);
+int		ctcurs(const char *s);
 
 void	ft_flags(char *s, s_parser *parser);
 void	ft_width(char *s, s_parser *parser, va_list list);
