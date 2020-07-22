@@ -9,9 +9,9 @@ int	main()
 	char c = 'X';
 	void	*pt = &s;
 
-	printf("pt = %p\n", pt);
+	printf("pt = %-12.6p\n", pt);
 
-	ft_printf("pt = %p\n", pt);
+	ft_printf("pt = %-12.6p\n", pt);
 
 	return (0);
 }

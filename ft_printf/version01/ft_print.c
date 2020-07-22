@@ -130,6 +130,12 @@ void    ft_printstr(s_parser *parser, s_type *type)
 void	ft_printpt(s_parser *parser, s_type *type)
 {
 	type->arg_int = (unsigned long)type->arg_pt;
-//	ft_putnbr(type->arg_int);
+	if (parser->flag1 == 0)
+	{
+		ft_printsp(parser->width - type->len_arg);
+	}
+	ft_putstr("0x");
 	ft_puthexa(type->arg_int);
+	if (parser->flag1)
+		ft_printsp(parser->width - type->len_arg);
 }

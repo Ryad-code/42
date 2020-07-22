@@ -35,6 +35,7 @@ void	ft_putnbr(long nb)
 void	ft_puthexa(long nb)
 {
 	char tab_hexa[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+	
 	if (nb >= 16)
 	{
 		ft_puthexa(nb / 16);
@@ -71,6 +72,7 @@ void	ft_conv(char *tmp, s_parser *parser, s_type *type, va_list list)
 	if (tmp[parser->cursor] == 'p')
 	{
 		type->arg_pt = (void *) va_arg(list, void *);
+		type->len_arg = 14;
 		ft_printpt(parser, type);
 	}
 }
