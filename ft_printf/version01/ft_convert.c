@@ -1,5 +1,5 @@
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void	ft_putchar(char c)
 {
@@ -89,8 +89,8 @@ void	ft_conv(char *tmp, s_parser *parser, s_type *type, va_list list)
 	if (tmp[parser->cursor] == 'x' || tmp[parser->cursor] == 'X')
 	{
 		type->arg_hex = (unsigned long) va_arg(list, unsigned long);
-		type->arg_char = tmp[parser->cursor];
 		ft_len_arg(type);
+		type->arg_char = tmp[parser->cursor];
 		ft_printhex(parser, type);
 	}
 }

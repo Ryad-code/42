@@ -1,5 +1,5 @@
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	main()
 {
@@ -10,10 +10,10 @@ int	main()
 //	char c = 'X';
 //	void	*pt = &s;
 
-	res = printf("hex = %012x\n", nb1);
+	res = printf("hex = %012x et int = %-0016.11d|\n", nb1, nb);
 	printf("%d\n", res);
 
-	res = ft_printf("hex = %012x\n", nb1);
+	res = ft_printf("hex = %012x et int = %-0016.11d|\n", nb1, nb);
 	printf("%d\n", res);
 	return (0);
 }

@@ -1,5 +1,5 @@
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void	ft_flags(char *s, s_parser *parser)
 {
@@ -84,9 +84,9 @@ void	ft_len_arg(s_type *type)
 	if (type->arg_int)
 	{
 		nb = type->arg_int;
-		if (nb < 0)
+		if (type->arg_int < 0)
 		{
-			nb = -nb;
+			nb = -type->arg_int;
 			i++;
 		}
 		while (nb >= 10)

@@ -1,5 +1,5 @@
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void    ft_print(const char *s, s_type *type)
 {

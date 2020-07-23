@@ -3,7 +3,7 @@ CC=gcc
 AR=ar
 CFLAGS=-Wall -Wextra -Werror
 ARFLAGS=rc
-NAME=ft_printf.a
+NAME=libftprintf.a
 SRC=ft_printf.c ft_printf_utils.c ft_print.c ft_convert.c ft_parser.c
 
 OBJ=$(SRC:.c=.o)

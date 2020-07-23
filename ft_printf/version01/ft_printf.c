@@ -1,16 +1,16 @@
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	ft_printf(const char *s, ...)
 {
 	int i;
 	char *tmp;
-//	char tmp1;
 	s_type type;
 	s_parser parser;
 
 	i = 0;
 	tmp = ft_strdup(s);
+	type.f_len = 0;
 //......................................................................................
 	va_list list;
 	va_start(list, s);
@@ -33,6 +33,12 @@ int	ft_printf(const char *s, ...)
 		tmp = &tmp[parser.cursor + 1];
 		type.f_len = type.f_len + type.len_arg;
 		i++;
+//		printf("\nwidth = %d\n", parser.width);
+//		printf("\nprecision = %d\n", parser.precision);
+//		printf("\nlen = %d\n", type.len_arg);
+//		printf("\nfin = %d\n", type.f_len);
+//		printf("\npt = %p\n", type.arg_pt);
+//		printf("\nhex = %ld\n", type.arg_hex);
 	}
 	ft_print(tmp, &type);
 	tmp = NULL;
