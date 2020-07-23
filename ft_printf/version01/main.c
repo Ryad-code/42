@@ -3,15 +3,17 @@
 
 int	main()
 {
-	int nb = -25;
-	int nb1 = 26;
-	char *s = "bonjour";
-	char c = 'X';
-	void	*pt = &s;
+	int res;
+	int nb = 123456789;
+	int nb1 = 25250000;
+//	char *s = "bonjour";
+//	char c = 'X';
+//	void	*pt = &s;
 
-	printf("pt = %-12.6p\n", pt);
+	res = printf("hex = %012x", nb1);
+	printf("\n%d\n", res);
 
-	ft_printf("pt = %-12.6p\n", pt);
-
+	res = ft_printf("hex = %012x", nb1);
+	printf("%d\n", res);
 	return (0);
 }

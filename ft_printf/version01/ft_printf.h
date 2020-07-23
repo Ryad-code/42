@@ -9,11 +9,14 @@
 
 typedef struct	type
 {
+	int f_len;
 	int len_arg;
 	long arg_int;
+	long arg_hex;
 	char arg_char;
 	char *arg_str;
 	void *arg_pt;
+
 }		s_type;
 
 typedef struct	parser
@@ -31,7 +34,8 @@ void	ft_putchar(char c);
 void	ft_putstr(const char *s);
 void	ft_putnbr(long nb);
 void	ft_conv(char *tmp, s_parser *parser, s_type *type, va_list list);
-void	ft_puthexa(long nb);
+void	ft_puthex(unsigned long nb);
+void	ft_putheX(unsigned long nb);
 
 int		ft_strlen(const char *s);
 char    *ft_strdup(const char *s);
@@ -54,4 +58,5 @@ void	ft_printint(s_parser *parser, s_type *type);
 void    ft_printc(s_parser *parser, s_type *type);
 void    ft_printstr(s_parser *parser, s_type *type);
 void	ft_printpt(s_parser *parser, s_type *type);
+void	ft_printhex(s_parser *parser, s_type *type);
 #endif

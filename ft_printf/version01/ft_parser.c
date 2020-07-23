@@ -77,7 +77,7 @@ void	ft_precision(char *s, s_parser *parser, va_list list)
 void	ft_len_arg(s_type *type)
 {
 	int i;
-	int nb;
+	long nb;
 
 	i = 0;
 	nb = 0;
@@ -89,16 +89,26 @@ void	ft_len_arg(s_type *type)
 			nb = -nb;
 			i++;
 		}
-		while (nb > 10)
+		while (nb >= 10)
 		{
 			nb = nb / 10;
 			i++;
 		}
 		type->len_arg = i + 1;
 	}
-	i = 0;
 	if (type->arg_char)
 		type->len_arg = 1;
 	if (type->arg_str)
 		type->len_arg = ft_strlen(type->arg_str);
+	i = 0;
+	if (type->arg_hex)
+	{
+		nb = type->arg_hex;
+		while (nb >= 16)
+		{
+			nb = nb / 16;
+			i++;
+		}
+		type->len_arg = i + 1;	
+	}
 }
