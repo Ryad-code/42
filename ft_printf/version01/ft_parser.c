@@ -112,3 +112,5 @@ void	ft_len_arg(s_type *type)
 		type->len_arg = i + 1;	
 	}
 }
+
+//void	ft_f_len(s_parser *parser, s_type *type)

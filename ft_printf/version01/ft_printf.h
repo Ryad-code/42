@@ -38,7 +38,7 @@ void	ft_puthex(unsigned long nb);
 void	ft_putheX(unsigned long nb);
 
 int		ft_strlen(const char *s);
-char    *ft_strdup(const char *s);
+char	*ft_strdup(const char *s);
 
 void    ft_init_p(s_parser *parser);
 void    ft_init_t(s_type *type);
@@ -51,9 +51,9 @@ void	ft_width(char *s, s_parser *parser, va_list list);
 void	ft_precision(char *s, s_parser *parser, va_list list);
 void	ft_len_arg(s_type *type);
 
-void	ft_print(const char *s);
-void	ft_printf0(int nb);
-void	ft_printsp(int nb);
+void	ft_print(const char *s, s_type *type);
+void	ft_printf0(int nb, s_type *type);
+void	ft_printsp(int nb, s_type *type);
 void	ft_printint(s_parser *parser, s_type *type);
 void    ft_printc(s_parser *parser, s_type *type);
 void    ft_printstr(s_parser *parser, s_type *type);

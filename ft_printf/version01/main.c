@@ -10,10 +10,10 @@ int	main()
 //	char c = 'X';
 //	void	*pt = &s;
 
-	res = printf("hex = %012x", nb1);
-	printf("\n%d\n", res);
+	res = printf("hex = %012x\n", nb1);
+	printf("%d\n", res);
 
-	res = ft_printf("hex = %012x", nb1);
+	res = ft_printf("hex = %012x\n", nb1);
 	printf("%d\n", res);
 	return (0);
 }

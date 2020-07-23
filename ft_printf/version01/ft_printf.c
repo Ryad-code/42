@@ -5,6 +5,7 @@ int	ft_printf(const char *s, ...)
 {
 	int i;
 	char *tmp;
+//	char tmp1;
 	s_type type;
 	s_parser parser;
 
@@ -19,7 +20,7 @@ int	ft_printf(const char *s, ...)
 		ft_init_p(&parser);
 		ft_init_t(&type);
 
-		ft_print(tmp);
+		ft_print(tmp, &type);
 
 		parser.cursor = fdcurs(tmp) + 1;
 		
@@ -30,12 +31,10 @@ int	ft_printf(const char *s, ...)
 		ft_conv(tmp, &parser, &type, list);
 
 		tmp = &tmp[parser.cursor + 1];
+		type.f_len = type.f_len + type.len_arg;
 		i++;
-		printf("\nlen = %d", type.len_arg);
-		printf("\nwidth = %d", parser.width);
-		printf("\nf_len = %d\n", type.f_len);
 	}
-	ft_print(tmp);
+	ft_print(tmp, &type);
 	tmp = NULL;
 	free(tmp);
 	return (type.f_len);		
