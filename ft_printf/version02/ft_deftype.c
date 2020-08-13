@@ -2,21 +2,24 @@
 
 void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 {
-	if (s[parser->cursor] == 'd')
+	if (s[parser->cursor] == 'd' || s[parser->cursor] == 'i' || s[parser->cursor] == 'u')
 	{
 		type->arg_int = va_arg(list, int);
-		ft_putnbr(type->arg_int);
+		ft_arg_len(type);
+		ft_printint(parser, type);
 	}	
 	if (s[parser->cursor] == 'c')
 	{
 		type->arg_char = (char)va_arg(list, int);
-		ft_putchar(type->arg_char);
+		ft_arg_len(type);
+		ft_printchar(parser, type);
 	}
 
 	if (s[parser->cursor] == 's')
 	{
-		type->arg_str = va_arg(list, char*);
-		ft_putstr(type->arg_str);
+		type->arg_str = (char *)va_arg(list, char *);
+		ft_arg_len(type);
+		ft_printstr(parser, type);
 	}
 }
 

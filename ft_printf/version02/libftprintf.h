@@ -31,10 +31,17 @@ int ft_printf(const char *s, ...);
 void    ft_putchar(char c);
 void    ft_putstr(const char *s);
 void    ft_putnbr(long nb);
-
 void    ft_print(const char *s, s_type *type);
 void    ft_print0(int nb, s_type *type);
 void    ft_printsp(int nb, s_type *type);
+
+void	ft_printint(s_parser *parser, s_type *type);
+void    ft_printchar(s_parser *parser, s_type *type);
+void    ft_printstr(s_parser *parser, s_type *type);
+
+void	ft_flags(char *s, s_parser *parser);
+void    ft_width(char *s, s_parser *parser, va_list list);
+void    ft_precision(char *s, s_parser *parser, va_list list);
 
 void    ft_init_t(s_type *type);
 void    ft_init_p(s_parser *parser);
@@ -45,4 +52,6 @@ int ctcurs(const char *s);
 char *ft_strdup(const char *s);
 
 void ft_deftype(char *s, s_parser *parser, s_type *type, va_list list);
+void ft_arg_len(s_type *type);
+
 #endif

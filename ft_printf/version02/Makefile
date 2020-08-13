@@ -4,7 +4,7 @@ AR=ar
 CFLAGS=-Wall -Wextra -Werror
 ARFLAGS=rc
 NAME=libftprintf.a
-SRC=ft_printf.c ft_utils.c ft_print_utils.c ft_deftype.c
+SRC=ft_printf.c ft_utils.c ft_parser.c ft_print.c ft_print_utils.c ft_deftype.c
 
 OBJ=$(SRC:.c=.o)
 
