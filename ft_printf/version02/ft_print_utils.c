@@ -6,12 +6,12 @@ void	ft_putchar(char c)
 		write(1, &c, 1);
 }
 
-void	ft_putstr(const char *s)
+void	ft_putstr(const char *s, int n)
 {
 	int i;
 
 	i = 0;
-	while (s[i])
+	while (s[i] && i < n)
 	{
 		ft_putchar(s[i]);
 		i++;

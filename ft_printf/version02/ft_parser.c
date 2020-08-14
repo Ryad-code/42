@@ -71,6 +71,8 @@ void	ft_precision(char *s, s_parser *parser, va_list list)
 	}
 	if (parser->precision == 0)
 		parser->precision = res;
+	if (i > 0)
+		parser->is_p = 1;
 	parser->cursor = parser->cursor + i;
 }
 

@@ -8,6 +8,7 @@ void	ft_init_p(s_parser *parser)
 	parser->flag2 = 0;
 	parser->width = 0;
 	parser->precision = 0;
+	parser->is_p = 0;
 }
 
 void	ft_init_t(s_type *type)

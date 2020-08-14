@@ -24,12 +24,13 @@ typedef struct	parser
 	int flag2;
 	int width;
 	int precision;
+	int is_p;
 }			s_parser;
 
 int ft_printf(const char *s, ...);
 
 void    ft_putchar(char c);
-void    ft_putstr(const char *s);
+void    ft_putstr(const char *s, int n);
 void    ft_putnbr(long nb);
 void    ft_print(const char *s, s_type *type);
 void    ft_print0(int nb, s_type *type);
