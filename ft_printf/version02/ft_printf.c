@@ -28,7 +28,7 @@ int	ft_printf(const char *s, ...)
 		ft_precision(&tmp[parser.cursor], &parser, list);
 
 		ft_deftype(tmp, &parser, &type, list);
-
+ 
 		tmp = &tmp[parser.cursor + 1];
 		i++;
 //		printf("curs = %d\n", parser.cursor);

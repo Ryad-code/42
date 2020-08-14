@@ -70,6 +70,7 @@ void    ft_printstr(s_parser *parser, s_type *type)
 				else
 					ft_printsp(parser->width - parser->precision, type);
 			}
+
 			ft_putstr(type->arg_str, parser->precision);
 			if (!parser->is_p)
 			{
@@ -92,4 +93,34 @@ void    ft_printstr(s_parser *parser, s_type *type)
 				ft_printsp(parser->width - type->arg_len, type);
 			}
 		}
+}
+
+void	ft_printpt(s_parser *parser, s_type *type)
+{
+	type->arg_int = (unsigned long)type->arg_pt;
+	if (parser->flag1 == 0)
+		ft_printsp(parser->width - type->arg_len, type);
+	ft_putstr("0x", 2);
+	ft_puthex(type->arg_int);
+	if (parser->flag1)
+		ft_printsp(parser->width - type->arg_len, type);
+}
+
+void	ft_printhex(s_parser *parser, s_type *type)
+{
+	if (parser->flag1 || parser->precision)
+		parser->flag2 = 0;
+	if (parser->flag1 == 0)
+	{
+		if (parser->flag2)
+			ft_print0(parser->width - type->arg_len, type);
+		else
+			ft_printsp(parser->width - type->arg_len, type);
+	}
+	if (type->arg_char == 'x')
+		ft_puthex(type->arg_hex);
+	if (type->arg_char == 'X')
+		ft_putheX(type->arg_hex);
+	if (parser->flag1)
+		ft_printsp(parser->width - type->arg_len, type);
 }

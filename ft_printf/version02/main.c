@@ -4,9 +4,11 @@ int main()
 {
 //	ft_printf("|%6.d|\n", 0);
 //	printf("|%6.d|\n", 0);
+	int res;
 
-	printf("|%.10s|\n", "bonjour");
-	printf("|%.10s|\n", "bonjour");
+	res = ft_printf("|%s|\n", "bonjour");
+	printf("|%s|\n", "bonjour");
+	printf("%d\n", res);
 /*	printf("2|%10s|\n", "bonjour");
 	printf("3|%12.10s|\n", "bonjour");
 	printf("3|%-12.10s|\n", "bonjour");
