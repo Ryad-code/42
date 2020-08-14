@@ -2,12 +2,11 @@
 
 int main()
 {
-	ft_printf("int : |%12.6d|\n", 25);
-	printf("int : |%12.6d|\n", 25);
+//	ft_printf("|%6.d|\n", 0);
+//	printf("|%6.d|\n", 0);
 
-//	ft_printf("afficher char %c et voila\n", 'G');
-//	ft_printf("afficher str %s et voila\n", "chaine");
-
+	ft_printf("|%-12.0d|\n", 0);
+	printf("|%-12.0d|\n", 0);
 
 	return (0);
 }

@@ -31,12 +31,12 @@ int	ft_printf(const char *s, ...)
 
 		tmp = &tmp[parser.cursor + 1];
 		i++;
-/*		printf("curs = %d\n", parser.cursor);
-		printf("f1 = %d\n", parser.flag1);
-		printf("f2 = %d\n", parser.flag2);
-		printf("w1 = %d\n", parser.width);
-		printf("p1 = %d\n", parser.precision);
-		printf("l1 = %d\n", type.arg_len);*/
+//		printf("curs = %d\n", parser.cursor);
+//		printf("f1 = %d\n", parser.flag1);
+//		printf("f2 = %d\n", parser.flag2);
+//		printf("w1 = %d\n", parser.width);
+//		printf("p1 = %d\n", parser.precision);
+//		printf("l1 = %d\n", type.arg_len);*/
 	}
 	ft_print(tmp, &type);
 	tmp = NULL;

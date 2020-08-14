@@ -5,7 +5,10 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 	if (s[parser->cursor] == 'd' || s[parser->cursor] == 'i' || s[parser->cursor] == 'u')
 	{
 		type->arg_int = va_arg(list, int);
-		ft_arg_len(type);
+		if (type->arg_int == 0)
+			type->arg_len = 1;
+		else
+			ft_arg_len(type);
 		ft_printint(parser, type);
 	}	
 	if (s[parser->cursor] == 'c')
