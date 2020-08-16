@@ -59,20 +59,13 @@ void	ft_printchar(s_parser *parser, s_type *type)
 
 void    ft_printstr(s_parser *parser, s_type *type)
 {
-		if (parser->precision > ft_strlen(type->arg_str))
+		if (parser->precision > ft_strlen(type->arg_str) || parser->is_p == 0)
 				parser->precision = ft_strlen(type->arg_str);
 		if (parser->flag1 == 0)
 		{
-			if (parser->is_p)
-			{
-				if (parser->flag2)
-					ft_print0(parser->width - parser->precision, type);
-				else
-					ft_printsp(parser->width - parser->precision, type);
-			}
-
+			ft_printsp(parser->width - parser->precision, type);
 			ft_putstr(type->arg_str, parser->precision);
-			if (!parser->is_p)
+			if (!parser->precision)
 			{
 				if (parser->flag2)
 					ft_print0(parser->width - type->arg_len, type);
@@ -82,7 +75,7 @@ void    ft_printstr(s_parser *parser, s_type *type)
 		}
 		else
 		{
-			if (parser->precision)
+			if (parser->precision && parser->is_p)
 			{
 				ft_putstr(type->arg_str, parser->precision);
 				ft_printsp(parser->width - parser->precision, type);

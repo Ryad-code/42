@@ -16,7 +16,6 @@ int	ft_printf(const char *s, ...)
 
 	while (i < ctcurs(s))
 	{
-	
 		ft_init_t(&type);
 		ft_init_p(&parser);
 
@@ -36,7 +35,7 @@ int	ft_printf(const char *s, ...)
 //		printf("f2 = %d\n", parser.flag2);
 //		printf("w1 = %d\n", parser.width);
 //		printf("p1 = %d\n", parser.precision);
-//		printf("l1 = %d\n", type.arg_len);*/
+//		printf("isp1 = %d\n", parser.is_p);
 	}
 	ft_print(tmp, &type);
 	tmp = NULL;

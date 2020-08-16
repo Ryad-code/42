@@ -52,7 +52,7 @@ int	ctcurs(const char *s)
 
 	i = 0;
 	res = 0;
-	while (s[i - 1])
+	while (s[i + 1])
 	{
 		if (s[i] == '%' && s[i + 1] != '%')
 			res++;
