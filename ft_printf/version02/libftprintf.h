@@ -35,6 +35,7 @@ void    ft_putnbr(long nb);
 void    ft_print(const char *s, s_type *type);
 void    ft_print0(int nb, s_type *type);
 void    ft_printsp(int nb, s_type *type);
+void	ft_printerr();
 
 void	ft_puthex(unsigned long nb);
 void    ft_putheX(unsigned long nb);

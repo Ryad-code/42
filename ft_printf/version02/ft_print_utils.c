@@ -69,3 +69,8 @@ void	ft_printsp(int nb, s_type *type)
 	}
 	type->f_len = type->f_len + i;
 }
+
+void	ft_printerr()
+{
+	ft_putstr("Options result in undefined behavior", 36);
+}

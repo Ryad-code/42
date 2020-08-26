@@ -59,33 +59,41 @@ void	ft_printchar(s_parser *parser, s_type *type)
 
 void    ft_printstr(s_parser *parser, s_type *type)
 {
-		if (parser->precision > ft_strlen(type->arg_str) || parser->is_p == 0)
-				parser->precision = ft_strlen(type->arg_str);
-		if (parser->flag1 == 0)
+	if (parser->flag2)
+		ft_printerr();
+	if (parser->flag1 == 0)
+	{
+		if (parser->width)
 		{
-			ft_printsp(parser->width - parser->precision, type);
-			ft_putstr(type->arg_str, parser->precision);
-			if (!parser->precision)
+			if (parser->precision)
 			{
-				if (parser->flag2)
-					ft_print0(parser->width - type->arg_len, type);
-				else
-					ft_printsp(parser->width - type->arg_len, type);
-			}
-		}
-		else
-		{
-			if (parser->precision && parser->is_p)
-			{
-				ft_putstr(type->arg_str, parser->precision);
+				if ((parser->precision > type->arg_len && parser->precision < parser->width) || parser->precision > parser->width)
+					parser->precision = type->arg_len;
 				ft_printsp(parser->width - parser->precision, type);
 			}
 			else
-			{
-				ft_putstr(type->arg_str, ft_strlen(type->arg_str));
 				ft_printsp(parser->width - type->arg_len, type);
-			}
 		}
+		else
+			ft_printsp(parser->precision - type->arg_len, type);
+	}
+	ft_putstr(type->arg_str, type->arg_len);
+	if (parser->flag1)
+	{
+		if (parser->width)
+		{
+			if (parser->precision)
+			{
+				if ((parser->precision > type->arg_len && parser->precision < parser->width) || parser->precision > parser->width)
+					parser->precision = type->arg_len;
+				ft_printsp(parser->width - parser->precision, type);
+			}
+			else
+				ft_printsp(parser->width - type->arg_len, type);
+		}
+		else
+			ft_printsp(parser->precision - type->arg_len, type);
+	}
 }
 
 void	ft_printpt(s_parser *parser, s_type *type)
