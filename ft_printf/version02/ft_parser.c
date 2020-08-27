@@ -111,6 +111,6 @@ void	ft_arg_len(s_type *type)
 			nb = nb / 16;
 			i++;
 		}
-		type->arg_len = i + 1;	
+		type->arg_len = i + 1;
 	}
 }

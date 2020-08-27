@@ -75,9 +75,17 @@ void    ft_printstr(s_parser *parser, s_type *type)
 				ft_printsp(parser->width - type->arg_len, type);
 		}
 		else
-			ft_printsp(parser->precision - type->arg_len, type);
+		{
+			if (parser->precision < type->arg_len)
+				ft_printsp(parser->precision - type->arg_len, type);
+		}
 	}
-	ft_putstr(type->arg_str, type->arg_len);
+	if (parser->is_p > 0 && parser->precision == 0)
+		type->arg_len = 0;
+	else if (!parser->precision)
+		ft_putstr(type->arg_str, type->arg_len);	
+	else
+		ft_putstr(type->arg_str, parser->precision);
 	if (parser->flag1)
 	{
 		if (parser->width)
@@ -118,10 +126,17 @@ void	ft_printhex(s_parser *parser, s_type *type)
 		else
 			ft_printsp(parser->width - type->arg_len, type);
 	}
+	if (parser->precision > type->arg_len)
+		ft_print0(parser->precision - type->arg_len, type);
+	if (parser->is_p && parser->precision == 0 && type->arg_hex == 0)
+		type->arg_len = 0;
+	else
+	{
 	if (type->arg_char == 'x')
 		ft_puthex(type->arg_hex);
 	if (type->arg_char == 'X')
 		ft_putheX(type->arg_hex);
+	}
 	if (parser->flag1)
 		ft_printsp(parser->width - type->arg_len, type);
 }

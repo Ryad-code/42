@@ -20,6 +20,8 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 	if (s[parser->cursor] == 's')
 	{
 		type->arg_str = (char *)va_arg(list, char *);
+		if (type->arg_str == NULL)
+			type->arg_str = "(null)";
 		ft_arg_len(type);
 		ft_printstr(parser, type);
 	}
@@ -36,7 +38,8 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 		type->arg_char = s[parser->cursor];
 		ft_printhex(parser, type);
 	}
-
+	if (s[parser->cursor] == '%')
+		ft_putchar('%');
 }
 
 

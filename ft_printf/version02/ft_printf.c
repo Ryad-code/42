@@ -36,6 +36,8 @@ int	ft_printf(const char *s, ...)
 //		printf("w1 = %d\n", parser.width);
 //		printf("p1 = %d\n", parser.precision);
 //		printf("isp1 = %d\n", parser.is_p);
+//		printf("ct = %d\n", ctcurs(s));
+//		printf("len = %d\n", type.arg_len);
 	}
 	ft_print(tmp, &type);
 	tmp = NULL;
