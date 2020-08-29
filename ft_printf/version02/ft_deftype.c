@@ -2,15 +2,21 @@
 
 void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 {
-	if (s[parser->cursor] == 'd' || s[parser->cursor] == 'i' || s[parser->cursor] == 'u')
+	if (s[parser->cursor] == 'd' || s[parser->cursor] == 'i')
 	{
-		type->arg_int = va_arg(list, int);
+			type->arg_int = va_arg(list, int);
 		if (type->arg_int == 0)
 			type->arg_len = 1;
 		else
 			ft_arg_len(type);
 		ft_printint(parser, type);
-	}	
+	}
+	if (s[parser->cursor] == 'u')
+	{
+		type->arg_u = va_arg(list, unsigned int);
+		ft_arg_len(type);
+		ft_printu(parser, type);
+	}
 	if (s[parser->cursor] == 'c')
 	{
 		type->arg_char = (char)va_arg(list, int);
@@ -33,8 +39,11 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 	}
 	if (s[parser->cursor] == 'x' || s[parser->cursor] == 'X')
 	{
-		type->arg_hex = (unsigned long) va_arg(list, unsigned long);
-		ft_arg_len(type);
+		type->arg_hex = (unsigned int) va_arg(list, unsigned int);
+		if (type->arg_hex == 0)
+			type->arg_len = 1;
+		else
+			ft_arg_len(type);
 		type->arg_char = s[parser->cursor];
 		ft_printhex(parser, type);
 	}

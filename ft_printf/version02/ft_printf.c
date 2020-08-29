@@ -27,6 +27,7 @@ int	ft_printf(const char *s, ...)
 		ft_precision(&tmp[parser.cursor], &parser, list);
 
 		ft_deftype(tmp, &parser, &type, list);
+		type.f_len += type.arg_len;
  
 		tmp = &tmp[parser.cursor + 1];
 		i++;
@@ -38,6 +39,7 @@ int	ft_printf(const char *s, ...)
 //		printf("isp1 = %d\n", parser.is_p);
 //		printf("ct = %d\n", ctcurs(s));
 //		printf("len = %d\n", type.arg_len);
+//		printf("f_len = %d\n", type.f_len);
 	}
 	ft_print(tmp, &type);
 	tmp = NULL;

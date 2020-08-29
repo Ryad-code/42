@@ -80,9 +80,11 @@ void	ft_arg_len(s_type *type)
 {
 	int i;
 	long nb;
+	unsigned int nbu;
 
 	i = 0;
 	nb = 0;
+	nbu = 0;
 	if (type->arg_int)
 	{
 		nb = type->arg_int;
@@ -94,6 +96,16 @@ void	ft_arg_len(s_type *type)
 		while (nb >= 10)
 		{
 			nb = nb / 10;
+			i++;
+		}
+		type->arg_len = i + 1;
+	}
+	else if (type->arg_u)
+	{
+		nbu = type->arg_u;
+		while (nbu >= 10)
+		{
+			nbu = nbu / 10;
 			i++;
 		}
 		type->arg_len = i + 1;

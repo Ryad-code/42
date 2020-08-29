@@ -11,6 +11,7 @@ typedef struct	type
 	int f_len;
 	int arg_len;
 	long arg_int;
+	unsigned int arg_u;
 	long arg_hex;
 	char arg_char;
 	char *arg_str;
@@ -41,6 +42,7 @@ void	ft_puthex(unsigned long nb);
 void    ft_putheX(unsigned long nb);
 
 void	ft_printint(s_parser *parser, s_type *type);
+void	ft_printu(s_parser *parser, s_type *type);
 void    ft_printchar(s_parser *parser, s_type *type);
 void    ft_printstr(s_parser *parser, s_type *type);
 void    ft_printpt(s_parser *parser, s_type *type);

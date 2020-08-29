@@ -2,13 +2,16 @@
 
 int main()
 {
-	ft_printf("%010x\n", 0);
-	printf("\n");
-	printf("%010x\n", 0);
-/*	ft_printf("2|%10s|\n", "bonjour");
-	printf("2|%10s|\n\n", "bonjour");
+	int res;
 
-	ft_printf("3|%12.10s|\n", "bonjour");
+	res = ft_printf("|%u|\n", 4294967284);
+	printf("res = %d\n", res);
+
+	res = printf("|%u|\n", 4294967284);
+	printf("res = %d", res);
+
+
+/*	ft_printf("3|%12.10s|\n", "bonjour");
 	printf("3|%12.10s|\n\n", "bonjour");
 
 	ft_printf("3|%-12.10s|\n", "bonjour");
