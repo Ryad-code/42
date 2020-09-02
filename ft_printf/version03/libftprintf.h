@@ -41,8 +41,11 @@ void	ft_printerr();
 void	ft_puthex(unsigned long nb);
 void    ft_putheX(unsigned long nb);
 
+void	ft_printsign(int nb);
 void	ft_printint(s_parser *parser, s_type *type);
 void	ft_printu(s_parser *parser, s_type *type);
+
+
 void    ft_printchar(s_parser *parser, s_type *type);
 void    ft_printstr(s_parser *parser, s_type *type);
 void    ft_printpt(s_parser *parser, s_type *type);

@@ -40,6 +40,12 @@ int	ft_printf(const char *s, ...)
 //		printf("ct = %d\n", ctcurs(s));
 //		printf("len = %d\n", type.arg_len);
 //		printf("f_len = %d\n", type.f_len);
+//		printf("int = %ld\n", type.arg_int);
+//		printf("u = %u\n", type.arg_u);
+//		printf("hex = %lx\n", type.arg_hex);
+//		printf("char = %c\n", type.arg_char);
+//		printf("str = %s\n", type.arg_str);
+//		printf("pt = %p\n", type.arg_pt);
 	}
 	ft_print(tmp, &type);
 	tmp = NULL;

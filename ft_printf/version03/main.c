@@ -2,32 +2,31 @@
 
 int main()
 {
-	int res;
+/*	printf("1|%5.d|\n", 0);
+	printf("1|%05.d|\n", 0);
+	printf("1|%-5.d|\n\n", 0);
 
-	res = ft_printf("|%u|\n", 4294967284);
-	printf("res = %d\n", res);
+	ft_printf("1|%5.d|\n", 0);
+	ft_printf("1|%05.d|\n", 0);
+	ft_printf("1|%-5.d|\n", 0);*/
 
-	res = printf("|%u|\n", 4294967284);
-	printf("res = %d", res);
+	printf("1|%05d|\n", 25);
+	printf("2|%5d|\n", 25);
+	printf("3|%.5d|\n", 25);
+	printf("4|%5.10d|\n", 25);
+	printf("5|%10.5d|\n", 25);
+	printf("6|%-10d|\n", 25);	
+	printf("7|%-10.5d|\n", 25);
+	printf("8|%.d|\n\n", 25);
 
-
-/*	ft_printf("3|%12.10s|\n", "bonjour");
-	printf("3|%12.10s|\n\n", "bonjour");
-
-	ft_printf("3|%-12.10s|\n", "bonjour");
-	printf("3|%-12.10s|\n\n", "bonjour");
-
-	ft_printf("4|%10.12s|\n", "bonjour");
-	printf("4|%10.12s|\n\n", "bonjour");
-
-	ft_printf("3|%-10.12s|\n", "bonjour");
-	printf("3|%-10.12s|\n\n", "bonjour");
-
-	ft_printf("5|%.0s|\n", "bonjour");
-	printf("5|%.0s|\n\n", "bonjour");
-
-//	ft_printf("|%010.6s|\n", "bonjour");
-//	printf("|%010.6s|\n", "bonjour");*/
+	ft_printf("1|%05d|\n", 25);
+	ft_printf("2|%5d|\n", 25);
+	ft_printf("3|%.5d|\n", 25);
+	ft_printf("4|%5.10d|\n", 25);
+	ft_printf("5|%10.5d|\n", 25);
+	ft_printf("6|%-10d|\n", 25);
+	ft_printf("7|%-10.5d|\n", 25);
+	ft_printf("8|%.d|\n", 25);
 
 	return (0);
 }
