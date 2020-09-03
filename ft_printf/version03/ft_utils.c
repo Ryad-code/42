@@ -14,6 +14,7 @@ void	ft_init_p(s_parser *parser)
 void	ft_init_t(s_type *type)
 {
 	type->arg_len = 0;
+	type->arg = 0;
 	type->arg_int = 0;
 	type->arg_u = 0;
 	type->arg_char = '\0';

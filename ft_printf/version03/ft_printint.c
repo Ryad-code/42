@@ -38,7 +38,7 @@ void	ft_printint(s_parser *parser, s_type *type)
 		else
 			ft_putnbr(type->arg_int);
 	}
-	if (parser->flag1)
+	else if (parser->flag1)
 	{
 		if (parser->precision)
 		{
@@ -61,7 +61,40 @@ void	ft_printint(s_parser *parser, s_type *type)
 
 void	ft_printu(s_parser *parser, s_type *type)
 {
-	(void)parser;
-	(void)type;
+	if (parser->flag1 || parser->is_p)
+		parser->flag2 = 0;
+	if (parser->flag1 == 0)
+	{
+		if (parser->precision)
+                {
+                        ft_printsp(parser->width - parser->precision, type);
+                        ft_print0(parser->precision - type->arg_len, type);
+                }
+                else if (parser->flag2)
+                        ft_print0(parser->width - type->arg_len, type);
+                else
+                        ft_printsp(parser->width - type->arg_len, type);
+                if (parser->is_p && parser->precision == 0 && type->arg_u == 0)
+                        (void)type->arg_u;
+		else
+			ft_putnbr(type->arg_u);
+	}
+	else if (parser->flag1)
+	{
+		if (parser->precision)
+                {
+                        ft_print0(parser->precision - type->arg_len, type);
+                        ft_putnbr(type->arg_u);
+                        ft_printsp(parser->width - parser->precision, type);
+                }
+                else
+                {
+                        if (parser->is_p && parser->precision == 0 && type->arg_int == 0)
+                                (void)type->arg_u;
+                        else
+                                ft_putnbr(type->arg_u);
+                        ft_printsp(parser->width - type->arg_len, type);
+                }
+	}
 }
 

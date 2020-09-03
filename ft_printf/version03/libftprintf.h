@@ -8,6 +8,7 @@
 
 typedef struct	type
 {
+	int arg;
 	int f_len;
 	int arg_len;
 	long arg_int;
