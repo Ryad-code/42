@@ -115,12 +115,7 @@ void	ft_arg_len(s_type *type)
 		}
 		type->arg_len = i + 1;
 	}
-/*	if (type->arg)
-		type->arg_len = 1;
-	if (type->arg_str)
-		type->arg_len = ft_strlen(type->arg_str);
-	i = 0;
-	if (type->arg_hex)
+	else if (type->arg == 3)
 	{
 		nb = type->arg_hex;
 		while (nb >= 16)
@@ -129,5 +124,8 @@ void	ft_arg_len(s_type *type)
 			i++;
 		}
 		type->arg_len = i + 1;
+	}
+/*	if (type->arg_str)
+		type->arg_len = ft_strlen(type->arg_str);
 	}*/
 }
