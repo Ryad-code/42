@@ -125,7 +125,14 @@ void	ft_arg_len(s_type *type)
 		}
 		type->arg_len = i + 1;
 	}
-/*	if (type->arg_str)
-		type->arg_len = ft_strlen(type->arg_str);
-	}*/
+	else if (type->arg == 4)
+	{
+		nbu = (unsigned long)type->arg_pt;
+		while (nbu >= 16)
+		{
+			nbu = nbu / 16;
+			i++;
+		}
+		type->arg_len = i + 1;
+	}
 }

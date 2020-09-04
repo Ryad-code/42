@@ -14,9 +14,9 @@ typedef struct	type
 	long arg_int;
 	unsigned int arg_u;
 	long arg_hex;
+	void *arg_pt;
 	char arg_char;
 	char *arg_str;
-	void *arg_pt;
 }			s_type;
 
 typedef struct	parser
