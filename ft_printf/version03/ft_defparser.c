@@ -137,5 +137,8 @@ void	ft_arg_len(s_type *type)
 	}
 	else if (type->arg == 5)
 		type->arg_len = 1;
-
+	else if (type->arg == 6)
+	{
+		type->arg_len = ft_strlen(type->arg_str);
+	}
 }

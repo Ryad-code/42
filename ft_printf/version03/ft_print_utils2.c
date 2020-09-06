@@ -11,10 +11,13 @@ void	ft_putstr(const char *s, int n)
 	int i;
 
 	i = 0;
-	while (s[i] && i < n)
+	if (s)
 	{
-		ft_putchar(s[i]);
-		i++;
+		while (s[i] && i < n)
+		{
+			ft_putchar(s[i]);
+			i++;
+		}
 	}
 }
 
