@@ -57,13 +57,20 @@ void	ft_printhex(s_parser *parser, s_type *type)
 
 void	ft_printpt(s_parser *parser, s_type *type)
 {
-	(void)parser;
+	
 	if (type->arg_pt == NULL)
-		ft_putstr("(nil)", 5);
+	{
+		type->arg_str = "(nil)";
+		ft_printstr(parser, type);
+	}
 	else
 	{
 		type->arg_hex = (unsigned long)type->arg_pt;
+		if (parser->flag1 == 0)
+			ft_printsp(parser->width - type->arg_len, type);
 		ft_putstr("0x", 2);
 		ft_puthex(type->arg_hex);
+		if (parser->flag1)
+			ft_printsp(parser->width - type->arg_len, type);
 	}
 }

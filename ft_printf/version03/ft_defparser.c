@@ -135,4 +135,7 @@ void	ft_arg_len(s_type *type)
 		}
 		type->arg_len = i + 1;
 	}
+	else if (type->arg == 5)
+		type->arg_len = 1;
+
 }

@@ -37,8 +37,16 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 	{
 		type->arg_pt = va_arg(list, void*);
 		type->arg = 4;
-		ft_arg_len(type);
+		type->arg_len = 14;
+//		ft_arg_len(type);
 		ft_printpt(parser, type);
+	}
+	else if (s[parser->cursor] == 'c')
+	{
+		type->arg_char = (char)va_arg(list, int);
+		type->arg = 5;
+		ft_arg_len(type);
+		ft_printchar(parser, type);
 	}
 	else if (s[parser->cursor] == '%')
 		ft_putchar('%');
