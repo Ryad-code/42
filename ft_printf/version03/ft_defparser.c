@@ -21,6 +21,13 @@ void	ft_flags(char *s, s_parser *parser)
 		res++;
 	}
 	parser->flag2 = res;
+	res = 0;
+	while (s[i] == '-')
+	{
+		i++;
+		res++;
+	}
+	parser->flag1 += res;
 	parser->cursor = parser->cursor + i;
 }
 
@@ -42,7 +49,7 @@ void	ft_width(char *s, s_parser *parser, va_list list)
 		i++;
 	}
 	parser->width = res;
-	if (s[i] == '*' && s[i + 1] == '.')
+	if (s[i] == '*')
 	{
 		i++;
 		parser->width = va_arg(list, int);
@@ -78,6 +85,11 @@ void	ft_precision(char *s, s_parser *parser, va_list list)
 		parser->precision = res;
 	if (i > 0)
 		parser->is_p = 1;
+	if (parser->precision < 0)
+	{
+		parser->precision = 0;
+			parser->is_p = 0;
+	}
 	parser->cursor = parser->cursor + i;
 }
 
