@@ -6,13 +6,8 @@ int main()
 	char* s = "bonjour";
 //	s = NULL;
 	
-	printf("1|%-*i|\n", 2, 0);
-//	printf("2|%10.s|\n", s);
-//	printf("3|%-10.s|\n\n", s);
-
-	ft_printf("1|%-*i|\n", 2, 0);
-//	ft_printf("2|%10.s|\n", s);
-//	ft_printf("3|%-10.s|\n", s);
+	printf("1|%*.*i|\n", -2, 1, 123456789);
+	ft_printf("1|%*.*i|\n", -2, 1, 123456789);
 
 /*	printf("1|%010s|\n", s);
 	printf("2|%5s|\n", s);

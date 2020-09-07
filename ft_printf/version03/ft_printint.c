@@ -15,6 +15,8 @@ void	ft_printint(s_parser *parser, s_type *type)
 		sign++;
 	if (parser->flag1 || parser->is_p)
 		parser->flag2 = 0;
+	if (parser->precision && parser->precision < type->arg_len)
+		parser->precision = 0;
 	if (parser->flag1 == 0)
 	{
 		if (parser->precision)
