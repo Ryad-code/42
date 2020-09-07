@@ -65,6 +65,6 @@ int ctcurs(const char *s);
 char *ft_strdup(const char *s);
 
 void ft_deftype(char *s, s_parser *parser, s_type *type, va_list list);
-void ft_arg_len(s_type *type);
+void ft_arg_len(s_parser *parser, s_type *type);
 
 #endif

@@ -2,16 +2,12 @@
 
 int main()
 {
-	void* p;
-	char* s = "bonjour";
-//	s = NULL;
-	
-	printf("1|%*.*i|\n", -2, 1, 123456789);
-	ft_printf("1|%*.*i|\n", -2, 1, 123456789);
+	int res;
 
-/*	printf("1|%010s|\n", s);
-	printf("2|%5s|\n", s);
-	printf("3|%.5s|\n", s);
+	printf("|%.3s|\n", "hello");
+	ft_printf("|%.3s|\n", "hello");
+
+/*	printf("3|%.5s|\n", s);
 	printf("4|%5.10s|\n", s);
 	printf("5|%10.5s|\n", s);
 	printf("6|%-10s|\n", s);	

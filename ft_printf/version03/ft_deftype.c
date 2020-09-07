@@ -9,7 +9,7 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 		if (parser->is_p && parser->precision == 0 && type->arg_int == 0)
 			type->arg_len = 0;
 		else
-			ft_arg_len(type);
+			ft_arg_len(parser, type);
 		ft_printint(parser, type);
 	}
 	else if (s[parser->cursor] == 'u')
@@ -19,7 +19,7 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 		if (parser->is_p && parser->precision == 0)
 			type->arg_len = 0;
 		else
-			ft_arg_len(type);
+			ft_arg_len(parser, type);
 		ft_printu(parser, type);
 	}
 	else if (s[parser->cursor] == 'x' || s[parser->cursor] == 'X')
@@ -30,7 +30,7 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 		if (type->arg_hex == 0 && parser->is_p && parser->precision == 0)
 			type->arg_len = 0;
 		else
-			ft_arg_len(type);
+			ft_arg_len(parser, type);
 		ft_printhex(parser, type);
 	}
 	else if (s[parser->cursor] == 'p')
@@ -38,14 +38,14 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 		type->arg_pt = va_arg(list, void*);
 		type->arg = 4;
 		type->arg_len = 14;
-//		ft_arg_len(type);
+//		ft_arg_len(parser, type);
 		ft_printpt(parser, type);
 	}
 	else if (s[parser->cursor] == 'c')
 	{
 		type->arg_char = (char)va_arg(list, int);
 		type->arg = 5;
-		ft_arg_len(type);
+		ft_arg_len(parser, type);
 		ft_printchar(parser, type);
 	}
 	else if (s[parser->cursor] == 's')
@@ -57,11 +57,14 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 		if (parser->is_p && parser->precision == 0)
 			type->arg_len = 0;
 		else
-			ft_arg_len(type);
+			ft_arg_len(parser, type);
 		ft_printstr(parser, type);
 	}
 	else if (s[parser->cursor] == '%')
+	{
 		ft_putchar('%');
+		type->arg_len = 1;
+	}
 }
 
 

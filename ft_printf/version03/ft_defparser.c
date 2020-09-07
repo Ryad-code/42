@@ -93,7 +93,7 @@ void	ft_precision(char *s, s_parser *parser, va_list list)
 	parser->cursor = parser->cursor + i;
 }
 
-void	ft_arg_len(s_type *type)
+void	ft_arg_len(s_parser *parser, s_type *type)
 {
 	int i;
 	long nb;
@@ -151,6 +151,9 @@ void	ft_arg_len(s_type *type)
 		type->arg_len = 1;
 	else if (type->arg == 6)
 	{
+		if (parser->precision < ft_strlen(type->arg_str))
+			type->arg_len = parser->precision;
+		else
 		type->arg_len = ft_strlen(type->arg_str);
 	}
 }
