@@ -13,7 +13,6 @@ int	ft_printf(const char *s, ...)
 	i = 0;
 	tmp = ft_strdup(s);
 	type.f_len = 0;
-
 	while (i < ctcurs(s))
 	{
 		ft_init_t(&type);

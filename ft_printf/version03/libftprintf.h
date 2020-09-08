@@ -51,6 +51,7 @@ void    ft_printchar(s_parser *parser, s_type *type);
 void    ft_printstr(s_parser *parser, s_type *type);
 void    ft_printpt(s_parser *parser, s_type *type);
 void    ft_printhex(s_parser *parser, s_type *type);
+void    ft_printper(s_parser *parser, s_type *type);
 
 void	ft_flags(char *s, s_parser *parser);
 void    ft_width(char *s, s_parser *parser, va_list list);

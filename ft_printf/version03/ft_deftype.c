@@ -62,8 +62,8 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 	}
 	else if (s[parser->cursor] == '%')
 	{
-		ft_putchar('%');
 		type->arg_len = 1;
+		ft_printper(parser, type);
 	}
 }
 

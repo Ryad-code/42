@@ -151,9 +151,9 @@ void	ft_arg_len(s_parser *parser, s_type *type)
 		type->arg_len = 1;
 	else if (type->arg == 6)
 	{
-		if (parser->precision < ft_strlen(type->arg_str))
+		if (parser->is_p && parser->precision < ft_strlen(type->arg_str))
 			type->arg_len = parser->precision;
 		else
-		type->arg_len = ft_strlen(type->arg_str);
+			type->arg_len = ft_strlen(type->arg_str);
 	}
 }

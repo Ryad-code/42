@@ -4,8 +4,10 @@ int main()
 {
 	int res;
 
-	printf("|%.3s|\n", "hello");
-	ft_printf("|%.3s|\n", "hello");
+	res = printf("hello, %s.", "gavin");
+	printf("%d\n", res);
+	res = ft_printf("hello, %s.", "gavin");
+	printf("%d\n", res);
 
 /*	printf("3|%.5s|\n", s);
 	printf("4|%5.10s|\n", s);
