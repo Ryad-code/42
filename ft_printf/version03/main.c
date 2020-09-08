@@ -4,10 +4,10 @@ int main()
 {
 	int res;
 
-	res = printf("%8.3u", 8375);
+	res = printf("%9.2p 21 ", 1234);
 //	printf("%d\n", res);
 	printf("\n");
-	res = ft_printf("%8.3u", 8375);
+	res = ft_printf("%9.2p 21 ", 1234);
 //	printf("%d\n", res);
 
 /*	printf("3|%.5s|\n", s);

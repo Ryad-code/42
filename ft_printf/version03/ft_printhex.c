@@ -59,20 +59,29 @@ void	ft_printhex(s_parser *parser, s_type *type)
 
 void	ft_printpt(s_parser *parser, s_type *type)
 {
-	
-	if (type->arg_pt == NULL)
+	int res;
+
+	res = 0;
+	if (type->arg_pt  == NULL)
+		type->arg_len = 3;	
+	type->arg_hex = (unsigned long)type->arg_pt;
+	if (parser->is_p && parser->precision == 0)
 	{
-		type->arg_str = "(nil)";
-		ft_printstr(parser, type);
+		type->arg_len = 2;
+		res = 1;
 	}
-	else
+	if (parser->flag1 == 0)
 	{
-		type->arg_hex = (unsigned long)type->arg_pt;
-		if (parser->flag1 == 0)
-			ft_printsp(parser->width - type->arg_len, type);
+		ft_printsp(parser->width - type->arg_len, type);
 		ft_putstr("0x", 2);
-		ft_puthex(type->arg_hex);
-		if (parser->flag1)
-			ft_printsp(parser->width - type->arg_len, type);
+		if (!res)
+			ft_puthex(type->arg_hex);
+	}
+	if (parser->flag1)
+	{
+		ft_putstr("0x", 2);
+		if (!res)
+			ft_puthex(type->arg_hex);
+		ft_printsp(parser->width - type->arg_len, type);
 	}
 }

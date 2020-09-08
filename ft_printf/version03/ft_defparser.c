@@ -137,7 +137,7 @@ void	ft_arg_len(s_parser *parser, s_type *type)
 		}
 		type->arg_len = i + 1;
 	}
-	else if (type->arg == 4)
+/*	else if (type->arg == 4)
 	{
 		nbu = (unsigned long)type->arg_pt;
 		while (nbu >= 16)
@@ -146,7 +146,7 @@ void	ft_arg_len(s_parser *parser, s_type *type)
 			i++;
 		}
 		type->arg_len = i + 1;
-	}
+	}*/
 	else if (type->arg == 5)
 		type->arg_len = 1;
 	else if (type->arg == 6)
