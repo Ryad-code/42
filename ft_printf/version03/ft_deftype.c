@@ -52,7 +52,7 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 	{
 		type->arg_str = va_arg(list, char*);
 		type->arg = 6;
-		if (type->arg_str == NULL && parser->precision == 0)
+		if (type->arg_str == NULL)
 			type->arg_str = "(null)";
 		if (parser->is_p && parser->precision == 0)
 			type->arg_len = 0;

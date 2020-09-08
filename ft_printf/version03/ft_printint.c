@@ -65,6 +65,8 @@ void	ft_printu(s_parser *parser, s_type *type)
 {
 	if (parser->flag1 || parser->is_p)
 		parser->flag2 = 0;
+	if (parser->is_p && parser->precision && parser->precision < type->arg_len)
+		parser->precision = type->arg_len;
 	if (parser->flag1 == 0)
 	{
 		if (parser->precision)

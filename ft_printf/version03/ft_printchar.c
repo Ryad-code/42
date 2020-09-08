@@ -24,6 +24,8 @@ void	ft_printstr(s_parser *parser, s_type *type)
 		{
 			if (type->arg_str == NULL)
 				parser->precision = 0;
+			if (parser->precision > type->arg_len)
+				parser->precision = type->arg_len;
 			ft_printsp(parser->width - parser->precision, type);
 			ft_putstr(type->arg_str, parser->precision);
 		}
@@ -39,6 +41,8 @@ void	ft_printstr(s_parser *parser, s_type *type)
 		{
 			if (type->arg_str == NULL)
 				parser->precision = 0;
+			if (parser->precision > type->arg_len)
+				parser->precision = type->arg_len;
 			ft_putstr(type->arg_str, parser->precision);
 			ft_printsp(parser->width - parser->precision, type);
 		}
