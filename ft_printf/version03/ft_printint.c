@@ -93,7 +93,7 @@ void	ft_printu(s_parser *parser, s_type *type)
                 }
                 else
                 {
-                        if (parser->is_p && parser->precision == 0 && type->arg_int == 0)
+                        if (parser->is_p && parser->precision == 0 && type->arg_u == 0)
                                 (void)type->arg_u;
                         else
                                 ft_putnbr(type->arg_u);

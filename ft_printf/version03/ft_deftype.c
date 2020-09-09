@@ -16,7 +16,7 @@ void	ft_deftype(char *s, s_parser *parser, s_type *type, va_list list)
 	{
 		type->arg_u = va_arg(list, unsigned int);
 		type-> arg = 2;
-		if (parser->is_p && parser->precision == 0)
+		if (parser->is_p && parser->precision == 0 && type->arg_u == 0)
 			type->arg_len = 0;
 		else
 			ft_arg_len(parser, type);

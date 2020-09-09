@@ -2,15 +2,15 @@
 
 int main()
 {
-	void* p;
+//	void* p;
 	int res;
 
-	p = &res;
-	res = printf("%9p\n", p);
-//	printf("%d\n", res);
+//	p = &res;
+	res = printf("%c", 0);
+	printf("%d\n", res);
 //	printf("\n");
-	res = ft_printf("%9p\n", p);
-//	printf("%d\n", res);
+	res = ft_printf("%c", 0);
+	printf("%d\n", res);
 
 /*	printf("3|%.5s|\n", s);
 	printf("4|%5.10s|\n", s);

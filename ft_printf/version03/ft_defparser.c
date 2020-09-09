@@ -4,30 +4,22 @@
 void	ft_flags(char *s, s_parser *parser)
 {
 	int i;
-	int res;
+	int res1;
+	int res2;
 
 	i = 0;
-	res = 0;
-	while (s[i] == '-')
+	res1 = 0;
+	res2 = 0;
+	while (s[i] == '-' || s[i] == '0')
 	{
+		if (s[i] == '-')
+			res1++;
+		else if (s[i] == '0')
+			res2++;
 		i++;
-		res++;
 	}
-	parser->flag1 = res;
-	res = 0;
-	while(s[i] == '0')
-	{
-		i++;
-		res++;
-	}
-	parser->flag2 = res;
-	res = 0;
-	while (s[i] == '-')
-	{
-		i++;
-		res++;
-	}
-	parser->flag1 += res;
+	parser->flag1 = res1;
+	parser->flag2 = res2;
 	parser->cursor = parser->cursor + i;
 }
 
