@@ -2,12 +2,14 @@
 
 int main()
 {
+	void* p;
 	int res;
 
-	res = printf("%9.2p 21 ", 1234);
+	p = &res;
+	res = printf("%9p\n", p);
 //	printf("%d\n", res);
-	printf("\n");
-	res = ft_printf("%9.2p 21 ", 1234);
+//	printf("\n");
+	res = ft_printf("%9p\n", p);
 //	printf("%d\n", res);
 
 /*	printf("3|%.5s|\n", s);
