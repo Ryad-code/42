@@ -2,14 +2,16 @@
 
 int main()
 {
-//	void* p;
 	int res;
+	char c;
 
-//	p = &res;
-	res = printf("%c", 0);
+	c = 'c';
+
+	res = 0;
+	res = printf("%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c", 0, 0, 0, 0,     0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
 	printf("%d\n", res);
-//	printf("\n");
-	res = ft_printf("%c", 0);
+	printf("\n");
+	res = ft_printf("%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c", 0, 0, 0, 0,     0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
 	printf("%d\n", res);
 
 /*	printf("3|%.5s|\n", s);

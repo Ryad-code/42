@@ -59,7 +59,11 @@ int	ctcurs(const char *s)
 	while (s[i + 1])
 	{
 		if (s[i] == '%')
+		{
 			res++;
+			if (s[i + 1] == '%')
+				i++;
+		}
 		i++;
 	}
 	return (res);
