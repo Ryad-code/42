@@ -39,8 +39,10 @@ void    ft_print0(int nb, s_type *type);
 void    ft_printsp(int nb, s_type *type);
 void	ft_printerr();
 
+void	ft_defhex(char tab[16]);
+void    ft_defhex2(char tab[16]);
 void	ft_puthex(unsigned long nb);
-void    ft_putheX(unsigned long nb);
+void    ft_puthex2(unsigned long nb);
 
 void	ft_printsign(int nb);
 void	ft_printint(s_parser *parser, s_type *type);
@@ -69,6 +71,12 @@ void ft_deftype01(char *s, s_parser *parser, s_type *type, va_list list);
 void ft_deftype02(char *s, s_parser *parser, s_type *type, va_list list);
 void ft_deftype03(char *s, s_parser *parser, s_type *type, va_list list);
 void ft_deftype04(char *s, s_parser *parser, s_type *type);
-void ft_arg_len(s_parser *parser, s_type *type);
+
+void ft_arg_len1(s_type *type);
+void ft_arg_len2(s_type *type);
+void ft_arg_len3(s_type *type);
+void ft_arg_len4(s_type *type);
+void ft_arg_len5(s_type *type);
+void ft_arg_len6(s_parser *parser, s_type *type);
 
 #endif

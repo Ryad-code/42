@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 13:56:33 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/11 13:57:02 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/14 13:19:18 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_deftype01(char *s, s_parser *parser, s_type *type, va_list list)
 		if (parser->is_p && parser->precision == 0 && type->arg_int == 0)
 			type->arg_len = 0;
 		else
-			ft_arg_len(parser, type);
+			ft_arg_len1(type);
 		ft_printint(parser, type);
 	}
 	else if (s[parser->cursor] == 'u')
@@ -31,7 +31,7 @@ void	ft_deftype01(char *s, s_parser *parser, s_type *type, va_list list)
 		if (parser->is_p && parser->precision == 0 && type->arg_u == 0)
 			type->arg_len = 0;
 		else
-			ft_arg_len(parser, type);
+			ft_arg_len2(type);
 		ft_printu(parser, type);
 	}
 	ft_deftype02(s, parser, type, list);
@@ -47,14 +47,14 @@ void	ft_deftype02(char *s, s_parser *parser, s_type *type, va_list list)
 		if (type->arg_hex == 0 && parser->is_p && parser->precision == 0)
 			type->arg_len = 0;
 		else
-			ft_arg_len(parser, type);
+			ft_arg_len3(type);
 		ft_printhex(parser, type);
 	}
 	else if (s[parser->cursor] == 'p')
 	{
 		type->arg_pt = va_arg(list, void*);
 		type->arg = 4;
-		ft_arg_len(parser, type);
+		ft_arg_len4(type);
 		type->arg_len += 2;
 		ft_printpt(parser, type);
 	}
@@ -67,7 +67,7 @@ void	ft_deftype03(char *s, s_parser *parser, s_type *type, va_list list)
 	{
 		type->arg_char = (char)va_arg(list, int);
 		type->arg = 5;
-		ft_arg_len(parser, type);
+		ft_arg_len5(type);
 		ft_printchar(parser, type);
 	}
 	else if (s[parser->cursor] == 's')
@@ -79,7 +79,7 @@ void	ft_deftype03(char *s, s_parser *parser, s_type *type, va_list list)
 		if (parser->is_p && parser->precision == 0)
 			type->arg_len = 0;
 		else
-			ft_arg_len(parser, type);
+			ft_arg_len6(parser, type);
 		ft_printstr(parser, type);
 	}
 	ft_deftype04(s, parser, type);

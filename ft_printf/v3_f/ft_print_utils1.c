@@ -1,47 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_utils2.c                                  :+:      :+:    :+:   */
+/*   ft_print_utils1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 13:34:23 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 13:44:33 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/09/14 13:33:11 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/09/14 13:33:50 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putchar(char c)
-{
-	if (c)
-		write(1, &c, 1);
-}
-
-void	ft_putstr(const char *s, int n)
+void	ft_print(const char *s, s_type *type)
 {
 	int i;
 
 	i = 0;
-	if (s)
+	while (s[i] != '%' && s[i] != '\0')
 	{
-		while (s[i] && i < n)
-		{
-			ft_putchar(s[i]);
-			i++;
-		}
+		ft_putchar(s[i]);
+		i++;
 	}
+	type->f_len = type->f_len + i;
 }
 
-void	ft_putnbr(long nb)
+void	ft_print0(int nb, s_type *type)
 {
-	if (nb < 0)
-		nb = -nb;
-	if (nb >= 10)
+	int i;
+
+	i = 0;
+	while (i < nb)
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putchar('0');
+		i++;
 	}
-	else
-		ft_putchar(nb + '0');
+	type->f_len = type->f_len + i;
+}
+
+void	ft_printsp(int nb, s_type *type)
+{
+	int i;
+
+	i = 0;
+	while (i < nb)
+	{
+		ft_putchar(' ');
+		i++;
+	}
+	type->f_len = type->f_len + i;
 }

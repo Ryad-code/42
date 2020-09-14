@@ -2,33 +2,29 @@
 
 int main()
 {
-	int res;
-	char c;
+	char tab[16];
+	int i;
+	int j;
 
-	c = 0;
-
-	res = 0;
-	printf("%5c\n", '\x00');
-	printf("%d\n", res);
-//	printf("\n");
-	ft_printf("%5c\n", '\x00');
-	printf("%d\n", res);
-
-/*	printf("3|%.5s|\n", s);
-	printf("4|%5.10s|\n", s);
-	printf("5|%10.5s|\n", s);
-	printf("6|%-10s|\n", s);	
-	printf("7|%-10.5s|\n", s);
-	printf("8|%.s|\n\n", s);
-
-	ft_printf("1|%010s|\n", s);
-	ft_printf("2|%5s|\n", s);
-	ft_printf("3|%.5s|\n", s);
-	ft_printf("4|%5.10s|\n", s);
-	ft_printf("5|%10.5s|\n", s);
-	ft_printf("6|%-10s|\n", s);
-	ft_printf("7|%-10.5s|\n", s);
-	ft_printf("8|%.s|\n", s);*/
+	i = 0;
+	j = 0;
+	while (i < 10)
+	{
+		tab[i] = i + 48;
+		i++;
+	}
+	while (i < 16)
+	{
+		tab[i] = 'a' + j;
+		i++;
+		j++;
+	}
+	i = 0;
+	while (i < 16)
+	{
+		printf("%c\n", tab[i]);
+		i++;
+	}	
 
 	return (0);
 }

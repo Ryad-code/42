@@ -24,7 +24,7 @@ void	ft_printhex(s_parser *parser, s_type *type)
 			if (type->arg_char == 'x')
 				ft_puthex(type->arg_hex);
 			else if (type->arg_char == 'X')
-				ft_putheX(type->arg_hex);
+				ft_puthex2(type->arg_hex);
 			(void)type->arg_char;
 		}
 	}
@@ -36,7 +36,7 @@ void	ft_printhex(s_parser *parser, s_type *type)
                         if (type->arg_char == 'x')
 				ft_puthex(type->arg_hex);
 			else if (type->arg_char == 'X')
-				ft_putheX(type->arg_hex);
+				ft_puthex2(type->arg_hex);
 			(void)type->arg_char;
                         ft_printsp(parser->width - parser->precision, type);
                 }
@@ -49,7 +49,7 @@ void	ft_printhex(s_parser *parser, s_type *type)
 				if (type->arg_char == 'x')
 					ft_puthex(type->arg_hex);
 				else if (type->arg_char == 'X')
-					ft_putheX(type->arg_hex);
+					ft_puthex2(type->arg_hex);
 				(void)type->arg_char;
 			}
                         ft_printsp(parser->width - type->arg_len, type);
