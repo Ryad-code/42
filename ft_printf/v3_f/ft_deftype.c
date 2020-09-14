@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 13:56:33 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 13:19:18 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/14 15:50:20 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_deftype01(char *s, s_parser *parser, s_type *type, va_list list)
 			type->arg_len = 0;
 		else
 			ft_arg_len1(type);
-		ft_printint(parser, type);
+		ft_printint1(parser, type);
 	}
 	else if (s[parser->cursor] == 'u')
 	{
@@ -32,7 +32,7 @@ void	ft_deftype01(char *s, s_parser *parser, s_type *type, va_list list)
 			type->arg_len = 0;
 		else
 			ft_arg_len2(type);
-		ft_printu(parser, type);
+		ft_printu1(parser, type);
 	}
 	ft_deftype02(s, parser, type, list);
 }

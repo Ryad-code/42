@@ -45,14 +45,19 @@ void	ft_puthex(unsigned long nb);
 void    ft_puthex2(unsigned long nb);
 
 void	ft_printsign(int nb);
-void	ft_printint(s_parser *parser, s_type *type);
-void	ft_printu(s_parser *parser, s_type *type);
+void	ft_printint1(s_parser *parser, s_type *type);
+void    ft_printint2(s_parser *parser, s_type *type, int sign);
+void    ft_printint3(s_parser *parser, s_type *type, int sign);
+void	ft_printu1(s_parser *parser, s_type *type);
+void    ft_printu2(s_parser *parser, s_type *type);
 
 
 void    ft_printchar(s_parser *parser, s_type *type);
 void    ft_printstr(s_parser *parser, s_type *type);
 void    ft_printpt(s_parser *parser, s_type *type);
 void    ft_printhex(s_parser *parser, s_type *type);
+//void    ft_printhex2(s_parser *parser, s_type *type);
+//void    ft_printhex3(s_parser *parser, s_type *type);
 void    ft_printper(s_parser *parser, s_type *type);
 
 void	ft_flags(char *s, s_parser *parser);

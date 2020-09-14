@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/14 15:00:53 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/09/14 15:02:29 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libftprintf.h"
 
@@ -23,7 +34,7 @@ void	ft_init_t(s_type *type)
 	type->arg_hex = 0;
 }
 
-int	ft_strlen(const char *s)
+int		ft_strlen(const char *s)
 {
 	int i;
 
@@ -35,7 +46,7 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-int	fdcurs(const char *s)
+int		fdcurs(const char *s)
 {
 	int i;
 
@@ -49,7 +60,7 @@ int	fdcurs(const char *s)
 	return (0);
 }
 
-int	ctcurs(const char *s)
+int		ctcurs(const char *s)
 {
 	int i;
 	int res;
@@ -69,11 +80,10 @@ int	ctcurs(const char *s)
 	return (res);
 }
 
-
 char	*ft_strdup(const char *s)
 {
-	int i;
-	char *dst;
+	int		i;
+	char	*dst;
 
 	i = 0;
 	dst = NULL;
