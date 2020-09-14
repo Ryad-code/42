@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 13:44:04 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 15:52:31 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/14 16:42:34 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void	ft_puthex2(unsigned long nb)
 void	ft_hex(s_type *type)
 {
 	if (type->arg_char == 'x')
-		ft_puthex(type->arg_char);
+		ft_puthex(type->arg_hex);
 	if (type->arg_char == 'X')
-		ft_puthex2(type->arg_char);
+		ft_puthex2(type->arg_hex);
 	(void)type->arg_char;
 }

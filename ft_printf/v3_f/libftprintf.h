@@ -39,6 +39,7 @@ void    ft_print0(int nb, s_type *type);
 void    ft_printsp(int nb, s_type *type);
 void	ft_printerr();
 
+void	ft_hex(s_type *type);
 void	ft_defhex(char tab[16]);
 void    ft_defhex2(char tab[16]);
 void	ft_puthex(unsigned long nb);
@@ -55,9 +56,9 @@ void    ft_printu2(s_parser *parser, s_type *type);
 void    ft_printchar(s_parser *parser, s_type *type);
 void    ft_printstr(s_parser *parser, s_type *type);
 void    ft_printpt(s_parser *parser, s_type *type);
-void    ft_printhex(s_parser *parser, s_type *type);
-//void    ft_printhex2(s_parser *parser, s_type *type);
-//void    ft_printhex3(s_parser *parser, s_type *type);
+void    ft_printhex1(s_parser *parser, s_type *type);
+void    ft_printhex2(s_parser *parser, s_type *type);
+void    ft_printhex3(s_parser *parser, s_type *type);
 void    ft_printper(s_parser *parser, s_type *type);
 
 void	ft_flags(char *s, s_parser *parser);

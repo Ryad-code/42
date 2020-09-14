@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 13:56:33 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 15:50:20 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/14 16:46:51 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_deftype02(char *s, s_parser *parser, s_type *type, va_list list)
 			type->arg_len = 0;
 		else
 			ft_arg_len3(type);
-		ft_printhex(parser, type);
+		ft_printhex1(parser, type);
 	}
 	else if (s[parser->cursor] == 'p')
 	{
