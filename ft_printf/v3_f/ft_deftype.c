@@ -6,13 +6,13 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 13:56:33 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 16:46:51 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:42:53 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_deftype01(char *s, s_parser *parser, s_type *type, va_list list)
+void	ft_deftype01(char *s, t_parser *parser, t_type *type, va_list list)
 {
 	if (s[parser->cursor] == 'd' || s[parser->cursor] == 'i')
 	{
@@ -37,7 +37,7 @@ void	ft_deftype01(char *s, s_parser *parser, s_type *type, va_list list)
 	ft_deftype02(s, parser, type, list);
 }
 
-void	ft_deftype02(char *s, s_parser *parser, s_type *type, va_list list)
+void	ft_deftype02(char *s, t_parser *parser, t_type *type, va_list list)
 {
 	if (s[parser->cursor] == 'x' || s[parser->cursor] == 'X')
 	{
@@ -61,7 +61,7 @@ void	ft_deftype02(char *s, s_parser *parser, s_type *type, va_list list)
 	ft_deftype03(s, parser, type, list);
 }
 
-void	ft_deftype03(char *s, s_parser *parser, s_type *type, va_list list)
+void	ft_deftype03(char *s, t_parser *parser, t_type *type, va_list list)
 {
 	if (s[parser->cursor] == 'c')
 	{
@@ -80,12 +80,12 @@ void	ft_deftype03(char *s, s_parser *parser, s_type *type, va_list list)
 			type->arg_len = 0;
 		else
 			ft_arg_len6(parser, type);
-		ft_printstr(parser, type);
+		ft_printstr1(parser, type);
 	}
 	ft_deftype04(s, parser, type);
 }
 
-void	ft_deftype04(char *s, s_parser *parser, s_type *type)
+void	ft_deftype04(char *s, t_parser *parser, t_type *type)
 {
 	if (s[parser->cursor] == '%')
 	{

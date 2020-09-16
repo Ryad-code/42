@@ -6,13 +6,13 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 13:25:57 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 13:27:49 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:41:10 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_arg_len1(s_type *type)
+void	ft_arg_len1(t_type *type)
 {
 	int		i;
 	long	nb;
@@ -36,7 +36,7 @@ void	ft_arg_len1(s_type *type)
 	}
 }
 
-void	ft_arg_len2(s_type *type)
+void	ft_arg_len2(t_type *type)
 {
 	int				i;
 	unsigned long	nbu;
@@ -55,7 +55,7 @@ void	ft_arg_len2(s_type *type)
 	}
 }
 
-void	ft_arg_len3(s_type *type)
+void	ft_arg_len3(t_type *type)
 {
 	int		i;
 	long	nb;

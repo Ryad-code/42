@@ -6,13 +6,13 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:00:53 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 15:02:29 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:46:13 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_init_p(s_parser *parser)
+void	ft_init_p(t_parser *parser)
 {
 	parser->cursor = 0;
 	parser->flag1 = 0;
@@ -22,7 +22,7 @@ void	ft_init_p(s_parser *parser)
 	parser->is_p = 0;
 }
 
-void	ft_init_t(s_type *type)
+void	ft_init_t(t_type *type)
 {
 	type->arg_len = 0;
 	type->arg = 0;
@@ -78,22 +78,4 @@ int		ctcurs(const char *s)
 		i++;
 	}
 	return (res);
-}
-
-char	*ft_strdup(const char *s)
-{
-	int		i;
-	char	*dst;
-
-	i = 0;
-	dst = NULL;
-	if (!(dst = malloc(sizeof(char) * ft_strlen(s) + 1)))
-		return (dst);
-	while (s[i])
-	{
-		dst[i] = s[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
 }

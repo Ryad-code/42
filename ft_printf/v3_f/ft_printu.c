@@ -6,13 +6,13 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:15:12 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 15:24:57 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:45:54 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_printu1(s_parser *parser, s_type *type)
+void	ft_printu1(t_parser *parser, t_type *type)
 {
 	if (parser->flag1 || parser->is_p)
 		parser->flag2 = 0;
@@ -37,7 +37,7 @@ void	ft_printu1(s_parser *parser, s_type *type)
 	ft_printu2(parser, type);
 }
 
-void	ft_printu2(s_parser *parser, s_type *type)
+void	ft_printu2(t_parser *parser, t_type *type)
 {
 	if (parser->flag1)
 	{

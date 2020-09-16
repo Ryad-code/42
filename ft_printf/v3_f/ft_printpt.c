@@ -6,13 +6,13 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 16:29:06 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 16:49:59 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:45:34 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_printpt(s_parser *parser, s_type *type)
+void	ft_printpt(t_parser *parser, t_type *type)
 {
 	int res;
 

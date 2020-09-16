@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/16 14:38:01 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/09/16 15:44:07 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
-void	ft_printchar(s_parser *parser, s_type *type)
+void	ft_printchar(t_parser *parser, t_type *type)
 {
 	if (parser->flag1 == 0)
 	{
@@ -14,7 +26,7 @@ void	ft_printchar(s_parser *parser, s_type *type)
 	}
 }
 
-void	ft_printstr(s_parser *parser, s_type *type)
+void	ft_printstr1(t_parser *parser, t_type *type)
 {
 	if (parser->flag1 || parser->is_p)
 		parser->flag2 = 0;
@@ -35,7 +47,12 @@ void	ft_printstr(s_parser *parser, s_type *type)
 			ft_putstr(type->arg_str, ft_strlen(type->arg_str));
 		}
 	}
-	else if (parser->flag1)
+	ft_printstr2(parser, type);
+}
+
+void	ft_printstr2(t_parser *parser, t_type *type)
+{
+	if (parser->flag1)
 	{
 		if (parser->is_p)
 		{

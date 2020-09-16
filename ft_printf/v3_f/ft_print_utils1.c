@@ -6,13 +6,31 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 13:33:11 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 13:33:50 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:43:17 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_print(const char *s, s_type *type)
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*dst;
+
+	i = 0;
+	dst = NULL;
+	if (!(dst = malloc(sizeof(char) * ft_strlen(s) + 1)))
+		return (dst);
+	while (s[i])
+	{
+		dst[i] = s[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
+
+void	ft_print(const char *s, t_type *type)
 {
 	int i;
 
@@ -25,7 +43,7 @@ void	ft_print(const char *s, s_type *type)
 	type->f_len = type->f_len + i;
 }
 
-void	ft_print0(int nb, s_type *type)
+void	ft_print0(int nb, t_type *type)
 {
 	int i;
 
@@ -38,7 +56,7 @@ void	ft_print0(int nb, s_type *type)
 	type->f_len = type->f_len + i;
 }
 
-void	ft_printsp(int nb, s_type *type)
+void	ft_printsp(int nb, t_type *type)
 {
 	int i;
 

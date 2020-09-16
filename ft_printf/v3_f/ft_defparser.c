@@ -6,14 +6,13 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 13:25:01 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 13:25:40 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:42:14 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libftprintf.h"
 
-void	ft_flags(char *s, s_parser *parser)
+void	ft_flags(char *s, t_parser *parser)
 {
 	int i;
 	int res1;
@@ -35,7 +34,7 @@ void	ft_flags(char *s, s_parser *parser)
 	parser->cursor = parser->cursor + i;
 }
 
-void	ft_width(char *s, s_parser *parser, va_list list)
+void	ft_width(char *s, t_parser *parser, va_list list)
 {
 	int i;
 	int res;
@@ -61,7 +60,7 @@ void	ft_width(char *s, s_parser *parser, va_list list)
 	parser->cursor = parser->cursor + i;
 }
 
-void	ft_precision(char *s, s_parser *parser, va_list list)
+void	ft_precision1(char *s, t_parser *parser, va_list list)
 {
 	int i;
 	int res;
@@ -75,6 +74,11 @@ void	ft_precision(char *s, s_parser *parser, va_list list)
 		i++;
 		parser->precision = va_arg(list, int);
 	}
+	ft_precision2(s, parser, i, res);
+}
+
+void	ft_precision2(char *s, t_parser *parser, int i, int res)
+{
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		res = res * 10 + (s[i] - '0');

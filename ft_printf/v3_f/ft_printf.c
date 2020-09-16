@@ -1,50 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/16 15:02:54 by mlaouedj          #+#    #+#             */
+/*   Updated: 2020/09/16 15:40:44 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
-int	ft_printf(const char *s, ...)
+void	ft_loop(char *tmp, t_parser *parser, t_type *type, va_list list)
 {
-	int i;
-	char *tmp;
+	ft_print(tmp, type);
+	parser->cursor = fdcurs(tmp) + 1;
+	ft_flags(&tmp[parser->cursor], parser);
+	ft_width(&tmp[parser->cursor], parser, list);
+	ft_precision1(&tmp[parser->cursor], parser, list);
+	ft_deftype01(tmp, parser, type, list);
+	type->f_len += type->arg_len;
+}
 
-	s_type type;
-	s_parser parser;
-	va_list list;
-	va_start(list, s);
+int		ft_printf(const char *s, ...)
+{
+	int			i;
+	char		*tmp;
+	t_type		type;
+	t_parser	parser;
+	va_list		list;
 
 	i = 0;
 	tmp = ft_strdup(s);
 	type.f_len = 0;
+	va_start(list, s);
 	while (i < ctcurs(s))
 	{
 		ft_init_t(&type);
 		ft_init_p(&parser);
-
-		ft_print(tmp, &type);
-		parser.cursor = fdcurs(tmp) + 1;
-
-		ft_flags(&tmp[parser.cursor], &parser);
-		ft_width(&tmp[parser.cursor], &parser, list);
-		ft_precision(&tmp[parser.cursor], &parser, list);
-
-		ft_deftype01(tmp, &parser, &type, list);
-		type.f_len += type.arg_len;
- 
+		ft_loop(tmp, &parser, &type, list);
 		tmp = &tmp[parser.cursor + 1];
 		i++;
-//		printf("curs = %d\n", parser.cursor);
-//		printf("f1 = %d\n", parser.flag1);
-//		printf("f2 = %d\n", parser.flag2);
-//		printf("w1 = %d\n", parser.width);
-//		printf("p1 = %d\n", parser.precision);
-//		printf("isp1 = %d\n", parser.is_p);
-//		printf("ct = %d\n", ctcurs(s));
-//		printf("len = %d\n", type.arg_len);
-//		printf("f_len = %d\n", type.f_len);
-//		printf("int = %ld\n", type.arg_int);
-//		printf("u = %u\n", type.arg_u);
-//		printf("hex = %lx\n", type.arg_hex);
-//		printf("char = %c\n", type.arg_char);
-//		printf("str = %s\n", type.arg_str);
-//		printf("pt = %p\n", type.arg_pt);
 	}
 	ft_print(tmp, &type);
 	tmp = NULL;

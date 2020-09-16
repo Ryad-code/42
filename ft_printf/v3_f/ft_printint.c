@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 15:12:22 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 15:16:33 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:45:01 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_printsign(int nb)
 		ft_putchar('-');
 }
 
-void	ft_printint1(s_parser *parser, s_type *type)
+void	ft_printint1(t_parser *parser, t_type *type)
 {
 	int sign;
 
@@ -32,7 +32,7 @@ void	ft_printint1(s_parser *parser, s_type *type)
 	ft_printint2(parser, type, sign);
 }
 
-void	ft_printint2(s_parser *parser, s_type *type, int sign)
+void	ft_printint2(t_parser *parser, t_type *type, int sign)
 {
 	if (parser->flag1 == 0)
 	{
@@ -60,7 +60,7 @@ void	ft_printint2(s_parser *parser, s_type *type, int sign)
 	ft_printint3(parser, type, sign);
 }
 
-void	ft_printint3(s_parser *parser, s_type *type, int sign)
+void	ft_printint3(t_parser *parser, t_type *type, int sign)
 {
 	if (parser->flag1)
 	{

@@ -6,13 +6,13 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 16:36:53 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/14 16:49:10 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:44:34 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_printhex1(s_parser *parser, s_type *type)
+void	ft_printhex1(t_parser *parser, t_type *type)
 {
 	if (parser->flag1 || parser->is_p)
 		parser->flag2 = 0;
@@ -21,7 +21,7 @@ void	ft_printhex1(s_parser *parser, s_type *type)
 	ft_printhex2(parser, type);
 }
 
-void	ft_printhex2(s_parser *parser, s_type *type)
+void	ft_printhex2(t_parser *parser, t_type *type)
 {
 	if (parser->flag1 == 0)
 	{
@@ -42,7 +42,7 @@ void	ft_printhex2(s_parser *parser, s_type *type)
 	ft_printhex3(parser, type);
 }
 
-void	ft_printhex3(s_parser *parser, s_type *type)
+void	ft_printhex3(t_parser *parser, t_type *type)
 {
 	if (parser->flag1)
 	{
