@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 14:40:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/16 15:47:11 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/18 15:33:58 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void				ft_init_p(t_parser *parser);
 int					ft_strlen(const char *s);
 int					fdcurs(const char *s);
 int					ctcurs(const char *s);
-char				*ft_strdup(const char *s);
+int					ft_strcpy(const char *s, char *tmp);
+void				ft_strinit(char *tmp, int cursor);
 
 void				ft_deftype01(char *s, t_parser *parser, t_type *type,
 		va_list list);

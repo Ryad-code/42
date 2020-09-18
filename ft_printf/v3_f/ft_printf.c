@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 15:02:54 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/16 15:40:44 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/18 15:42:48 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_printf(const char *s, ...)
 	va_list		list;
 
 	i = 0;
-	tmp = ft_strdup(s);
+	tmp = (char *)s;
 	type.f_len = 0;
 	va_start(list, s);
 	while (i < ctcurs(s))
@@ -44,7 +44,5 @@ int		ft_printf(const char *s, ...)
 		i++;
 	}
 	ft_print(tmp, &type);
-	tmp = NULL;
-	free(tmp);
 	return (type.f_len);
 }

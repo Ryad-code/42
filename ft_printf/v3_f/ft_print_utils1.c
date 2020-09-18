@@ -6,29 +6,11 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 13:33:11 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/09/16 15:43:17 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2020/09/18 15:42:26 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-char	*ft_strdup(const char *s)
-{
-	int		i;
-	char	*dst;
-
-	i = 0;
-	dst = NULL;
-	if (!(dst = malloc(sizeof(char) * ft_strlen(s) + 1)))
-		return (dst);
-	while (s[i])
-	{
-		dst[i] = s[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-}
 
 void	ft_print(const char *s, t_type *type)
 {
