@@ -1,68 +1,35 @@
-#include <stdio.h>
-#include <math.h>
-#include "minilibx-linux/mlx.h"
+#include "lib.h"
 
-typedef struct	s_data
-{
-	void	*img;
-	char	*addr;
-	int	bpp;
-	int	line_lenght;
-	int	endian;
-
-}		t_data;
-
-void	my_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_lenght + x * (data->bpp / 8));
-	*(unsigned int*)dst = color;
-}
-
-void	display_line(t_data *data, int x, int y, int lenght, int color)
-{
-	int i;
-
-	i = 0;
-	while (i < lenght)
-	{
-		my_pixel_put(data, x + i, y, color);
-		i++;
-	}
-}
-
-void	display_square(t_data *data, int x, int y, int lenght, int color)
-{
-	int i;
-
-	i = 0;
-	while (i < lenght)
-	{
-		display_line(data, x , y + i, lenght, color);
-		i++;
-	}
-}
+#define mapWidth 24
+#define mapHeight 24
+#define screenWidth 640
+#define screenHeight 480
 
 int	main()
 {
-	int	i;
-	void	*mlx;
-	void	*mlx_win;
-	t_data	data;
+	t_data  data;
+	t_vars	vars;
 
-	i = 0;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1024,  1024, "Window");
+	vars.x = 50;
+	vars.y = 50;
+	vars.lenght = 100;
+	vars.color = 0x00FF0000;
 
-	data.img = mlx_new_image(mlx, 1024, 1024);
-	data.addr = mlx_get_data_addr(data.img, &data.bpp, &data.line_lenght, &data.endian);
-//	display_line(&data, 50, 100, 100, 0x00FF0000);
-	display_square(&data, 50, 100, 100, 0x00FF0000);
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, screenWidth,  screenHeight, "Window");
 
-	mlx_put_image_to_window(mlx, mlx_win, data.img, 0, 0);
+	vars.data.img = mlx_new_image(vars.mlx, screenWidth, screenHeight);
+	vars.data.addr = mlx_get_data_addr(vars.data.img, &vars.data.bpp, &vars.data.line_lenght, &vars.data.endian);
+	display_square(97, &vars);
+	mlx_destroy_image(vars.mlx, vars.data.img);
+//	mlx_key_hook(vars.win, display_square, &vars);
 
-	mlx_loop(mlx);
+	mlx_put_image_to_window(vars.mlx, vars.win, vars.data.img, 0, 0);
+
+//	mlx_destroy_image(vars.mlx, vars.data.img);
+
+	mlx_key_hook(vars.win, close, &vars);
+	mlx_loop(vars.mlx);
 
 	return (0);
 }
