@@ -25,11 +25,13 @@ typedef struct	s_data
 {
 	t_mlx	mlx;
 	t_img	img;
+	t_img	buff;
 }		t_data;
 
 void    my_pixel_put(t_img *img, int x, int y, int color);
 void    draw_line(t_img *img);
 void    draw_square(t_img *img);
-void	draw(t_data *data);
+void	draw1(t_data *data);
+void	draw2(t_data *data);
 int	next_img(int keycode, t_data *data);
 

@@ -8,12 +8,18 @@ int	main()
 	data.img.y = 0;
 	data.img.color = 0x00FF0000;
 
+	data.buff.x = 0;
+	data.buff.y = 0;
+	data.buff.color = 0x000000FF;
+
 	data.mlx.ptr = mlx_init();
 	data.mlx.win = mlx_new_window(data.mlx.ptr, 1000, 1000, "La vie est un échec");
 
 	data.img.img = mlx_new_image(data.mlx.ptr, 1000, 1000);
 	data.img.addr = mlx_get_data_addr(data.img.img, &data.img.bpp, &data.img.l_len, &data.img.endian);
 
+	data.buff.img = mlx_new_image(data.mlx.ptr, 1000, 1000);
+	data.buff.addr = mlx_get_data_addr(data.buff.img, &data.buff.bpp, &data.buff.l_len, &data.buff.endian);
 	draw_square(&data.img);
 
 	mlx_put_image_to_window(data.mlx.ptr, data.mlx.win, data.img.img, 0, 0);
