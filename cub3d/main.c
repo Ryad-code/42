@@ -1,35 +1,24 @@
-#include "lib.h"
-
-#define mapWidth 24
-#define mapHeight 24
-#define screenWidth 640
-#define screenHeight 480
+#include "cub3d.h"
 
 int	main()
 {
-	t_data  data;
-	t_vars	vars;
+	t_data data;
+	
+	data.img.x = 0;
+	data.img.y = 0;
+	data.img.color = 0x00FF0000;
 
-	vars.x = 50;
-	vars.y = 50;
-	vars.lenght = 100;
-	vars.color = 0x00FF0000;
+	data.mlx.ptr = mlx_init();
+	data.mlx.win = mlx_new_window(data.mlx.ptr, 1000, 1000, "La vie est un échec");
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, screenWidth,  screenHeight, "Window");
+	data.img.img = mlx_new_image(data.mlx.ptr, 1000, 1000);
+	data.img.addr = mlx_get_data_addr(data.img.img, &data.img.bpp, &data.img.l_len, &data.img.endian);
 
-	vars.data.img = mlx_new_image(vars.mlx, screenWidth, screenHeight);
-	vars.data.addr = mlx_get_data_addr(vars.data.img, &vars.data.bpp, &vars.data.line_lenght, &vars.data.endian);
-	display_square(97, &vars);
-	mlx_destroy_image(vars.mlx, vars.data.img);
-//	mlx_key_hook(vars.win, display_square, &vars);
+	draw_square(&data.img);
 
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.data.img, 0, 0);
+	mlx_put_image_to_window(data.mlx.ptr, data.mlx.win, data.img.img, 0, 0);
 
-//	mlx_destroy_image(vars.mlx, vars.data.img);
+	mlx_key_hook(data.mlx.win, next_img, &data);
 
-	mlx_key_hook(vars.win, close, &vars);
-	mlx_loop(vars.mlx);
-
-	return (0);
+	mlx_loop(data.mlx.ptr);
 }
