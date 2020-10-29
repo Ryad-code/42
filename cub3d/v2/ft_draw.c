@@ -1,60 +1,105 @@
 #include "cub3d.h"
 
-void    ft_my_pixel_put(t_img *img, int x, int y, int color)
+void    ft_my_pixel_put(t_img *buff, int x, int y, int color)
 {
         char    *dst;
 
-        dst = img->addr + (y * img->l_len + x * (img->bpp / 8));
-        *(unsigned int*)dst = color;
+        dst = buff->addr + (y * buff->l_len + x * (buff->bpp / 8));
+	*(unsigned int*)dst = color;
+	
 }
 
-void    ft_draw_line(t_img *img)
+void    ft_draw_line(t_img *buff)
 {
         int i;
 
         i = 0;
-        while (i < 25)
+        while (i < SIZE)
         {
-                ft_my_pixel_put(img, img->pos.x + i, img->pos.y, img->pos.color);
+                ft_my_pixel_put(buff, buff->pos.x + i, buff->pos.y, buff->pos.color);
                 i++;
         }
 }
 
-void    ft_draw_square(t_img *img)
+void    ft_draw_square(t_img *buff)
 {
         int i;
 
         i = 0;
-        while (i < 25)
+        while (i < SIZE)
         {
-                ft_draw_line(img);
-                img->pos.y++;
+                ft_draw_line(buff);
+                buff->pos.y++;
                 i++;
         }
-        img->pos.y -= 25;
+        buff->pos.y -= SIZE;
 }
 
-void    ft_draw_map(int tab[][24], t_img *buff)
+void    ft_draw_p_line(t_img *buff)
 {
         int i;
-        int j;
 
         i = 0;
-        j = 0;
-	ft_init_buff(buff);
-        while (i < 24)
+        while (i < (SIZE / 6))
         {
-                while (j < 24)
-                {
-                        if (tab[i][j] == 1)
-                                ft_draw_square(buff);
-			buff->pos.x += 25;
-                        j++;
-                }
-                buff->pos.x -= 600;
-                buff->pos.y += 25;
-                j = 0;
+                ft_my_pixel_put(buff, buff->pos_p.x + i, buff->pos_p.y, buff->pos_p.color);
+		i++;
+        }
+}
+
+void    ft_draw_p_square(t_img *buff)
+{
+        int i;
+
+        i = 0;
+        while (i < (SIZE / 6))
+        {
+                ft_draw_p_line(buff);
+		buff->pos_p.y++;
                 i++;
         }
-        buff->pos.y -= 600;
+        buff->pos_p.y -= (SIZE / 6);
 }
+
+void	ft_draw_dir(t_img *buff)
+{
+	int i;
+	
+	i = 0;
+	while (i < (SIZE / 6))
+	{
+		buff->pos_p.x += buff->pos_p.dir_x;
+		buff->pos_p.y += buff->pos_p.dir_y;
+		buff->pos_p.color += 1000;
+		ft_draw_p_line(buff);
+		buff->pos_p.x -= buff->pos_p.dir_x;
+		buff->pos_p.y -= buff->pos_p.dir_y;
+		buff->pos_p.color -= 1000;
+		buff->pos_p.y++;
+		i++;
+	}
+	buff->pos_p.y -= (SIZE / 6);
+}
+
+void	ft_draw_seg(t_img *buff)
+{
+	int i;
+
+	i = 0;
+	while (i < 50)
+	{
+		ft_my_pixel_put(buff, buff->pos_p.x, buff->pos_p.y,
+		buff->pos_p.color);
+		buff->pos_p.x += buff->pos_p.dir_x;
+		buff->pos_p.y += buff->pos_p.dir_y;
+		i++;
+	}
+	buff->pos_p.x -= 50 * buff->pos_p.dir_x;
+	buff->pos_p.y -= 50 * buff->pos_p.dir_y;
+}
+
+void	ft_draw_seg2(t_img *buff)
+{
+	
+}
+
