@@ -14,11 +14,24 @@ void    ft_draw_line(t_img *buff)
         int i;
 
         i = 0;
-        while (i < SIZE)
+        while (i < 200)
         {
-                ft_my_pixel_put(buff, buff->pos.x + i, buff->pos.y, buff->pos.color);
+                ft_my_pixel_put(buff, buff->map.x + i, buff->map.y, buff->map.color);
                 i++;
         }
+}
+
+void    ft_draw_line2(t_img *buff)
+{
+	int i;
+
+	i = 0;
+	while (i < 400)
+	{
+		ft_my_pixel_put(buff, buff->map.x, buff->map.y + i, buff->map.color);
+		buff->tab[buff->map.x][buff->map.y + i] = 1;
+		i++;
+	}
 }
 
 void    ft_draw_square(t_img *buff)
@@ -26,13 +39,13 @@ void    ft_draw_square(t_img *buff)
         int i;
 
         i = 0;
-        while (i < SIZE)
+        while (i < 200)
         {
                 ft_draw_line(buff);
-                buff->pos.y++;
+                buff->map.y++;
                 i++;
         }
-        buff->pos.y -= SIZE;
+        buff->map.y -= 200;
 }
 
 void    ft_draw_p_line(t_img *buff)
@@ -40,9 +53,9 @@ void    ft_draw_p_line(t_img *buff)
         int i;
 
         i = 0;
-        while (i < (SIZE / 6))
+        while (i < 3)
         {
-                ft_my_pixel_put(buff, buff->pos_p.x + i, buff->pos_p.y, buff->pos_p.color);
+                ft_my_pixel_put(buff, buff->player.x + i, buff->player.y, buff->player.color);
 		i++;
         }
 }
@@ -52,54 +65,22 @@ void    ft_draw_p_square(t_img *buff)
         int i;
 
         i = 0;
-        while (i < (SIZE / 6))
+        while (i < 3)
         {
                 ft_draw_p_line(buff);
-		buff->pos_p.y++;
+		buff->player.y++;
                 i++;
         }
-        buff->pos_p.y -= (SIZE / 6);
+        buff->player.y -= 3;
 }
 
-void	ft_draw_dir(t_img *buff)
+int	next_img(int keycode, t_data *data)
 {
-	int i;
-	
-	i = 0;
-	while (i < (SIZE / 6))
+	if (keycode == 65307)
 	{
-		buff->pos_p.x += buff->pos_p.dir_x;
-		buff->pos_p.y += buff->pos_p.dir_y;
-		buff->pos_p.color += 1000;
-		ft_draw_p_line(buff);
-		buff->pos_p.x -= buff->pos_p.dir_x;
-		buff->pos_p.y -= buff->pos_p.dir_y;
-		buff->pos_p.color -= 1000;
-		buff->pos_p.y++;
-		i++;
+		mlx_destroy_window(data->mlx.mlx, data->mlx.win);
+		exit(0);
 	}
-	buff->pos_p.y -= (SIZE / 6);
+	else
+		printf("%d\n", keycode);
 }
-
-void	ft_draw_seg(t_img *buff)
-{
-	int i;
-
-	i = 0;
-	while (i < 50)
-	{
-		ft_my_pixel_put(buff, buff->pos_p.x, buff->pos_p.y,
-		buff->pos_p.color);
-		buff->pos_p.x += buff->pos_p.dir_x;
-		buff->pos_p.y += buff->pos_p.dir_y;
-		i++;
-	}
-	buff->pos_p.x -= 50 * buff->pos_p.dir_x;
-	buff->pos_p.y -= 50 * buff->pos_p.dir_y;
-}
-
-void	ft_draw_seg2(t_img *buff)
-{
-	
-}
-
