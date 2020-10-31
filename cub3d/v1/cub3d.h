@@ -2,49 +2,74 @@
 #include <stdlib.h>
 #include <math.h>
 #include "minilibx-linux/mlx.h"
+#include "gnl/get_next_line.h"
+
+#define MAP_WIDTH 24
+#define MAP_HEIGHT 24
+#define SIZE 24
+#define PI 3.1415926535
 
 typedef struct	s_mlx
 {
-	void	*ptr;
+	void	*mlx;
 	void	*win;
 }		t_mlx;
 
-typedef struct	s_img
+typedef struct	s_draw
 {
-	void	*img;
-	char	*addr;
-	int	bpp;
-	int	l_len;
-	int	endian;
 	int	x;
 	int	y;
+	double	dir_x;
+	double	dir_y;
+	double	angle;
 	int	color;
-	int	x_o;
-	int	y_o;
-	int	color_o;
-}		t_img;
+}		t_draw;
+
+typedef struct  s_img
+{
+        void    *img;
+        char    *addr;
+        int     l_len;
+        int     bpp;
+        int     endian;
+	t_draw	pos;
+	t_draw	pos_p;
+}               t_img;
 
 typedef struct	s_data
 {
 	t_mlx	mlx;
-	t_img	img;
-	t_img	buff;
-	t_img	obstacle;
+	t_img	buff01;
+	t_img	buff02;
+	int	map[MAP_WIDTH][MAP_HEIGHT];
 	int	cpt;
+
+
 }		t_data;
 
-void    my_pixel_put(t_img *img, int x, int y, int color);
-void    draw_line(t_img *img);
-void    draw_square(t_img *img);
-void    draw_b_line(t_img *img);
-void    draw_b_square(t_img *img);
-void    draw_block(t_img *obstacle);
-void	draw1(t_data *data);
-void	draw2(t_data *data);
-int	next_img(int keycode, t_data *data);
+void    ft_my_pixel_put(t_img *buff, int x, int y, int color);
+void    ft_draw_line(t_img *buff);
+void	ft_draw_square(t_img *buff);
+
+void	ft_draw_p_line(t_img *buff);
+void    ft_draw_p_square(t_img *buff);
+void    ft_draw_dir(t_img *buff);
+void	ft_get_dir(t_img *buff);
+
+int	ft_next_img(int keycode, t_data *data);
+void    ft_quit(int keycode, t_data *data);
+void    ft_init_buff(t_img *img);
+void	ft_init_p(t_img *buff, int x, int y, int color, double dir_x, double dir_y, double angle);
+void    ft_switch_buff(t_img *buff01, t_img *buff02);
+
+void    ft_move_up(t_draw *pos);
+void    ft_move_down(t_draw *pos);
+void    ft_move_right(t_draw *pos);
+void    ft_move_left(t_draw *pos);
+void    ft_move(int keycode, t_img *buff);
+
+void    ft_init_map(char *file, t_data *data);
+void	ft_draw_map(int tab[][24], t_img *buff);
+void    ft_show_map(t_data *data);
 
 
-void	draw_up(t_data *data);
-void    draw_down(t_data *data);
-void    draw_right(t_data *data);
-void    draw_left(t_data *data);

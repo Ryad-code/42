@@ -1,75 +1,88 @@
 #include "cub3d.h"
 
-void    my_pixel_put(t_img *img, int x, int y, int color)
+void    ft_my_pixel_put(t_img *buff, int x, int y, int color)
 {
         char    *dst;
 
-        dst = img->addr + (y * img->l_len + x * (img->bpp / 8));
-        *(unsigned int*)dst = color;
+        dst = buff->addr + (y * buff->l_len + x * (buff->bpp / 8));
+	*(unsigned int*)dst = color;
+	
 }
 
-void    draw_line(t_img *img)
+void    ft_draw_line(t_img *buff)
 {
         int i;
 
         i = 0;
-        while (i < 100)
-        {   
-                my_pixel_put(img, img->x + i, img->y, img->color);
+        while (i < SIZE)
+        {
+                ft_my_pixel_put(buff, buff->pos.x + i, buff->pos.y, buff->pos.color);
                 i++;
-        }   
+        }
 }
 
-void	draw_square(t_img *img)
+void    ft_draw_square(t_img *buff)
+{
+        int i;
+
+        i = 0;
+        while (i < SIZE)
+        {
+                ft_draw_line(buff);
+                buff->pos.y++;
+                i++;
+        }
+        buff->pos.y -= SIZE;
+}
+
+void    ft_draw_p_line(t_img *buff)
+{
+        int i;
+
+        i = 0;
+        while (i < (SIZE / 6))
+        {
+                ft_my_pixel_put(buff, buff->pos_p.x + i, buff->pos_p.y, buff->pos_p.color);
+		i++;
+        }
+}
+
+void    ft_draw_p_square(t_img *buff)
+{
+        int i;
+
+        i = 0;
+        while (i < (SIZE / 6))
+        {
+                ft_draw_p_line(buff);
+		buff->pos_p.y++;
+                i++;
+        }
+        buff->pos_p.y -= (SIZE / 6);
+}
+
+void	ft_draw_dir(t_img *buff)
 {
 	int i;
 
 	i = 0;
-	while (i < 100)
+	while (i < 50)
 	{
-		draw_line(img);
-		img->y++;
+		ft_my_pixel_put(buff, buff->pos_p.x, buff->pos_p.y,
+		buff->pos_p.color);
+		buff->pos_p.x += buff->pos_p.dir_x;
+		buff->pos_p.y += buff->pos_p.dir_y;
 		i++;
 	}
-	img->y -= 100;
+	buff->pos_p.x -= 50 * buff->pos_p.dir_x;
+	buff->pos_p.y -= 50 * buff->pos_p.dir_y;
 }
 
-void	draw_b_line(t_img *img)
+void	ft_get_dir(t_img *buff)
 {
-	int i;
-
-	i = 0;
-	while (i < 100)
-	{
-		my_pixel_put(img, img->x_o + i, img->y_o, img->color_o);
-		i++;
-	}
+	buff->pos_p.dir_x = cos(buff->pos_p.angle);
+        buff->pos_p.dir_y = sin(buff->pos_p.angle);
+	printf("%lf\n", buff->pos_p.dir_x);
+	printf("%lf\n", buff->pos_p.dir_y);
 }
 
-void	draw_b_square(t_img *img)
-{
-	int	i;
-
-	i = 0;
-	while (i < 100)
-	{
-		draw_b_line(img);
-		img->y_o++;
-		i++;
-	}
-	img->y_o -= 100;
-}
-
-void	draw_block(t_img *img)
-{
-	int	i;
-	
-	i = 0;
-	while (i < 4)
-	{
-		draw_b_square(img);
-		img->y_o += 100;
-		i++;
-	}
-	img->y_o -= 400;
-}
