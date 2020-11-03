@@ -9,43 +9,43 @@ void    ft_my_pixel_put(t_img *buff, int x, int y, int color)
 	
 }
 
-void    ft_draw_line(t_img *buff)
+void    ft_draw_line(t_img *buff, int x, int y, int size)
 {
         int i;
 
         i = 0;
-        while (i < 200)
+        while (i < size)
         {
-                ft_my_pixel_put(buff, buff->map.x + i, buff->map.y, buff->map.color);
+                ft_my_pixel_put(buff, x + i, y, buff->map.color);
+		buff->tab[x + i][y] = 1;
                 i++;
         }
 }
 
-void    ft_draw_line2(t_img *buff)
+void    ft_draw_line2(t_img *buff, int x, int y, int size)
 {
 	int i;
 
 	i = 0;
-	while (i < 400)
+	while (i < size)
 	{
-		ft_my_pixel_put(buff, buff->map.x, buff->map.y + i, buff->map.color);
-		buff->tab[buff->map.x][buff->map.y + i] = 1;
+		ft_my_pixel_put(buff, x, y + i, buff->map.color);
+		buff->tab[x][y + i] = 1;
 		i++;
 	}
 }
 
-void    ft_draw_square(t_img *buff)
+void    ft_draw_square(t_img *buff, int x, int y, int size)
 {
         int i;
 
         i = 0;
-        while (i < 200)
+        while (i < size)
         {
-                ft_draw_line(buff);
+                ft_draw_line(buff, x, y + i, size);
                 buff->map.y++;
                 i++;
         }
-        buff->map.y -= 200;
 }
 
 void    ft_draw_p_line(t_img *buff)
@@ -72,15 +72,4 @@ void    ft_draw_p_square(t_img *buff)
                 i++;
         }
         buff->player.y -= 3;
-}
-
-int	next_img(int keycode, t_data *data)
-{
-	if (keycode == 65307)
-	{
-		mlx_destroy_window(data->mlx.mlx, data->mlx.win);
-		exit(0);
-	}
-	else
-		printf("%d\n", keycode);
 }
