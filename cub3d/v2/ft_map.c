@@ -18,27 +18,65 @@ void	ft_init_grid(t_img *buff)
 	}
 }
 
-void	ft_display_map(t_img *buff)
+void    ft_init_map(char *file, t_data *data)
 {
-	buff->map.color = 0x000000FF;
+        int     i;
+        int     j;
+        int     fd;
+        char    *line;
 
-	ft_draw_line2(buff, 50, 0, 576);
-        ft_draw_line2(buff, 526, 0, 576);
-        ft_draw_line(buff, 0, 50, 576);
-        ft_draw_line(buff, 0, 526, 576);
-
-	ft_draw_line2(buff, 100, 200, 50);
-	ft_draw_line2(buff, 100, 300, 50);
-	ft_draw_line(buff, 150, 100, 200);
-	ft_draw_line2(buff, 350, 100, 100);
-	ft_draw_line(buff, 400, 450, 100);
+        i = 0;
+        j = 0;
+        fd = open(file, O_RDONLY);
+        while (i < MAP_WIDTH)
+        {
+                get_next_line(fd, &line);
+                while (j < MAP_HEIGHT)
+                {
+                        data->map[i][j] = line[j] - 48;
+                        j++;
+                }
+                j = 0;
+                i++;
+        }
 }
 
-void	ft_display_player(t_img *buff)
+void    ft_draw_map(int tab[][24], t_img *buff)
 {
-//	buff->player.x = 280;
-//	buff->player.y = 400;
-//	buff->player.color = 0x00FF0000;
+        int i;
+        int j;
 
-	ft_draw_p_square(buff);
+        i = 0;
+        j = 0;
+        while (i < SIZE)
+        {
+                while (j < SIZE)
+                {
+                        if (tab[i][j] == 1)
+                                ft_draw_square(buff, j * SIZE, i * SIZE, SIZE);
+                        j++;
+                }
+                j = 0;
+                i++;
+        }
+}
+
+void    ft_show_map(t_data *data)
+{
+        int i;
+        int j;
+
+        i = 0;
+        j = 0;
+        while (i < MAP_WIDTH)
+        {
+                while (j < MAP_HEIGHT)
+                {
+                        printf("%d", data->map[i][j]);
+                        j++;
+                }
+                printf("\n");
+                j = 0;
+                i++;
+        }
 }

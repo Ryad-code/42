@@ -22,8 +22,9 @@ void	ft_ray_right(t_img *buff)
 		{
 			buff->player.dir_y += delta_y;
 			buff->player.dir_x++;
-			ft_my_pixel_put(buff, buff->player.x + buff->player.dir_x, buff->player.y + (int)nearbyint(buff->player.dir_y), 0x00FF0000);
+//			ft_my_pixel_put(buff, buff->player.x + buff->player.dir_x, buff->player.y + (int)nearbyint(buff->player.dir_y), 0x00FF0000);
 		}
+	buff->r_len = sqrt((buff->player.dir_x * buff->player.dir_x) + (buff->player.dir_y * buff->player.dir_y));
 }
 
 void	ft_ray_left(t_img *buff)
@@ -40,7 +41,7 @@ void	ft_ray_left(t_img *buff)
 		{
 			buff->player.dir_y += delta_y;
 			buff->player.dir_x++;
-			ft_my_pixel_put(buff, buff->player.x - buff->player.dir_x, buff->player.y + (int)nearbyint(buff->player.dir_y), 0x00FF0000);
+//			ft_my_pixel_put(buff, buff->player.x - buff->player.dir_x, buff->player.y + (int)nearbyint(buff->player.dir_y), 0x00FF0000);
 		}
 	else if (buff->player.angle >= 180 && buff->player.angle <= 225)
 		while (buff->tab[(int)(buff->player.x - buff->player.dir_x)]
@@ -48,8 +49,9 @@ void	ft_ray_left(t_img *buff)
 		{
 			buff->player.dir_y += delta_y;
 			buff->player.dir_x++;
-			ft_my_pixel_put(buff, buff->player.x - buff->player.dir_x, buff->player.y + (int)nearbyint(buff->player.dir_y), 0x00FF0000);
+//			ft_my_pixel_put(buff, buff->player.x - buff->player.dir_x, buff->player.y + (int)nearbyint(buff->player.dir_y), 0x00FF0000);
 		}
+	buff->r_len = sqrt((buff->player.dir_x * buff->player.dir_x) + (buff->player.dir_y * buff->player.dir_y));
 }
 
 void	ft_ray_down(t_img *buff)
@@ -65,7 +67,7 @@ void	ft_ray_down(t_img *buff)
 		{
 			buff->player.dir_x += delta_x;
 			buff->player.dir_y++;
-			ft_my_pixel_put(buff, buff->player.x + (int)nearbyint(buff->player.dir_x), buff->player.y + buff->player.dir_y, 0x00FF0000);
+//			ft_my_pixel_put(buff, buff->player.x + (int)nearbyint(buff->player.dir_x), buff->player.y + buff->player.dir_y, 0x00FF0000);
 		}
 	else if (buff->player.angle <= 135 && buff->player.angle >= 90)
 		while (buff->tab[buff->player.x + (int)nearbyint(buff->player.dir_x)]
@@ -73,8 +75,9 @@ void	ft_ray_down(t_img *buff)
 		{
 			buff->player.dir_x += delta_x;
 			buff->player.dir_y++;
-			ft_my_pixel_put(buff, buff->player.x + (int)nearbyint(buff->player.dir_x), buff->player.y + buff->player.dir_y, 0x00FF0000);
+//			ft_my_pixel_put(buff, buff->player.x + (int)nearbyint(buff->player.dir_x), buff->player.y + buff->player.dir_y, 0x00FF0000);
 		}
+	buff->r_len = sqrt((buff->player.dir_x * buff->player.dir_x) + (buff->player.dir_y * buff->player.dir_y));
 }
 
 void    ft_ray_up(t_img *buff)
@@ -90,7 +93,7 @@ void    ft_ray_up(t_img *buff)
 		{
 			buff->player.dir_x += delta_x;
 			buff->player.dir_y++;
-			ft_my_pixel_put(buff, buff->player.x - (int)nearbyint(buff->player.dir_x), buff->player.y - buff->player.dir_y, 0x00FF0000);
+//			ft_my_pixel_put(buff, buff->player.x - (int)nearbyint(buff->player.dir_x), buff->player.y - buff->player.dir_y, 0x00FF0000);
 			
 		}
 	else if (buff->player.angle <= 315 && buff->player.angle >= 270)
@@ -101,21 +104,24 @@ void    ft_ray_up(t_img *buff)
 		{
 			buff->player.dir_x += delta_x;
 			buff->player.dir_y++;
-			ft_my_pixel_put(buff, buff->player.x + (int)nearbyint(buff->player.dir_x), buff->player.y - buff->player.dir_y, 0x00FF0000);
+//			ft_my_pixel_put(buff, buff->player.x + (int)nearbyint(buff->player.dir_x), buff->player.y - buff->player.dir_y, 0x00FF0000);
 		}
 	}
+	buff->r_len = sqrt((buff->player.dir_x * buff->player.dir_x) + (buff->player.dir_y * buff->player.dir_y));
 }
 
-void	test(t_img *buff)
+void	ft_vision(t_img *buff)
 {
+	double	delta;
 	int i;
 
 	i = 0;
+	delta = 0.706748;
 	if (buff->player.angle < -15)
 		buff->player.angle += 330;
 	else
 		buff->player.angle -= 30;
-	while (i < 60)
+	while (i < 576)
 	{
 		ft_get_dir(buff);
 		if (buff->player.angle <= 45)
@@ -126,7 +132,9 @@ void	test(t_img *buff)
 			ft_ray_left(buff);
 		else if (buff->player.angle <= 315)
 			ft_ray_up(buff);
-		buff->player.angle++;
+		ft_draw_line2_1(buff, i, 0, (576 / 2) - ((int)nearbyint(buff->r_len * delta) / 2), 0x0ADD8E6);
+		ft_draw_line2(buff, i, (576 / 2) - ((int)nearbyint(buff->r_len * delta) / 2), (int)nearbyint(buff->r_len * delta), 0x00FF0000);
+		buff->player.angle += 0.104166;
 		if (buff->player.angle > 315)
 			buff->player.angle = -44;
 		i++;
