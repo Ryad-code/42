@@ -18,10 +18,11 @@ typedef struct	s_mlx
 
 typedef struct	s_draw
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 	double	dir_x;
 	double	dir_y;
+	double	delta;
 	double	angle;
 	int	color;
 }		t_draw;
@@ -56,15 +57,13 @@ void    ft_draw_line2(t_img *buff, int x, int y, int size, int color);
 void    ft_draw_line2_1(t_img *buff, int x, int y, int size, int color);
 void	ft_draw_square(t_img *buff, int x, int y, int size);
 
-void	ft_draw_p_line(t_img *buff);
-void    ft_draw_p_square(t_img *buff);
-
 void    ft_init_grid(t_img *buff);
 void    ft_init_map(char *file, t_data *data);
 void	ft_draw_map(int tab[][24], t_img *buff);
 void    ft_show_map(t_data *data);
 
 int	next_img(int keycode, t_data *data);
+void	ft_move(t_img *buff);
 
 void    ft_switch_img(int keycode, t_data *data);
 

@@ -17,12 +17,11 @@ int	main()
 	data.buff01.addr = mlx_get_data_addr(data.buff01.img, &data.buff01.bpp,
 	&data.buff01.l_len, &data.buff01.endian);
 
-	ft_init_grid(&data.buff01);	//Initialisation MAP/GRID
+	ft_init_grid(&data.buff01);	//Initialisation Grid/Map
 	ft_init_map("maps/map01.txt", &data);
 	
 	ft_draw_map(data.map, &data.buff01);
 //	ft_show_map(&data);
-//	ft_draw_p_square(&data.buff01);	
 
 	ft_get_dir(&data.buff01);
 	ft_vision(&data.buff01);
