@@ -86,11 +86,11 @@ void	ft_vision(t_img *buff)
 	int i;
 
 	i = 0;
-	delta = 0.706748;
+/*	delta = 0.706748;
 	if (buff->player.angle < -15)
 		buff->player.angle += 330;
 	else
-		buff->player.angle -= 30;
+		buff->player.angle -= 30;*/
 	while (i < 576)
 	{
 		ft_get_dir(buff);
@@ -104,13 +104,13 @@ void	ft_vision(t_img *buff)
 			ft_ray_up(buff);
 //		ft_draw_line2_1(buff, i, 0, (576 / 2) - ((int)nearbyint(buff->r_len * delta) / 2), 0x0ADD8E6);
 //		ft_draw_line2(buff, i, (576 / 2) - ((int)nearbyint(buff->r_len * delta) / 2), (int)nearbyint(buff->r_len * delta), 0x00FF0000);
-		buff->player.angle += 0.104166;
+/*		buff->player.angle += 0.104166;
 		if (buff->player.angle > 315)
-			buff->player.angle -= 360;
+			buff->player.angle -= 360;*/
 		i++;
 	}
-	if (buff->player.angle < -15)
+/*	if (buff->player.angle < -15)
 		buff->player.angle += 330;
 	else
-		buff->player.angle -= 30;
+		buff->player.angle -= 30;*/
 }

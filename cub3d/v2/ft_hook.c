@@ -51,13 +51,22 @@ void	ft_move_player(int keycode, t_img *buff)
 			buff->player.angle += 180;
 		}
         }
-/*	else if (keycode == 65363)
+	else if (keycode == 65363)
 	{
-		buff->player.angle += 90;
-		ft_move(buff);
-		buff->player.angle -= 90;
+		if (buff->player.angle >= -45 && buff->player.angle <= 225)
+		{
+			buff->player.angle += 90;
+			ft_move(buff);
+			buff->player.angle -= 90;
+		}
+		else if (buff->player.angle >= 225 && buff->player.angle <= 315)
+		{
+			buff->player.angle -= 270;
+                        ft_move(buff);
+                        buff->player.angle += 270;
+		}
 	}
-	else if (keycode == 65361)
+/*	else if (keycode == 65361)
 	{
 		buff->player.angle -= 90;
 		ft_move(buff);
@@ -93,9 +102,9 @@ void	ft_turn_player(int keycode, t_img *buff)
 {
 	if (keycode == 'p')
 	{
-		printf("%3lf\n", buff->player.x);
-		printf("%3lf\n", buff->player.y);
-		printf("%3lf\n", buff->player.angle);
+		printf("%lf\n", buff->player.x);
+		printf("%lf\n", buff->player.y);
+		printf("%lf\n\n", buff->player.angle);
 	}
 	if (keycode == 122)
 		buff->player.angle++;
