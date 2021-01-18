@@ -23,7 +23,7 @@ int	ft_next_frame(int keycode, t_data *data)
 		ft_draw_map(data, &data->buff02);
 
 		ft_keycode(keycode, data, &data->buff02);
-		ft_vision(data, &data->buff02);
+		ft_raycast(data, &data->buff02);
 
 		mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->buff02.img, 0, 0);
 		mlx_destroy_image(data->mlx.mlx, data->buff01.img);
@@ -35,7 +35,7 @@ int	ft_next_frame(int keycode, t_data *data)
 		ft_draw_map(data, &data->buff01);
 
 		ft_keycode(keycode, data, &data->buff01);
-		ft_vision(data, &data->buff01);
+		ft_raycast(data, &data->buff01);
 
 		mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->buff01.img, 0, 0);
 		mlx_destroy_image(data->mlx.mlx, data->buff02.img);

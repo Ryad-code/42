@@ -5,10 +5,13 @@
 #include "minilibx-linux/mlx.h"
 #include "gnl/get_next_line.h"
 
+#define SCREEN_WIDTH 400
+#define SCREEN_HEIGHT 400
 #define MAP_WIDTH 20
 #define MAP_HEIGHT 20
 #define SIZE 20
 #define	BLOCK_COLOR 0x000000FF
+#define SKY_COLOR 0x0B0E0E6
 #define PLAYER_COLOR 0x00FF0000
 
 #define PI 3.1415926535
@@ -23,8 +26,9 @@ typedef struct	s_player
 {
 	double	x;
 	double	y;
-	int	angle;
+	double	angle;
 	double	delta;
+	double	r_len;
 	int	color;
 }		t_player;
 
@@ -52,6 +56,7 @@ typedef struct	s_data
 void	ft_my_pixel_put(t_img *buff, int x, int y, int color);	//FT_DRAW.C
 void	ft_draw_line(t_data *data, t_img *buff, int x, int y);
 void	ft_draw_block(t_data *data, t_img *buff, int x, int y);
+void	ft_draw_f_line(t_data *data, t_img *buff, int x, int y);
 
 void    ft_init_grid(t_data *data);				//FT_MAP.C
 void    ft_get_map(const char *file, t_data *data);
@@ -74,4 +79,6 @@ void	ft_ray_right(t_data *data, t_img *buff);
 void	ft_ray_left(t_data *data, t_img *buff);
 void	ft_ray_up(t_data *data, t_img *buff);
 void	ft_ray_down(t_data *data, t_img *buff);
+void	ft_ray(t_data *data, t_img *buff);
+void    ft_raycast(t_data *data, t_img *buff);
 void	ft_vision(t_data *data, t_img *buff);

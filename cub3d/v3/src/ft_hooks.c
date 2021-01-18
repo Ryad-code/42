@@ -11,7 +11,9 @@ void	ft_keycode(int keycode, t_data *data, t_img *buff)
 		ft_move_player(keycode, data, buff);
 	else if (keycode == 97 || keycode == 122)
 		ft_turn_player(keycode, buff);
-//	printf("%d\n", keycode);
+//	printf("pos   = %d:%d\n", (int)nearbyint(buff->player.x), (int)nearbyint(buff->player.y));
+	printf("pos   = %lf:%lf\n", buff->player.x, buff->player.y);
+	printf("angle = %lf\n", buff->player.angle);
 }
 
 void	ft_move_player(int keycode, t_data *data, t_img *buff)
@@ -29,13 +31,17 @@ void	ft_move_player(int keycode, t_data *data, t_img *buff)
 void	ft_turn_player(int keycode, t_img *buff)
 {
 	if ( keycode == 97)
-		buff->player.angle--;
-	if (keycode == 122)
-		buff->player.angle++;
-	if (buff->player.angle > 315)
-		buff->player.angle = -45;
-	else if (buff->player.angle < -45)
-		buff->player.angle = 315;
+	{
+		buff->player.angle -= 2;
+		if (buff->player.angle < -45)
+			buff->player.angle = 315 - (buff->player.angle + 45);
+	}
+	else if (keycode == 122)
+	{
+		buff->player.angle += 2;
+		if (buff->player.angle > 315)
+			buff->player.angle = -45 + (buff->player.angle - 315);
+	}
 }
 
 void	ft_direction(t_data *data, t_img *buff)
