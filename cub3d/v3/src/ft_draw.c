@@ -23,6 +23,17 @@ void    ft_draw_line(t_data *data, t_img *buff, int x, int y)
         }
 }
 
+void	ft_draw_line2(t_data *data, t_img *buff, int x, int y)
+{
+	int i;
+
+	i = 0;
+	while (i < 100)
+	{
+		ft_my_pixel_put(buff, x, y + i, PLAYER_COLOR);
+		i++;
+	}
+}
 void	ft_draw_block(t_data *data, t_img *buff, int x, int y)
 {
 	int i;
@@ -35,18 +46,18 @@ void	ft_draw_block(t_data *data, t_img *buff, int x, int y)
 	}
 }
 
-void	ft_draw_f_line(t_data *data, t_img *buff, int x, int y)
+void	ft_draw_screen(t_data *data, t_img *buff, int x, int y)
 {
 	int	i;
 	
 	i = 0;
 	while (i < 200)
 	{
-		ft_my_pixel_put(buff, x , i , SKY_COLOR + 1);
+		ft_my_pixel_put(buff, x , i , SKY_COLOR + 2);	
 		i++;
 	}
 	i = 0;
-	if (buff->player.r_len < 25)
+	if (data->player.r_len < 25)
 	{
 		while (i < 400)
 		{
@@ -57,7 +68,7 @@ void	ft_draw_f_line(t_data *data, t_img *buff, int x, int y)
 	}
 	else 
 	{
-		while (i < (int)nearbyint((1 / buff->player.r_len) * 10000) / 2)
+		while (i < (int)nearbyint((10000 / data->player.r_len) / 2))
 		{
 			ft_my_pixel_put(buff, x , y + i , BLOCK_COLOR);
 			ft_my_pixel_put(buff, x , y - i , BLOCK_COLOR);

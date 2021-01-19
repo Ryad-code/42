@@ -10,16 +10,17 @@ void	ft_keycode(int keycode, t_data *data, t_img *buff)
 	else if (keycode == 65361 || keycode == 65362 || keycode == 65363 || keycode == 65364)
 		ft_move_player(keycode, data, buff);
 	else if (keycode == 97 || keycode == 122)
-		ft_turn_player(keycode, buff);
-//	printf("pos   = %d:%d\n", (int)nearbyint(buff->player.x), (int)nearbyint(buff->player.y));
-	printf("pos   = %lf:%lf\n", buff->player.x, buff->player.y);
-	printf("angle = %lf\n", buff->player.angle);
+		ft_turn_player(keycode, data);
+//	printf("grid  = %d:%d\n", data->grid[(int)nearbyint(data->player.x)][(int)nearbyint(data->player.y)], data->grid[(int)nearbyint(data->player.x + 1)][(int)nearbyint(data->player.y + 1)]);
+	printf("pos   = %lf | %lf\n", data->player.x, data->player.y);
+	printf("angle = %lf\n----------\n", data->player.angle);
+//	printf("delta = %lf\n----------\n", data->player.delta);
 }
 
 void	ft_move_player(int keycode, t_data *data, t_img *buff)
 {
 	if (keycode == 65362)
-		ft_direction(data, buff);
+		ft_move(data, buff);
 	if (keycode == 65364)
 		ft_move_back(data, buff);
 	if (keycode == 65361)
@@ -28,91 +29,91 @@ void	ft_move_player(int keycode, t_data *data, t_img *buff)
 		ft_move_right(data, buff);
 }
 
-void	ft_turn_player(int keycode, t_img *buff)
+void	ft_turn_player(int keycode, t_data *data)
 {
 	if ( keycode == 97)
 	{
-		buff->player.angle -= 2;
-		if (buff->player.angle < -45)
-			buff->player.angle = 315 - (buff->player.angle + 45);
+		data->player.angle -= 2;
+		if (data->player.angle < -45)
+			data->player.angle = 315 - (data->player.angle + 45);
 	}
 	else if (keycode == 122)
 	{
-		buff->player.angle += 2;
-		if (buff->player.angle > 315)
-			buff->player.angle = -45 + (buff->player.angle - 315);
+		data->player.angle += 2;
+		if (data->player.angle > 315)
+			data->player.angle = -45 + (data->player.angle - 315);
 	}
 }
 
-void	ft_direction(t_data *data, t_img *buff)
+void	ft_move(t_data *data, t_img *buff)
 {
-	ft_get_delta(buff);
-	if (buff->player.angle >= -45 && buff->player.angle <= 45 && data->grid[(int)nearbyint(buff->player.x + 1)][(int)nearbyint(buff->player.y + buff->player.delta)] == 0)
+	ft_get_delta(data);
+	if (data->player.angle >= -45 && data->player.angle < 45 && data->grid[(int)nearbyint(data->player.x + 2)][(int)nearbyint(data->player.y + (2 * data->player.delta))] == 0)
 	{
-		buff->player.x++;
-		buff->player.y += buff->player.delta;
+		data->player.x++;
+		data->player.y += data->player.delta;
 	}
-	else if (buff->player.angle >= 45 && buff->player.angle <= 135 && data->grid[(int)nearbyint(buff->player.y + 1)][(int)nearbyint(buff->player.x + buff->player.delta)] == 0)
+	else if (data->player.angle >= 45 && data->player.angle < 135 && data->grid[(int)nearbyint(data->player.x + (2 * data->player.delta))][(int)nearbyint(data->player.y + 2)] == 0)
 	{
-		buff->player.y++;
-		buff->player.x += buff->player.delta;
+		data->player.y++;
+		data->player.x += data->player.delta;
 	}
-	else if (buff->player.angle >= 135 && buff->player.angle <= 225 && data->grid[(int)nearbyint(buff->player.x - 1)][(int)nearbyint(buff->player.y - buff->player.delta)] == 0)
+	else if (data->player.angle >= 135 && data->player.angle < 225 && data->grid[(int)nearbyint(data->player.x - 2)][(int)nearbyint(data->player.y - (2 * data->player.delta))] == 0)
 	{
-		buff->player.x--;
-		buff->player.y -= buff->player.delta;
+		data->player.x--;
+		data->player.y -= data->player.delta;
 	}
-	else if (buff->player.angle >= -225 && buff->player.angle <= 315 && data->grid[(int)nearbyint(buff->player.y - 1)][(int)nearbyint(buff->player.x - buff->player.delta)] == 0)
+	else if (data->player.angle >= 225 && data->player.angle <= 315 && data->grid[(int)nearbyint(data->player.x - (2 * data->player.delta))][(int)nearbyint(data->player.y - 2)] == 0)
 	{
-		buff->player.y--;
-		buff->player.x -= buff->player.delta;
+		data->player.y--;
+		data->player.x -= data->player.delta;
 	}
 }
 
 void	ft_move_back(t_data *data, t_img *buff)
 {
-	if (buff->player.angle >= 135)
+	if (data->player.angle >= 135)
 	{
-		buff->player.angle -= 180;
-		ft_direction(data, buff);
-		buff->player.angle += 180;
+		data->player.angle -= 180;
+		ft_move(data, buff);
+		data->player.angle += 180;
 	}
-	else if (buff->player.angle <= 135)
+	else if (data->player.angle <= 135)
 	{
-		buff->player.angle += 180;
-		ft_direction(data, buff);
-		buff->player.angle -= 180;
+		data->player.angle += 180;
+		ft_move(data, buff);
+		data->player.angle -= 180;
 	}
 }
 
 void	ft_move_left(t_data *data, t_img *buff)
 {
-	if (buff->player.angle <= 45)
+	if (data->player.angle <= 45)
 	{
-		buff->player.angle += 270;
-		ft_direction(data, buff);
-		buff->player.angle -= 270;
+		data->player.angle += 270;
+		ft_move(data, buff);
+		data->player.angle -= 270;
 	}
-	else if (buff->player.angle >= 45)
+	else if (data->player.angle >= 45)
 	{
-		buff->player.angle -= 90;
-		ft_direction(data, buff);
-		buff->player.angle += 90;
+		data->player.angle -= 90;
+		ft_move(data, buff);
+		data->player.angle += 90;
 	}
 }
 
 void	ft_move_right(t_data *data, t_img *buff)
 {
-	if (buff->player.angle >= 225)
+	if (data->player.angle >= 225)
 	{
-		buff->player.angle -= 270;
-		ft_direction(data, buff);
-		buff->player.angle += 270;
+		data->player.angle -= 270;
+		ft_move(data, buff);
+		data->player.angle += 270;
 	}
-	else if (buff->player.angle <= 225)
+	else if (data->player.angle <= 225)
 	{
-		buff->player.angle += 90;
-		ft_direction(data, buff);
-		buff->player.angle -= 90;
+		data->player.angle += 90;
+		ft_move(data, buff);
+		data->player.angle -= 90;
 	}
 }

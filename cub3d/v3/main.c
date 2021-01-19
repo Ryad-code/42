@@ -5,9 +5,9 @@ int main()
 	t_data data;
 
 	data.cpt = 1;
-	data.buff01.player.x = 25;
-	data.buff01.player.y = 25;
-	data.buff01.player.angle = 40;
+	data.player.x = 25;
+	data.player.y = 25;
+	data.player.angle = 40;
 
 
 	data.mlx.mlx = mlx_init();
@@ -21,7 +21,6 @@ int main()
 	ft_get_map("maps/map01.txt", &data);
 	ft_draw_map(&data, &data.buff01);
 
-//	ft_my_pixel_put(&data.buff01, data.buff01.player.y, data.buff01.player.y, 0x00FF0000);
 	ft_raycast(&data, &data.buff01);
 
 	mlx_put_image_to_window(data.mlx.mlx, data.mlx.win, data.buff01.img, 0, 0);
