@@ -20,7 +20,7 @@ void	ft_ray_right(t_data *data, t_img *buff)
 	tmp = buff->player.delta;
 	while (data->grid[(int)nearbyint(buff->player.x + i)][(int)nearbyint(buff->player.y + tmp)] == 0)
 	{
-		ft_my_pixel_put(buff, (int)nearbyint(buff->player.x + i), (int)nearbyint(buff->player.y + tmp), 0x00FF0000);
+//		ft_my_pixel_put(buff, (int)nearbyint(buff->player.x + i), (int)nearbyint(buff->player.y + tmp), 0x00FF0000);
 		i++;
 		tmp += buff->player.delta;
 	}
@@ -36,7 +36,7 @@ void    ft_ray_left(t_data *data, t_img *buff)
 	i = 0;
 	while (data->grid[(int)nearbyint(buff->player.x - i)][(int)nearbyint(buff->player.y - tmp)] == 0)
 	{
-		ft_my_pixel_put(buff, (int)nearbyint(buff->player.x - i), (int)nearbyint(buff->player.y - tmp), 0x00FF0000);
+//		ft_my_pixel_put(buff, (int)nearbyint(buff->player.x - i), (int)nearbyint(buff->player.y - tmp), 0x00FF0000);
 		i++;
 		tmp += buff->player.delta;
 	}
@@ -52,7 +52,7 @@ void	ft_ray_up(t_data *data, t_img *buff)
 	i = 0;
 	while (data->grid[(int)nearbyint(buff->player.x - tmp)][(int)nearbyint(buff->player.y - i)] == 0)
 	{
-		ft_my_pixel_put(buff, (int)nearbyint(buff->player.x - tmp), (int)nearbyint(buff->player.y - i), 0x00FF0000);
+//		ft_my_pixel_put(buff, (int)nearbyint(buff->player.x - tmp), (int)nearbyint(buff->player.y - i), 0x00FF0000);
 		i++;
 		tmp += buff->player.delta;
 	}
@@ -68,7 +68,7 @@ void	ft_ray_down(t_data *data, t_img *buff)
 	i = 0;
 	while(data->grid[(int)nearbyint(buff->player.x + tmp)][(int)nearbyint(buff->player.y + i)] == 0)
 	{
-		ft_my_pixel_put(buff, (int)nearbyint(buff->player.x + tmp), (int)nearbyint(buff->player.y + i), 0x00FF0000);
+//		ft_my_pixel_put(buff, (int)nearbyint(buff->player.x + tmp), (int)nearbyint(buff->player.y + i), 0x00FF0000);
 		i++;
 		tmp += buff->player.delta;
 	}
@@ -117,7 +117,7 @@ void	ft_raycast(t_data *data, t_img *buff)
 	while (i < 400)
 	{
 		ft_ray(data, buff);
-//		ft_draw_f_line(data, buff, i, 200);
+		ft_draw_f_line(data, buff, i, 200);
 		buff->player.angle += 0.15;
 		if (buff->player.angle > 315)
 			buff->player.angle = -45 + (buff->player.angle - 315);

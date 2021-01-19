@@ -16,7 +16,7 @@ void    ft_draw_line(t_data *data, t_img *buff, int x, int y)
 	i = 0;
 	while (i < SIZE)
 	{
-		ft_my_pixel_put(buff, x + i, y, BLOCK_COLOR);
+//		ft_my_pixel_put(buff, x + i, y, BLOCK_COLOR);
 		if (data->cpt == 1)
 			data->grid[x + i][y] = 1;
 		i++;
