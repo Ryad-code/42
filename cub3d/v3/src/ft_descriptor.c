@@ -18,16 +18,13 @@ void	ft_init_grid(t_data *data)
 	}
 }
 
-void    ft_get_map(const char *file, t_data *data)
+void	ft_get_map(t_data *data, int fd, char *line)	//Récupération de la map dans data.map
 {
-        int     i;
-        int     j;
-        int     fd;
-        char    *line;
+	int	i;
+	int	j;
 
-        i = 0;
-        j = 0;
-        fd = open(file, O_RDONLY);
+	i = 0;
+	j = 0;
         while (i < MAP_HEIGHT)
         {
                 get_next_line(fd, &line);

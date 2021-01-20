@@ -18,7 +18,7 @@ int main()
         &data.buff01.l_len, &data.buff01.endian);
 
 	ft_init_grid(&data);
-	ft_get_map("maps/map01.txt", &data);
+	ft_read_fd("maps/map01.cub", &data);
 	ft_draw_map(&data, &data.buff01);
 
 	ft_raycast(&data, &data.buff01);

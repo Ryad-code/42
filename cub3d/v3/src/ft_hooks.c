@@ -12,8 +12,8 @@ void	ft_keycode(int keycode, t_data *data, t_img *buff)
 	else if (keycode == 97 || keycode == 122)
 		ft_turn_player(keycode, data);
 //	printf("grid  = %d:%d\n", data->grid[(int)nearbyint(data->player.x)][(int)nearbyint(data->player.y)], data->grid[(int)nearbyint(data->player.x + 1)][(int)nearbyint(data->player.y + 1)]);
-	printf("pos   = %lf | %lf\n", data->player.x, data->player.y);
-	printf("angle = %lf\n----------\n", data->player.angle);
+//	printf("pos   = %lf | %lf\n", data->player.x, data->player.y);
+//	printf("angle = %lf\n----------\n", data->player.angle);
 //	printf("delta = %lf\n----------\n", data->player.delta);
 }
 

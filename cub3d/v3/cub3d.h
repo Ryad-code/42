@@ -41,14 +41,31 @@ typedef struct	s_img
 	int		endian;
 }		t_img;
 
+typedef struct	s_descriptor
+{
+	int	s_width;
+	int	s_height;
+	char 	*resolution;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*sprite;
+	char	*f;
+	char	*c;
+//	int     map[MAP_WIDTH][MAP_HEIGHT];
+//	int     grid[][MAP_HEIGHT * SIZE];
+}		t_descriptor;
+
 typedef struct	s_data
 {
 	t_mlx		mlx;
 	t_img		buff01;
 	t_img		buff02;
 	t_player	player;
-	int		map[MAP_WIDTH][MAP_HEIGHT];
-	int		grid[MAP_WIDTH * SIZE][MAP_HEIGHT * SIZE];
+	t_descriptor	descriptor;
+	int		map[MAP_WIDTH][MAP_HEIGHT];		//à retirer
+	int		grid[SCREEN_WIDTH][SCREEN_HEIGHT];		//
 	int		cpt;
 }			t_data;
 
@@ -59,9 +76,14 @@ void    ft_draw_line2(t_data *data, t_img *buff, int x, int y);
 void	ft_draw_block(t_data *data, t_img *buff, int x, int y);
 void	ft_draw_screen(t_data *data, t_img *buff, int x, int y);
 
-void    ft_init_grid(t_data *data);				//FT_MAP.C
-void    ft_get_map(const char *file, t_data *data);
+void    ft_init_grid(t_data *data);				//FT_DESCRIPTOR.C
+void    ft_read_fd(const char *file, t_data *data);
+void	ft_get_map(t_data *data, int fd, char *line);
 void    ft_draw_map(t_data *data, t_img *buff);
+
+int	ft_atoi(char *str);					//FT_PARSER.C
+void	ft_check_line(t_data *data, char *line);
+void	ft_get_lines(t_data *data, int fd, char *line);
 
 void	ft_init_buff(t_data *data, t_img *buff);		//FT_FRAME.C
 int	ft_next_frame(int keycode, t_data *data);
@@ -74,10 +96,10 @@ void	ft_move_back(t_data *data, t_img *buff);
 void	ft_move_right(t_data *data, t_img *buff);
 void	ft_move_left(t_data *data,  t_img *buff);
 
-void	ft_get_delta(t_data *data);			//FT_RAY.C
+void	ft_get_delta(t_data *data);				//FT_RAY.C
 void	ft_ray_right(t_data *data, t_img *buff);
-void	ft_ray_left(t_data *data, t_img *buff);		//Changer prototypes
-void	ft_ray_up(t_data *data, t_img *buff);		//
-void	ft_ray_down(t_data *data, t_img *buff);		//
-void	ft_ray(t_data *data, t_img *buff);		//
+void	ft_ray_left(t_data *data, t_img *buff);			//Changer prototypes
+void	ft_ray_up(t_data *data, t_img *buff);			//
+void	ft_ray_down(t_data *data, t_img *buff);			//
+void	ft_ray(t_data *data, t_img *buff);			//
 void    ft_raycast(t_data *data, t_img *buff);
