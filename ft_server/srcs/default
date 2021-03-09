@@ -1,0 +1,27 @@
+# SERVER CONFIGURATION
+server	{
+	listen 80;
+	listen [::]:80;
+
+	# SSL
+	listen 443 ssl;
+	listen [::]:443 ssl;
+
+	ssl_certificate		/etc/nginx/ssl/localhost.pem;
+	ssl_certificate_key	/etc/nginx/ssl/localhost.key;
+
+	server_name localhost;
+
+	root /var/www/localhost;
+	index index.html index.htm index.php;
+	
+	location /	{
+		try_files $uri $uri/ = 404;
+		autoindex on;
+			}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+			}
+	}
