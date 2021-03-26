@@ -6,9 +6,10 @@ RUN apt-get install -y vim
 RUN apt-get install -y wget
 RUN apt-get install -y openssl
 RUN apt-get install -y nginx
-#RUN apt-get install -y mariadb-server mariadb-client
-RUN apt-get install -y php7.3 php7.3-fpm php7.3-cli php7.3-common
-#RUN apt-get install wordpress
+RUN apt-get install -y mariadb-server mariadb-client
+RUN apt-get install -y php7.3 php7.3-mysql php7.3-fpm php7.3-cli php7.3-common
+RUN apt-get install -y php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip
+
 
 COPY srcs/* ./
 
