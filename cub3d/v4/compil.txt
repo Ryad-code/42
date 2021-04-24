@@ -1,0 +1,1 @@
+gcc main.c cub3d.h srcs/* minilibx-linux/libmlx_Linux.a gnl/get_next_line.c gnl/get_next_line.h gnl/get_next_line_utils.c -lbsd -lmlx -lXext -lX11 -lm
