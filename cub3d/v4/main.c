@@ -16,11 +16,9 @@ int main()
 	data.buff01.addr = mlx_get_data_addr(data.buff01.img, &data.buff01.bpp,
         &data.buff01.l_len, &data.buff01.endian);
 	
-	ft_my_pixel_put(&data.buff01, data.player.x, data.player.y, 0x00FF0000);
 	ft_get_grid(&data, fd);
 	ft_display_grid(&data);
-//	ft_draw_map(&data, &data.buff01);
-//	printf("%d\n\n", data.map.grid[5][1]);
+	ft_draw_map(&data, &data.buff01);
 
 	mlx_put_image_to_window(data.mlx.mlx, data.mlx.win, data.buff01.img, 0, 0);
 
@@ -28,5 +26,6 @@ int main()
 
 	mlx_loop(data.mlx.mlx);
 
+	free(data.map.grid);
 	return (0);
 }

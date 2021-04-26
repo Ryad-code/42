@@ -39,9 +39,9 @@ void	ft_draw_map(t_data *data, t_img *buff)
 
 	i = 0;
 	j = 0;
-	while (i < G_WIDTH)
+	while (i < data->map.g_height)
 	{
-		while (j < G_HEIGHT)
+		while (j < data->map.g_width)
 		{
 			if (data->map.grid[j][i] == 1)
 				ft_draw_block(data, buff, j * B_SIZE, i * B_SIZE);
@@ -56,20 +56,4 @@ void	ft_draw_map(t_data *data, t_img *buff)
 		i++;
 	}
 }
-
-void	ft_line(t_img *buff, t_data *data)
-{
-	double	tmp;
-	int	i;
-
-	tmp = (PI / 180) * data->player.angle;
-	i = 0;
-
-	while (i < 50)
-	{
-		ft_my_pixel_put(buff, (int)nearbyint(data->player.x + (cos(tmp) * i)), (int)nearbyint(data->player.y + (sin(tmp) * i)), 0x00FF0000);
-		i++;
-	}
-}
-
 
