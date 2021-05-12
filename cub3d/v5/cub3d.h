@@ -37,6 +37,14 @@ typedef struct		s_map
 	int		g_width;
 	int		g_height;
 	int		**grid;
+	int		s_width;
+	int		s_height;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*s;
+	char		*ground_color;
 	int		b_size;
 }			t_map;
 

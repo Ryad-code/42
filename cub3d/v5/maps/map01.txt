@@ -1,3 +1,13 @@
+R 650 650
+NO ./texture nord
+SO ./texture sud
+WE ./texture ouest
+EA ./texture est
+
+S ./texture sprite
+F 220,100,0
+C 225,30,0
+
 1111111111
 1000010001
 10000110011
