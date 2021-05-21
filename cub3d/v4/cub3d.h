@@ -36,7 +36,8 @@ typedef struct		s_map
 {
 	int		g_width;
 	int		g_height;
-	int		**grid;
+//	int		**grid;
+	int		grid[50][50];	
 	int		b_size;
 }			t_map;
 

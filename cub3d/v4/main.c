@@ -26,6 +26,6 @@ int main()
 
 	mlx_loop(data.mlx.mlx);
 
-	free(data.map.grid);
+//	free(data.map.grid);
 	return (0);
 }

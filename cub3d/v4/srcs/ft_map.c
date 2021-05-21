@@ -2,7 +2,7 @@
 
 void	ft_check_grid(t_data *data, int	fd)
 {
-	int	i;
+/*	int	i;
 	char	*line;
 
 	i = 0;
@@ -20,7 +20,7 @@ void	ft_check_grid(t_data *data, int	fd)
 	{
 		data->map.grid[i] = malloc(sizeof(**data->map.grid) * (data->map.g_height + 1));
 		i++;
-	}
+	}*/
 }
 
 void	ft_get_grid(t_data *data, int fd)
@@ -31,8 +31,7 @@ void	ft_get_grid(t_data *data, int fd)
 
 	i = 0;
 	j = 0;
-	ft_check_grid(data, fd);
-	fd = open("maps/map01.txt", O_RDONLY);
+//	ft_check_grid(data, fd);
 	while (i < data->map.g_height)
 	{
 		get_next_line(fd, &line);
@@ -45,8 +44,8 @@ void	ft_get_grid(t_data *data, int fd)
 		i++;
 		j = 0;
 	}
-	printf("w=%d\n", data->map.g_width);
-	printf("h=%d\n", data->map.g_height);
+//	printf("w=%d\n", data->map.g_width);
+//	printf("h=%d\n", data->map.g_height);
 }
 
 
