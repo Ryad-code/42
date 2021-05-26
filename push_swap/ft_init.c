@@ -18,19 +18,17 @@ int	ft_create_obj(t_nb **list, int nb, int index)
 
 void	ft_display_list(t_nb *list)
 {
-	int 	i;
-
-	i = 0;
-	while (list)
+	ft_display_list2(list);
+	printf(" %d |\n\n", list->nb);
+}
+void	ft_display_list2(t_nb *list)
+{
+	if (list->prev)
 	{
-		i++;
-		printf(" %d |", list->nb);
-//		printf("i = %d\n", list->index);
-//		printf("f_i = %d\n", list->f_index);
 		list = list->prev;
+		ft_display_list2(list);
+		printf(" %d |\n", list->nb);
 	}
-	printf("\n");
-//	printf("arg_nb  = %d\n", i);
 }
 
 void	ft_swap(t_nb **list, int arg_nb)

@@ -13,6 +13,7 @@ int	ft_create_obj(t_nb **list, int nb, int index);
 
 void	ft_swap(t_nb **list, int arg_nb);
 void	ft_display_list(t_nb *list);
+void    ft_display_list2(t_nb *list);
 
 // Utils
 int	ft_atoi(const char *str);
