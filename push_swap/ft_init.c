@@ -25,12 +25,12 @@ void	ft_display_list(t_nb *list)
 	{
 		i++;
 		printf(" %d |", list->nb);
-		printf("i = %d\n", list->index);
+//		printf("i = %d\n", list->index);
 //		printf("f_i = %d\n", list->f_index);
 		list = list->prev;
 	}
 	printf("\n");
-	printf("arg_nb  = %d\n", i);
+//	printf("arg_nb  = %d\n", i);
 }
 
 void	ft_swap(t_nb **list, int arg_nb)
@@ -47,5 +47,32 @@ void	ft_swap(t_nb **list, int arg_nb)
 	}
 	ft_swap_obj(*list, (*list)->prev);
 	*list = tmp;
-	
+}
+
+void	ft_r_rotate(t_nb **list, int arg_nb)
+{
+	int	i;
+	void	*tmp;
+
+	i = 0;
+	tmp = *list;
+	while (i < arg_nb - 1)
+	{
+		ft_swap_obj(*list, (*list)->prev);
+		*list = (*list)->prev;
+		i++;
+	}
+	*list = tmp;
+}
+
+void	ft_rotate(t_nb **list, int arg_nb)
+{
+	int	i;
+
+	i = 0;
+	while (i < arg_nb - 1)
+	{
+		ft_r_rotate(list, arg_nb);
+		i++;
+	}
 }

@@ -17,3 +17,5 @@ void	ft_display_list(t_nb *list);
 // Utils
 int	ft_atoi(const char *str);
 void	ft_swap_obj(t_nb *obj1, t_nb *obj2);
+void    ft_r_rotate(t_nb **list, int arg_nb);
+void	ft_rotate(t_nb **list, int arg_nb);
