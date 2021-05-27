@@ -28,18 +28,30 @@ int	ft_atoi(const char *str)
 	return (nb);
 }
 
-void	ft_swap_obj(t_nb *obj1, t_nb *obj2)
+void	ft_display_list(t_nb *list_A, t_nb *list_B)
 {
-	int	nb;
-	int	index;
-	int	f_index;
+	ft_display_list2(list_A, list_B);
+	printf(" | %d | ", list_A->nb);
+	if (list_B)
+		printf("| %d |\n\n", list_B->nb);
+	else
+		printf("\n\n");
+}
+void	ft_display_list2(t_nb *list_A, t_nb *list_B)
+{
+	void	*tmp;
 
-	nb = obj1->nb;
-	f_index = obj1->f_index;
-
-	obj1->nb = obj2->nb;
-	obj1->f_index = obj2->f_index;
-
-	obj2->nb = nb;
-	obj2->f_index = f_index;
+	tmp = list_B;
+	if (list_A->prev)
+	{
+		list_A = list_A->prev;
+		if (list_B && list_B->prev)
+			list_B = list_B->prev;
+		ft_display_list2(list_A, list_B);
+		printf(" | %d | ", list_A->nb);
+		if (list_B != tmp)
+			printf("| %d |\n", list_B->nb);
+		else
+			printf("\n");
+	}
 }

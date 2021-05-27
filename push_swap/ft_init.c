@@ -16,61 +16,15 @@ int	ft_create_obj(t_nb **list, int nb, int index)
 	return (0);
 }
 
-void	ft_display_list(t_nb *list)
+int	ft_create_list(t_nb **list, int ac, char **av)
 {
-	ft_display_list2(list);
-	printf(" %d |\n\n", list->nb);
-}
-void	ft_display_list2(t_nb *list)
-{
-	if (list->prev)
-	{
-		list = list->prev;
-		ft_display_list2(list);
-		printf(" %d |\n", list->nb);
-	}
-}
+	int 	i;
 
-void	ft_swap(t_nb **list, int arg_nb)
-{
-	int	i;
-	void	*tmp;
-
-	i = 0;
-	tmp = *list;
-	while (i < (arg_nb - 2))
+	i = 1;
+	while (i < ac)
 	{
-		*list = (*list)->prev;
+		ft_create_obj(list, ft_atoi(av[i]), i);
 		i++;
 	}
-	ft_swap_obj(*list, (*list)->prev);
-	*list = tmp;
-}
-
-void	ft_r_rotate(t_nb **list, int arg_nb)
-{
-	int	i;
-	void	*tmp;
-
-	i = 0;
-	tmp = *list;
-	while (i < arg_nb - 1)
-	{
-		ft_swap_obj(*list, (*list)->prev);
-		*list = (*list)->prev;
-		i++;
-	}
-	*list = tmp;
-}
-
-void	ft_rotate(t_nb **list, int arg_nb)
-{
-	int	i;
-
-	i = 0;
-	while (i < arg_nb - 1)
-	{
-		ft_r_rotate(list, arg_nb);
-		i++;
-	}
+	return (0);
 }
