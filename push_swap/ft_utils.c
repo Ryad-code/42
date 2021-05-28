@@ -30,28 +30,21 @@ int	ft_atoi(const char *str)
 
 void	ft_display_list(t_nb *list_A, t_nb *list_B)
 {
-	ft_display_list2(list_A, list_B);
-	printf(" | %d | ", list_A->nb);
-	if (list_B)
-		printf("| %d |\n\n", list_B->nb);
-	else
-		printf("\n\n");
+	printf("A = |");
+	ft_display(list_A);
+	printf("B = |");
+	ft_display(list_B);
+	printf("\n");
 }
-void	ft_display_list2(t_nb *list_A, t_nb *list_B)
-{
-	void	*tmp;
 
-	tmp = list_B;
-	if (list_A->prev)
+void	ft_display(t_nb *list)
+{
+	printf("%4d |", list->nb);
+	while (list->prev)
 	{
-		list_A = list_A->prev;
-		if (list_B && list_B->prev)
-			list_B = list_B->prev;
-		ft_display_list2(list_A, list_B);
-		printf(" | %d | ", list_A->nb);
-		if (list_B != tmp)
-			printf("| %d |\n", list_B->nb);
-		else
-			printf("\n");
+		list = list->prev;
+		printf("%4d |", list->nb);
 	}
+	printf("\n");
 }
+
