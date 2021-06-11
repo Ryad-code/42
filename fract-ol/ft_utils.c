@@ -17,19 +17,40 @@ int     ft_next_frame(int keycode, t_data *data)
 	}
 }
 
-int	ft_test(int x, int y)
+void	ft_add(t_complex *a, t_complex *b)
 {
-	int	i;
-	int	res;
+	a->nr += b->nr;
+	a->ni += b->ni;
+}
+float	ft_len(t_complex a)
+{
+	return (sqrt(a.nr * a.nr + a.ni * a.ni));
+}
+
+void	ft_init_tab(t_data *data)
+{
+	int		i;
+	int		j;
+	double 		start_r;
+	double		start_i;
+	t_complex	tmp;
 
 	i = 0;
-	res = 0;
-	while (i < 50)
+	j = 0;
+	start_r = -2.00;
+	start_i = 2.00;
+	while (i < HEIGHT)
 	{
-		res = (x *x) + y;
-		if (res > 2 || res < -2)
-			return (i);
+		while (j < WIDTH)
+		{
+			tmp.nr = start_r;
+			tmp.ni = start_i;
+			data->tab[j][i] = tmp;
+			start_r += 0.01;
+			j++;
+		}
+		j = 0;
+		start_i += 0.01;
 		i++;
 	}
-	return (i);
 }
