@@ -40,7 +40,10 @@ typedef struct s_data
 void	ft_my_pixel_put(t_img *buff, int x, int y, int color);
 int     ft_next_frame(int keycode, t_data *data);
 void	ft_add(t_complex *a, t_complex *b);
+void	ft_mult(t_complex *a, t_complex *b);
 float	ft_len(t_complex a);
 void	ft_init_tab(t_data *data);
+void    ft_display_tab(t_data data);
+void	ft_test(t_data data);
 
 #endif

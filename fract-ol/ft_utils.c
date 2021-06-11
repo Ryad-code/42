@@ -22,6 +22,16 @@ void	ft_add(t_complex *a, t_complex *b)
 	a->nr += b->nr;
 	a->ni += b->ni;
 }
+
+void	ft_mult(t_complex *a, t_complex *b)
+{
+	t_complex	tmp;
+	tmp.nr  = a->nr;
+	tmp.ni = a->ni;
+	a->nr =  (a->nr * a->ni) - (b->nr * b->ni);
+	a->ni = (tmp.nr * b->ni) + (tmp.ni * b->nr);
+}
+
 float	ft_len(t_complex a)
 {
 	return (sqrt(a.nr * a.nr + a.ni * a.ni));
@@ -50,7 +60,47 @@ void	ft_init_tab(t_data *data)
 			j++;
 		}
 		j = 0;
-		start_i += 0.01;
+		start_r = -2.00;
+		start_i -= 0.01;
+		i++;
+	}
+}
+
+void	ft_display_tab(t_data data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < HEIGHT)
+	{
+		while (j < WIDTH)
+		{
+			printf("%f + %f\n", (data.tab[j][i]).nr, (data.tab[j][i]).ni);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+
+void	ft_test(t_data data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < HEIGHT)
+	{
+		while (j < WIDTH)
+		{
+			if (ft_len(data.tab[j][i]) < 2)
+				ft_my_pixel_put(&data.buff01, j, i, 0x0FF0000);
+			j++;
+		}
+		j = 0;
 		i++;
 	}
 }
