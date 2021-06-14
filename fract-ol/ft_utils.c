@@ -28,7 +28,7 @@ void	ft_mult(t_complex *a, t_complex *b)
 	t_complex	tmp;
 	tmp.nr  = a->nr;
 	tmp.ni = a->ni;
-	a->nr =  (a->nr * a->ni) - (b->nr * b->ni);
+	a->nr =  (tmp.nr *b->nr) - (tmp.ni * b->ni);
 	a->ni = (tmp.nr * b->ni) + (tmp.ni * b->nr);
 }
 
@@ -97,10 +97,50 @@ void	ft_test(t_data data)
 		while (j < WIDTH)
 		{
 			if (ft_len(data.tab[j][i]) < 2)
-				ft_my_pixel_put(&data.buff01, j, i, 0x0FF0000);
+				ft_my_pixel_put(&data.buff01, j, i, 0x00F2500);
 			j++;
 		}
 		j = 0;
 		i++;
 	}
 }
+
+void	ft_test2(t_data data)
+{
+	int	i;
+	int	j;
+	int	max;
+	t_complex	z;
+	double	tmp;
+	double	z_r;
+	double	z_i;
+//	double	c_r;
+//	double	c_i;
+
+	i = 0;
+	j = 0;
+	while (i < HEIGHT)
+	{
+		while (j < WIDTH)
+		{
+			z.nr = 0.000000;
+			z.ni = 0.000000;
+//			c_r = (data.tab[j][i]).nr;
+//			c_i = (data.tab[j][i]).ni;
+			while (max < 100 && ft_len(z) < 2)
+			{
+				tmp = z.nr;
+				z.nr = (z.nr * z.nr) - (z.ni * z.ni) + (data.tab[j][i]).nr;
+				z.ni = 2 * z.ni * tmp + (data.tab[j][i]).ni;
+				max++;
+			}
+			if (max < 100)
+				ft_my_pixel_put(&data.buff01, j, i, max * 100 * 0x010203);
+			max = 0;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+

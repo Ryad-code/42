@@ -4,6 +4,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
+# include <complex.h>
 
 # define WIDTH 400
 # define HEIGHT 400
@@ -45,5 +46,6 @@ float	ft_len(t_complex a);
 void	ft_init_tab(t_data *data);
 void    ft_display_tab(t_data data);
 void	ft_test(t_data data);
+void    ft_test2(t_data data);
 
 #endif
