@@ -8,7 +8,7 @@ void    ft_my_pixel_put(t_img *buff, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int     ft_next_frame(int keycode, t_data *data)
+int     ft_key_hook(int keycode, t_data *data)
 {
 	if (keycode == 65307)
 	{
@@ -17,19 +17,15 @@ int     ft_next_frame(int keycode, t_data *data)
 	}
 }
 
-void	ft_add(t_complex *a, t_complex *b)
+int	ft_mouse_hook(int button, int x, int y, t_data *data, t_img *buff)
 {
-	a->nr += b->nr;
-	a->ni += b->ni;
-}
-
-void	ft_mult(t_complex *a, t_complex *b)
-{
-	t_complex	tmp;
-	tmp.nr  = a->nr;
-	tmp.ni = a->ni;
-	a->nr =  (tmp.nr *b->nr) - (tmp.ni * b->ni);
-	a->ni = (tmp.nr * b->ni) + (tmp.ni * b->nr);
+	if (button == 4)
+	{
+		ft_set_tab(data, x, y);
+		ft_test(*data, buff);
+	}
+	printf("button = %d\n", button);
+	printf("pos = %d, %d\n", x, y);
 }
 
 float	ft_len(t_complex a)
@@ -37,85 +33,13 @@ float	ft_len(t_complex a)
 	return (sqrt(a.nr * a.nr + a.ni * a.ni));
 }
 
-void	ft_init_tab(t_data *data)
-{
-	int		i;
-	int		j;
-	double 		start_r;
-	double		start_i;
-	t_complex	tmp;
-
-	i = 0;
-	j = 0;
-	start_r = -2.00;
-	start_i = 2.00;
-	while (i < HEIGHT)
-	{
-		while (j < WIDTH)
-		{
-			tmp.nr = start_r;
-			tmp.ni = start_i;
-			data->tab[j][i] = tmp;
-			start_r += 0.01;
-			j++;
-		}
-		j = 0;
-		start_r = -2.00;
-		start_i -= 0.01;
-		i++;
-	}
-}
-
-void	ft_display_tab(t_data data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < HEIGHT)
-	{
-		while (j < WIDTH)
-		{
-			printf("%f + %f\n", (data.tab[j][i]).nr, (data.tab[j][i]).ni);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
-
-void	ft_test(t_data data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < HEIGHT)
-	{
-		while (j < WIDTH)
-		{
-			if (ft_len(data.tab[j][i]) < 2)
-				ft_my_pixel_put(&data.buff01, j, i, 0x00F2500);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
-
-void	ft_test2(t_data data)
+void	ft_test(t_data data, t_img *buff)
 {
 	int	i;
 	int	j;
 	int	max;
 	t_complex	z;
 	double	tmp;
-	double	z_r;
-	double	z_i;
-//	double	c_r;
-//	double	c_i;
 
 	i = 0;
 	j = 0;
@@ -125,17 +49,15 @@ void	ft_test2(t_data data)
 		{
 			z.nr = 0.000000;
 			z.ni = 0.000000;
-//			c_r = (data.tab[j][i]).nr;
-//			c_i = (data.tab[j][i]).ni;
-			while (max < 100 && ft_len(z) < 2)
+			while (max < 20 && ft_len(z) < 2)
 			{
 				tmp = z.nr;
 				z.nr = (z.nr * z.nr) - (z.ni * z.ni) + (data.tab[j][i]).nr;
 				z.ni = 2 * z.ni * tmp + (data.tab[j][i]).ni;
 				max++;
 			}
-			if (max < 100)
-				ft_my_pixel_put(&data.buff01, j, i, max * 100 * 0x010203);
+			if (max < 20)
+				ft_my_pixel_put(buff, j, i, max * 10 * 0x010203);
 			max = 0;
 			j++;
 		}
@@ -143,4 +65,3 @@ void	ft_test2(t_data data)
 		i++;
 	}
 }
-

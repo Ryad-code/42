@@ -6,8 +6,9 @@
 # include <math.h>
 # include <complex.h>
 
-# define WIDTH 400
-# define HEIGHT 400
+# define WIDTH 600
+# define HEIGHT 600
+# define ZOOM 0.9
 
 typedef struct	s_mlx
 {
@@ -32,20 +33,23 @@ typedef struct	s_complex
 
 typedef struct s_data
 {
-	t_mlx	mlx;
-	t_img	buff01;
-	t_img	buff02;
+	t_mlx		mlx;
+	t_img		buff01;
+	t_img		buff02;
 	t_complex	tab[WIDTH][HEIGHT];
+	double		precision;
+	double		scale;
+	int		cpt;
 }		t_data;
 
 void	ft_my_pixel_put(t_img *buff, int x, int y, int color);
-int     ft_next_frame(int keycode, t_data *data);
-void	ft_add(t_complex *a, t_complex *b);
-void	ft_mult(t_complex *a, t_complex *b);
+int     ft_key_hook(int keycode, t_data *data);
+int	ft_mouse_hook(int button, int x, int y, t_data *data, t_img *buff);
 float	ft_len(t_complex a);
 void	ft_init_tab(t_data *data);
+void    ft_set_tab(t_data *data, int x, int y);
 void    ft_display_tab(t_data data);
-void	ft_test(t_data data);
-void    ft_test2(t_data data);
+void	ft_test(t_data data, t_img *buff);
+int	ft_next_frame(int button, int x, int y, t_data *data);
 
 #endif
