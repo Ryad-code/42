@@ -40,6 +40,7 @@ typedef struct s_data
 	double		precision;
 	double		scale;
 	int		cpt;
+	int		it_max;
 }		t_data;
 
 void	ft_my_pixel_put(t_img *buff, int x, int y, int color);
@@ -49,7 +50,7 @@ float	ft_len(t_complex a);
 void	ft_init_tab(t_data *data);
 void    ft_set_tab(t_data *data, int x, int y);
 void    ft_display_tab(t_data data);
-void	ft_test(t_data data, t_img *buff);
+void	ft_fract(t_data *data, t_img *buff);
 int	ft_next_frame(int button, int x, int y, t_data *data);
 
 #endif

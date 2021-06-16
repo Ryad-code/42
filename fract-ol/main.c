@@ -5,6 +5,7 @@ int main()
 	t_data	data;
 	data.precision = 0.01;
 	data.scale = 6;
+	data.it_max = 50;
 	data.cpt = 1;
 //...................................................................................
 	data.mlx.mlx = mlx_init();
@@ -19,7 +20,7 @@ int main()
 //	ft_test(data);
 //	ft_set_tab(&data, 350, 300);
 //	ft_display_tab(data);
-	ft_test(data, &data.buff01);
+	ft_fract(&data, &data.buff01);
 //...................................................................................
 	mlx_put_image_to_window(data.mlx.mlx, data.mlx.win, data.buff01.img, 0, 0);
 //...................................................................................

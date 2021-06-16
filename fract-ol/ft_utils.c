@@ -22,10 +22,10 @@ int	ft_mouse_hook(int button, int x, int y, t_data *data, t_img *buff)
 	if (button == 4)
 	{
 		ft_set_tab(data, x, y);
-		ft_test(*data, buff);
+		ft_fract(data, buff);
 	}
-	printf("button = %d\n", button);
-	printf("pos = %d, %d\n", x, y);
+//	printf("button = %d\n", button);
+//	printf("pos = %d, %d\n", x, y);
 }
 
 float	ft_len(t_complex a)
@@ -33,7 +33,7 @@ float	ft_len(t_complex a)
 	return (sqrt(a.nr * a.nr + a.ni * a.ni));
 }
 
-void	ft_test(t_data data, t_img *buff)
+void	ft_fract(t_data *data, t_img *buff)
 {
 	int	i;
 	int	j;
@@ -43,25 +43,28 @@ void	ft_test(t_data data, t_img *buff)
 
 	i = 0;
 	j = 0;
+	max = data->it_max;
 	while (i < HEIGHT)
 	{
 		while (j < WIDTH)
 		{
 			z.nr = 0.000000;
 			z.ni = 0.000000;
-			while (max < 20 && ft_len(z) < 2)
+			while (data->it_max < 70 && ft_len(z) < 2)
 			{
 				tmp = z.nr;
-				z.nr = (z.nr * z.nr) - (z.ni * z.ni) + (data.tab[j][i]).nr;
-				z.ni = 2 * z.ni * tmp + (data.tab[j][i]).ni;
-				max++;
+				z.nr = (z.nr * z.nr) - (z.ni * z.ni) + (data->tab[j][i]).nr;
+				z.ni = 2 * z.ni * tmp + (data->tab[j][i]).ni;
+				data->it_max++;
 			}
-			if (max < 20)
-				ft_my_pixel_put(buff, j, i, max * 10 * 0x010203);
-			max = 0;
+			if (data->it_max < 70)
+				ft_my_pixel_put(buff, j, i, data->it_max * 3 * 3 * 3 * 0x010203);
+			data->it_max = max;
 			j++;
 		}
 		j = 0;
 		i++;
 	}
+	data->it_max-=5;
+	printf("%d\n", data->it_max);
 }
