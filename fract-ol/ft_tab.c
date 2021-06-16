@@ -39,13 +39,9 @@ void	ft_set_tab(t_data *data, int x, int y)
 
 	i = 0;
 	j = 0;
-//	printf("%d, %d\n", x, y);
-//	printf("%f, %f\n", (data->tab[x][y]).nr, (data->tab[x][y]).ni);
-	
 	start_r = (data->tab[x][y]).nr - ((data->scale * ZOOM) / 2);
 	start_i = (data->tab[x][y]).ni + ((data->scale * ZOOM) / 2);
 	tmp = start_r;
-//	printf("%f, %f\n", start_r, start_i);
 	while (i < HEIGHT)
 	{
 		while (j < WIDTH)
@@ -62,6 +58,8 @@ void	ft_set_tab(t_data *data, int x, int y)
 	}
 	data->scale = data->scale * ZOOM;
 }
+
+
 
 void    ft_display_tab(t_data data)
 {

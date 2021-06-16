@@ -19,11 +19,16 @@ int     ft_key_hook(int keycode, t_data *data)
 
 int	ft_mouse_hook(int button, int x, int y, t_data *data, t_img *buff)
 {
+	x = 200 + (x / 3);
+	y = 200 + (y / 3);
 	if (button == 4)
 	{
 		ft_set_tab(data, x, y);
 		ft_fract(data, buff);
+		data->it_max -= 5;
 	}
+	else
+		ft_fract(data, buff);
 //	printf("button = %d\n", button);
 //	printf("pos = %d, %d\n", x, y);
 }
@@ -65,6 +70,5 @@ void	ft_fract(t_data *data, t_img *buff)
 		j = 0;
 		i++;
 	}
-	data->it_max-=5;
 	printf("%d\n", data->it_max);
 }

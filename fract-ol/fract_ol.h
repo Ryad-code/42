@@ -8,7 +8,7 @@
 
 # define WIDTH 600
 # define HEIGHT 600
-# define ZOOM 0.9
+# define ZOOM 1.1
 
 typedef struct	s_mlx
 {
