@@ -52,6 +52,7 @@ void	ft_init_tab(t_data *data);
 void    ft_set_tab(t_data *data, int x, int y);
 void    ft_display_tab(t_data data);
 void	ft_fract(t_data *data, t_img *buff);
+void    ft_fract1(t_data *data, t_img *buff);
 int	ft_next_frame(int button, int x, int y, t_data *data);
 
 #endif

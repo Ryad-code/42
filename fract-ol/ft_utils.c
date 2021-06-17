@@ -15,7 +15,12 @@ float   ft_len(t_complex a)
 
 int	ft_args(int ac, char **av)
 {
-	if (ac > 4)
+	if (ac == 1)
+	{
+		printf("No argument.\n");
+		return (1);
+	}
+	if (ac > 4 || ac == 1)
 	{
 		 printf("Too many arguments.\n");
 		 return (1);
