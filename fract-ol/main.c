@@ -1,12 +1,15 @@
 #include "fract_ol.h"
 
-int main()
+int main(int ac, char **av)
 {
 	t_data	data;
 	data.precision = 0.01;
 	data.scale = 6;
 	data.it_max = 50;
 	data.cpt = 1;
+
+	if (ft_args(ac, av) == 1)
+		return (1);
 //...................................................................................
 	data.mlx.mlx = mlx_init();
 	data.mlx.win = mlx_new_window(data.mlx.mlx, WIDTH, HEIGHT, "Fract-ol");
@@ -16,10 +19,6 @@ int main()
 	&data.buff01.l_len, &data.buff01.endian);
 //...................................................................................
 	ft_init_tab(&data);
-//	ft_display_tab(data);
-//	ft_test(data);
-//	ft_set_tab(&data, 350, 300);
-//	ft_display_tab(data);
 	ft_fract(&data, &data.buff01);
 //...................................................................................
 	mlx_put_image_to_window(data.mlx.mlx, data.mlx.win, data.buff01.img, 0, 0);

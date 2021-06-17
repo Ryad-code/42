@@ -39,8 +39,8 @@ void	ft_set_tab(t_data *data, int x, int y)
 
 	i = 0;
 	j = 0;
-	start_r = (data->tab[x][y]).nr - ((data->scale * ZOOM) / 2);
-	start_i = (data->tab[x][y]).ni + ((data->scale * ZOOM) / 2);
+	start_r = (data->tab[x][y]).nr - ((data->scale * data->zoom) / 2);
+	start_i = (data->tab[x][y]).ni + ((data->scale * data->zoom) / 2);
 	tmp = start_r;
 	while (i < HEIGHT)
 	{
@@ -48,15 +48,15 @@ void	ft_set_tab(t_data *data, int x, int y)
 		{
 			(data->tab[j][i]).nr = start_r;
 			(data->tab[j][i]).ni = start_i;
-			start_r += (data->scale * ZOOM) / WIDTH;
+			start_r += (data->scale * data->zoom) / WIDTH;
 			j++;	
 		}
 		start_r = tmp;
-		start_i -= (data->scale * ZOOM) / WIDTH;
+		start_i -= (data->scale * data->zoom) / WIDTH;
 		j = 0;
 		i++;
 	}
-	data->scale = data->scale * ZOOM;
+	data->scale = data->scale * data->zoom;
 }
 
 
