@@ -8,7 +8,7 @@ int main(int ac, char **av)
 	data.it_max = 50;
 	data.cpt = 1;
 
-	if (ft_args(ac, av) == 1)
+	if (ft_args(ac, av, &data) == 1)
 		return (1);
 //...................................................................................
 	data.mlx.mlx = mlx_init();
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 	&data.buff01.l_len, &data.buff01.endian);
 //...................................................................................
 	ft_init_tab(&data);
-	ft_fract(&data, &data.buff01);
+	ft_set_fract(&data, &data.buff01);
 //...................................................................................
 	mlx_put_image_to_window(data.mlx.mlx, data.mlx.win, data.buff01.img, 0, 0);
 //...................................................................................

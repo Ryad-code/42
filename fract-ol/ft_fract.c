@@ -1,5 +1,13 @@
 #include "fract_ol.h"
 
+void    ft_set_fract(t_data *data, t_img *buff)
+{
+	if (data->arg == 'M')
+		ft_fract(data, buff);
+	else if (data->arg == 'J')
+		ft_fract1(data, buff);
+}
+
 void	ft_fract(t_data *data, t_img *buff)
 {
 	int	i;
@@ -50,8 +58,8 @@ void    ft_fract1(t_data *data, t_img *buff)
 	{
 		while (j < WIDTH)
 		{
-			z.nr = 0.000000;
-			z.ni = 0.000000;
+			z.nr = (data->tab[j][i]).nr;
+			z.ni = (data->tab[j][i]).ni;
 			c.nr = 0.285;
 			c.ni = 0.01;
 			while (data->it_max < 70 && ft_len(z) < 2)

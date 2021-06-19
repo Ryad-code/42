@@ -13,14 +13,14 @@ float   ft_len(t_complex a)
 	return (sqrt(a.nr * a.nr + a.ni * a.ni));
 }
 
-int	ft_args(int ac, char **av)
+int	ft_args(int ac, char **av, t_data *data)
 {
 	if (ac == 1)
 	{
 		printf("No argument.\n");
 		return (1);
 	}
-	if (ac > 4 || ac == 1)
+	if (ac > 4)
 	{
 		 printf("Too many arguments.\n");
 		 return (1);
@@ -30,5 +30,11 @@ int	ft_args(int ac, char **av)
 		printf("Wrong argument. Choose \"M\" for Mandelbrot or \"J\" for Julia.\n");
 		return (1);
 	}
+	if (av[1][0])
+		data->arg = av[1][0];
+	if (ac == 4)
+	{
+		data->j_r = av[2];
+		data->j_i = av[3];
+	}
 }
-

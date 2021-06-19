@@ -41,16 +41,16 @@ int	ft_mouse_hook(int button, int x, int y, t_data *data, t_img *buff)
 	{
 		data->zoom = 0.909091;
 		ft_set_tab(data, x, y);
-		ft_fract(data, buff);
+		ft_set_fract(data, buff);
 		data->it_max -= 3;
 	}
 	else if (button == 5)
 	{
 		data->zoom = 1.1;
 		ft_set_tab(data, x, y);
-		ft_fract(data, buff);
+		ft_set_fract(data, buff);
 		if (data->it_max <= 47)
 			data->it_max += 3;
 	}
-	ft_fract(data, buff);
+	ft_set_fract(data, buff);
 }
