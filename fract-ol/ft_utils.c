@@ -13,6 +13,41 @@ float   ft_len(t_complex a)
 	return (sqrt(a.nr * a.nr + a.ni * a.ni));
 }
 
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	long	sign;
+	long	nb;
+
+	i = 0;
+	sign = 1;
+	nb = 0;
+	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' ||
+	str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - 48);
+		i++;
+	}
+	nb = nb * sign;
+	return (nb);
+}
+
 int	ft_args(int ac, char **av, t_data *data)
 {
 	if (ac == 1)
@@ -37,4 +72,26 @@ int	ft_args(int ac, char **av, t_data *data)
 		data->j_r = av[2];
 		data->j_i = av[3];
 	}
+	printf("%s | %d\n", data->j_r, ft_check_arg(data->j_r));
+	printf("%s | %d\n", data->j_i, ft_check_arg(data->j_i));
+}
+
+int	ft_check_arg(char *arg)
+{
+	int	i;
+
+	i = 0;
+	if (ft_isdigit(arg[i] == 1))
+		return (1);
+/*	i++;
+	if (arg[i] != '.' && arg[i] != '\0')
+		return (1);
+	i++;
+	while (arg[i] != '\0')
+	{
+		if (ft_isdigit(arg[i] == 1))
+			return (1);
+		i++;
+	}*/
+	return (0);
 }
