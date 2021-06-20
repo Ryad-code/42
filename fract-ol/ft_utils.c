@@ -13,14 +13,7 @@ float   ft_len(t_complex a)
 	return (sqrt(a.nr * a.nr + a.ni * a.ni));
 }
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	int	i;
 	long	sign;
@@ -50,15 +43,10 @@ int	ft_atoi(const char *str)
 
 int	ft_args(int ac, char **av, t_data *data)
 {
-	if (ac == 1)
+	if (ac == 1 || ac == 3 || ac > 4)
 	{
-		printf("No argument.\n");
+		printf("Wrong arguments.\n");
 		return (1);
-	}
-	if (ac > 4)
-	{
-		 printf("Too many arguments.\n");
-		 return (1);
 	}
 	if (av[1][0] != 'M' && av[1][0] != 'J')
 	{
@@ -67,31 +55,22 @@ int	ft_args(int ac, char **av, t_data *data)
 	}
 	if (av[1][0])
 		data->arg = av[1][0];
-	if (ac == 4)
+	if (ac == 4 && av[1][0] == 'J')
 	{
 		data->j_r = av[2];
 		data->j_i = av[3];
-	}
-	printf("%s | %d\n", data->j_r, ft_check_arg(data->j_r));
-	printf("%s | %d\n", data->j_i, ft_check_arg(data->j_i));
-}
-
-int	ft_check_arg(char *arg)
-{
-	int	i;
-
-	i = 0;
-	if (ft_isdigit(arg[i] == 1))
-		return (1);
-/*	i++;
-	if (arg[i] != '.' && arg[i] != '\0')
-		return (1);
-	i++;
-	while (arg[i] != '\0')
-	{
-		if (ft_isdigit(arg[i] == 1))
+		if (ft_check(data->j_r) != 0 || ft_check(data->j_i) != 0)
+		{
+			printf("Wrong arguments for Julia set\n");
 			return (1);
-		i++;
-	}*/
-	return (0);
+		}
+		data->j_arg.nr = ft_set_nb(data->j_r);
+		data->j_arg.ni = ft_set_nb(data->j_i);
+		if ((data->j_arg.nr > 2 || data->j_arg.nr < -2) || (data->j_arg.ni > 2 || data->j_arg.ni < -2))
+		{
+			printf("Choose a value between -2.0 and 2.0\n");
+			return (1);
+		}
+		printf("%f, %f\n", data->j_arg.nr, data->j_arg.ni);
+	}
 }

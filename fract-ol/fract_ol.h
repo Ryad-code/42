@@ -44,6 +44,7 @@ typedef struct s_data
 	char		arg;
 	char		*j_r;
 	char		*j_i;
+	t_complex	j_arg;
 }		t_data;
 
 void	ft_my_pixel_put(t_img *buff, int x, int y, int color);
@@ -51,7 +52,6 @@ int     ft_key_hook(int keycode, t_data *data);
 int	ft_mouse_hook(int button, int x, int y, t_data *data, t_img *buff);
 float	ft_len(t_complex a);
 int     ft_isdigit(int c);
-int     ft_atoi(const char *str);
 int	ft_check_arg(char *arg);
 int	ft_args(int ac, char **av, t_data *data);
 void	ft_init_tab(t_data *data);
@@ -61,5 +61,9 @@ void	ft_set_fract(t_data *data, t_img *buff);
 void	ft_fract(t_data *data, t_img *buff);
 void    ft_fract1(t_data *data, t_img *buff);
 int	ft_next_frame(int button, int x, int y, t_data *data);
+
+int	ft_check(char *a);
+double	ft_set_nb(char  *a);
+int     ft_atoi(char *str);
 
 #endif

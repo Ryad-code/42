@@ -60,8 +60,8 @@ void    ft_fract1(t_data *data, t_img *buff)
 		{
 			z.nr = (data->tab[j][i]).nr;
 			z.ni = (data->tab[j][i]).ni;
-			c.nr = 0.285;
-			c.ni = 0.01;
+			c.nr = data->j_arg.nr;
+			c.ni = data->j_arg.ni;
 			while (data->it_max < 70 && ft_len(z) < 2)
 			{
 				tmp = z.nr;

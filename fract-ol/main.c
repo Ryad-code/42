@@ -7,9 +7,12 @@ int main(int ac, char **av)
 	data.scale = 6;
 	data.it_max = 50;
 	data.cpt = 1;
+	data.j_arg.nr = 0.285;
+	data.j_arg.ni = 0.01;
 
 	if (ft_args(ac, av, &data) == 1)
 		return (1);
+//	printf("%d\n", ft_atoi("213"));
 //...................................................................................
 	data.mlx.mlx = mlx_init();
 	data.mlx.win = mlx_new_window(data.mlx.mlx, WIDTH, HEIGHT, "Fract-ol");
