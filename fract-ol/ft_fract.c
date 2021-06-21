@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 12:40:17 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/06/21 13:52:43 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/06/21 13:54:24 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	ft_fract1(t_data *data, t_img *buff)
 	max = data->it_max;
 	while (i < HEIGHT)
 	{
-		ft_fract1_2(max, &z, &c, data);
 		while (j < WIDTH)
 		{
 			z.nr = (data->tab[j][i]).nr;
