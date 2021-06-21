@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/21 12:41:04 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/06/21 13:38:53 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fract_ol.h"
 
 void	ft_my_pixel_put(t_img *buff, int x, int y, int color)
@@ -55,14 +67,20 @@ int	ft_args(int ac, char **av, t_data *data)
 	}
 	if (av[1][0])
 		data->arg = av[1][0];
+	if (ft_args2(ac, av, data) == 1)
+		return (1);
+}
+
+int	ft_args2(int ac, char **av, t_data *data)
+{
 	if (ac == 4 && av[1][0] == 'J')
 	{
-		data->j_r = av[2];
-		data->j_i = av[3];
+		 data->j_r = av[2];
+		 data->j_i = av[3];
 		if (ft_check(data->j_r) != 0 || ft_check(data->j_i) != 0)
 		{
-			printf("Wrong arguments for Julia set\n");
-			return (1);
+			 printf("Wrong arguments for Julia set\n");
+			 return (1);
 		}
 		data->j_arg.nr = ft_set_nb(data->j_r);
 		data->j_arg.ni = ft_set_nb(data->j_i);
@@ -72,6 +90,6 @@ int	ft_args(int ac, char **av, t_data *data)
 			printf("Choose a value between -2.0 and 2.0\n");
 			return (1);
 		}
-		printf("%f, %f\n", data->j_arg.nr, data->j_arg.ni);
+		return (0);
 	}
 }

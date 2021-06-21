@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fract.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/21 12:40:17 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/06/21 13:52:43 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fract_ol.h"
 
 void	ft_set_fract(t_data *data, t_img *buff)
@@ -57,6 +69,7 @@ void	ft_fract1(t_data *data, t_img *buff)
 	max = data->it_max;
 	while (i < HEIGHT)
 	{
+		ft_fract1_2(max, &z, &c, data);
 		while (j < WIDTH)
 		{
 			z.nr = (data->tab[j][i]).nr;
@@ -77,6 +90,5 @@ void	ft_fract1(t_data *data, t_img *buff)
 		}
 		j = 0;
 		i++;
-
 	}
 }

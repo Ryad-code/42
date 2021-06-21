@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fract_ol.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/21 12:39:50 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/06/21 13:50:21 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 # include "minilibx-linux/mlx.h"
@@ -54,11 +66,13 @@ float	ft_len(t_complex a);
 int     ft_isdigit(int c);
 int	ft_check_arg(char *arg);
 int	ft_args(int ac, char **av, t_data *data);
+int     ft_args2(int ac, char **av, t_data *data);
 void	ft_init_tab(t_data *data);
 void    ft_set_tab(t_data *data, int x, int y);
 void	ft_set_fract(t_data *data, t_img *buff);
 void	ft_fract(t_data *data, t_img *buff);
 void    ft_fract1(t_data *data, t_img *buff);
+void    ft_fract1_2(int max, t_complex *z, t_complex *c, t_data *data);
 int	ft_next_frame(int button, int x, int y, t_data *data);
 
 int	ft_check(char *a);
