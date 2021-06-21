@@ -34,7 +34,6 @@ int	ft_check(char *a)
 	a++;
 	if (len > 2)
 	{
-
 		while (a[i] != '\0')
 		{
 			if (ft_isdigit(a[i]) == 1)
@@ -47,8 +46,8 @@ int	ft_check(char *a)
 
 double	ft_set_nb(char	*a)
 {
-	int	i;
-	int	res_1;
+	int		i;
+	int		res_1;
 	double	res_2;
 	double	res;
 
@@ -64,4 +63,3 @@ double	ft_set_nb(char	*a)
 	res = res_1 + res_2;
 	return (res);
 }
-

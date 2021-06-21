@@ -56,7 +56,6 @@ int	ft_check_arg(char *arg);
 int	ft_args(int ac, char **av, t_data *data);
 void	ft_init_tab(t_data *data);
 void    ft_set_tab(t_data *data, int x, int y);
-void    ft_display_tab(t_data data);
 void	ft_set_fract(t_data *data, t_img *buff);
 void	ft_fract(t_data *data, t_img *buff);
 void    ft_fract1(t_data *data, t_img *buff);

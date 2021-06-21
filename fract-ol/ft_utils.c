@@ -1,29 +1,29 @@
 #include "fract_ol.h"
 
-void    ft_my_pixel_put(t_img *buff, int x, int y, int color)
+void	ft_my_pixel_put(t_img *buff, int x, int y, int color)
 {
-	 char    *dst;
+	char	*dst;
 
-	 dst = buff->addr + (y * buff->l_len + x * (buff->bpp / 8));
-	 *(unsigned int*)dst = color;
+	dst = buff->addr + (y * buff->l_len + x * (buff->bpp / 8));
+	*(unsigned int *)dst = color;
 }
 
-float   ft_len(t_complex a)
+float	ft_len(t_complex a)
 {
 	return (sqrt(a.nr * a.nr + a.ni * a.ni));
 }
 
 int	ft_atoi(char *str)
 {
-	int	i;
+	int		i;
 	long	sign;
 	long	nb;
 
 	i = 0;
 	sign = 1;
 	nb = 0;
-	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' ||
-	str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
+	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n'
+		|| str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
 		i++;
 	if (str[i] == '-')
 	{
@@ -66,7 +66,8 @@ int	ft_args(int ac, char **av, t_data *data)
 		}
 		data->j_arg.nr = ft_set_nb(data->j_r);
 		data->j_arg.ni = ft_set_nb(data->j_i);
-		if ((data->j_arg.nr > 2 || data->j_arg.nr < -2) || (data->j_arg.ni > 2 || data->j_arg.ni < -2))
+		if ((data->j_arg.nr > 2 || data->j_arg.nr < -2)
+			|| (data->j_arg.ni > 2 || data->j_arg.ni < -2))
 		{
 			printf("Choose a value between -2.0 and 2.0\n");
 			return (1);

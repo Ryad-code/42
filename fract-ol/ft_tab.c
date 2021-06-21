@@ -2,8 +2,8 @@
 
 void	ft_init_tab(t_data *data)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 	double		start_r;
 	double		start_i;
 	t_complex	tmp;
@@ -31,51 +31,29 @@ void	ft_init_tab(t_data *data)
 
 void	ft_set_tab(t_data *data, int x, int y)
 {
-	int 	i;
-	int	j;
-	double          start_r;
-	double          start_i;
+	int			i;
+	int			j;
+	t_complex	start;
 	double		tmp;
 
 	i = 0;
 	j = 0;
-	start_r = (data->tab[x][y]).nr - ((data->scale * data->zoom) / 2);
-	start_i = (data->tab[x][y]).ni + ((data->scale * data->zoom) / 2);
-	tmp = start_r;
+	start.nr = (data->tab[x][y]).nr - ((data->scale * data->zoom) / 2);
+	start.ni = (data->tab[x][y]).ni + ((data->scale * data->zoom) / 2);
+	tmp = start.nr;
 	while (i < HEIGHT)
 	{
 		while (j < WIDTH)
 		{
-			(data->tab[j][i]).nr = start_r;
-			(data->tab[j][i]).ni = start_i;
-			start_r += (data->scale * data->zoom) / WIDTH;
-			j++;	
+			(data->tab[j][i]).nr = start.nr;
+			(data->tab[j][i]).ni = start.ni;
+			start.nr += (data->scale * data->zoom) / WIDTH;
+			j++;
 		}
-		start_r = tmp;
-		start_i -= (data->scale * data->zoom) / WIDTH;
+		start.nr = tmp;
+		start.ni -= (data->scale * data->zoom) / WIDTH;
 		j = 0;
 		i++;
 	}
 	data->scale = data->scale * data->zoom;
-}
-
-
-
-void    ft_display_tab(t_data data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < HEIGHT)
-	{
-		while (j < WIDTH)
-		{
-			printf("%f + %f\n", (data.tab[j][i]).nr, (data.tab[j][i]).ni);
-			j++;
-		}
-		j= 0;
-		i++;
-	}
 }

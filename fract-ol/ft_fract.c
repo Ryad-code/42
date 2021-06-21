@@ -1,6 +1,6 @@
 #include "fract_ol.h"
 
-void    ft_set_fract(t_data *data, t_img *buff)
+void	ft_set_fract(t_data *data, t_img *buff)
 {
 	if (data->arg == 'M')
 		ft_fract(data, buff);
@@ -10,11 +10,11 @@ void    ft_set_fract(t_data *data, t_img *buff)
 
 void	ft_fract(t_data *data, t_img *buff)
 {
-	int	i;
-	int	j;
-	int	max;
+	int			i;
+	int			j;
+	int			max;
 	t_complex	z;
-	double	tmp;
+	double		tmp;
 
 	i = 0;
 	j = 0;
@@ -33,7 +33,8 @@ void	ft_fract(t_data *data, t_img *buff)
 				data->it_max++;
 			}
 			if (data->it_max < 70)
-				ft_my_pixel_put(buff, j, i, data->it_max * 3 * 3 * 3 * 0x010203);
+				ft_my_pixel_put(buff, j, i,
+					data->it_max * 3 * 3 * 3 * 0x010203);
 			data->it_max = max;
 			j++;
 		}
@@ -42,14 +43,14 @@ void	ft_fract(t_data *data, t_img *buff)
 	}
 }
 
-void    ft_fract1(t_data *data, t_img *buff)
+void	ft_fract1(t_data *data, t_img *buff)
 {
-	int	i;
-	int	j;
-	int	max;
+	int			i;
+	int			j;
+	int			max;
 	t_complex	z;
 	t_complex	c;
-	double	tmp;
+	double		tmp;
 
 	i = 0;
 	j = 0;
