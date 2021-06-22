@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 12:39:50 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/06/21 13:50:21 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/06/22 12:00:16 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_data
 	t_img		buff01;
 	t_img		buff02;
 	t_complex	tab[WIDTH][HEIGHT];
+	t_complex	z;
+	t_complex	c;
 	double		precision;
 	double		scale;
 	float           zoom;
@@ -59,9 +61,16 @@ typedef struct s_data
 	t_complex	j_arg;
 }		t_data;
 
+typedef struct	s_input
+{
+	int 	button;
+	int	x;
+	int	y;
+}		t_input;
+
 void	ft_my_pixel_put(t_img *buff, int x, int y, int color);
 int     ft_key_hook(int keycode, t_data *data);
-int	ft_mouse_hook(int button, int x, int y, t_data *data, t_img *buff);
+int	ft_mouse_hook(t_input input, t_data *data, t_img *buff);
 float	ft_len(t_complex a);
 int     ft_isdigit(int c);
 int	ft_check_arg(char *arg);
@@ -71,9 +80,13 @@ void	ft_init_tab(t_data *data);
 void    ft_set_tab(t_data *data, int x, int y);
 void	ft_set_fract(t_data *data, t_img *buff);
 void	ft_fract(t_data *data, t_img *buff);
+void    ft_fract_2(int i, int j, t_data *data);
 void    ft_fract1(t_data *data, t_img *buff);
-void    ft_fract1_2(int max, t_complex *z, t_complex *c, t_data *data);
+void    ft_fract1_2(t_data *data);
+void    ft_fract1_3(int i, int j, t_data *data);
 int	ft_next_frame(int button, int x, int y, t_data *data);
+void    ft_frame(t_data *data, t_img *buff);
+t_input	ft_input(int button, int x, int y);
 
 int	ft_check(char *a);
 double	ft_set_nb(char  *a);

@@ -6,30 +6,36 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 12:40:51 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/06/21 12:40:53 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/06/22 12:03:53 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
 
+void	ft_frame(t_data *data, t_img *buff)
+{
+	buff->img = mlx_new_image(data->mlx.mlx, WIDTH, HEIGHT);
+	buff->addr = mlx_get_data_addr(buff->img,
+			 &buff->bpp, &buff->l_len, &buff->endian);
+}
+
 int	ft_next_frame(int button, int x, int y, t_data *data)
 {
+	t_input	input;
+
+	input = ft_input(button, x, y);
 	if (data->cpt % 2 != 0)
 	{
-		data->buff02.img = mlx_new_image(data->mlx.mlx, WIDTH, HEIGHT);
-		data->buff02.addr = mlx_get_data_addr(data->buff02.img,
-				&data->buff02.bpp, &data->buff02.l_len, &data->buff02.endian);
-		ft_mouse_hook(button, x, y, data, &data->buff02);
+		ft_frame(data, &data->buff02);
+		ft_mouse_hook(input, data, &data->buff02);
 		mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
 			data->buff02.img, 0, 0);
 		mlx_destroy_image(data->mlx.mlx, data->buff01.img);
 	}
 	else
 	{
-		data->buff01.img = mlx_new_image(data->mlx.mlx, WIDTH, HEIGHT);
-		data->buff01.addr = mlx_get_data_addr(data->buff01.img,
-				&data->buff01.bpp, &data->buff01.l_len, &data->buff01.endian);
-		ft_mouse_hook(button, x, y, data, &data->buff01);
+		ft_frame(data, &data->buff01);
+		ft_mouse_hook(input, data, &data->buff01);
 		mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
 			data->buff01.img, 0, 0);
 		mlx_destroy_image(data->mlx.mlx, data->buff02.img);
@@ -47,21 +53,31 @@ int	ft_key_hook(int keycode, t_data *data)
 	}
 }
 
-int	ft_mouse_hook(int button, int x, int y, t_data *data, t_img *buff)
+t_input	ft_input(int button, int x, int y)
 {
-	x = 200 + (x / 3);
-	y = 200 + (y / 3);
-	if (button == 4)
+	t_input	tab;
+
+	tab.button = button;
+	tab.x = x;
+	tab.y = y;
+	return (tab);
+}
+
+int	ft_mouse_hook(t_input input, t_data *data, t_img *buff)
+{
+	input.x = 200 + (input.x / 3);
+	input.y = 200 + (input.y / 3);
+	if (input.button == 4)
 	{
 		data->zoom = 0.909091;
-		ft_set_tab(data, x, y);
+		ft_set_tab(data, input.x, input.y);
 		ft_set_fract(data, buff);
 		data->it_max -= 3;
 	}
-	else if (button == 5)
+	else if (input.button == 5)
 	{
 		data->zoom = 1.1;
-		ft_set_tab(data, x, y);
+		ft_set_tab(data, input.x, input.y);
 		ft_set_fract(data, buff);
 		if (data->it_max <= 47)
 			data->it_max += 3;
