@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 12:41:04 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/06/22 12:33:26 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/06/22 13:24:02 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_args(int ac, char **av, t_data *data)
 		printf("Wrong arguments.\n");
 		return (1);
 	}
-	if (av[1][0] != 'M' && av[1][0] != 'J')
+	if (av[1][0] != 'M' && av[1][0] != 'J' || ft_strlen(av[1]) != 1)
 	{
 		printf("Wrong argument. Choose \"M\" for Mandelbrot or \"J\" for Julia.\n");
 		return (1);

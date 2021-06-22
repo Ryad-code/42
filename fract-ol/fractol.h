@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 12:39:50 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/06/22 12:39:48 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/06/22 13:23:45 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ t_input	ft_input(int button, int x, int y);
 int		ft_check(char *a);
 double	ft_set_nb(char *a);
 int		ft_atoi(char *str);
+int		ft_strlen(char	*str);
 
 #endif
