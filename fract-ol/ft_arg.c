@@ -6,11 +6,11 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 12:40:38 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/06/21 12:40:43 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/06/22 12:34:34 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "fractol.h"
 
 int	ft_strlen(char *s)
 {

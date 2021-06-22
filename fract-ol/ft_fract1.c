@@ -6,11 +6,11 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 12:40:17 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/06/22 11:28:55 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/06/22 12:33:52 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "fractol.h"
 
 void	ft_set_fract(t_data *data, t_img *buff)
 {

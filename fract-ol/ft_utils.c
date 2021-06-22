@@ -6,11 +6,11 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 12:41:04 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/06/21 13:38:53 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/06/22 12:33:26 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "fractol.h"
 
 void	ft_my_pixel_put(t_img *buff, int x, int y, int color)
 {
