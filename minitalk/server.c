@@ -5,12 +5,19 @@
 
 void	handler(int a)
 {
+	static int	nb;
+	
+	if (nb == 0)
+		nb = 1;
 	if (a == SIGUSR1)
 	{
-		printf("1\n");
+		printf("1");
 	}
 	else if (a == SIGUSR2)
-		printf("0\n");
+		printf("0");
+	if (nb % 8 == 0)
+		printf("\n");
+	nb++;
 }
 
 int main(int ac, char *av)
