@@ -3,6 +3,24 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+void	ft_convert(char *str)
+{
+	int		i;
+	int		res;
+	int		pui;
+
+	i = 0;
+	res = 0;
+	pui = 128;
+	while (str[i])
+	{
+		res = res + (str[i] - 48) * pui;
+		pui = pui / 2;
+		i++;
+	}
+	printf("%c\n", res);
+}
+
 void	handler(int a)
 {
 	static int	i;
@@ -16,19 +34,13 @@ void	handler(int a)
 	if (nb == 0)
 		nb = 1;
 	if (a == SIGUSR1)
-	{
 		res[i] = '1';
-//		printf("1");
-	}
 	else if (a == SIGUSR2)
-	{
 		res[i] = '0';
-//		printf("0");
-	}
 	i++;
 	if (nb % 8 == 0)
 	{
-		printf("%s\n", res);
+		ft_convert(res);
 		i = 0;
 	}
 	nb++;
