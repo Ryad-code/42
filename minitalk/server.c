@@ -6,14 +6,11 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 12:40:09 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/06/30 12:50:33 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/06/30 16:09:05 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "minitalk.h"
 
 void	ft_convert(char *str)
 {
@@ -30,7 +27,7 @@ void	ft_convert(char *str)
 		pui = pui / 2;
 		i++;
 	}
-	printf("%c\n", res);
+	write(1, &res, 1);
 }
 
 void	handler(int a)
@@ -61,9 +58,13 @@ void	handler(int a)
 
 int	main(int ac, char **av)
 {
+	int	pid;
+
+	pid = getpid();
 	(void)ac;
 	(void)av;
-	printf("%d\n", getpid());
+	ft_putnbr(pid);
+//	printf("%d\n", getpid());
 	signal(SIGUSR2, handler);
 	signal(SIGUSR1, handler);
 	while (1)
