@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 12:40:09 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/06/30 12:50:33 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h>
@@ -40,18 +52,22 @@ void	handler(int a)
 	i++;
 	if (nb % 8 == 0)
 	{
+		res[i] = '\0';
 		ft_convert(res);
 		i = 0;
 	}
 	nb++;
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
+	(void)ac;
+	(void)av;
 	printf("%d\n", getpid());
 	signal(SIGUSR2, handler);
 	signal(SIGUSR1, handler);
 	while (1)
 	{
 	}
+	return (0);
 }

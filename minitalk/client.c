@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/30 12:40:00 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/06/30 12:51:31 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h>
@@ -15,15 +27,15 @@ int	ft_strlen(char *str)
 
 int	ft_atoi(const char *str)
 {
-	int	i;
+	int		i;
 	long	sign;
 	long	nb;
 
 	i = 0;
 	sign = 1;
 	nb = 0;
-	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' ||
-	str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
+	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n'
+		|| str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
 		i++;
 	if (str[i] == '-')
 	{
@@ -43,9 +55,9 @@ int	ft_atoi(const char *str)
 
 char	*ft_reverse(char *str)
 {
-	int	i;
-	int	j;
-	int	len;
+	int		i;
+	int		j;
+	int		len;
 	char	*tmp;
 
 	i = 0;
@@ -70,10 +82,10 @@ char	*ft_reverse(char *str)
 
 char	*ft_convert(char a)
 {
-	int	i;
-	int	nb;
+	int		i;
+	int		nb;
 	char	*tab;
-	
+
 	i = 0;
 	nb = a;
 	tab = malloc((sizeof(char) * 8) + 1);
@@ -102,31 +114,25 @@ void	ft_reset_tab(char *tab)
 
 int	main(int ac, char **av)
 {
-	int	i;
-	int	j;
-	int	pid;
+	int		i;
+	int		j;
 	char	*str;
 	char	*tab;
 
 	i = 0;
-	pid = ft_atoi(av[1]);
-//	printf("%d\n", pid);
 	str = av[2];
-//	printf("%s\n", str);
-
+	(void)ac;
 	while (str[i])
 	{
 		tab = ft_convert(str[i]);
 		tab = ft_reverse(tab);
 		j = 0;
-		printf("%c |", str[i]);
-		printf("%s|\n", tab);
 		while (tab[j])
 		{
 			if (tab[j] == '1')
-				kill(pid, SIGUSR1);
+				kill(ft_atoi(av[1]), SIGUSR1);
 			else if (tab[j] == '0')
-				kill(pid, SIGUSR2);
+				kill(ft_atoi(av[1]), SIGUSR2);
 			usleep(250);
 			j++;
 		}
