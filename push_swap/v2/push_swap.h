@@ -25,5 +25,13 @@ void	ft_swap(t_nb *obj1, t_nb *ob2);
 void	ft_rotate(t_nb **list);
 void    ft_r_rotate(t_nb **list);
 
+void	ft_sa(t_pile *obj);
+void    ft_sb(t_pile *obj);
+void    ft_pa(t_pile *obj);
+void    ft_pb(t_pile *obj);
+void	ft_ra(t_pile *obj);
+void	ft_rb(t_pile *obj);
+void	ft_rr(t_pile *obj);
+
 int	ft_atoi(const char *str);
 void    ft_display(t_nb *list);
