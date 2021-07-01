@@ -60,13 +60,14 @@ void	ft_delete2(t_nb **list)
 	*list = tmp;
 }
 
-void	ft_display(t_nb *list)
+void	ft_init_list(t_nb **list, int ac, char **av)
 {
-	printf("%4d |", list->nb);
-	while (list->next)
+	int 	i;
+
+	i = 1;
+	while (i < ac)
 	{
-		list = list->next;
-		printf("%4d |", list->nb);
+		ft_create(list, ft_atoi(av[i]), i);
+		i++;
 	}
-	printf("\n");
 }
