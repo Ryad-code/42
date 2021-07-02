@@ -30,11 +30,14 @@ int	ft_atoi(const char *str)
 
 void	ft_display(t_nb *list)
 {
-	printf("%4d |", list->nb);
-	while (list->next)
+	if (list)
 	{
-		list = list->next;
 		printf("%4d |", list->nb);
+		while (list->next)
+		{
+			list = list->next;
+			printf("%4d |", list->nb);
+		}
+		printf("\n");
 	}
-	printf("\n");
 }

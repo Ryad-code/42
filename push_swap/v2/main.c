@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 11:09:57 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/02 16:49:48 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/02 19:02:59 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ int main(int ac, char **av)
 	
 	ft_get_sort(ac, &obj);
 	ft_display(obj.pileA);
-
-//	ft_rrr(&obj);
-//	ft_display(obj.pileB);
-//	printf("%d\n", ft_check_pile(obj.pileB));
+	ft_display(obj.pileB);
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 12:06:07 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/02 16:55:49 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/02 18:35:08 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,29 @@ int	ft_check_pile_3(t_pile *obj)
 	else if (tab[0] > tab[1] && tab[1] > tab[2] && tab[0] > tab[2])
 		return (6);
 	return (0);
+}
+
+int	ft_check_pile_4(t_pile *obj)
+{
+	void	*tmp;
+	int		i;
+	int		res;
+	int		nb;
+
+	tmp = obj->pileA;
+	i  = 1;
+	res = 1;
+	nb = obj->pileA->nb;
+	while (obj->pileA->next)
+	{
+		obj->pileA = obj->pileA->next;
+		if (obj->pileA->nb < nb)
+		{
+			nb = obj->pileA->nb;
+			res = i + 1;
+		}
+		i++;
+	}
+	obj->pileA = tmp;
+	return (res);
 }
