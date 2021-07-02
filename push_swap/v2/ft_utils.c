@@ -60,7 +60,7 @@ void	ft_delete2(t_nb **list)
 	*list = tmp;
 }
 
-void	ft_init_list(t_nb **list, int ac, char **av)
+void	ft_init_pile(t_nb **list, int ac, char **av)
 {
 	int 	i;
 
