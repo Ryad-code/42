@@ -12,6 +12,7 @@ typedef struct	s_pile
 {
 	t_nb	*pileA;
 	t_nb	*pileB;
+	int		nb_op;
 }				t_pile;
 
 int 	ft_create(t_nb **list, int nb, int index);

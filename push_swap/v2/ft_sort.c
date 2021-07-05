@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:05:15 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/05 15:17:08 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/05 15:21:32 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,12 @@ void	ft_default_sort(int nb_args, t_pile *obj)
 		ft_pb(obj);
 		nb_args--;
 		j++;
-		ft_display(obj->pileA);
-		ft_display(obj->pileB);
+//		ft_display(obj->pileA);
+//		ft_display(obj->pileB);
+	}
+	while (j > 0)
+	{
+		ft_pa(obj);
+		j--;
 	}
 }

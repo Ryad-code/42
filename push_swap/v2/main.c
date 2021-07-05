@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 11:09:57 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/02 19:02:59 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/05 15:26:22 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main(int ac, char **av)
 	ft_get_sort(ac, &obj);
 	ft_display(obj.pileA);
 	ft_display(obj.pileB);
+	printf("operations = %d\n", obj.nb_op);
 
 	return (0);
 }
