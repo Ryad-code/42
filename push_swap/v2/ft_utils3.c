@@ -3,14 +3,10 @@
 void 	ft_swap(t_nb *obj1, t_nb *obj2)
 {
 	int	nb;
-	int index;
 	
 	nb = obj1->nb;
-	index = obj1->index;
 	obj1->nb = obj2->nb;
-	obj1->index = obj2->index;
 	obj2->nb = nb;
-	obj2->index = index;
 }
 
 void    ft_rotate(t_nb **list)

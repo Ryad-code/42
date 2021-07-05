@@ -42,13 +42,20 @@ void    ft_display(t_nb *list);
 int		ft_check_pile(t_nb *pile);
 int		ft_check_pile_3(t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-int		ft_check_pile_4(t_pile *obj);
+int		ft_check_min(t_pile *obj);
+int		ft_check_med(int nb_args, t_nb *pile);
+int		ft_check_order(t_nb *pile);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int		ft_check_args(int ac , t_pile *obj);
 //.......................................................
 void	ft_get_sort(int ac, t_pile *obj);
-void	ft_sort_2(t_pile *obj);
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+void	ft_push_min(int nb_args, t_pile *obj);
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+void	ft_sort_2(t_nb *pile, t_pile *obj);
 void	ft_sort_3(t_pile *obj);
-void	ft_sort_4(t_pile *obj);
+void	ft_sort_4(int nb_args, t_pile *obj);
+void	ft_sort_5(int nb_args, t_pile *obj);
+void	ft_sort_6(int nb_args, t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void	ft_default_sort(int nb_args, t_pile *obj);
