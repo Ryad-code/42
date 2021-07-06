@@ -41,3 +41,16 @@ void	ft_display(t_nb *list)
 		printf("\n");
 	}
 }
+
+void	ft_order_display(int nb, t_pile *obj)
+{
+	int i;
+
+	i = 0;
+	while (i < nb)
+	{
+		printf("%4d |", obj->order[i]);
+		i++;
+	}
+	printf("\n");
+}

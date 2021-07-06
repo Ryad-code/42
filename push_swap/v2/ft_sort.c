@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:05:15 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/05 22:03:14 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/06 17:11:10 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    ft_get_sort(int ac, t_pile *obj)
 		ft_sort_5(ac - 1, obj);
 	else if (nb_args == 6)
 		ft_sort_6(ac - 1, obj);
-	else
+	else if (nb_args > 6 && nb_args < 20)
 		ft_default_sort(ac - 1, obj);
 }
 
@@ -150,4 +150,34 @@ void	ft_default_sort(int nb_args, t_pile *obj)
 		ft_pa(obj);
 		j--;
 	}
+}
+
+void	ft_order_sort(int ac , char **av , t_pile *obj)
+{
+	int		i;
+	int		nb_values;
+	int		min;
+	void	*tmp;
+
+	i = 1;
+	nb_values = 0;
+	min = ft_check_min(obj);
+	tmp = obj->pileA;
+	while (obj->pileA->next && i < min)
+	{
+		obj->pileA = obj->pileA->next;
+		i++;
+	}
+	i = obj->pileA->nb;
+	obj->pileA = tmp;
+	while (nb_values < ac - 1 && i < 2147483647)
+	{
+		if (ft_check_nb(i, obj) == 0)
+		{
+			obj->order[nb_values] = i;
+			nb_values++;
+		}
+		i++;
+	}
+	ft_order_display(ac - 1, obj);
 }

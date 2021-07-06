@@ -12,6 +12,7 @@ typedef struct	s_pile
 {
 	t_nb	*pileA;
 	t_nb	*pileB;
+	int		order[100];
 	int		nb_op;
 }				t_pile;
 
@@ -38,6 +39,7 @@ void    ft_rrr(t_pile *obj);
 //.......................................................
 int		ft_atoi(const char *str);
 void    ft_display(t_nb *list);
+void	ft_order_display(int nb, t_pile *obj);
 //.......................................................
 int		ft_check_pile(t_nb *pile);
 int		ft_check_pile_3(t_pile *obj);
@@ -45,6 +47,7 @@ int		ft_check_pile_3(t_pile *obj);
 int		ft_check_min(t_pile *obj);
 int		ft_check_med(int nb_args, t_nb *pile);
 int		ft_check_order(t_nb *pile);
+int		ft_check_nb(int nb, t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int		ft_check_args(int ac , t_pile *obj);
 //.......................................................
@@ -59,3 +62,4 @@ void	ft_sort_5(int nb_args, t_pile *obj);
 void	ft_sort_6(int nb_args, t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void	ft_default_sort(int nb_args, t_pile *obj);
+void	ft_order_sort(int ac, char **av , t_pile *obj);

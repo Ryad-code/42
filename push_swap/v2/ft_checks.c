@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 12:06:07 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/05 21:40:27 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/06 17:06:14 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	ft_check_min(t_pile *obj)
 	obj->pileA = tmp;
 	return (res);
 }
-//t_nb	*ft_check_med(int nb_args, t_nb_pile)
 
 int	ft_check_order(t_nb *pile)
 {
@@ -112,4 +111,27 @@ int	ft_check_order(t_nb *pile)
 	}
 	pile = tmp;
 	return (0);
+}
+
+int  ft_check_nb(int nb, t_pile *obj)
+{
+	void	*tmp;
+
+	tmp = obj->pileA;
+	while (obj->pileA->next)
+	{
+		if (obj->pileA->nb == nb)
+		{
+			obj->pileA = tmp;
+			return (0);
+		}
+		obj->pileA = obj->pileA->next;
+	}
+	if (obj->pileA->nb == nb)
+	{
+		obj->pileA = tmp;
+		return (0);
+	}
+	obj->pileA = tmp;
+	return (-1);
 }

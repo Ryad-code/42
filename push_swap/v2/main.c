@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 11:09:57 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/05 22:31:41 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/06 17:11:23 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ int main(int ac, char **av)
 		return (-1);
 	ft_init_pile(&obj.pileA, ac , av);
 	ft_display(obj.pileA);
-	
-	ft_get_sort(ac, &obj);
-//	printf("%d\n", ft_check_order(obj.pileA));
-	ft_display(obj.pileA);
-	ft_display(obj.pileB);
+
+	ft_order_sort(ac, av, &obj);
+	//ft_get_sort(ac, &obj);
+//	printf("%d\n", ft_check_nb(55, &obj));
+//	ft_display(obj.pileA);
+//	ft_display(obj.pileB);
 	printf("operations = %d\n", obj.nb_op);
 
 	return (0);
