@@ -52,7 +52,7 @@ int		ft_check_nb(int nb, t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int		ft_check_args(int ac , t_pile *obj);
 //...............................................
-void	ft_get_sort(int ac, t_pile *obj);
+void	ft_get_sort(t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void	ft_push_min(int nb_args, t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -66,3 +66,4 @@ void	ft_default_sort(t_pile *obj);
 //.................................................BIG_SORT ALGO
 void    ft_order_sort(t_pile *obj);
 int		ft_get_med(t_pile *obj);
+void	ft_quick_sort(t_pile *obj);

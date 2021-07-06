@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 18:14:17 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/06 18:41:08 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/06 20:36:39 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_order_sort(t_pile *obj)
 	nb_values = 0;
 	min = ft_check_min(obj);
 	tmp = obj->pileA;
-	obj->order = malloc(sizeof(char) * obj->nb_arg);
+	obj->order = malloc(sizeof(int) * obj->nb_arg);
 	while (obj->pileA->next && i < min)
 	{
 		obj->pileA = obj->pileA->next;
@@ -46,11 +46,18 @@ void	ft_order_sort(t_pile *obj)
 int		ft_get_med(t_pile *obj)
 {
 	int res;
+	int res1;
+	int res2;
 
 	if (obj->nb_arg % 2 == 0)
+	{
 		res = ((obj->order[obj->nb_arg / 2]) + (obj->order[(obj->nb_arg / 2) - 1])) / 2;
-	else
+		res1 = obj->order[(obj->nb_arg / 4)];
+		res2 = obj->order[obj->nb_arg - (obj->nb_arg / 4) - 1];
+	}
+		else
 		res = obj->order[obj->nb_arg / 2];
-	printf("%d\n", res);
+		printf("%d\n", res);
+		printf("med1 = %d | med2 = %d\n", res1, res2);
 	return (res);
 }

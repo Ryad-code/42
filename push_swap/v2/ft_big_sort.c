@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_big_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/01 11:09:57 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/06 20:24:28 by mlaouedj         ###   ########.fr       */
+/*   Created: 2021/07/06 18:46:18 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/07/06 20:33:52 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int ac, char **av)
+void	ft_quick_sort(t_pile *obj)
 {
-	t_pile	obj;
+	int		i;
+	int		j;
+	int		med;
+	void	*tmp;
 
-	obj.nb_op = 0;
-	obj.nb_arg = ac - 1;
-	if (ft_check_args(ac, &obj) < 0)
-		return (-1);
-	ft_init_pile(&obj.pileA, ac , av);
-	ft_display(obj.pileA);
-
-	ft_order_sort(&obj);
-	
-	ft_get_sort(&obj);
-
-
-	ft_display(obj.pileA);
-	ft_display(obj.pileB);
-	printf("operations = %d\n", obj.nb_op);
-
-	return (0);
+	i = 0;
+	j = 0;
+	med = ft_get_med(obj);
+	tmp = obj->pileA;
+	while (i < obj->nb_arg / 2 && j < obj->nb_arg)
+	{
+		if (obj->pileA->nb <= med)
+		{
+			ft_pb(obj);
+			i++;
+		}
+		else 
+			ft_ra(obj);
+		j++;
+	}
+	if (obj->pileA->nb < med)
+		ft_pb(obj);
+//	printf("%d\n", ft_get_med(obj));
 }

@@ -6,29 +6,28 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:05:15 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/06 18:32:56 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/06 19:47:20 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ft_get_sort(int ac, t_pile *obj)
+void    ft_get_sort(t_pile *obj)
 {
-	int	nb_args;
-
-	nb_args = ac - 1;
-	if (nb_args == 2)
+	if (obj->nb_arg == 2)
 		ft_sort_2(obj->pileA, obj);
-	else if (nb_args == 3)
+	else if (obj->nb_arg == 3)
 		ft_sort_3(obj);
-	else if (nb_args == 4)
+	else if (obj->nb_arg == 4)
 		ft_sort_4(obj);
-	else if (nb_args == 5)
+	else if (obj->nb_arg == 5)
 		ft_sort_5(obj);
-	else if (nb_args == 6)
+	else if (obj->nb_arg == 6)
 		ft_sort_6(obj);
-	else if (nb_args > 6 && nb_args < 20)
+	else if (obj->nb_arg > 6 && obj->nb_arg < 10)
 		ft_default_sort(obj);
+	else if (obj->nb_arg >= 10)
+		ft_quick_sort(obj);
 }
 
 void	ft_push_min(int nb_args, t_pile *obj)
