@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:05:15 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/06 17:11:10 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/06 18:32:56 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void    ft_get_sort(int ac, t_pile *obj)
 	else if (nb_args == 3)
 		ft_sort_3(obj);
 	else if (nb_args == 4)
-		ft_sort_4(ac - 1, obj);
+		ft_sort_4(obj);
 	else if (nb_args == 5)
-		ft_sort_5(ac - 1, obj);
+		ft_sort_5(obj);
 	else if (nb_args == 6)
-		ft_sort_6(ac - 1, obj);
+		ft_sort_6(obj);
 	else if (nb_args > 6 && nb_args < 20)
-		ft_default_sort(ac - 1, obj);
+		ft_default_sort(obj);
 }
 
 void	ft_push_min(int nb_args, t_pile *obj)
@@ -96,28 +96,28 @@ void	ft_sort_3(t_pile *obj)
 	}
 }
 
-void	ft_sort_4(int nb_args, t_pile *obj)
+void	ft_sort_4(t_pile *obj)
 {
-	ft_push_min(nb_args, obj);
+	ft_push_min(obj->nb_arg, obj);
 	ft_sort_3(obj);
 	ft_pa(obj);
 }
 
-void	ft_sort_5(int nb_args, t_pile *obj)
+void	ft_sort_5(t_pile *obj)
 {
-	ft_push_min(nb_args, obj);
-	ft_push_min(nb_args - 1, obj);
+	ft_push_min(obj->nb_arg, obj);
+	ft_push_min(obj->nb_arg - 1, obj);
 	ft_sort_3(obj);
 	ft_sort_2(obj->pileB, obj);
 	ft_pa(obj);
 	ft_pa(obj);
 }
 
-void	ft_sort_6(int nb_args, t_pile *obj)
+void	ft_sort_6(t_pile *obj)
 {
-		ft_push_min(nb_args, obj);
-		ft_push_min(nb_args - 1, obj);
-		ft_push_min(nb_args - 2, obj);
+		ft_push_min(obj->nb_arg, obj);
+		ft_push_min(obj->nb_arg - 1, obj);
+		ft_push_min(obj->nb_arg - 2, obj);
 		ft_sort_3(obj);
 		ft_pa(obj);
 		ft_pa(obj);
@@ -125,24 +125,24 @@ void	ft_sort_6(int nb_args, t_pile *obj)
 
 }
 
-void	ft_default_sort(int nb_args, t_pile *obj)
+void	ft_default_sort(t_pile *obj)
 {
 	int	mid;
 	int	i;
 	int	j;
 	int	tmp;
 
-	tmp =  nb_args;
+	tmp =  obj->nb_arg;
 	j = 0;
-	if (nb_args % 2 == 0)
-		mid = nb_args / 2;
+	if (obj->nb_arg % 2 == 0)
+		mid = obj->nb_arg / 2;
 	else
-		mid = (nb_args / 2) + 1;
-	while (j < tmp && ft_check_order(obj->pileA) != 0)
+		mid = (obj->nb_arg / 2) + 1;
+	while (j < obj->nb_arg && ft_check_order(obj->pileA) != 0)
 	{
 		i = 0;
-		ft_push_min(nb_args, obj);
-		nb_args--;
+		ft_push_min(tmp, obj);
+		tmp--;
 		j++;
 	}
 	while (j > 0)
@@ -150,34 +150,4 @@ void	ft_default_sort(int nb_args, t_pile *obj)
 		ft_pa(obj);
 		j--;
 	}
-}
-
-void	ft_order_sort(int ac , char **av , t_pile *obj)
-{
-	int		i;
-	int		nb_values;
-	int		min;
-	void	*tmp;
-
-	i = 1;
-	nb_values = 0;
-	min = ft_check_min(obj);
-	tmp = obj->pileA;
-	while (obj->pileA->next && i < min)
-	{
-		obj->pileA = obj->pileA->next;
-		i++;
-	}
-	i = obj->pileA->nb;
-	obj->pileA = tmp;
-	while (nb_values < ac - 1 && i < 2147483647)
-	{
-		if (ft_check_nb(i, obj) == 0)
-		{
-			obj->order[nb_values] = i;
-			nb_values++;
-		}
-		i++;
-	}
-	ft_order_display(ac - 1, obj);
 }

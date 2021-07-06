@@ -12,7 +12,8 @@ typedef struct	s_pile
 {
 	t_nb	*pileA;
 	t_nb	*pileB;
-	int		order[100];
+	int		*order;
+	int		nb_arg;
 	int		nb_op;
 }				t_pile;
 
@@ -45,21 +46,23 @@ int		ft_check_pile(t_nb *pile);
 int		ft_check_pile_3(t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int		ft_check_min(t_pile *obj);
-int		ft_check_med(int nb_args, t_nb *pile);
 int		ft_check_order(t_nb *pile);
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int		ft_check_nb(int nb, t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int		ft_check_args(int ac , t_pile *obj);
-//.......................................................
+//...............................................
 void	ft_get_sort(int ac, t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void	ft_push_min(int nb_args, t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void	ft_sort_2(t_nb *pile, t_pile *obj);
 void	ft_sort_3(t_pile *obj);
-void	ft_sort_4(int nb_args, t_pile *obj);
-void	ft_sort_5(int nb_args, t_pile *obj);
-void	ft_sort_6(int nb_args, t_pile *obj);
+void	ft_sort_4(t_pile *obj);
+void	ft_sort_5(t_pile *obj);
+void	ft_sort_6(t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-void	ft_default_sort(int nb_args, t_pile *obj);
-void	ft_order_sort(int ac, char **av , t_pile *obj);
+void	ft_default_sort(t_pile *obj);
+//.................................................BIG_SORT ALGO
+void    ft_order_sort(t_pile *obj);
+int		ft_get_med(t_pile *obj);
