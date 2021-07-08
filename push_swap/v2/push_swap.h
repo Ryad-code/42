@@ -4,7 +4,6 @@
 typedef struct s_nb
 {
 	int		nb;
-	int		index;
 	void	*next;
 }			t_nb;
 
@@ -17,8 +16,8 @@ typedef struct	s_pile
 	int		nb_op;
 }				t_pile;
 
-int 	ft_create(t_nb **list, int nb, int index);
-int		ft_create2(t_nb **list, int nb, int index);
+int 	ft_create(t_nb **list, int nb);
+int		ft_create2(t_nb **list, int nb);
 void	ft_delete(t_nb **list);
 void    ft_delete2(t_nb **list);
 void	ft_init_pile(t_nb **list, int ac , char **av);
@@ -64,6 +63,9 @@ void	ft_sort_6(t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void	ft_default_sort(t_pile *obj);
 //.................................................BIG_SORT ALGO
-void    ft_order_sort(t_pile *obj);
-int		ft_get_med(t_pile *obj);
+int    ft_order_sort(t_nb *pile, t_pile *obj);
+int		ft_get_med(int nb, int *tab);
 void	ft_quick_sort(t_pile *obj);
+//..................................................DELETE
+void	ft_delete_tab(int nb, int *tab);
+void    ft_delete_pile(int nb, t_nb **pile);

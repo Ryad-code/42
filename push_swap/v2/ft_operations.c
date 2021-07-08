@@ -35,14 +35,12 @@ void	ft_ss(t_pile *obj)
 void	ft_pa(t_pile *obj)
 {
 	int	nb;
-	int	index;
 
 	if (ft_check_pile(obj->pileB) >= 1)
 	{
 		nb = obj->pileB->nb;
-		index = obj->pileB->index;
 		ft_delete(&obj->pileB);
-		ft_create(&obj->pileA, nb, index);
+		ft_create(&obj->pileA, nb);
 		obj->nb_op++;
 		printf("pa\n");
 	}
@@ -51,14 +49,12 @@ void	ft_pa(t_pile *obj)
 void    ft_pb(t_pile *obj)
 {
 	int	nb;
-	int	index;
 
 	if (ft_check_pile(obj->pileA) >= 1)
 	{
 		nb = obj->pileA->nb;
-		index = obj->pileA->index;
 		ft_delete(&obj->pileA);
-		ft_create(&obj->pileB, nb , index);
+		ft_create(&obj->pileB, nb);
 		obj->nb_op++;
 		printf("pb\n");
 	}

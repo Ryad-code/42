@@ -6,31 +6,31 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 18:14:17 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/06 20:36:39 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/08 15:22:58 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_order_sort(t_pile *obj)
+int		ft_order_sort(t_nb *pile, t_pile *obj)
 {
 	int		i;
 	int		nb_values;
-	int		min;
+	int		res;
 	void	*tmp;
 
 	i = 1;
 	nb_values = 0;
-	min = ft_check_min(obj);
-	tmp = obj->pileA;
+	res = 0;
+	tmp = pile;
 	obj->order = malloc(sizeof(int) * obj->nb_arg);
-	while (obj->pileA->next && i < min)
+	while (pile->next && i < ft_check_min(obj))
 	{
-		obj->pileA = obj->pileA->next;
+		pile = pile->next;
 		i++;
 	}
-	i = obj->pileA->nb;
-	obj->pileA = tmp;
+	i = pile->nb;
+	pile = tmp;
 	while (nb_values < obj->nb_arg && i < 2147483647)
 	{
 		if (ft_check_nb(i, obj) == 0)
@@ -40,24 +40,19 @@ void	ft_order_sort(t_pile *obj)
 		}
 		i++;
 	}
-	ft_order_display(obj->nb_arg, obj);
+//	ft_order_display(obj->nb_arg, obj);
+	res = ft_get_med(obj->nb_arg, obj->order);
+	ft_delete_tab(obj->nb_arg, obj->order);
+	return (res);
 }
 
-int		ft_get_med(t_pile *obj)
+int		ft_get_med(int nb, int *tab)
 {
 	int res;
-	int res1;
-	int res2;
 
-	if (obj->nb_arg % 2 == 0)
-	{
-		res = ((obj->order[obj->nb_arg / 2]) + (obj->order[(obj->nb_arg / 2) - 1])) / 2;
-		res1 = obj->order[(obj->nb_arg / 4)];
-		res2 = obj->order[obj->nb_arg - (obj->nb_arg / 4) - 1];
-	}
-		else
-		res = obj->order[obj->nb_arg / 2];
-		printf("%d\n", res);
-		printf("med1 = %d | med2 = %d\n", res1, res2);
+	if (nb % 2 == 0)
+		res = ((tab[nb / 2]) + (tab[(nb / 2) - 1])) / 2;
+	else
+		res = tab[nb / 2];
 	return (res);
 }

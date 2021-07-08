@@ -1,19 +1,18 @@
 #include "push_swap.h"
 
-int ft_create(t_nb **list, int nb, int index)
+int ft_create(t_nb **list, int nb)
 {
 	t_nb    *obj;
 	obj = malloc(sizeof(t_nb));
 	if (obj == NULL)
 		return (1);
 	obj->nb = nb;
-	obj->index = index;
 	obj->next = *list;
 	*list = obj;
 	return (0);
 }
 
-int	ft_create2(t_nb **list, int nb , int index)
+int	ft_create2(t_nb **list, int nb)
 {
 	void	*tmp;
 	t_nb	*obj;
@@ -25,7 +24,6 @@ int	ft_create2(t_nb **list, int nb , int index)
 	while ((*list)->next)
 		*list = (*list)->next;
 	obj->nb = nb;
-	obj->index = index;
 	obj->next = NULL;
 	(*list)->next = obj;
 	*list = tmp;
@@ -67,7 +65,7 @@ void	ft_init_pile(t_nb **list, int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		ft_create(list, ft_atoi(av[i]), i);
+		ft_create(list, ft_atoi(av[i]));
 		i++;
 	}
 }
