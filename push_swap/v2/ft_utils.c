@@ -63,9 +63,11 @@ void	ft_init_pile(t_nb **list, int ac, char **av)
 	int 	i;
 
 	i = 1;
+	ft_create(list, ft_atoi(av[i]));
+	++i;
 	while (i < ac)
 	{
-		ft_create(list, ft_atoi(av[i]));
+		ft_create2(list, ft_atoi(av[i]));
 		i++;
 	}
 }

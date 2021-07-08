@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 12:06:07 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/06 17:56:03 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/08 17:07:14 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,31 @@ int	ft_check_min(t_pile *obj)
 	return (res);
 }
 
+int	ft_check_min1(t_nb *pile)
+{
+	void	*tmp;
+	int		i;
+	int		res;
+	int		nb;
+
+	tmp = pile;
+	i  = 1;
+	res = 1;
+	nb = pile->nb;
+	while (pile->next)
+	{
+		pile = pile->next;
+		if (pile->nb < nb)
+		{
+			nb = pile->nb;
+			res = i + 1;
+		}
+		i++;
+	}
+	pile = tmp;
+	return (res);
+}
+
 int	ft_check_order(t_nb *pile)
 {
 	int		i;
@@ -133,5 +158,28 @@ int  ft_check_nb(int nb, t_pile *obj)
 		return (0);
 	}
 	obj->pileA = tmp;
+	return (-1);
+}
+
+int  ft_check_nb1(int nb, t_nb *pile)
+{
+	void	*tmp;
+
+	tmp = pile;
+	while (pile->next)
+	{
+		if (pile->nb == nb)
+		{
+			pile = tmp;
+			return (0);
+		}
+		pile = pile->next;
+	}
+	if (pile->nb == nb)
+	{
+		pile = tmp;
+		return (0);
+	}
+	pile = tmp;
 	return (-1);
 }

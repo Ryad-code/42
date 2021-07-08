@@ -45,9 +45,11 @@ int		ft_check_pile(t_nb *pile);
 int		ft_check_pile_3(t_pile *obj);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int		ft_check_min(t_pile *obj);
+int		ft_check_min1(t_nb *pile);
 int		ft_check_order(t_nb *pile);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int		ft_check_nb(int nb, t_pile *obj);
+int 	ft_check_nb1(int nb, t_nb *pile);
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int		ft_check_args(int ac , t_pile *obj);
 //...............................................
@@ -65,7 +67,9 @@ void	ft_default_sort(t_pile *obj);
 //.................................................BIG_SORT ALGO
 int    ft_order_sort(t_nb *pile, t_pile *obj);
 int		ft_get_med(int nb, int *tab);
-void	ft_quick_sort(t_pile *obj);
+void	ft_quick_sortA(t_pile *obj);
+void    ft_quick_sortB(t_pile *obj);
+void    ft_quick_sort(t_pile *obj);
 //..................................................DELETE
 void	ft_delete_tab(int nb, int *tab);
 void    ft_delete_pile(int nb, t_nb **pile);

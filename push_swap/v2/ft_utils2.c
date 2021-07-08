@@ -47,6 +47,7 @@ void	ft_order_display(int nb, t_pile *obj)
 	int i;
 
 	i = 0;
+	printf("order = ");
 	while (i < nb)
 	{
 		printf("%4d |", obj->order[i]);

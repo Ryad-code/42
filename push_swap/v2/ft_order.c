@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 18:14:17 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/08 15:22:58 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/08 18:15:26 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int		ft_order_sort(t_nb *pile, t_pile *obj)
 	nb_values = 0;
 	res = 0;
 	tmp = pile;
+	obj->nb_arg = ft_check_pile(pile);
 	obj->order = malloc(sizeof(int) * obj->nb_arg);
-	while (pile->next && i < ft_check_min(obj))
+	while (pile && i < ft_check_min1(tmp))
 	{
 		pile = pile->next;
 		i++;
@@ -33,14 +34,15 @@ int		ft_order_sort(t_nb *pile, t_pile *obj)
 	pile = tmp;
 	while (nb_values < obj->nb_arg && i < 2147483647)
 	{
-		if (ft_check_nb(i, obj) == 0)
+		if (ft_check_nb1(i, pile) == 0)
 		{
 			obj->order[nb_values] = i;
 			nb_values++;
 		}
 		i++;
 	}
-//	ft_order_display(obj->nb_arg, obj);
+	obj->order[nb_values] = i;
+	ft_order_display(obj->nb_arg, obj);
 	res = ft_get_med(obj->nb_arg, obj->order);
 	ft_delete_tab(obj->nb_arg, obj->order);
 	return (res);
