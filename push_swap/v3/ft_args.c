@@ -51,8 +51,23 @@ int		ft_isint(char *str)
 		i++;
 	}
 	nb = ft_atoi(str);
-	printf("%ld\n", nb);
 	if (nb > 2147483647 || nb < -2147483648)
 		return (-1);
+	return (0);
+}
+
+int		ft_valid_args(t_data *obj, char **av)
+{
+	int	i;
+
+	i = 1;
+	if (obj->len_A < 1)
+		return (-1);
+	while (i <= obj->len_A)
+	{
+		if (ft_isint(av[i]) == -1)
+			return (-1);
+		i++;
+	}
 	return (0);
 }

@@ -20,12 +20,18 @@ typedef struct	s_data
 int	ft_first_create(t_pile **pile, int nb);
 int ft_second_create(t_pile **pile, int nb);
 int	ft_create(t_pile **pile, int nb);
+int	ft_delete(t_pile **pile);
 
 void	ft_init_pileA(t_data *obj, char **av);
 
 void	ft_display_prev(t_pile *pile);
 void    ft_display_next(t_pile *pile);
 
+void    ft_swap(t_pile **pile);
+
+
+
 long		ft_atoi(char *str);
 int			ft_isdigit(char c);
 int     	ft_isint(char *str);
+int			ft_valid_args(t_data *obj, char **av);
