@@ -2,20 +2,14 @@
 
 int	main(int ac, char **av)
 {
-//	void(ac);
-//	void(av);
-
 	t_data	obj;
 
-	ft_first_create(&obj.pileA, 1);
-	ft_second_create(&obj.pileA, 2);
-	ft_create(&obj.pileA, 3);
-//	ft_create(&obj.pileA, 43);
-	printf("%d\n", obj.pileA->nb);
-	obj.pileA = obj.pileA->prev;
-	printf("%d\n", obj.pileA->nb);
-	obj.pileA = obj.pileA->prev;
-	printf("%d\n", obj.pileA->nb);
-//	obj.pileA = obj.pileA->prev;
-//	printf("%d\n", obj.pileA->nb);
+	obj.len_A = ac - 1;
+	if (obj.len_A > 0)
+		ft_init_pileA(&obj, av);
+
+//	ft_display_prev(obj.pileA);
+	ft_display_next(obj.pileA);
+
+
 }
