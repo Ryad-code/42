@@ -1,25 +1,16 @@
 #include "push_swap.h"
 
-void	ft_display_prev(t_pile *pile)
+int	ft_check_pile(t_pile *pile)
 {
-	void	*tmp;
+	int i;
+	t_pile *tmp;
 
-	tmp = pile;
-	while (pile->prev != tmp)
-	{
-		pile = pile->prev;
-		printf("%d\n", pile->nb);
-	}
-}
-
-void	ft_display_next(t_pile *pile)
-{
-	void	*tmp;
-	
+	i = 0;
 	tmp = pile;
 	while (pile->next != tmp)
 	{
 		pile = pile->next;
-		printf("%d\n", pile->nb);
+		i++;
 	}
+	return (i);
 }

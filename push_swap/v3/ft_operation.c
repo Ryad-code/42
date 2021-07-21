@@ -1,19 +1,70 @@
 #include "push_swap.h"
 
-void	ft_push(t_pile **from, t_pile **to)
+void	ft_sa(t_data *obj)
 {
-	int	nb;
-
-	nb = (*from)->next->nb;
-	ft_delete((*from)->next);
-	ft_create(to, nb);
+	ft_swap(&obj->pileA);
+	obj->nb_op++;
 }
 
-void	ft_swap(t_pile **pile)
+void	ft_sb(t_data *obj)
 {
-	int	nb;
+	ft_swap(&obj->pileB);
+	obj->nb_op++;
+}
 
-	nb = (*pile)->next->next->nb;
-	(*pile)->next->next->nb = (*pile)->next->nb;
-	(*pile)->next->nb = nb;
+void	ft_ss(t_data *obj)
+{
+	ft_swap(&obj->pileA);
+	ft_swap(&obj->pileB);
+	obj->nb_op++;
+}
+
+void	ft_pa(t_data *obj)
+{
+	ft_push(&obj->pileB, &obj->pileA);
+	obj->nb_op++;
+}
+
+void    ft_pb(t_data *obj)
+{
+	ft_push(&obj->pileA, &obj->pileB);
+	obj->nb_op++;
+}
+
+void	ft_ra(t_data *obj)
+{
+	ft_rotate(&obj->pileA);
+	obj->nb_op++;
+}
+
+void	ft_rb(t_data *obj)
+{
+	ft_rotate(&obj->pileB);
+	obj->nb_op++;
+}
+
+void	ft_rr(t_data *obj)
+{
+	ft_rotate(&obj->pileA);
+	ft_rotate(&obj->pileB);
+	obj->nb_op++;
+}
+
+void	ft_rra(t_data *obj)
+{
+	ft_r_rotate(&obj->pileA);
+	obj->nb_op++;
+}
+
+void	ft_rrb(t_data *obj)
+{
+	ft_r_rotate(&obj->pileB);
+	obj->nb_op++;
+}
+
+void	ft_rrr(t_data *obj)
+{
+	ft_r_rotate(&obj->pileA);
+	ft_r_rotate(&obj->pileB);
+	obj->nb_op++;
 }

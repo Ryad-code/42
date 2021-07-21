@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	ft_create_root(t_pile **pile)
+int		ft_create_root(t_pile **pile)
 {
 	t_pile *obj;
 
@@ -14,7 +14,7 @@ int	ft_create_root(t_pile **pile)
 	return (0);
 }
 
-int ft_create(t_pile **pile, int nb)
+int 	ft_create(t_pile **pile, int nb)
 {
 	t_pile *obj;
 
@@ -29,10 +29,22 @@ int ft_create(t_pile **pile, int nb)
 	return (0);;;
 }
 
-int	ft_delete(t_pile *pile)
+int		ft_delete(t_pile *pile)
 {
 	pile->prev->next = pile->next;
 	pile->next->prev = pile->prev;
 	free(pile);
 	return (0);
+}
+
+void	ft_init_pileA(t_data *obj, char **av)
+{
+	int	i;
+
+	i = obj->len_A;
+	while (i > 0)
+	{
+		ft_create(&obj->pileA, ft_atoi(av[i]));
+		i--;
+	}
 }
