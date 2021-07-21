@@ -23,12 +23,16 @@ void	ft_pa(t_data *obj)
 {
 	ft_push(&obj->pileB, &obj->pileA);
 	obj->nb_op++;
+	obj->len_A++;
+	obj->len_B--;
 }
 
 void    ft_pb(t_data *obj)
 {
 	ft_push(&obj->pileA, &obj->pileB);
 	obj->nb_op++;
+	obj->len_B++;
+	obj->len_A--;
 }
 
 void	ft_ra(t_data *obj)

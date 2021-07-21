@@ -17,14 +17,10 @@ int	main(int ac, char **av)
 	}
 	ft_init_pileA(&obj, av);
 
-	ft_display(&obj);
-	
-/*	ft_pb(&obj);
-	ft_pb(&obj);
-	ft_ss(&obj);*/
+	ft_display(&obj);	
 
 //	ft_display(&obj);
-	printf("len = %d\n", ft_check_pile(obj.pileA));
-	printf("operations = %d\n", obj.nb_op);
+	printf("med = %d\n", ft_even_med(obj.pileA));
+	printf("operations = %d, len_A = %d, len_B = %d\n", obj.nb_op, obj.len_A, obj.len_B);
 	return (0);
 }

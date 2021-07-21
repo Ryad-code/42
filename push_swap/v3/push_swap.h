@@ -50,3 +50,5 @@ int     ft_isint(char *str);
 int		ft_valid_args(t_data *obj, char **av);
 
 int		ft_check_pile(t_pile *pile);			//pile checking
+int		ft_odd_med(t_pile *pile);
+int     ft_even_med(t_pile *pile);
