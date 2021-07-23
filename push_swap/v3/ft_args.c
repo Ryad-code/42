@@ -56,14 +56,14 @@ int		ft_isint(char *str)
 	return (0);
 }
 
-int		ft_valid_args(t_data *obj, char **av)
+int		ft_valid_args(t_data *obj, int ac, char **av)
 {
 	int	i;
 
 	i = 1;
-	if (obj->len_A < 1)
+	if (ac - 1 < 1)
 		return (-1);
-	while (i <= obj->len_A)
+	while (i <= ac - 1)
 	{
 		if (ft_isint(av[i]) == -1)
 			return (-1);

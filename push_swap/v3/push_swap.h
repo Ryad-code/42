@@ -12,15 +12,13 @@ typedef struct	s_data
 {
 	t_pile	*pileA;
 	t_pile	*pileB;
-	int		len_A;
-	int		len_B;
 	int		nb_op;
 }				t_data;
 
 int 	ft_create_root(t_pile **pile);				//creating functions
 int 	ft_create(t_pile **pile, int nb);
 int		ft_delete(t_pile *pile);
-void	ft_init_pileA(t_data *obj, char **av);
+void	ft_init_pileA(t_data *obj, int ac, char **av);
 
 void	ft_display_prev(t_pile *pile);				//display
 void    ft_display_next(t_pile *pile);
@@ -47,8 +45,17 @@ void    ft_rrr(t_data *obj);
 long	ft_atoi(char *str);						//arguments checking
 int		ft_isdigit(char c);
 int     ft_isint(char *str);
-int		ft_valid_args(t_data *obj, char **av);
+int		ft_valid_args(t_data *obj, int ac, char **av);
 
 int		ft_check_pile(t_pile *pile);			//pile checking
+int		ft_is_sorted(t_pile *pile);
+
 int		ft_odd_med(t_pile *pile);
 int     ft_even_med(t_pile *pile);
+int		ft_get_med(t_pile *pile);
+
+void	ft_sortA(t_data *obj);					//Big sort
+void    ft_sortB(t_data *obj);
+void	ft_big_sort(t_data *obji, int it);
+
+t_pile	*ft_get_min(t_pile *pile);				//Little sort

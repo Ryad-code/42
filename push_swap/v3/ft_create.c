@@ -37,14 +37,29 @@ int		ft_delete(t_pile *pile)
 	return (0);
 }
 
-void	ft_init_pileA(t_data *obj, char **av)
+void	ft_init_pileA(t_data *obj, int ac, char **av)
 {
 	int	i;
 
-	i = obj->len_A;
+	i = ac- 1;
 	while (i > 0)
 	{
 		ft_create(&obj->pileA, ft_atoi(av[i]));
 		i--;
 	}
+}
+
+int	ft_check_pile(t_pile *pile)
+{
+	int i;
+	t_pile *tmp;
+
+	i = 0;
+	tmp = pile;
+	while (pile->next != tmp)
+	{
+		pile = pile->next;
+		i++;
+	}
+	return (i);
 }
