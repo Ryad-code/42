@@ -41,7 +41,6 @@ void	ft_move_next(t_data *obj, int nb)
 		ft_ra(obj);;
 		nb--;
 	}
-	ft_pb(obj);	
 }
 
 void	ft_move_prev(t_data *obj, int nb)
@@ -51,7 +50,6 @@ void	ft_move_prev(t_data *obj, int nb)
 		ft_rra(obj);;
 		nb--;
 	}
-	ft_pb(obj);
 }
 
 void	ft_move(t_data *obj)
@@ -60,7 +58,7 @@ void	ft_move(t_data *obj)
 
 	lim = obj->order[19];
 	if (ft_find_next(obj->pileA, lim) > ft_find_prev(obj->pileA, lim))
-			ft_move_prev(obj, ft_find_prev(obj->pileA, lim));
+		ft_move_prev(obj, ft_find_prev(obj->pileA, lim));
 	else
 		ft_move_next(obj, ft_find_next(obj->pileA, lim));
 }
@@ -70,9 +68,12 @@ void	ft_move_chunk1(t_data *obj)
 	int	i;
 
 	i = 0;
-	while (i < 20)
+	ft_move(obj);
+	ft_pb(obj);
+	while (i < 19)
 	{
 		ft_move(obj);
+		ft_pb(obj);
 		i++;
 	}
 }
