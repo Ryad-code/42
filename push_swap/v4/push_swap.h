@@ -55,9 +55,12 @@ int     ft_get_min(t_pile *pile);
 int     ft_is_in_pile(t_pile *pile, int val);	//order
 void	ft_get_order(t_data *obj);
 
-int		ft_find_next(t_pile *pile, int nb);
+int		ft_find_next(t_pile *pile, int nb);		//insert_sort
 int     ft_find_prev(t_pile *pile, int nb);
 void    ft_move_next(t_data *obj, int nb);
 void    ft_move_prev(t_data *obj, int nb);
 void    ft_move(t_data *obj);
 void	ft_move_chunk1(t_data *obj);
+
+int		ft_find_spot(t_pile *pile, int nb);
+void    ft_choose_spot(t_data *obji, int  nb);

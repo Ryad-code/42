@@ -70,9 +70,10 @@ void	ft_move_chunk1(t_data *obj)
 	i = 0;
 	ft_move(obj);
 	ft_pb(obj);
-	while (i < 19)
+	while (i < 6)
 	{
 		ft_move(obj);
+		ft_choose_spot(obj, obj->pileA->next->nb);
 		ft_pb(obj);
 		i++;
 	}
