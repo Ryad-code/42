@@ -23,6 +23,7 @@ void	ft_init_pileA(t_data *obj, int ac, char **av);
 
 void	ft_display_prev(t_pile *pile);				//display
 void    ft_display_next(t_pile *pile);
+void	ft_display_order(t_data *obj, int nb);
 void	ft_display(t_data *obj);
 
 void	ft_push(t_pile **from, t_pile **to);		//basic operations
@@ -49,34 +50,14 @@ int     ft_isint(char *str);
 int		ft_valid_args(t_data *obj, int ac, char **av);
 
 int		ft_check_pile(t_pile *pile);			//pile checking
-int		ft_is_sorted(t_pile *pile);
+int     ft_get_min(t_pile *pile);
 
-int		ft_odd_med(t_pile *pile);				//Quick sort
-int     ft_even_med(t_pile *pile);
-int		ft_get_med(t_pile *pile);
-void	ft_sortA(t_data *obj);
-void    ft_sortB(t_data *obj);
-void	ft_quick_sort(t_data *obj);
+int     ft_is_in_pile(t_pile *pile, int val);	//order
+void	ft_get_order(t_data *obj);
 
-t_pile	*ft_get_min(t_pile *pile);				//Get/Push min value
-void	ft_push_minA(t_data *obj);
-void    ft_push_minB(t_data *obj);
-int		ft_find_min(t_pile *pile);
-
-
-void	ft_default_sort(t_data *obj);
-void	ft_get_sortA(t_data *obj);				//Basic sort
-void    ft_get_sortB(t_data *obj);
-void	ft_sortA_2(t_data *obj);
-void    ft_sortB_2(t_data *obj);
-void    ft_sortA_3(t_data *obj);
-void    ft_sortB_3(t_data *obj);
-void    ft_sortA_4(t_data *obj);
-void    ft_sortB_4(t_data *obj);
-void    ft_sortA_5(t_data *obj);
-void    ft_sortB_5(t_data *obj);
-void    ft_sortA_6(t_data *obj);
-void    ft_sortB_6(t_data *obj);
-
-int		ft_check_sort3(t_pile *pile);
-
+int		ft_find_next(t_pile *pile, int nb);
+int     ft_find_prev(t_pile *pile, int nb);
+void    ft_move_next(t_data *obj, int nb);
+void    ft_move_prev(t_data *obj, int nb);
+void    ft_move(t_data *obj);
+void	ft_move_chunk1(t_data *obj);

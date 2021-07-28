@@ -16,9 +16,12 @@ int	main(int ac, char **av)
 	ft_init_pileA(&obj, ac, av);
 	ft_display(&obj);
 
-	ft_default_sort(&obj);
-//	ft_quick_sort(&obj);
+	ft_get_order(&obj);
+	ft_display_order(&obj, ac - 1);
+
+	ft_move_chunk1(&obj);
 	ft_display(&obj);
+
 //	printf("operations = %d, len_A = %d, len_B = %d\n", obj.nb_op, ft_check_pile(obj.pileA), ft_check_pile(obj.pileB));
 	return (0);
 }

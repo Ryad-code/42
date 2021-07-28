@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:05:15 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/07/08 16:59:49 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/07/28 00:18:59 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    ft_get_sort(t_pile *obj)
 		ft_sort_5(obj);
 	else if (obj->nb_arg == 6)
 		ft_sort_6(obj);
-	else if (obj->nb_arg > 6 && obj->nb_arg < 10)
+	else if (obj->nb_arg > 6 && obj->nb_arg < 1000)
 		ft_default_sort(obj);
 /*	else if (obj->nb_arg >= 10)
 		ft_quick_sort(obj);*/
