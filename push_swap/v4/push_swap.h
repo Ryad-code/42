@@ -12,6 +12,8 @@ typedef struct	s_data
 {
 	t_pile	*pileA;
 	t_pile	*pileB;
+	int		min;
+	int		max;
 	int		*order;
 	int		nb_op;
 }				t_data;
@@ -59,15 +61,14 @@ int		ft_find_next(t_pile *pile, int nb);		//insert_sort
 int     ft_find_prev(t_pile *pile, int nb);
 void    ft_move_next(t_data *obj, int nb);
 void    ft_move_prev(t_data *obj, int nb);
-void    ft_move(t_data *obj);
-void	ft_move_chunk1(t_data *obj);
+void    ft_move(t_data *obj, int lim);
 
-int		ft_next_spot(t_pile *pile, int nb);
-int		ft_prev_spot(t_pile *pile, int nb);
-void    ft_choose_spot(t_data *obji, int  nb);
+//...............................................
+void	ft_move_chunk1(t_data *obj);
+void	ft_move_chunk(t_data *obj, int lim);
 //...............................................
 
-int     ft_spot_min(t_pile *pile);
-void    ft_out_spot(t_data *obj, int nb, int *min, int *max);
-int 	ft_get_spot(t_pile *pile, int nb);
+int     ft_spot_in(t_pile *pile);
+int     ft_spot_out(t_pile *pile, int nb);
+void    ft_find_spot(t_data *obj, int nb);
 void    ft_choose_path(t_data *obj, int spot);
