@@ -63,7 +63,7 @@ int     ft_find_prev(t_pile *pile, int nb);
 void    ft_move_next(t_data *obj, int nb);
 void    ft_move_prev(t_data *obj, int nb);
 //..............................................
-void	ft_push_first_chunk(t_data *obj, int nb_val);
+void	ft_push_first_chunk(t_data *obj, int lim, int nb_val);
 void	ft_push_chunk(t_data *obj, int lim, int nb_val);
 //...............................................
 int     ft_spot_in(t_pile *pile);
@@ -74,3 +74,5 @@ void    ft_choose_path(t_data *obj, int spot);
 //...............................................
 int		ft_find_min(t_pile *pile);
 void	ft_push_back(t_data *obj);
+//...............................................//Final function
+void    ft_insert_sort(t_data *obj, int nb_val);

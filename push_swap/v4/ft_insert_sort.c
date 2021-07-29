@@ -60,15 +60,13 @@ void	ft_get_spotA(t_data *obj, int lim)
 		ft_move_next(obj, ft_find_next(obj->pileA, lim));
 }
 
-void	ft_push_first_chunk(t_data *obj, int nb_val)
+void	ft_push_first_chunk(t_data *obj, int lim, int nb_val)
 {
 	int	i;
 	int	max;
 	int min;
-	int	lim;
 
 	i = 0;
-	lim = obj->order[19];
 	ft_get_spotA(obj, lim);
 	ft_pb(obj);
 	ft_get_spotA(obj, lim);
@@ -138,4 +136,22 @@ void	ft_push_back(t_data *obj)
 		ft_pa(obj);
 		i++;
 	}
+}
+
+void	ft_insert_sort(t_data *obj, int nb_val)
+{
+	int	i;
+	int	chunk;
+	int	rest;
+
+	i = 0;
+	chunk = nb_val / 5;
+	rest = nb_val % 5;
+	ft_push_first_chunk(obj, obj->order[chunk - 1], chunk);
+	while (i < 4)
+	{
+		ft_push_chunk(obj, obj->order[(chunk * (i + 2)) - 1], chunk);
+		i++;
+	}
+	ft_push_back(obj);
 }
