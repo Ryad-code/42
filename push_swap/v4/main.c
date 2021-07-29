@@ -15,24 +15,20 @@ int	main(int ac, char **av)
 	}
 	ft_init_pileA(&obj, ac, av);
 	ft_display(&obj);
-
 	ft_get_order(&obj);
 //	ft_display_order(&obj, ac - 1);
 //...........................................................
-	ft_move_chunk1(&obj);
-	ft_move_chunk(&obj, obj.order[39]);
-	ft_move_chunk(&obj, obj.order[59]);
-	ft_move_chunk(&obj, obj.order[79]);
-	ft_move_chunk(&obj, obj.order[99]);
-/*	ft_move_chunk(&obj, obj.order[59]);
-	ft_move_chunk(&obj, obj.order[69]);
-	ft_move_chunk(&obj, obj.order[79]);
-	ft_move_chunk(&obj, obj.order[89]);
-	ft_move_chunk(&obj, obj.order[99]);*/
+	ft_push_first_chunk(&obj, 20);
+	ft_push_chunk(&obj, obj.order[39], 20);
+	ft_push_chunk(&obj, obj.order[59], 20);
+	ft_push_chunk(&obj, obj.order[79], 20);
+	ft_push_chunk(&obj, obj.order[99], 20);
 	
+	ft_push_back(&obj);	
+
 	ft_display(&obj);
 
-	printf("min = %d, max = %d\n", obj.min, obj.max);
+//	printf("min = %d, max = %d\n", obj.min, obj.max);
 	printf("operations = %d, len_A = %d, len_B = %d\n", obj.nb_op, ft_check_pile(obj.pileA), ft_check_pile(obj.pileB));
 	return (0);
 }

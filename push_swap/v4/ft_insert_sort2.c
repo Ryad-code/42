@@ -43,7 +43,7 @@ int	ft_spot_out(t_pile *pile, int nb)
 }
 
 
-void	ft_find_spot(t_data *obj, int nb)
+void	ft_get_spotB(t_data *obj, int nb)
 {
 	int	spot;
 	int	len;

@@ -52,7 +52,7 @@ void	ft_move_prev(t_data *obj, int nb)
 	}
 }
 
-void	ft_move(t_data *obj, int lim)
+void	ft_get_spotA(t_data *obj, int lim)
 {
 	if (ft_find_next(obj->pileA, lim) > ft_find_prev(obj->pileA, lim))
 		ft_move_prev(obj, ft_find_prev(obj->pileA, lim));
@@ -60,7 +60,7 @@ void	ft_move(t_data *obj, int lim)
 		ft_move_next(obj, ft_find_next(obj->pileA, lim));
 }
 
-void	ft_move_chunk1(t_data *obj)
+void	ft_push_first_chunk(t_data *obj, int nb_val)
 {
 	int	i;
 	int	max;
@@ -69,34 +69,73 @@ void	ft_move_chunk1(t_data *obj)
 
 	i = 0;
 	lim = obj->order[19];
-	ft_move(obj, lim);
+	ft_get_spotA(obj, lim);
 	ft_pb(obj);
-	ft_move(obj, lim);
+	ft_get_spotA(obj, lim);
 	ft_pb(obj);
 	if (obj->pileB->next->nb < obj->pileB->prev->nb)
 		ft_sb(obj);
 	obj->max = obj->pileB->next->nb;
 	obj->min = obj->pileB->prev->nb;
-//.........................................................
-	while (i < 18)
+	while (i < nb_val - 2)
 	{
-		ft_move(obj, lim);
-		ft_find_spot(obj, obj->pileA->next->nb);
+		ft_get_spotA(obj, lim);
+		ft_get_spotB(obj, obj->pileA->next->nb);
 		ft_pb(obj);
 		i++;
 	}
 }
 
-void	ft_move_chunk(t_data *obj, int lim)
+void	ft_push_chunk(t_data *obj, int lim, int nb_val)
 {
 	int	i;
 	
 	i = 0;
-	while (i < 20)
+	while (i < nb_val)
 	{
-		ft_move(obj, lim);
-		ft_find_spot(obj, obj->pileA->next->nb);
+		ft_get_spotA(obj, lim);
+		ft_get_spotB(obj, obj->pileA->next->nb);
 		ft_pb(obj);
+		i++;
+	}
+}
+
+int		ft_find_min(t_pile *pile)
+{
+	void	*tmp;
+	int		i;
+	int		res;
+	int		res1;
+
+	tmp = pile;
+	i = 1;
+	res = pile->next->nb;
+	res1 = 1;
+	pile = pile->next;
+	while (pile->next != tmp)
+	{
+		if (res > pile->next->nb)
+		{
+			res = pile->next->nb;
+			res1 = i + 1;
+		}
+		pile = pile->next;
+		i++;
+	}
+	return (res1);
+}
+
+void	ft_push_back(t_data *obj)
+{
+	int	i;
+	int	spot;
+
+	i = 0;
+	spot = ft_find_min(obj->pileB);
+	ft_choose_path(obj, spot);
+	while (i < 100)
+	{
+		ft_pa(obj);
 		i++;
 	}
 }
