@@ -56,7 +56,8 @@ void	ft_move(t_data *obj)
 {
 	int	lim;
 
-	lim = obj->order[19];
+//	lim = obj->order[19];
+	lim = obj->order[5];
 	if (ft_find_next(obj->pileA, lim) > ft_find_prev(obj->pileA, lim))
 		ft_move_prev(obj, ft_find_prev(obj->pileA, lim));
 	else
@@ -66,15 +67,26 @@ void	ft_move(t_data *obj)
 void	ft_move_chunk1(t_data *obj)
 {
 	int	i;
+	int	max;
+	int min;
 
 	i = 0;
 	ft_move(obj);
 	ft_pb(obj);
-	while (i < 6)
+	ft_move(obj);
+	ft_pb(obj);
+	if (obj->pileB->next->nb < obj->pileB->prev->nb)
+		ft_sb(obj);
+	max = obj->pileB->next->nb;
+	min = obj->pileB->prev->nb;
+//	printf("min = %d, max = %d\n", min, max);
+//.........................................................
+	while (i < 1)
 	{
 		ft_move(obj);
-		ft_choose_spot(obj, obj->pileA->next->nb);
+		ft_out_spot(obj, obj->pileA->next->nb, &min, &max);
 		ft_pb(obj);
 		i++;
 	}
+//	printf("min = %d, max = %d\n", min, max);
 }
