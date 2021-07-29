@@ -21,15 +21,23 @@ int	main(int ac, char **av)
 //...........................................................
 	ft_move_chunk1(&obj);
 	
-/*	ft_ra(&obj);
-	ft_rb(&obj);
+/*	ft_pb(&obj);
+	ft_pb(&obj);
+	ft_pb(&obj);
 	ft_pb(&obj);*/
-	ft_display(&obj);
+//	ft_display(&obj);
 
-	printf("spot_out = %d\n", ft_spot_min(obj.pileB));
-	printf("spot_in = %d\n", ft_get_spot(obj.pileB, 5));
+//	printf("spot_out = %d\n", ft_spot_min(obj.pileB));
+//	printf("spot_in = %d\n", ft_get_spot(obj.pileB, 5));
 //	printf("nb = %d\n", obj.pileA->next->nb);
 
-//	printf("operations = %d, len_A = %d, len_B = %d\n", obj.nb_op, ft_check_pile(obj.pileA), ft_check_pile(obj.pileB));
+	ft_rb(&obj);
+	ft_rb(&obj);
+	ft_rb(&obj);
+	ft_rb(&obj);
+
+	ft_display(&obj);
+
+	printf("operations = %d, len_A = %d, len_B = %d\n", obj.nb_op, ft_check_pile(obj.pileA), ft_check_pile(obj.pileB));
 	return (0);
 }

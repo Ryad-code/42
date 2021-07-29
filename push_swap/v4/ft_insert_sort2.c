@@ -1,63 +1,5 @@
 #include "push_swap.h"
 
-int  ft_next_spot(t_pile *pile, int nb)
-{
-	int		i;
-	void	*tmp;
-
-	i = 0;
-	tmp = pile;
-	pile = pile->next;
-	while (nb > pile->nb && pile->next != tmp)
-	{
-		pile = pile->next;
-		i++;
-	}
-	return (i);
-}
-
-int     ft_prev_spot(t_pile *pile, int nb)
-{
-	int		i;
-	void	*tmp;
-
-	i = 0;
-	tmp = pile;
-	pile = pile->prev;
-	while (nb > pile->nb && pile->prev != tmp)
-	{
-		pile = pile->prev;
-		i++;
-	}
-	return (i);
-}
-
-void	ft_choose_spot(t_data *obj, int  nb)
-{
-	int	spot;
-	int	len;
-
-	printf("for nb = %d\n", obj->pileA->next->nb);
-	spot = ft_next_spot(obj->pileB, nb);
-	len = ft_check_pile(obj->pileB);
-	if (spot > len / 2)
-	{
-		while (len - spot > 0)
-		{
-			ft_rrb(obj);
-			spot++;
-		}
-	}
-	else
-	{
-		while (spot > 0)
-		{
-			ft_rb(obj);
-			spot--;
-		}
-	}
-}
-
 int		ft_spot_min(t_pile *pile)
 {
 	void	*tmp;
@@ -67,8 +9,8 @@ int		ft_spot_min(t_pile *pile)
 
 	tmp = pile;
 	res = pile->next->nb;
-	res1 = 0;
-	i  = 0;
+	res1 = 1;
+	i  = 1;
 	pile = pile->next;
 	while (pile->next != tmp)
 	{
@@ -83,6 +25,24 @@ int		ft_spot_min(t_pile *pile)
 	}
 	return (res1);
 }
+
+int	ft_get_spot(t_pile *pile, int nb)
+{
+	void	*tmp;
+	int		i;
+
+	tmp = pile;
+	i = 1;
+	while (pile->next != tmp)
+	{
+		pile = pile->next;
+		if (nb < pile->nb && nb > pile->next->nb)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 
 void	ft_out_spot(t_data *obj, int nb, int *min, int *max)
 {
@@ -106,23 +66,6 @@ void	ft_out_spot(t_data *obj, int nb, int *min, int *max)
 		*max = nb;
 	else if (nb <  *min)
 		*min = nb;
-}
-
-int	ft_get_spot(t_pile *pile, int nb)
-{
-	void	*tmp;
-	int		i;
-
-	tmp = pile;
-	i = 1;
-	while (pile->next != tmp)
-	{
-		pile = pile->next;
-		if (nb < pile->nb && nb > pile->next->nb)
-			return (i);
-		i++;
-	}
-	return (-1);
 }
 
 void	ft_choose_path(t_data *obj, int spot)
