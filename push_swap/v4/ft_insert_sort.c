@@ -138,13 +138,16 @@ void	ft_push_back(t_data *obj)
 	}
 }
 
-void	ft_insert_sort(t_data *obj, int nb_val)
+void	ft_insert_sort(t_data *obj, int chunks)
 {
 	int	i;
+	int	nb_val;
 	int	chunk;
 	int	rest;
 
+	chunks = 0;
 	i = 0;
+	nb_val = ft_check_pile(obj->pileA);
 	chunk = nb_val / 5;
 	rest = nb_val % 5;
 	ft_push_first_chunk(obj, obj->order[chunk - 1], chunk);

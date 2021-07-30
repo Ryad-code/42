@@ -56,6 +56,38 @@ int		ft_isint(char *str)
 	return (0);
 }
 
+int		ft_is_double(t_pile *pile, int nb)
+{
+	void	*tmp;
+	int		i;
+
+	tmp = pile;
+	i = 0;
+	pile = pile->next;
+	while (pile != tmp)
+	{
+		if (nb == pile->nb)
+			i++;
+		pile = pile->next;
+	}
+	return (i);
+}
+
+int		ft_check_doubles(t_pile *pile)
+{
+	t_pile	*tmp;
+
+	tmp = pile;
+	pile = pile ->next;
+	while (pile != tmp)
+	{
+		if (ft_is_double(tmp, pile->nb) != 1)
+			return (-1);
+		pile = pile->next;
+	}
+	return (0);
+}
+
 int		ft_valid_args(t_data *obj, int ac, char **av)
 {
 	int	i;
@@ -69,5 +101,7 @@ int		ft_valid_args(t_data *obj, int ac, char **av)
 			return (-1);
 		i++;
 	}
+	if (ft_check_doubles(obj->pileA) == -1)
+		return (-1);
 	return (0);
 }

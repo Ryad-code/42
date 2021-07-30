@@ -15,17 +15,12 @@ int	main(int ac, char **av)
 	}
 	ft_init_pileA(&obj, ac, av);
 	ft_display(&obj);
+//..........................................................
 	ft_get_order(&obj);
+//..........................................................
 //	ft_display_order(&obj, ac - 1);
 //...........................................................
-/*	ft_push_first_chunk(&obj, obj.order[19], 20);
-	ft_push_chunk(&obj, obj.order[39], 20);
-	ft_push_chunk(&obj, obj.order[59], 20);
-	ft_push_chunk(&obj, obj.order[79], 20);
-	ft_push_chunk(&obj, obj.order[99], 20);*/
-
-	ft_insert_sort(&obj, ac -1);	
-
+	ft_insert_sort(&obj, 0);
 	ft_display(&obj);
 
 	printf("operations = %d, len_A = %d, len_B = %d\n", obj.nb_op, ft_check_pile(obj.pileA), ft_check_pile(obj.pileB));
