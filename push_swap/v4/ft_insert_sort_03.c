@@ -1,55 +1,101 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_insert_sort_03.c                                :+:      :+:    :+:   */
+/*   ft_insert_sort_02.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/01 03:09:43 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 03:09:45 by mlaouedj         ###   ########.fr       */
+/*   Created: 2021/08/01 03:08:27 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/08/01 04:30:17 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
-int	ft_get_chunk_len(int nb_arg)
+int	ft_spot_in(t_pile *pile)
 {
-	int	chunk_len;
+	void	*tmp;
+	int		res;
+	int		res1;
+	int		i;
 
-	chunk_len = 0;
-	if (nb_arg < 400)
-		chunk_len = 20;
-	else if (nb_arg < 500)
-		chunk_len = 40;
-	else if (nb_arg >= 500)
-		chunk_len = 45;
-	return (chunk_len);
+	tmp = pile;
+	res = pile->next->nb;
+	res1 = 1;
+	i = 1;
+	pile = pile->next;
+	while (pile->next != tmp)
+	{
+		if (res > pile->next->nb)
+		{
+			res = pile->next->nb;
+			res1 = i + 1;
+		}
+		pile = pile->next;
+		i++;
+	}
+	return (res1);
 }
 
-int	ft_get_chunk_nb(int nb_arg)
+int	ft_spot_out(t_pile *pile, int nb)
 {
-	int	chunk_nb;
+	void	*tmp;
+	int		i;
 
-	chunk_nb = 0;
-	if (nb_arg < 400)
-		chunk_nb = nb_arg / 20;
-	else if (nb_arg < 500)
-		chunk_nb = nb_arg / 40;
-	else if (nb_arg >= 500)
-		chunk_nb = nb_arg / 45;
-	return (chunk_nb);
+	tmp = pile;
+	i = 1;
+	while (pile->next != tmp)
+	{
+		pile = pile->next;
+		if (nb < pile->nb && nb > pile->next->nb)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
-int	ft_get_rest(int nb_arg)
+void	ft_get_spotB(t_data *obj, int nb)
 {
-	int	rest;
+	int	spot;
+	int	len;
 
-	rest = 0;
-	if (nb_arg < 400)
-		rest = nb_arg % 20;
-	else if (nb_arg < 500)
-		rest = nb_arg % 40;
-	else if (nb_arg == 500)
-		rest = nb_arg % 45;
-	return (rest);
+	spot = ft_spot_in(obj->pileB);
+	len = ft_check_pile(obj->pileB);
+	if (nb > obj->max || nb < obj->min)
+	{
+		spot = ft_spot_in(obj->pileB);
+		ft_choose_path(obj, spot);
+	}
+	else
+	{
+		spot = ft_spot_out(obj->pileB, obj->pileA->next->nb);
+		ft_choose_path(obj, spot);
+	}
+	if (nb > obj->max)
+		obj->max = nb;
+	else if (nb < obj->min)
+		obj->min = nb;
+}
+
+void	ft_choose_path(t_data *obj, int spot)
+{
+	int	len;
+
+	len = ft_check_pile(obj->pileB);
+	if (spot > len / 2)
+	{
+		while (len - spot > 0)
+		{
+			ft_rrb(obj);
+			spot++;
+		}
+	}
+	else
+	{
+		while (spot > 0)
+		{
+			ft_rb(obj);
+			spot--;
+		}
+	}
 }

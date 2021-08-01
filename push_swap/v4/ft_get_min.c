@@ -6,11 +6,11 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 02:42:45 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 02:42:47 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/01 04:29:45 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 t_pile	*ft_get_minA(t_pile *pile)
 {

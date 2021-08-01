@@ -6,11 +6,11 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 02:46:35 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 02:53:03 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/01 04:30:52 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 void	ft_pb(t_data *obj)
 {

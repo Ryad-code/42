@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_operation_03.c                                  :+:      :+:    :+:   */
+/*   ft_arg_02.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/01 02:48:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 04:31:02 by mlaouedj         ###   ########.fr       */
+/*   Created: 2021/08/01 04:19:27 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/08/01 04:28:57 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ft_rra(t_data *obj)
+int	ft_valid_args(t_data *obj, int ac, char **av)
 {
-	ft_r_rotate(&obj->pileA);
-	obj->nb_op++;
-	write(1, "rra\n", 4);
-}
+	int	i;
 
-void	ft_rrb(t_data *obj)
-{
-	ft_r_rotate(&obj->pileB);
-	obj->nb_op++;
-	write(1, "rrb\n", 4);
-}
-
-void	ft_rrr(t_data *obj)
-{
-	ft_r_rotate(&obj->pileA);
-	ft_r_rotate(&obj->pileB);
-	obj->nb_op++;
-	write(1, "rrr\n", 4);
+	i = 1;
+	if (ac - 1 < 1)
+		return (-1);
+	while (i <= ac - 1)
+	{
+		if (ft_isint(av[i]) == -1)
+			return (-2);
+		i++;
+	}
+	if (ft_check_doubles(obj->pileA) == -1)
+		return (-3);
+	return (0);
 }

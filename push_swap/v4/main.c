@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "pushswap.h"
 
 int	main(int ac, char **av)
 {
@@ -15,12 +15,7 @@ int	main(int ac, char **av)
 	}
 	ft_init_pileA(&obj, ac, av);
 	ft_display(&obj);
-//..........................................................
 	ft_get_order(&obj);
-//..........................................................
-//	ft_display_order(&obj, ac - 1);
-//...........................................................
-//	ft_insert_sort(&obj);
 	ft_get_sort(&obj);	
 	ft_display(&obj);
 

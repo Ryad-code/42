@@ -6,11 +6,11 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 02:41:19 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 02:41:36 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/01 04:29:33 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 void	ft_display_prev(t_pile *pile)
 {
