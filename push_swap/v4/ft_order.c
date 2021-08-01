@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_order.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/01 02:53:30 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/08/01 02:54:18 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int		ft_get_min(t_pile *pile)
+int	ft_get_min(t_pile *pile)
 {
 	void	*tmp;
 	int		res;
@@ -17,7 +29,7 @@ int		ft_get_min(t_pile *pile)
 	return (res);
 }
 
-int		ft_is_in_pile(t_pile *pile, int val)
+int	ft_is_in_pile(t_pile *pile, int val)
 {
 	void	*tmp;
 
@@ -37,7 +49,7 @@ void	ft_get_order(t_data *obj)
 	int	nb_val;
 	int	min;
 
-	i  = 0;
+	i = 0;
 	nb_val = ft_check_pile(obj->pileA);
 	min = ft_get_min(obj->pileA);
 	obj->order = malloc(sizeof(int) * nb_val);

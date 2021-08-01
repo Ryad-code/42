@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_min.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/01 02:42:45 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/08/01 02:42:47 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_pile	*ft_get_minA(t_pile *pile)
@@ -22,10 +34,10 @@ t_pile	*ft_get_minA(t_pile *pile)
 	return (res1);
 }
 
-int		ft_find_minA(t_pile *pile)
+int	ft_find_minA(t_pile *pile)
 {
 	void	*tmp1;
-	t_pile *tmp;
+	t_pile	*tmp;
 	int		i;
 	int		j;
 
@@ -44,7 +56,7 @@ int		ft_find_minA(t_pile *pile)
 		j++;
 		pile = pile->prev;
 	}
-	if (i < j )
+	if (i < j)
 		return (i);
 	else
 		return (-j);

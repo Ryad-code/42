@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_display.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/01 02:41:19 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/08/01 02:41:36 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_display_prev(t_pile *pile)
@@ -17,7 +29,7 @@ void	ft_display_prev(t_pile *pile)
 void	ft_display_next(t_pile *pile)
 {
 	void	*tmp;
-	
+
 	tmp = pile;
 	if (pile->prev == tmp)
 		printf("VIDE\n");
