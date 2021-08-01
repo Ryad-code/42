@@ -3,7 +3,6 @@
 int	main(int ac, char **av)
 {
 	t_data	obj;
-	t_pile	*tmp;
 
 	obj.nb_op = 0;
 	ft_create_root(&obj.pileA);

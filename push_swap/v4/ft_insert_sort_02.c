@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 04:14:08 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 04:30:08 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/01 06:09:46 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	ft_push_first_chunk(t_data *obj, int lim, int nb_val)
 {
 	int	i;
-	int	max;
-	int	min;
 
 	i = 0;
 	ft_get_spotA(obj, lim);
