@@ -8,10 +8,10 @@ int	main(int ac, char **av)
 	obj.nb_op = 0;
 	ft_create_root(&obj.pileA);
 	ft_create_root(&obj.pileB);
-	if (ft_valid_args(&obj, ac, av) == -1)
+	if (ft_valid_args(&obj, ac, av) < 0)
 	{
-		printf("Wrong inputs");
-		return (-1);
+		write(1, "Wrong inputs\n", 13);
+		return (ft_valid_args(&obj, ac, av));
 	}
 	ft_init_pileA(&obj, ac, av);
 	ft_display(&obj);
@@ -20,7 +20,8 @@ int	main(int ac, char **av)
 //..........................................................
 //	ft_display_order(&obj, ac - 1);
 //...........................................................
-	ft_insert_sort(&obj, 0);
+//	ft_insert_sort(&obj);
+	ft_get_sort(&obj);	
 	ft_display(&obj);
 
 	printf("operations = %d, len_A = %d, len_B = %d\n", obj.nb_op, ft_check_pile(obj.pileA), ft_check_pile(obj.pileB));

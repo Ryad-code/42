@@ -76,6 +76,23 @@ int		ft_find_min(t_pile *pile);
 void    ft_push_first_chunk(t_data *obj, int lim, int nb_val);
 void    ft_push_chunk(t_data *obj, int lim, int nb_val);
 void	ft_push_back(t_data *obj);
-//...............................................//Final function
-void    ft_insert_sort(t_data *obj, int chunks);
 //...............................................
+int		ft_get_chunk_len(int nb_arg);
+int		ft_get_chunk_nb(int nb_arg);
+int		ft_get_rest(int nb_arg);
+//...............................................//Final function
+void    ft_insert_sort(t_data *obj);
+//...............................................//New 
+void    ft_get_sort(t_data *obj);
+void    ft_sort_2(t_data *obj);
+int     ft_check_sort3(t_pile *pile);
+void    ft_sort_3(t_data *obj);
+void    ft_sort_4(t_data *obj);
+void    ft_sort_5(t_data *obj);
+void    ft_sort_6(t_data *obj);
+void    ft_default_sort(t_data *obj);
+//...............................................//Get_min
+t_pile  *ft_get_minA(t_pile *pile);
+int     ft_find_min(t_pile *pile);
+void    ft_push_minA(t_data *obj);
+

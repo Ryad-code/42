@@ -98,10 +98,10 @@ int		ft_valid_args(t_data *obj, int ac, char **av)
 	while (i <= ac - 1)
 	{
 		if (ft_isint(av[i]) == -1)
-			return (-1);
+			return (-2);
 		i++;
 	}
 	if (ft_check_doubles(obj->pileA) == -1)
-		return (-1);
+		return (-3);
 	return (0);
 }

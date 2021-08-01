@@ -127,34 +127,40 @@ void	ft_push_back(t_data *obj)
 {
 	int	i;
 	int	spot;
+	int	len;
 
 	i = 0;
 	spot = ft_find_min(obj->pileB);
+	len = ft_check_pile(obj->pileB);
 	ft_choose_path(obj, spot);
-	while (i < 100)
+	while (i < len)
 	{
 		ft_pa(obj);
 		i++;
 	}
 }
 
-void	ft_insert_sort(t_data *obj, int chunks)
+void	ft_insert_sort(t_data *obj)
 {
 	int	i;
 	int	nb_val;
-	int	chunk;
+	int	chunk_nb;
+	int	chunk_len;
 	int	rest;
 
-	chunks = 0;
 	i = 0;
 	nb_val = ft_check_pile(obj->pileA);
-	chunk = nb_val / 5;
-	rest = nb_val % 5;
-	ft_push_first_chunk(obj, obj->order[chunk - 1], chunk);
-	while (i < 4)
+	chunk_nb = ft_get_chunk_nb(nb_val);
+	chunk_len = ft_get_chunk_len(nb_val);
+	rest = ft_get_rest(nb_val);
+	ft_push_first_chunk(obj, obj->order[chunk_len - 1], chunk_len);
+	while (i < chunk_nb - 1)
 	{
-		ft_push_chunk(obj, obj->order[(chunk * (i + 2)) - 1], chunk);
+		ft_push_chunk(obj, obj->order[(chunk_len * (i + 2)) - 1], chunk_len);
 		i++;
 	}
+	if (rest != 0)
+		ft_get_sort(obj);
 	ft_push_back(obj);
+//	printf("c_nb = %d, c_len = %d, res = %d\n", chunk_nb, chunk_len, rest);
 }
