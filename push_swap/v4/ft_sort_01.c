@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 02:59:37 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 04:31:36 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/03 02:03:03 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ void	ft_get_sort(t_data *obj)
 
 int	ft_check_sort3(t_pile *pile)
 {
-	void	*tmp;
 	int		i;
 	int		tab[3];
 
-	tmp = pile;
 	i = 0;
 	while (i < 3)
 	{

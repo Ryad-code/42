@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_insert_sort_02.c                                :+:      :+:    :+:   */
+/*   ft_insert_sort_03.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 03:08:27 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 04:30:17 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/03 02:02:23 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ int	ft_spot_out(t_pile *pile, int nb)
 void	ft_get_spotB(t_data *obj, int nb)
 {
 	int	spot;
-	int	len;
 
 	spot = ft_spot_in(obj->pileB);
-	len = ft_check_pile(obj->pileB);
 	if (nb > obj->max || nb < obj->min)
 	{
 		spot = ft_spot_in(obj->pileB);

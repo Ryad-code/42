@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 02:37:49 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 04:29:22 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/03 02:33:03 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,3 +75,26 @@ int	ft_check_pile(t_pile *pile)
 	}
 	return (i);
 }
+
+void	ft_delete_piles(t_pile *pile)
+{
+	int	nb;
+	t_pile	*tmp;
+
+	tmp = pile;
+	nb = ft_check_pile(pile);
+	while (nb > -1)
+	{	
+		pile = tmp;
+		tmp = tmp->next;
+//		ft_delete(pile);
+		free(pile);	
+		nb--;
+	}
+}
+/*
+void	ft_delete_tab(t_data *obj, int nb)
+{
+	while (nb > 0)
+
+}*/

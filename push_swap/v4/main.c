@@ -13,11 +13,10 @@ int	main(int ac, char **av)
 		return (ft_valid_args(&obj, ac, av));
 	}
 	ft_init_pileA(&obj, ac, av);
-	ft_display(&obj);
 	ft_get_order(&obj);
 	ft_get_sort(&obj);	
-	ft_display(&obj);
-
-	printf("operations = %d, len_A = %d, len_B = %d\n", obj.nb_op, ft_check_pile(obj.pileA), ft_check_pile(obj.pileB));
+	free(obj.order);
+	ft_delete_piles(obj.pileA);
+	ft_delete(obj.pileB);
 	return (0);
 }

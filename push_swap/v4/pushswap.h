@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 23:36:01 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/02 23:54:02 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/03 02:10:33 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 int					ft_create_root(t_pile **pile);
 int					ft_create(t_pile **pile, int nb);
 int					ft_delete(t_pile *pile);
+void					ft_delete_piles(t_pile *pile);
 void				ft_init_pileA(t_data *obj, int ac, char **av);
 void				ft_init_printing(t_data *obj);
 void				ft_display_prev(t_pile *pile);

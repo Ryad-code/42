@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 02:42:45 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 04:29:45 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/03 02:01:34 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	ft_find_minA(t_pile *pile)
 	int		i;
 	int		j;
 
+	tmp = NULL;
 	tmp1 = pile;
 	tmp = ft_get_minA(pile);
 	i = 0;
@@ -64,10 +65,8 @@ int	ft_find_minA(t_pile *pile)
 
 void	ft_push_minA(t_data *obj)
 {
-	t_pile	*tmp;
 	int		res;
-
-	tmp = ft_get_minA(obj->pileA);
+	
 	res = ft_find_minA(obj->pileA);
 	if (res > 0)
 	{
@@ -88,30 +87,3 @@ void	ft_push_minA(t_data *obj)
 		ft_pb(obj);
 	}
 }
-
-/*void	ft_push_minB(t_data *obj)
-{
-	t_pile	*tmp;
-	int		res;
-
-	tmp = ft_get_min(obj->pileB);
-	res = ft_find_min(obj->pileB);
-	if (res > 0)
-	{
-		while (res > 0)
-		{
-			ft_rb(obj);
-			res--;
-		}
-		ft_pa(obj);
-	}
-	else
-	{
-		while (res < 0)
-		{
-			ft_rrb(obj);
-			res++;
-		}
-		ft_pa(obj);
-	}
-}*/
