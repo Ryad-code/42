@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 03:09:43 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/01 04:30:27 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/03 06:25:07 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_get_rest(int nb_arg)
 		rest = nb_arg % 20;
 	else if (nb_arg < 500)
 		rest = nb_arg % 40;
-	else if (nb_arg == 500)
+	else if (nb_arg >= 500)
 		rest = nb_arg % 45;
 	return (rest);
 }
