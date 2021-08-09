@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 04:19:27 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/04 12:03:19 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/09 10:48:42 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	ft_valid_args(t_data *obj, int ac, char **av)
 	}
 	if (ft_check_doubles(obj->pileA) == -1)
 		return (-3);
-	if (ft_is_ordered(obj->pileA) == 0)
-		return (-4);
 	return (0);
 }
 

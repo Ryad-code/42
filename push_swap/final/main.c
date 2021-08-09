@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 11:27:20 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/04 12:07:57 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/09 10:48:22 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ int	main(int ac, char **av)
 	ft_init_pileA(&obj, ac, av);
 	if (ft_valid_args(&obj, ac, av) < 0)
 	{
-		if (ft_is_ordered(obj.pileA) == -1)
-			write(1, "Wrong inputs\n", 13);
+		write(1, "Error\n", 6);
 		ft_delete_piles(obj.pileA);
 		ft_delete(obj.pileB);
 		return (-1);
 	}
+	if (ft_is_ordered(obj.pileA) == 0)
+		return (0);
 	ft_get_order(&obj);
 	ft_get_sort(&obj);
 	free(obj.order);
