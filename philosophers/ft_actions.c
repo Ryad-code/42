@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_actions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 10:43:44 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/10 13:01:45 by mlaouedj         ###   ########.fr       */
+/*   Created: 2021/08/10 10:43:40 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/08/10 12:56:34 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int main(int ac, char **av)
+void	*ft_eat(void	*arg)
 {
-	struct timeval	time;
-	long	tmp;
-	t_table	table;
-	pthread_t t1;
+	t_table *tmp;
 
-	table.to_eat = 2;
-	gettimeofday(&time, NULL);
-	tmp = time.tv_sec;
-	gettimeofday(&time, NULL);
-	printf("seconds = %ld\n", tmp - time.tv_sec);
-	pthread_create(&t1, NULL, ft_eat, &table);
-
-	pthread_join(t1, NULL);
-	return (0);
+	tmp = (t_table*)arg;
+	sleep(tmp->to_eat);
+//	tmp->is_eating = TRUE;
+	printf("is eating");
+	return (NULL);
 }
+
+void    *ft_sleep(void *arg)
+{
+	return (NULL);
+}
+
+void    *ft_think(void *arg)
+{
+	return (NULL);
+}
+
