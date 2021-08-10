@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/10 16:12:10 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/10 16:37:14 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -21,12 +21,13 @@
 
 typedef struct s_table
 {
-	int		nb_philo;
-	int		*fork_tab;
-	int		to_eat;
-	int		to_sleep;
-	int		to_think;
-	int		to_die;
+	int				nb_philo;
+	pthread_mutex_t f_mutex;
+	int				*fork_tab;
+	int				to_eat;
+	int				to_sleep;
+	int				to_think;
+	int				to_die;
 }				t_table;
 
 typedef struct		s_philo

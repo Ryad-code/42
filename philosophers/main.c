@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 10:43:44 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/10 16:20:49 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/10 16:40:41 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int main(int ac, char **av)
 
 	pthread_create(&data.philo.thread, NULL, ft_eat, &data);
 	pthread_create(&data.philo.thread, NULL, ft_sleep, &data);
-//	pthread_create(&data.philo.thread, NULL, ft_think, &data);
+	pthread_create(&data.philo.thread, NULL, ft_think, &data);
+	
+	pthread_join(data.philo.thread, NULL);
 	pthread_join(data.philo.thread, NULL);
 	pthread_join(data.philo.thread, NULL);
 
