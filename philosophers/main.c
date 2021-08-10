@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 10:43:44 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/10 13:01:45 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/10 16:20:49 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 int main(int ac, char **av)
 {
-	struct timeval	time;
-	long	tmp;
-	t_table	table;
-	pthread_t t1;
+	t_data data;
 
-	table.to_eat = 2;
-	gettimeofday(&time, NULL);
-	tmp = time.tv_sec;
-	gettimeofday(&time, NULL);
-	printf("seconds = %ld\n", tmp - time.tv_sec);
-	pthread_create(&t1, NULL, ft_eat, &table);
+	ft_init_table(&data, av);
+	ft_init_forks(&data);
+	data.philo.id = 1;
+	pthread_mutex_init(&data.philo.mutex, NULL);
 
-	pthread_join(t1, NULL);
+	pthread_create(&data.philo.thread, NULL, ft_eat, &data);
+	pthread_create(&data.philo.thread, NULL, ft_sleep, &data);
+//	pthread_create(&data.philo.thread, NULL, ft_think, &data);
+	pthread_join(data.philo.thread, NULL);
+	pthread_join(data.philo.thread, NULL);
+
+/*	printf("philo/forks = %d\n", data.table.nb_philo);
+	printf("to die = %d\n", data.table.to_die);
+	printf("to eat = %d\n", data.table.to_eat);
+	printf("to sleep = %d\n", data.table.to_sleep);*/
+//	printf("%d\n", data.table.to_think);
+
+	ft_display_forks(data);
 	return (0);
 }
