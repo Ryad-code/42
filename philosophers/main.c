@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 10:43:44 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/10 16:40:41 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/11 12:47:13 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 int main(int ac, char **av)
 {
-	t_data data;
+	t_table table;
 
-	ft_init_table(&data, av);
-	ft_init_forks(&data);
-	data.philo.id = 1;
-	pthread_mutex_init(&data.philo.mutex, NULL);
+	ft_init_table(&table, av);
+	ft_init_forks(&table);
+	ft_init_philosophers(&table);
 
-	pthread_create(&data.philo.thread, NULL, ft_eat, &data);
-	pthread_create(&data.philo.thread, NULL, ft_sleep, &data);
-	pthread_create(&data.philo.thread, NULL, ft_think, &data);
+//	pthread_create(&data.philo.thread, NULL, ft_routine, &data);
+//	pthread_create(&data.philo.thread, NULL, ft_routine, &data);
+//	pthread_create(&data.philo.thread, NULL, ft_think, &data);
 	
-	pthread_join(data.philo.thread, NULL);
-	pthread_join(data.philo.thread, NULL);
-	pthread_join(data.philo.thread, NULL);
+	pthread_join(table.philos[0].thread, NULL);
+	pthread_join(table.philos[1].thread, NULL);
+	pthread_join(table.philos[2].thread, NULL);
 
 /*	printf("philo/forks = %d\n", data.table.nb_philo);
 	printf("to die = %d\n", data.table.to_die);
@@ -35,6 +34,5 @@ int main(int ac, char **av)
 	printf("to sleep = %d\n", data.table.to_sleep);*/
 //	printf("%d\n", data.table.to_think);
 
-	ft_display_forks(data);
 	return (0);
 }
