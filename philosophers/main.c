@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 10:43:44 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/11 12:47:13 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/11 14:20:03 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int main(int ac, char **av)
 	ft_init_philosophers(&table);
 
 //	pthread_create(&data.philo.thread, NULL, ft_routine, &data);
-//	pthread_create(&data.philo.thread, NULL, ft_routine, &data);
-//	pthread_create(&data.philo.thread, NULL, ft_think, &data);
 	
 	pthread_join(table.philos[0].thread, NULL);
 	pthread_join(table.philos[1].thread, NULL);

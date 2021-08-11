@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/11 12:37:39 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/11 14:32:50 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -22,7 +22,12 @@
 typedef struct		s_philo
 {
 	int				id;
+//	int				to_die;
+//	int				to_eat;
+//	int				to_sleep;
 	pthread_t		thread;
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t *l_fork;
 }					t_philo;
 
 typedef struct s_table
