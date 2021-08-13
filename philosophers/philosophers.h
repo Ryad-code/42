@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/11 15:06:34 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/13 12:30:40 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -19,12 +19,18 @@
 #include <stdbool.h>
 #include <sys/time.h>
 
+typedef struct		s_arg
+{
+	int				nb_philo;
+	int				to_die;
+	int				to_eat;
+	int	 			to_sleep;
+}					t_arg;
+
 typedef struct		s_philo
 {
 	int				id;
-	int				to_die;
-	int				to_eat;
-	int				to_sleep;
+	t_arg			*arg;
 	pthread_t		thread;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t *l_fork;
@@ -32,10 +38,9 @@ typedef struct		s_philo
 
 typedef struct s_table
 {
-	int				nb_philo;
-	int             to_die;
-	int				to_eat;
-	int				to_sleep;
+	struct  timeval time1;
+	struct	timeval time2;
+	t_arg			*arg;
 	t_philo         *philos;
 	pthread_mutex_t *forks;
 }				t_table;
@@ -44,10 +49,11 @@ typedef struct s_table
 long	ft_atoi(char *str);
 //.........................................//Init
 int		ft_init_table(t_table *table, char **av);
-int		ft_ini_times(t_philo *philo, t_table table);
 void	ft_init_philosophers(t_table *table);
 void	ft_init_forks(t_table *table);
 //.........................................//Actions
 void    *ft_routine(void *arg);
+//........................................//Time
+void	ft_sleep(t_table *table);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/11 15:09:24 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:58:34 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,33 @@
 
 int	ft_init_table(t_table *table, char **av)
 {
+	table->arg = malloc(sizeof(t_arg));
 	if (av[1] && av[2] && av[3] && av[4])
 	{
-		table->nb_philo = ft_atoi(av[1]);
-		table->to_die = ft_atoi(av[2]);
-		table->to_eat = ft_atoi(av[3]);
-		table->to_sleep = ft_atoi(av[4]);
+		table->arg->nb_philo = ft_atoi(av[1]);
+		table->arg->to_die = ft_atoi(av[2]);
+		table->arg->to_eat = ft_atoi(av[3]);
+		table->arg->to_sleep = ft_atoi(av[4]);
 		return (0);
 	}
 	else
 		return (-1);
 }
-
-void	ft_init_times(t_philo *philo, t_table table)
-{
-	philo->to_die = table.to_die;
-	philo->to_eat = table.to_eat;
-	philo->to_sleep = table.to_sleep;
-}
-
 void	ft_init_philosophers(t_table *table)
 {
 	int i;
 
 	i = 1;
-	table->philos = malloc(sizeof(t_philo) * table->nb_philo);
+	table->philos = malloc(sizeof(t_philo) * table->arg->nb_philo);
 	table->philos[0].id =  1;
-	ft_init_times(&table->philos[0], *table);
+	table->philos[0].arg = table->arg;
 	pthread_create(&table->philos[0].thread, NULL, ft_routine, &table->philos[0]);
 	table->philos[0].r_fork = &table->forks[0];
-	table->philos[0].l_fork = &table->forks[table->nb_philo - 1];
-	while (i < table->nb_philo)
+	table->philos[0].l_fork = &table->forks[table->arg->nb_philo - 1];
+	while (i < table->arg->nb_philo)
 	{
 		table->philos[i].id = i + 1;
-		ft_init_times(&table->philos[i], *table);
+		table->philos[i].arg = table->arg;
 		pthread_create(&table->philos[i].thread, NULL, ft_routine, &table->philos[i]);
 		table->philos[i].r_fork = &table->forks[i];
 		table->philos[i].l_fork = &table->forks[i - 1];
@@ -60,8 +53,8 @@ void	ft_init_forks(t_table *table)
 	int	i;
 
 	i = 0;
-	table->forks = malloc(sizeof(pthread_mutex_t) * table->nb_philo);
-	while (i < table->nb_philo)
+	table->forks = malloc(sizeof(pthread_mutex_t) * table->arg->nb_philo);
+	while (i < table->arg->nb_philo)
 	{
 		pthread_mutex_init(&table->forks[i], NULL);
 		i++;
