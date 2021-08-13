@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/13 12:30:40 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:09:03 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -54,6 +54,7 @@ void	ft_init_forks(t_table *table);
 //.........................................//Actions
 void    *ft_routine(void *arg);
 //........................................//Time
+int		ft_get_time(t_table *table);
 void	ft_sleep(t_table *table);
 
 #endif
