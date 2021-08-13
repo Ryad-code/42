@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/13 15:09:03 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/13 20:16:09 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -19,6 +19,13 @@
 #include <stdbool.h>
 #include <sys/time.h>
 
+typedef struct		s_time
+{
+	int				start;
+	struct  timeval time1;
+	struct  timeval time2;
+}					t_time;
+
 typedef struct		s_arg
 {
 	int				nb_philo;
@@ -30,6 +37,7 @@ typedef struct		s_arg
 typedef struct		s_philo
 {
 	int				id;
+	t_time			*time;
 	t_arg			*arg;
 	pthread_t		thread;
 	pthread_mutex_t	*r_fork;
@@ -38,8 +46,9 @@ typedef struct		s_philo
 
 typedef struct s_table
 {
-	struct  timeval time1;
-	struct	timeval time2;
+//	struct  timeval time1;
+//	struct	timeval time2;
+	t_time			 *time;	
 	t_arg			*arg;
 	t_philo         *philos;
 	pthread_mutex_t *forks;
@@ -54,7 +63,8 @@ void	ft_init_forks(t_table *table);
 //.........................................//Actions
 void    *ft_routine(void *arg);
 //........................................//Time
-int		ft_get_time(t_table *table);
-void	ft_sleep(t_table *table);
+void	ft_start(t_table *table);
+int		ft_get_time(t_philo *philo, int start);
+void	ft_sleep50(t_philo *philo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/13 11:58:34 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/13 19:15:44 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,18 @@ void	ft_init_philosophers(t_table *table)
 	table->philos = malloc(sizeof(t_philo) * table->arg->nb_philo);
 	table->philos[0].id =  1;
 	table->philos[0].arg = table->arg;
-	pthread_create(&table->philos[0].thread, NULL, ft_routine, &table->philos[0]);
+	table->philos[0].time = table->time;
 	table->philos[0].r_fork = &table->forks[0];
 	table->philos[0].l_fork = &table->forks[table->arg->nb_philo - 1];
+	pthread_create(&table->philos[0].thread, NULL, ft_routine, &table->philos[0]);
 	while (i < table->arg->nb_philo)
 	{
 		table->philos[i].id = i + 1;
 		table->philos[i].arg = table->arg;
-		pthread_create(&table->philos[i].thread, NULL, ft_routine, &table->philos[i]);
+		table->philos[i].time = table->time;
 		table->philos[i].r_fork = &table->forks[i];
 		table->philos[i].l_fork = &table->forks[i - 1];
+		pthread_create(&table->philos[i].thread, NULL, ft_routine, &table->philos[i]);
 		i++;
 	}
 }

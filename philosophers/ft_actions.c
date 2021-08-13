@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 10:43:40 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/13 11:34:05 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/13 20:22:31 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ void	*ft_routine(void *arg)
 	tmp = (t_philo*)arg;
 	pthread_mutex_lock(tmp->r_fork);
 	pthread_mutex_lock(tmp->l_fork);
-	printf("philo%d is eating...\n", tmp->id);
-	sleep(tmp->arg->to_eat);
+	
+	printf("%dms philo%d is eating...\n", ft_get_time(tmp, tmp->time->start), tmp->id);
+	ft_sleep50(tmp/*, tmp->arg->to_eat*/);	
 	pthread_mutex_unlock(tmp->r_fork);
 	pthread_mutex_unlock(tmp->l_fork);
-	printf("philo%d is sleeping\n", tmp->id);
-	sleep(tmp->arg->to_sleep);
-	printf("philo%d now thinking!\n", tmp->id);
+
+	printf("%dms philo%d is sleeping\n", ft_get_time(tmp, tmp->time->start), tmp->id);
+	ft_sleep50(tmp/*, tmp->arg->to_sleep*/);
+	printf("%dms philo%d now thinking!\n", ft_get_time(tmp, tmp->time->start), tmp->id);
 //	while (pthread_mutex_lock(tmp->r_fork) != 0 && pthread_mutex_lock(tmp->l_fork) != 0)
 //	{
 //		
