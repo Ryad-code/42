@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/13 20:16:09 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/14 15:08:24 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -21,7 +21,8 @@
 
 typedef struct		s_time
 {
-	int				start;
+	long			start;
+//	int				start_ms;
 	struct  timeval time1;
 	struct  timeval time2;
 }					t_time;
@@ -46,8 +47,6 @@ typedef struct		s_philo
 
 typedef struct s_table
 {
-//	struct  timeval time1;
-//	struct	timeval time2;
 	t_time			 *time;	
 	t_arg			*arg;
 	t_philo         *philos;
@@ -63,8 +62,10 @@ void	ft_init_forks(t_table *table);
 //.........................................//Actions
 void    *ft_routine(void *arg);
 //........................................//Time
-void	ft_start(t_table *table);
-int		ft_get_time(t_philo *philo, int start);
-void	ft_sleep50(t_philo *philo);
+void		ft_start(t_table *table);
+long		ft_get_time1(t_philo *philo, long start);
+int			ft_get_time(t_philo *philo, int start);
+void		ft_sleep5ms(t_philo *philo);
+void    	ft_sleep(t_philo *philo, int duration);
 
 #endif
