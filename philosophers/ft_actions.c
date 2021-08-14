@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 10:43:40 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/14 19:08:35 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/14 19:46:00 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ void	*ft_routine(void *arg)
 
 	tmp = (t_philo*)arg;
 
+	if (tmp->id % 2 == 0)//.................???
+		ft_sleep(tmp, 1);
 	pthread_mutex_lock(tmp->r_fork);
 	pthread_mutex_lock(tmp->l_fork);
+	printf("%ldms philo%d is holding forks\n", ft_get_time(tmp, tmp->time->start), tmp->id);
 	
 	printf("%ldms philo%d is eating\n", ft_get_time(tmp, tmp->time->start), tmp->id);
 	ft_sleep(tmp, tmp->arg->to_eat);

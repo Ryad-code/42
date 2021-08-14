@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/14 19:07:29 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/14 19:50:21 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ft_init_philosophers(t_table *table)
 	table->philos[0].r_fork = &table->forks[0];
 	table->philos[0].l_fork = &table->forks[table->arg->nb_philo - 1];
 	pthread_create(&table->philos[0].thread, NULL, ft_routine, &table->philos[0]);
-	pthread_join(table->philos[0].thread, NULL);
 	while (i < table->arg->nb_philo)
 	{
 		table->philos[i].id = i + 1;
@@ -49,7 +48,6 @@ void	ft_init_philosophers(t_table *table)
 		table->philos[i].r_fork = &table->forks[i];
 		table->philos[i].l_fork = &table->forks[i - 1];
 		pthread_create(&table->philos[i].thread, NULL, ft_routine, &table->philos[i]);
-		pthread_join(table->philos[i].thread, NULL);
 		i++;
 	}
 }
@@ -63,6 +61,18 @@ void	ft_init_forks(t_table *table)
 	while (i < table->arg->nb_philo)
 	{
 		pthread_mutex_init(&table->forks[i], NULL);
+		i++;
+	}
+}
+
+void	ft_thread_join(t_table *table)
+{
+	int	i;
+	
+	i = 0;
+	while (i < table->arg->nb_philo)
+	{
+		pthread_join(table->philos[i].thread, NULL);
 		i++;
 	}
 }

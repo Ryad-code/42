@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/14 19:07:43 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/14 19:49:40 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -60,6 +60,7 @@ long	ft_atoi(char *str);
 int		ft_init_table(t_table *table, char **av);
 void	ft_init_philosophers(t_table *table);
 void	ft_init_forks(t_table *table);
+void	ft_thread_join(t_table *table);
 //.........................................//Actions
 void    *ft_routine(void *arg);
 void	*ft_routine1(void *arg);
