@@ -6,3 +6,7 @@ Projets validés:
 -netwhat
 -ft_server
 -born2beroot
+-fractol
+-minitalk
+-push_swap
+Currently working on Philosophers #Respectthespirit
