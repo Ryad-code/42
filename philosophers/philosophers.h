@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/14 15:08:24 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/14 18:03:11 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -63,9 +63,8 @@ void	ft_init_forks(t_table *table);
 void    *ft_routine(void *arg);
 //........................................//Time
 void		ft_start(t_table *table);
-long		ft_get_time1(t_philo *philo, long start);
-int			ft_get_time(t_philo *philo, int start);
-void		ft_sleep5ms(t_philo *philo);
+long		ft_get_time(t_philo *philo, long start);
+void		ft_sleep1ms(t_philo *philo);
 void    	ft_sleep(t_philo *philo, int duration);
 
 #endif
