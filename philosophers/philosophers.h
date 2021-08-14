@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/14 18:03:11 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/14 19:07:43 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -38,6 +38,7 @@ typedef struct		s_arg
 typedef struct		s_philo
 {
 	int				id;
+	int				life;
 	t_time			*time;
 	t_arg			*arg;
 	pthread_t		thread;
@@ -61,6 +62,7 @@ void	ft_init_philosophers(t_table *table);
 void	ft_init_forks(t_table *table);
 //.........................................//Actions
 void    *ft_routine(void *arg);
+void	*ft_routine1(void *arg);
 //........................................//Time
 void		ft_start(t_table *table);
 long		ft_get_time(t_philo *philo, long start);

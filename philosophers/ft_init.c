@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/14 18:07:35 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/14 19:07:29 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_init_philosophers(t_table *table)
 	i = 1;
 	table->philos = malloc(sizeof(t_philo) * table->arg->nb_philo);
 	table->philos[0].id =  1;
+	table->philos[0].life = 1;
 	table->philos[0].arg = table->arg;
 	table->philos[0].time = table->time;
 	table->philos[0].r_fork = &table->forks[0];
@@ -42,6 +43,7 @@ void	ft_init_philosophers(t_table *table)
 	while (i < table->arg->nb_philo)
 	{
 		table->philos[i].id = i + 1;
+		table->philos[i].life = 1;
 		table->philos[i].arg = table->arg;
 		table->philos[i].time = table->time;
 		table->philos[i].r_fork = &table->forks[i];
