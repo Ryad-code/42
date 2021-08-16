@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/14 19:50:21 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/16 17:00:07 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_init_philosophers(t_table *table)
 	table->philos[0].time = table->time;
 	table->philos[0].r_fork = &table->forks[0];
 	table->philos[0].l_fork = &table->forks[table->arg->nb_philo - 1];
-	pthread_create(&table->philos[0].thread, NULL, ft_routine, &table->philos[0]);
+	pthread_create(&table->philos[0].thread, NULL, ft_routine1, &table->philos[0]);
 	while (i < table->arg->nb_philo)
 	{
 		table->philos[i].id = i + 1;
@@ -47,7 +47,7 @@ void	ft_init_philosophers(t_table *table)
 		table->philos[i].time = table->time;
 		table->philos[i].r_fork = &table->forks[i];
 		table->philos[i].l_fork = &table->forks[i - 1];
-		pthread_create(&table->philos[i].thread, NULL, ft_routine, &table->philos[i]);
+		pthread_create(&table->philos[i].thread, NULL, ft_routine1, &table->philos[i]);
 		i++;
 	}
 }
@@ -57,10 +57,12 @@ void	ft_init_forks(t_table *table)
 	int	i;
 
 	i = 0;
-	table->forks = malloc(sizeof(pthread_mutex_t) * table->arg->nb_philo);
+	table->forks = malloc(sizeof(t_fork) * table->arg->nb_philo);
+///	table->fork = malloc(sizeof(int) * table->arg->nb_phillo);
 	while (i < table->arg->nb_philo)
 	{
-		pthread_mutex_init(&table->forks[i], NULL);
+		table->forks[i].state = 0;
+		pthread_mutex_init(&table->forks[i].fork, NULL);
 		i++;
 	}
 }

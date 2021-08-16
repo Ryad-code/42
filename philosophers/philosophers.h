@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/14 19:49:40 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/16 16:51:12 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -16,13 +16,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
-#include <stdbool.h>
 #include <sys/time.h>
+
+typedef struct		s_fork
+{
+	pthread_mutex_t fork;
+	int				state;
+}					t_fork;
 
 typedef struct		s_time
 {
 	long			start;
-//	int				start_ms;
 	struct  timeval time1;
 	struct  timeval time2;
 }					t_time;
@@ -39,11 +43,12 @@ typedef struct		s_philo
 {
 	int				id;
 	int				life;
+	long			last_meal;
 	t_time			*time;
 	t_arg			*arg;
 	pthread_t		thread;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t *l_fork;
+	t_fork			*r_fork;
+	t_fork			*l_fork;
 }					t_philo;
 
 typedef struct s_table
@@ -51,7 +56,7 @@ typedef struct s_table
 	t_time			 *time;	
 	t_arg			*arg;
 	t_philo         *philos;
-	pthread_mutex_t *forks;
+	t_fork			*forks;
 }				t_table;
 
 //.........................................//Utils
@@ -62,6 +67,8 @@ void	ft_init_philosophers(t_table *table);
 void	ft_init_forks(t_table *table);
 void	ft_thread_join(t_table *table);
 //.........................................//Actions
+void	ft_grab_forks(t_philo *philo);
+void	ft_drop_forks(t_philo *philo);
 void    *ft_routine(void *arg);
 void	*ft_routine1(void *arg);
 //........................................//Time
