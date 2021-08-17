@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:18:36 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 16:49:49 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 17:40:53 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	*ft_routine1(void *arg)
 
 	tmp = arg;
 	nb_philo = tmp->arg->nb_philo;
-	while (nb_philo == tmp->arg->nb_philo)
+	while (nb_philo == tmp->arg->nb_philo1)
 	{
 		ft_routine(arg);
 	}

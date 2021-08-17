@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 16:52:52 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 17:27:23 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_init_table(t_table *table, char **av)
 	if (av[1] && av[2] && av[3] && av[4])
 	{
 		table->arg->nb_philo = ft_atoi(av[1]);
+		table->arg->nb_philo1 = table->arg->nb_philo;
 		table->arg->to_die = ft_atoi(av[2]);
 		table->arg->to_eat = ft_atoi(av[3]);
 		table->arg->to_sleep = ft_atoi(av[4]);
