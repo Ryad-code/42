@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:59:13 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 15:01:38 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 16:22:07 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,17 @@ void	ft_sleep1ms(t_philo *philo)
 	gettimeofday(&philo->time->time1, NULL);
 }
 
-void	ft_usleep(t_philo *philo, int duration)
+int		ft_usleep(t_philo *philo, int duration)
 {
 	int i;
 
 	i = 0;
 	while (i < duration)
 	{
+		if (ft_get_time(philo, philo->last_meal) > philo->arg->to_die)
+			return (-1);
 		ft_sleep1ms(philo);
 		i++;
 	}
+	return (0);
 }
