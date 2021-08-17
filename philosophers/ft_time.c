@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:59:13 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/14 18:06:24 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 12:36:46 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ long	ft_get_time(t_philo *philo, long start)
 	gettimeofday(&philo->time->time2, NULL);
 	res = (philo->time->time2.tv_sec * 1000) + (philo->time->time2.tv_usec / 1000);
 	return (res - start);
+}
+
+long	ft_get_time1(t_philo *philo)
+{
+	long res;
+
+	gettimeofday(&philo->time->time2, NULL);
+	res = (philo->time->time2.tv_sec * 1000) + (philo->time->time2.tv_usec / 1000);
+	return (res);
 }
 
 void	ft_sleep1ms(t_philo *philo)

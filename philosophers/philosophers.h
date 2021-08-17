@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/16 16:51:12 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 12:36:17 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -17,12 +17,12 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/time.h>
-
+/*
 typedef struct		s_fork
 {
 	pthread_mutex_t fork;
-	int				state;
-}					t_fork;
+//	int				state;
+}					t_fork;*/
 
 typedef struct		s_time
 {
@@ -47,16 +47,17 @@ typedef struct		s_philo
 	t_time			*time;
 	t_arg			*arg;
 	pthread_t		thread;
-	t_fork			*r_fork;
-	t_fork			*l_fork;
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*l_fork;
 }					t_philo;
 
 typedef struct s_table
 {
+
 	t_time			 *time;	
 	t_arg			*arg;
 	t_philo         *philos;
-	t_fork			*forks;
+	pthread_mutex_t	*forks;
 }				t_table;
 
 //.........................................//Utils
@@ -74,6 +75,7 @@ void	*ft_routine1(void *arg);
 //........................................//Time
 void		ft_start(t_table *table);
 long		ft_get_time(t_philo *philo, long start);
+long		ft_get_time1(t_philo *philo);
 void		ft_sleep1ms(t_philo *philo);
 void    	ft_sleep(t_philo *philo, int duration);
 

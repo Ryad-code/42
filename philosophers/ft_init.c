@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/16 17:00:07 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 12:21:58 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_init_philosophers(t_table *table)
 	table->philos = malloc(sizeof(t_philo) * table->arg->nb_philo);
 	table->philos[0].id =  1;
 	table->philos[0].life = 1;
+	table->philos[0].last_meal = table->time->start;
 	table->philos[0].arg = table->arg;
 	table->philos[0].time = table->time;
 	table->philos[0].r_fork = &table->forks[0];
@@ -43,6 +44,7 @@ void	ft_init_philosophers(t_table *table)
 	{
 		table->philos[i].id = i + 1;
 		table->philos[i].life = 1;
+		table->philos[i].last_meal = table->time->start;
 		table->philos[i].arg = table->arg;
 		table->philos[i].time = table->time;
 		table->philos[i].r_fork = &table->forks[i];
@@ -57,12 +59,10 @@ void	ft_init_forks(t_table *table)
 	int	i;
 
 	i = 0;
-	table->forks = malloc(sizeof(t_fork) * table->arg->nb_philo);
-///	table->fork = malloc(sizeof(int) * table->arg->nb_phillo);
+	table->forks = malloc(sizeof(pthread_mutex_t) * table->arg->nb_philo);
 	while (i < table->arg->nb_philo)
 	{
-		table->forks[i].state = 0;
-		pthread_mutex_init(&table->forks[i].fork, NULL);
+		pthread_mutex_init(&table->forks[i], NULL);
 		i++;
 	}
 }
