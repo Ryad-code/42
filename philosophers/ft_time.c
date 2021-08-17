@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:59:13 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 12:36:46 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 15:01:38 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_sleep1ms(t_philo *philo)
 	gettimeofday(&philo->time->time1, NULL);
 }
 
-void	ft_sleep(t_philo *philo, int duration)
+void	ft_usleep(t_philo *philo, int duration)
 {
 	int i;
 
