@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 15:02:09 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 15:11:46 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -17,12 +17,12 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/time.h>
-/*
+
 typedef struct		s_fork
 {
-	pthread_mutex_t fork;
-//	int				state;
-}					t_fork;*/
+	pthread_mutex_t mutex;
+	int				state;
+}					t_fork;
 
 typedef struct		s_time
 {
@@ -47,8 +47,8 @@ typedef struct		s_philo
 	t_time			*time;
 	t_arg			*arg;
 	pthread_t		thread;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
+	t_fork			*r_fork;
+	t_fork			*l_fork;
 }					t_philo;
 
 typedef struct s_table
@@ -57,7 +57,8 @@ typedef struct s_table
 	t_time			 *time;	
 	t_arg			*arg;
 	t_philo         *philos;
-	pthread_mutex_t	*forks;
+//	pthread_mutex_t	*forks;
+	t_fork			*forks;	
 }				t_table;
 
 //.........................................//Utils

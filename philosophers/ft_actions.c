@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 10:43:40 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 15:07:06 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 15:14:33 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_grab_forks(t_philo *philo)
 {
-		pthread_mutex_lock(philo->r_fork);
-		pthread_mutex_lock(philo->l_fork);
+		pthread_mutex_lock(&philo->r_fork->mutex);
+		pthread_mutex_lock(&philo->l_fork->mutex);
 		printf("%ldms philo%d is holding forks\n", ft_get_time(philo, philo->time->start), philo->id);
 }
 
 void	ft_drop_forks(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->r_fork);
-	pthread_mutex_unlock(philo->l_fork);
+	pthread_mutex_unlock(&philo->r_fork->mutex);
+	pthread_mutex_unlock(&philo->l_fork->mutex);
 
 }
 

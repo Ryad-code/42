@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 15:01:22 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 15:15:23 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_init_forks(t_table *table)
 	table->forks = malloc(sizeof(pthread_mutex_t) * table->arg->nb_philo);
 	while (i < table->arg->nb_philo)
 	{
-		pthread_mutex_init(&table->forks[i], NULL);
+		pthread_mutex_init(&table->forks[i].mutex, NULL);
 		i++;
 	}
 }
