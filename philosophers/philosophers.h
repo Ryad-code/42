@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 16:25:36 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 16:54:53 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -67,6 +67,9 @@ void	ft_init_philosophers(t_table *table);
 void	ft_init_forks(t_table *table);
 void	ft_thread_join(t_table *table);
 //.........................................//Actions
+int		ft_eat(t_philo *philo);
+int		ft_sleep(t_philo *philo);
+int		ft_think(t_philo *philo);
 void	ft_grab_forks(t_philo *philo);
 void	ft_drop_forks(t_philo *philo);
 void    *ft_routine(void *arg);

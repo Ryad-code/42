@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 16:27:02 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/17 16:52:52 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,8 @@ int	ft_init_table(t_table *table, char **av)
 		return (-1);
 }
 
-void	ft_init_philosophers(t_table *table)
+void	ft_init_philo1(t_table *table)
 {
-	int	i;
-
-	i = 1;
-	table->philos = malloc(sizeof(t_philo) * table->arg->nb_philo);
 	table->philos[0].id = 1;
 	table->philos[0].last_meal = table->time->start;
 	table->philos[0].arg = table->arg;
@@ -40,6 +36,22 @@ void	ft_init_philosophers(t_table *table)
 	table->philos[0].r_fork = &table->forks[0];
 	table->philos[0].l_fork = &table->forks[table->arg->nb_philo - 1];
 	pthread_create(&table->philos[0].thread, NULL, ft_routine, &table->philos[0]);
+}
+
+void	ft_init_philosophers(t_table *table)
+{
+	int	i;
+
+	i = 1;
+	table->philos = malloc(sizeof(t_philo) * table->arg->nb_philo);
+/*	table->philos[0].id = 1;
+	table->philos[0].last_meal = table->time->start;
+	table->philos[0].arg = table->arg;
+	table->philos[0].time = table->time;
+	table->philos[0].r_fork = &table->forks[0];
+	table->philos[0].l_fork = &table->forks[table->arg->nb_philo - 1];
+	pthread_create(&table->philos[0].thread, NULL, ft_routine, &table->philos[0]);*/
+	ft_init_philo1(table);
 	while (i < table->arg->nb_philo)
 	{
 		table->philos[i].id = i + 1;
