@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 10:43:44 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/18 14:16:30 by mlaouedj         ###   ########.fr       */
+/*   Created: 2021/08/18 14:13:50 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/08/18 14:14:21 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int ac, char **av)
+long	ft_atoi(char *str)
 {
-	t_table	table;
+	int		i;
+	long	sign;
+	long	nb;
 
-	(void)ac;
-	ft_start(&table);
-	ft_init_table(&table, av);
-	ft_init_forks(&table);
-	ft_init_philosophers(&table);
-	ft_thread_join(&table);
-	ft_free_data(&table);
-	return (0);
+	i = 0;
+	sign = 1;
+	nb = 0;
+	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' || str[i]
+		== '\r' || str[i] == '\f' || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - 48);
+		i++;
+	}
+	nb = nb * sign;
+	return (nb);
 }

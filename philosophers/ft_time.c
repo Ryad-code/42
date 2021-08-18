@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:59:13 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/18 12:00:40 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/18 14:02:21 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_start(t_table *table)
 	gettimeofday(&table->time->time1, NULL);
 	table->time->start = (table->time->time1.tv_sec * 1000)
 		+ (table->time->time1.tv_usec / 1000);
-	printf("0 ms--->START\n");
 }
 
 long	ft_get_time(t_philo *philo, long start)
