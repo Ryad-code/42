@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 17:27:23 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/18 11:46:01 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_init_table(t_table *table, char **av)
 	if (av[1] && av[2] && av[3] && av[4])
 	{
 		table->arg->nb_philo = ft_atoi(av[1]);
-		table->arg->nb_philo1 = table->arg->nb_philo;
+		table->arg->nb_life = table->arg->nb_philo;
 		table->arg->to_die = ft_atoi(av[2]);
 		table->arg->to_eat = ft_atoi(av[3]);
 		table->arg->to_sleep = ft_atoi(av[4]);
@@ -36,7 +36,7 @@ void	ft_init_philo1(t_table *table)
 	table->philos[0].time = table->time;
 	table->philos[0].r_fork = &table->forks[0];
 	table->philos[0].l_fork = &table->forks[table->arg->nb_philo - 1];
-	pthread_create(&table->philos[0].thread, NULL, ft_routine, &table->philos[0]);
+	pthread_create(&table->philos[0].thread, NULL, ft_routine1, &table->philos[0]);
 }
 
 void	ft_init_philosophers(t_table *table)
@@ -45,13 +45,6 @@ void	ft_init_philosophers(t_table *table)
 
 	i = 1;
 	table->philos = malloc(sizeof(t_philo) * table->arg->nb_philo);
-/*	table->philos[0].id = 1;
-	table->philos[0].last_meal = table->time->start;
-	table->philos[0].arg = table->arg;
-	table->philos[0].time = table->time;
-	table->philos[0].r_fork = &table->forks[0];
-	table->philos[0].l_fork = &table->forks[table->arg->nb_philo - 1];
-	pthread_create(&table->philos[0].thread, NULL, ft_routine, &table->philos[0]);*/
 	ft_init_philo1(table);
 	while (i < table->arg->nb_philo)
 	{
@@ -61,7 +54,7 @@ void	ft_init_philosophers(t_table *table)
 		table->philos[i].time = table->time;
 		table->philos[i].r_fork = &table->forks[i];
 		table->philos[i].l_fork = &table->forks[i - 1];
-		pthread_create(&table->philos[i].thread, NULL, ft_routine, &table->philos[i]);
+		pthread_create(&table->philos[i].thread, NULL, ft_routine1, &table->philos[i]);
 		i++;
 	}
 }

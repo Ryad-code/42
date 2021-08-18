@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 17:39:22 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/18 11:31:43 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -34,10 +34,11 @@ typedef struct		s_time
 typedef struct		s_arg
 {
 	int				nb_philo;
-	int				nb_philo1;
+	int				nb_life;
 	int				to_die;
 	int				to_eat;
 	int	 			to_sleep;
+	pthread_mutex_t	print;
 }					t_arg;
 
 typedef struct		s_philo
@@ -70,9 +71,10 @@ void	ft_thread_join(t_table *table);
 //.........................................//Actions
 void	ft_grab_forks(t_philo *philo);
 void	ft_drop_forks(t_philo *philo);
-int ft_eat(t_philo *philo);
-int ft_sleep(t_philo *philo);
-int ft_think(t_philo *philo);
+int 	ft_eat(t_philo *philo);
+int 	ft_sleep(t_philo *philo);
+int 	ft_think(t_philo *philo);
+int		ft_print(t_philo *philo, char action);
 void    *ft_routine(void *arg);
 void	*ft_routine1(void *arg);
 //........................................//Time

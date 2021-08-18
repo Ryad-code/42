@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 11:59:13 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/17 16:47:34 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/18 12:00:40 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_usleep(t_philo *philo, int duration)
 	i = 0;
 	while (i < duration)
 	{
-		if (ft_get_time(philo, philo->last_meal) > philo->arg->to_die)
+		if (ft_get_time(philo, philo->last_meal) >= philo->arg->to_die)
 			return (-1);
 		ft_sleep1ms(philo);
 		i++;
