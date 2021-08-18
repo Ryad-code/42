@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/18 14:31:41 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/18 16:46:39 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_init_table(t_table *table, char **av)
 		table->arg->to_sleep = ft_atoi(av[4]);
 		if (av[5])
 			table->arg->nb_meal = ft_atoi(av[5]);
+		pthread_mutex_init(&table->arg->print, NULL);
 		return (0);
 	}
 	else
