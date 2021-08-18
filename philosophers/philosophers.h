@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/18 14:12:42 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/18 14:36:47 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -35,6 +35,7 @@ typedef struct s_arg
 {
 	int				nb_philo;
 	int				nb_life;
+	int				nb_meal;
 	int				to_die;
 	int				to_eat;
 	int				to_sleep;
@@ -45,6 +46,7 @@ typedef struct s_philo
 {
 	int				id;
 	long			last_meal;
+	int				nb_meal;
 	t_time			*time;
 	t_arg			*arg;
 	pthread_t		thread;

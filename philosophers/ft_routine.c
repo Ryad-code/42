@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:18:36 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/18 14:14:31 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/18 15:10:37 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,29 @@ void	*ft_routine(void *arg)
 	if (res < 0)
 		return (NULL);
 	ft_drop_forks(tmp);
+	if (tmp->nb_meal == tmp->arg->nb_meal)
+		return (NULL);
 	res = ft_sleep(tmp);
 	if (res < 0)
 		return (NULL);
 	res = ft_think(tmp);
 	if (res < 0)
 		return (NULL);
-	return (NULL);
+	return (tmp);
 }
 
 void	*ft_routine1(void *arg)
 {
 	t_philo	*tmp;
 	int		nb_philo;
+	void	*res;
 
 	tmp = arg;
 	nb_philo = tmp->arg->nb_philo;
-	while (nb_philo == tmp->arg->nb_life)
+	res = tmp;
+	while (nb_philo == tmp->arg->nb_life && res != NULL)
 	{
-		ft_routine(arg);
+		res = ft_routine(arg);
 	}
 	return (NULL);
 }

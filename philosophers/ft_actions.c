@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 10:43:40 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/18 14:08:30 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/18 14:49:06 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	ft_eat(t_philo *philo)
 
 	ft_print(philo, 'e');
 	philo->last_meal = ft_get_time1(philo);
+	philo->nb_meal++;
 	res = ft_usleep(philo, philo->arg->to_eat);
 	if (res < 0)
 	{

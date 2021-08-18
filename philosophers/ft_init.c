@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:58:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/18 13:45:18 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/18 14:31:41 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	ft_init_table(t_table *table, char **av)
 		table->arg->to_die = ft_atoi(av[2]);
 		table->arg->to_eat = ft_atoi(av[3]);
 		table->arg->to_sleep = ft_atoi(av[4]);
+		if (av[5])
+			table->arg->nb_meal = ft_atoi(av[5]);
 		return (0);
 	}
 	else
@@ -32,6 +34,7 @@ void	ft_init_philo1(t_table *table)
 {
 	table->philos[0].id = 1;
 	table->philos[0].last_meal = table->time->start;
+	table->philos[0].nb_meal = 0;
 	table->philos[0].arg = table->arg;
 	table->philos[0].time = table->time;
 	table->philos[0].r_fork = &table->forks[0];
@@ -51,6 +54,7 @@ void	ft_init_philosophers(t_table *table)
 	{
 		table->philos[i].id = i + 1;
 		table->philos[i].last_meal = table->time->start;
+		table->philos[i].nb_meal = 0;
 		table->philos[i].arg = table->arg;
 		table->philos[i].time = table->time;
 		table->philos[i].r_fork = &table->forks[i];
