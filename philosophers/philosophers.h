@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 11:01:29 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/18 14:36:47 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/19 10:45:38 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILOSOPHERS_H
@@ -82,5 +82,8 @@ long	ft_get_time1(t_philo *philo);
 void	ft_sleep1ms(t_philo *philo);
 int		ft_usleep(t_philo *philo, int duration);
 void	ft_free_data(t_table *table);
+int		ft_is_digit(char c);
+int		ft_is_nb(char *str);
+int		ft_arg(int ac, char **av);
 
 #endif

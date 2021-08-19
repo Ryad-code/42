@@ -6,11 +6,48 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 14:13:50 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/18 14:14:21 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/19 10:53:04 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+int	ft_is_digit(char c)
+{
+	if (c < '0' || c > '9')
+		return (-1);
+	return (0);
+}
+
+int	ft_is_nb(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_is_digit(str[i]) < 0)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_arg(int ac, char **av)
+{
+	int	i;
+
+	i = 1;
+	if (ac < 5)
+		return (-1);
+	while (i < ac)
+	{
+		if (ft_is_nb(av[i]) < 0)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
 
 long	ft_atoi(char *str)
 {
