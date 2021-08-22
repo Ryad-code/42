@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 17:09:26 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/22 01:07:58 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/22 02:19:32 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <sys/types.h>
 # include <dirent.h>
 # include "gnl/get_next_line.h"
-//.............................................//Buildins
+//.............................................//Build_in MACROS
 # define ECHO "echo"
 # define CD "cd"
 # define PWD "pwd"
@@ -27,7 +27,7 @@
 # define UNSET "unset"
 # define ENV "env"
 # define EXIT "exit"
-
+//.................................................
 typedef struct s_data
 {
 	char	*buffer;
@@ -46,7 +46,7 @@ int		ft_count(char *str, char sep);
 char 	**ft_split(char *str, char sep);
 //..................................................Router
 int		ft_router(t_data data);
-//..................................................Builtins functions
+//..................................................Built_in functions
 int		ft_echo(t_data data);
 int		ft_cd(t_data data);
 int		ft_pwd(t_data data);
@@ -54,6 +54,8 @@ int		ft_export(t_data data);
 int		ft_unset(t_data data);
 int		ft_env(t_data data);
 int		ft_exit(t_data data);
+//..................................................Built_out functions
+int		ft_exec(t_data data);
 //..................................................Display
 void	ft_display_words(char **words, int nb);
 #endif
