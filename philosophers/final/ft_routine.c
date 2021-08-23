@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:18:36 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/19 13:11:12 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/23 19:30:27 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	*ft_routine1(void *arg)
 		pthread_mutex_lock(&tmp->arg->print);
 	}
 	pthread_mutex_unlock(&tmp->arg->print);
-
 	return (NULL);
 }
 
