@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 17:09:26 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/24 05:38:15 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/24 19:48:22 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,22 @@ int		ft_init_env(t_data *data, char **env);
 int		ft_init_exp(t_data *data, char **env);
 //.................................................Parsing
 int		ft_strcmp(char *str1, char *str2);
+int     ft_strncmp(char *str1, char *str2, int n);
 int		ft_countwords(char *s, char c);
 char	*ft_strndup(char *str, int n);
 char	**ft_split(char *s, char c);
 //..................................................Router
-int		ft_router(t_data *data, char **env);
+int		ft_router(t_data *data);
 //..................................................Built_in functions
 int		ft_echo(t_data *data);
 int		ft_cd(t_data *data);
 int		ft_pwd(void);
 int		ft_export(t_data *data);
-int		ft_unset(t_data data);
+int		ft_unset(t_data *data);
 int		ft_env(t_data *data);
+//..................................................Env
+int		ft_find_sep(char *str);
+int		ft_find_var(t_data *data, t_list *list);
 //..................................................Built_out functions
 int		ft_exec(t_data data);
 //..................................................Display
@@ -76,6 +80,8 @@ t_list *ft_create_first(char *str);
 int 	ft_create_top(t_list **list, char *str);
 int 	ft_create_bot(t_list **list, char *str);
 int 	ft_create_in(t_list **list, char *str, int curs);
-int 	ft_delete_in(t_list **list, int curs);
+int 	ft_delete_in(t_data *data, t_list **list, int curs);
+int		ft_delete_top(t_list **list);
+int		ft_delete_bot(t_list **list);
 //..................................................
 #endif

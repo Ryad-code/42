@@ -6,13 +6,13 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 00:45:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/24 05:44:49 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/24 18:44:42 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_router(t_data *data, char **env)
+int	ft_router(t_data *data)
 {
 	if (ft_strcmp(ECHO, data->words[0]) == 0)
 		ft_echo(data);
@@ -22,8 +22,8 @@ int	ft_router(t_data *data, char **env)
 		ft_pwd();
 	else if (ft_strcmp(EXPORT, data->words[0]) == 0)
 		ft_export(data);
-//	else if (ft_strcmp(UNSET, data->words[0]) == 0)
-//		ft_unset(data);
+	else if (ft_strcmp(UNSET, data->words[0]) == 0)
+		ft_unset(data);
 	else if (ft_strcmp(ENV, data->words[0]) == 0)
 		ft_env(data);
 //	else

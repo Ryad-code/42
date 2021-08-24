@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 01:55:12 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/24 05:50:19 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/24 20:00:30 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	ft_pwd(void)
 
 int	ft_export(t_data *data)
 {
-//	printf("nb = %d\n", data->nb_words);
 	if (data->nb_words == 1)
 		ft_display_list(data->exp);
 	else
@@ -65,9 +64,12 @@ int	ft_export(t_data *data)
 	return (0);
 }
 
-int	ft_unset(t_data data)
+int	ft_unset(t_data *data)
 {
-	
+	int curs;
+
+	curs = ft_find_var(data, data->env);
+	ft_delete_in(data, &data->env, curs);
 	return (0);
 }
 
@@ -79,5 +81,6 @@ int	ft_env(t_data *data)
 
 int	ft_exec(t_data data)
 {
+	printf("%s\n", data.buffer);
 	return (0);
 }

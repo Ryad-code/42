@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 02:46:08 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/24 05:37:26 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/24 19:44:39 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,17 @@ int	ft_create_in(t_list **list, char *str, int curs)
 	return (0);
 }
 
-int	ft_delete_in(t_list **list, int curs)
+int	ft_delete_in(t_data *data, t_list **list, int curs)
 {
 	int		i;
 	t_list	*tmp;
 
 	i = 0;
 	tmp = *list;
+	if (curs == 0)
+		ft_delete_top(list);
+	else if (curs == data->len_env)
+		ft_delete_bot(list);
 	while ((*list)->next && i < curs)
 	{
 		*list = (*list)->next;
@@ -90,7 +94,31 @@ int	ft_delete_in(t_list **list, int curs)
 	}
 	(*list)->next->prev = (*list)->prev;
 	(*list)->prev->next = (*list)->next;
-//	free(*list);
+	free(*list);
+	*list = tmp;
+	return (0);
+}
+
+int	ft_delete_top(t_list **list)
+{
+	t_list *tmp;
+
+	tmp = (*list)->next;
+	(*list)->next->prev = NULL;
+	free(*list);
+	*list = tmp;
+	return (0);
+}
+
+int	ft_delete_bot(t_list **list)
+{
+	t_list *tmp;
+
+	tmp = *list;
+	while ((*list)->next)
+		*list = (*list)->next;
+	(*list)->prev->next = NULL;
+	free(*list);
 	*list = tmp;
 	return (0);
 }

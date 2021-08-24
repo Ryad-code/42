@@ -6,7 +6,7 @@
 /*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 16:31:18 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/24 01:15:40 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/24 18:41:15 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,21 @@ int	ft_strcmp(char *str1, char *str2)
 	int i;
 
 	i = 0;
-	while (str1[i] & str2[i])
+	while (str1[i] && str2[i])
+	{
+		if (str1[i] != str2[i])
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
+int ft_strncmp(char *str1, char *str2, int n)
+{
+	int i;
+
+	i = 0;
+	while (str1[i] && str2[i] && i < n)
 	{
 		if (str1[i] != str2[i])
 			return (-1);
