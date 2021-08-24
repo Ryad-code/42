@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser_01.c                                     :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mlaouedj <mlaouedj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/21 23:27:43 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/21 23:27:47 by mlaouedj         ###   ########.fr       */
+/*   Created: 2020/05/10 16:31:18 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/08/24 01:15:40 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+# include "minishell.h"
 
 int	ft_strcmp(char *str1, char *str2)
 {
@@ -26,67 +26,67 @@ int	ft_strcmp(char *str1, char *str2)
 	return (0);
 }
 
-char *ft_strndup(char *str, int n)
-{
-	int 	i;
-	char	*res;
-
-	i = 0;
-	res = malloc(sizeof(char) * (n + 1));
-	while (str[i] && i < n)
-	{
-		res[i] = str[i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
-}
-
-int		ft_count(char *str, char sep)
+int		ft_countwords(char *s, char c)
 {
 	int i;
-	int res;
+	int nb_w;
 
 	i = 0;
-	res = 0;
-	while (str[i])
+	nb_w = 0;
+	while (s[i])
 	{
-		while (str[i] == sep)
+		while (s[i] == c)
 			i++;
-		if (str[i])
-		{
-			while (str[i] != sep && str[i])
-				i++;
-			res++;
-		}
+		if (s[i] != c && s[i] != '\0')
+			nb_w++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
-	return (res);
+	return (nb_w);
 }
 
-char	**ft_split(char *str, char sep)
+char	*ft_strndup(char *str, int n)
 {
-	char **res;
-	int 	i;
-	int		j;
-	int		len;
+	int		i;
+	char	*dest;
 
-	res = malloc(sizeof(char *) * ft_count(str, sep));
 	i = 0;
-	j = 0;
-	len = 0;
-	while (str[j])
+	dest = NULL;
+	if (!(dest = malloc(sizeof(char) * (n + 1))))
+		return (dest);
+	while (str[i] && i < n)
 	{
-		while (str[j] == sep)
-			j++;
-		while (str[j] != sep && str[j])
-		{
-			len++;
-			j++;
-		}
-		res[i] = ft_strndup(&str[j - len], len);
-		len = 0;
+		dest[i] = str[i];
 		i++;
-		j++;
 	}
-	return (res);
+	dest[i] = '\0';
+	return (dest);
+}
+
+char			**ft_split(char *s, char c)
+{
+	int		i[3];
+	char	**tab;
+
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = 0;
+	tab = NULL;
+	if ((!s) || (!(tab = malloc(sizeof(char *) * (ft_countwords(s, c) + 1)))))
+		return (tab);
+	while (s[i[0]])
+	{
+		while (s[i[0]] == c)
+			i[0]++;
+		i[1] = i[0];
+		while (s[i[0]] && s[i[0]] != c)
+			i[0]++;
+		if ((ft_countwords(s, c) - i[2]) > 0)
+		{
+			tab[i[2]] = ft_strndup(&s[i[1]], i[0] - i[1]);
+			i[2]++;
+		}
+	}
+	tab[i[2]] = NULL;
+	return (tab);
 }
