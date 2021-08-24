@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 17:09:26 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/24 04:10:24 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/24 05:38:15 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ int		ft_countwords(char *s, char c);
 char	*ft_strndup(char *str, int n);
 char	**ft_split(char *s, char c);
 //..................................................Router
-int		ft_router(t_data data, char **env);
+int		ft_router(t_data *data, char **env);
 //..................................................Built_in functions
-int		ft_echo(t_data data);
-int		ft_cd(t_data data);
+int		ft_echo(t_data *data);
+int		ft_cd(t_data *data);
 int		ft_pwd(void);
-int		ft_export(t_data data);
+int		ft_export(t_data *data);
 int		ft_unset(t_data data);
-int		ft_env(t_data data, char **env);
+int		ft_env(t_data *data);
 //..................................................Built_out functions
 int		ft_exec(t_data data);
 //..................................................Display

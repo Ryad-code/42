@@ -6,27 +6,27 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 00:45:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/24 02:02:51 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/24 05:44:49 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_router(t_data data, char **env)
+int	ft_router(t_data *data, char **env)
 {
-	if (ft_strcmp(ECHO, data.words[0]) == 0)
+	if (ft_strcmp(ECHO, data->words[0]) == 0)
 		ft_echo(data);
-	else if (ft_strcmp(CD, data.words[0]) == 0)
+	else if (ft_strcmp(CD, data->words[0]) == 0)
 		ft_cd(data);
-	else if (ft_strcmp(PWD, data.words[0]) == 0)
+	else if (ft_strcmp(PWD, data->words[0]) == 0)
 		ft_pwd();
-	else if (ft_strcmp(EXPORT, data.words[0]) == 0)
+	else if (ft_strcmp(EXPORT, data->words[0]) == 0)
 		ft_export(data);
-	else if (ft_strcmp(UNSET, data.words[0]) == 0)
-		ft_unset(data);
-	else if (ft_strcmp(ENV, data.words[0]) == 0)
-		ft_env(data, env);
-	else
-		ft_exec(data);
+//	else if (ft_strcmp(UNSET, data->words[0]) == 0)
+//		ft_unset(data);
+	else if (ft_strcmp(ENV, data->words[0]) == 0)
+		ft_env(data);
+//	else
+//		ft_exec(data);
 	return (0);
 }
