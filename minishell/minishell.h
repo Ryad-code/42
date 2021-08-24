@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 17:09:26 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/24 02:03:27 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/24 04:10:24 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,29 @@
 # define UNSET "unset"
 # define ENV "env"
 # define EXIT "exit"
+//................................................Listes chainees
+typedef struct s_list
+{
+	char				*str;
+	struct s_list		*next;
+	struct s_list		*prev;
+}						t_list;
 //.................................................
 typedef struct s_data
 {
 	char	*buffer;
 	char	**words;
 	int		nb_words;
+	t_list	*env;
+	int		len_env;
+	t_list	*exp;
+	int		len_exp;
 	char	**link;
 }				t_data;
 //.................................................Init
-int     ft_init_data(t_data *data);
+int     ft_init_words(t_data *data);
+int		ft_init_env(t_data *data, char **env);
+int		ft_init_exp(t_data *data, char **env);
 //.................................................Parsing
 int		ft_strcmp(char *str1, char *str2);
 int		ft_countwords(char *s, char c);
@@ -57,4 +70,12 @@ int		ft_exec(t_data data);
 //..................................................Display
 void	ft_display_words(char **words, int nb);
 void	ft_display_env(char **env);
+void	ft_display_list(t_list *list);
+//..................................................Lists
+t_list *ft_create_first(char *str);
+int 	ft_create_top(t_list **list, char *str);
+int 	ft_create_bot(t_list **list, char *str);
+int 	ft_create_in(t_list **list, char *str, int curs);
+int 	ft_delete_in(t_list **list, int curs);
+//..................................................
 #endif

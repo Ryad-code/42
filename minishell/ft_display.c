@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 20:45:26 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/24 02:04:44 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/08/24 04:07:11 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,17 @@ void	ft_display_env(char **env)
 		printf("%s\n", env[i]);
 		i++;
 	}
+}
+
+void	ft_display_list(t_list *list)
+{
+	t_list	*tmp;
+
+	tmp = list;
+	while (tmp->next)
+	{
+		printf("%s\n", tmp->str);
+		tmp = tmp->next;
+	}
+	printf("str = %s\n", tmp->str);
 }
