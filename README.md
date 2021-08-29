@@ -9,4 +9,5 @@ Projets validés:
 -fractol
 -minitalk
 -push_swap
-Currently working on Philosophers #Respectthespirit
+-Philosophers
+-Currently working on minishell
