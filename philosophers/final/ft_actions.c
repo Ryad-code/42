@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 10:43:40 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/08/19 13:13:57 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/09/01 17:43:50 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	ft_eat(t_philo *philo)
 	if (res < 0)
 	{
 		ft_print(philo, 'd');
+		ft_drop_forks(philo);
 		return (-1);
 	}
 	return (0);
